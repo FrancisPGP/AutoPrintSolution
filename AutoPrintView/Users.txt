@@ -1,1 +1,3 @@
-1,r,r,r@,123,h
+3,Cesar,Romero,cesar.romeroz@pucp.edu.pe,73258086,123
+2,Cesar,fwf,eaf,f43,123
+1,Chisar,Romeo,fegregre,73258086,123

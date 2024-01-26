@@ -191,6 +191,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CardVISAForm.resx">
+      <DependentUpon>CardVISAForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.h</DependentUpon>
     </EmbeddedResource>
