@@ -176,6 +176,9 @@
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.AcroPDFLib.1.0">
+      <HintPath>..\x64\Debug\AxInterop.AcroPDFLib.1.0.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -218,6 +221,17 @@
     <EmbeddedResource Include="WalletForm.resx">
       <DependentUpon>WalletForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib.1.0">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
