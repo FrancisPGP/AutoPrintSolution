@@ -84,6 +84,7 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::Label^ lblMonthYear;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ btnPrintCardVisa;
+	private: System::Windows::Forms::PictureBox^ pbGuideCard;
 
 
 
@@ -107,7 +108,7 @@ namespace AutoPrintView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -116,6 +117,7 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CardVISAForm::typeid));
 			this->dgvCardVisa = (gcnew System::Windows::Forms::DataGridView());
 			this->Card_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Card_Titular = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -129,7 +131,9 @@ namespace AutoPrintView {
 			this->lblMonthYear = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnPrintCardVisa = (gcnew System::Windows::Forms::Button());
+			this->pbGuideCard = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCardVisa))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGuideCard))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dgvCardVisa
@@ -187,6 +191,7 @@ namespace AutoPrintView {
 			this->txtCardOwnerVisa->TabIndex = 52;
 			this->txtCardOwnerVisa->Text = L"NOMBRE APELLIDO";
 			this->txtCardOwnerVisa->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtCardOwnerVisa->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &CardVISAForm::txtCardOwnerVisa_MouseClick);
 			// 
 			// txtCardCVVvisa
 			// 
@@ -199,6 +204,7 @@ namespace AutoPrintView {
 			this->txtCardCVVvisa->TabIndex = 51;
 			this->txtCardCVVvisa->Text = L"XXX";
 			this->txtCardCVVvisa->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtCardCVVvisa->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &CardVISAForm::txtCardCVVvisa_MouseClick);
 			// 
 			// txtCardExpirationVisa
 			// 
@@ -211,6 +217,7 @@ namespace AutoPrintView {
 			this->txtCardExpirationVisa->TabIndex = 50;
 			this->txtCardExpirationVisa->Text = L"MM/AA";
 			this->txtCardExpirationVisa->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtCardExpirationVisa->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &CardVISAForm::txtCardExpirationVisa_MouseClick);
 			// 
 			// txtCardNumberVisa
 			// 
@@ -223,6 +230,8 @@ namespace AutoPrintView {
 			this->txtCardNumberVisa->TabIndex = 49;
 			this->txtCardNumberVisa->Text = L"XXXX-XXXX-XXXX-XXXX";
 			this->txtCardNumberVisa->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->txtCardNumberVisa->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &CardVISAForm::txtCardNumberVisa_MouseClick);
+
 			// 
 			// lblPropietor
 			// 
@@ -282,6 +291,17 @@ namespace AutoPrintView {
 			this->btnPrintCardVisa->TabIndex = 44;
 			this->btnPrintCardVisa->Text = L"Pagar";
 			this->btnPrintCardVisa->UseVisualStyleBackColor = true;
+			this->btnPrintCardVisa->Click += gcnew System::EventHandler(this, &CardVISAForm::btnPrintCardVisa_Click);
+			// 
+			// pbGuideCard
+			// 
+			this->pbGuideCard->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGuideCard.Image")));
+			this->pbGuideCard->Location = System::Drawing::Point(265, 21);
+			this->pbGuideCard->Name = L"pbGuideCard";
+			this->pbGuideCard->Size = System::Drawing::Size(396, 278);
+			this->pbGuideCard->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pbGuideCard->TabIndex = 54;
+			this->pbGuideCard->TabStop = false;
 			// 
 			// CardVISAForm
 			// 
@@ -289,6 +309,7 @@ namespace AutoPrintView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(668, 397);
+			this->Controls->Add(this->pbGuideCard);
 			this->Controls->Add(this->dgvCardVisa);
 			this->Controls->Add(this->txtCardOwnerVisa);
 			this->Controls->Add(this->txtCardCVVvisa);
@@ -305,19 +326,80 @@ namespace AutoPrintView {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Pagar con VISA";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvCardVisa))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGuideCard))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+
+		int checkFill = 0;
+
 	private: System::Void btnPrintCardVisa_Click(System::Object^ sender, System::EventArgs^ e) {
-		Card^ newCardVisa = gcnew Card(); //instanciamos la nueva tarjeta a emplear
+		Card^ newCardWallet = gcnew Card(); //instanciamos la nueva tarjeta a emplear
 
-		newCardVisa->account_number = txtCardNumberVisa->Text;
-		newCardVisa->cvv = txtCardCVVvisa->Text;
-		newCardVisa->dueDate = txtCardExpirationVisa->Text;
+		newCardWallet->account_number = txtCardNumberVisa->Text;
+		newCardWallet->cvv = txtCardCVVvisa->Text;
+		newCardWallet->dueDate = txtCardExpirationVisa->Text;
 
-		Close();
+
+		if ((txtCardNumberVisa->Text == "") || (txtCardExpirationVisa->Text == "") || (txtCardCVVvisa->Text == "") || (txtCardOwnerVisa->Text == "") ||
+			(txtCardNumberVisa->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCardExpirationVisa->Text == "MM/AA") || (txtCardCVVvisa->Text == "XXX") || (txtCardOwnerVisa->Text == "NOMBRE APELLIDO")) {
+			MessageBox::Show("Debe llenar todas las casillas.");
+		}
+		else {
+			MessageBox::Show("Operación exitosa. El documento ya se encuentra en fila de impresión");
+			Close();
+		}
 	}
-};
+
+		   void FillOut() {
+			   if (txtCardNumberVisa->Text == "" && checkFill != 1) {
+				   txtCardNumberVisa->Text = "XXXX-XXXX-XXXX-XXXX";
+			   }
+			   if (txtCardExpirationVisa->Text == "" && checkFill != 2) {
+				   txtCardExpirationVisa->Text = "MM/AA";
+			   }
+			   if (txtCardOwnerVisa->Text == "" && checkFill != 3) {
+				   txtCardOwnerVisa->Text = "NOMBRE APELLIDO";
+			   }
+			   if (txtCardCVVvisa->Text == "" && checkFill != 4) {
+				   txtCardCVVvisa->Text = "XXX";
+			   }
+		   }
+
+	private: System::Void txtCardNumberVisa_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (txtCardNumberVisa->Text == "XXXX-XXXX-XXXX-XXXX") {
+			txtCardNumberVisa->Text = "";
+		}
+		checkFill = 1;
+		FillOut();
+		checkFill = 0;
+	}
+
+	private: System::Void txtCardExpirationVisa_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (txtCardExpirationVisa->Text == "MM/AA") {
+			txtCardExpirationVisa->Text = "";
+		}
+		checkFill = 2;
+		FillOut();
+		checkFill = 0;
+	}
+	private: System::Void txtCardOwnerVisa_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (txtCardOwnerVisa->Text == "NOMBRE APELLIDO") {
+			txtCardOwnerVisa->Text = "";
+		}
+		checkFill = 3;
+		FillOut();
+		checkFill = 0;
+	}
+	private: System::Void txtCardCVVvisa_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (txtCardCVVvisa->Text == "XXX") {
+			txtCardCVVvisa->Text = "";
+		}
+		checkFill = 4;
+		FillOut();
+		checkFill = 0;
+	}
+	};
 }

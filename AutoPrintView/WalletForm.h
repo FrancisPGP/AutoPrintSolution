@@ -1,4 +1,5 @@
 #pragma once
+#include "LoginForm.h"
 
 namespace AutoPrintView {
 
@@ -77,6 +78,7 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Card_NumCard;
 	private: System::Windows::Forms::Button^ btnSave;
 	private: System::Windows::Forms::Button^ btnDelete;
+	private: System::Windows::Forms::PictureBox^ pbGuideCard;
 
 
 
@@ -97,6 +99,7 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(WalletForm::typeid));
 			this->txtAmountToRechange = (gcnew System::Windows::Forms::TextBox());
 			this->lblOpctionBalance = (gcnew System::Windows::Forms::Label());
 			this->lblBalanceUser = (gcnew System::Windows::Forms::Label());
@@ -116,7 +119,9 @@ namespace AutoPrintView {
 			this->Card_NumCard = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btnSave = (gcnew System::Windows::Forms::Button());
 			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			this->pbGuideCard = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWallet))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGuideCard))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtAmountToRechange
@@ -345,12 +350,23 @@ namespace AutoPrintView {
 			this->btnDelete->Text = L"Eliminar";
 			this->btnDelete->UseVisualStyleBackColor = true;
 			// 
+			// pbGuideCard
+			// 
+			this->pbGuideCard->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGuideCard.Image")));
+			this->pbGuideCard->Location = System::Drawing::Point(288, 109);
+			this->pbGuideCard->Name = L"pbGuideCard";
+			this->pbGuideCard->Size = System::Drawing::Size(391, 271);
+			this->pbGuideCard->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pbGuideCard->TabIndex = 46;
+			this->pbGuideCard->TabStop = false;
+			// 
 			// WalletForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(710, 512);
+			this->Controls->Add(this->pbGuideCard);
 			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->btnSave);
 			this->Controls->Add(this->dgvWallet);
@@ -372,7 +388,9 @@ namespace AutoPrintView {
 			this->Name = L"WalletForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
 			this->Text = L"Billetera";
+			this->Load += gcnew System::EventHandler(this, &WalletForm::WalletForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWallet))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGuideCard))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -388,18 +406,23 @@ namespace AutoPrintView {
 		newCardWallet->cvv = txtCVVWallet->Text;
 		newCardWallet->dueDate = txtMMAAWallet->Text;
 
-		if (txtAmountToRechange->Text != "") {
-			double a = Double::Parse(lblBalance->Text);
-			double b = Double::Parse(txtAmountToRechange->Text);
-			
-			total = a + b;
+		int dni_wallet = Dni_Ahora;
+		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
+
+		if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+			(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+			MessageBox::Show("Debe rellenar todas las casillas");
 		}
 		else {
-			total = Double::Parse(lblBalance->Text);
+			user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
+			lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+			Controller::UpdateCostumer(user_wallet);
+			txtAmountToRechange->Text = "";
+			txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
+			txtMMAAWallet->Text = "MM/AA";
+			txtCVVWallet->Text = "XXX";
+			txtOwnerWallet->Text = "NOMBRE APELLIDO";
 		}
-		lblBalance->Text = total.ToString();
-
-		txtAmountToRechange->Text = "";
 	}
 
 		   void FillOut() {
@@ -454,5 +477,10 @@ namespace AutoPrintView {
 		FillOut();
 		checkFill = 0;
 	}
-};
+	private: System::Void WalletForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		int dni_wallet = Dni_Ahora;
+		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
+		lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+	}
+	};
 }

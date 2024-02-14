@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEmployee xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Employee>
+    <Money_in_wallet>30</Money_in_wallet>
+    <Birthdate>03/02/02</Birthdate>
+    <Email>a20195821@pucp.edu.pe</Email>
+    <Password>123</Password>
+    <Gender>Masculino</Gender>
+    <Dni>12345678</Dni>
+    <Phone_number>999888777</Phone_number>
+    <LastName>Amaya</LastName>
+    <Name>Ricardo</Name>
+  </Employee>
+</ArrayOfEmployee>

@@ -16,12 +16,17 @@ namespace AutoPrintModel {
     public ref class Customer : public User {
     public:
         property List<String^>^ record;
-        property  double money_page;
 
      
         void BuyPrint();
 
         void Reload();
+       Customer(){}
+        Customer(String^ Name, String^ LastName, String^ Phonenumber, int Dni, String^ Gender, String^ Password, String^ Email, String^ Birthdate, array<Byte>^ Photo, double Moneyinwa) :
+            User(Name,LastName,Phonenumber,Dni,Gender,Password,Email,Birthdate,Photo,Moneyinwa) {
+
+          
+        }
     };
 }
 #endif //_CUSTOMER_H

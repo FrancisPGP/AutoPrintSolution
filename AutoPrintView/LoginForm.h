@@ -13,12 +13,17 @@ namespace AutoPrintView {
 	using namespace AutoPrintModel;
 	using namespace AutoPrintController;
 
+	static int Dni_Ahora;
+
+
 	/// <summary>
 	/// Resumen de LoginForm
 	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
+	
 	public:
+
 		LoginForm(void)
 		{
 			InitializeComponent();
@@ -115,6 +120,7 @@ namespace AutoPrintView {
 				static_cast<System::Byte>(0)));
 			this->txtDNI->Location = System::Drawing::Point(339, 230);
 			this->txtDNI->Margin = System::Windows::Forms::Padding(4);
+			this->txtDNI->MaxLength = 8;
 			this->txtDNI->Name = L"txtDNI";
 			this->txtDNI->Size = System::Drawing::Size(209, 28);
 			this->txtDNI->TabIndex = 3;
@@ -232,28 +238,29 @@ namespace AutoPrintView {
 		}
 #pragma endregion
     //INTENTO DE LOGIN
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//Antes debemos ver si los items están llenos:
+		
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e); //{
+		/*//Antes debemos ver si los items están llenos:
 		if ( (txtDNI->Text == "") || (txtPassword->Text == "") ) {
 			MessageBox::Show("No ingreso usuario o contraseña");
 			return;
 		}
 
-		String^ enteredDni = txtDNI->Text;
+		int enteredDni = Int32::Parse(txtDNI->Text);
 		String^ enteredPassword = txtPassword->Text;
+		Dni_Ahora = enteredDni;
 
-		if (enteredDni == "admin" && enteredPassword == "admin") {
-			//CAMBIO PARA QUE DE LOGIN VAYA AL AUTOPRINT
-			Close();
-		}
-		else if ((Controller::Login(enteredDni, enteredPassword)) == true) {
-			//CAMBIO PARA QUE DE LOGIN VAYA AL AUTOPRINT
+		User^ us = Controller::Login(enteredDni, enteredPassword);
+		if (us != nullptr) {
+		
 			Close();
 		}
 		else {
 			MessageBox::Show("Usuario o contraseña incorrectos.");
-		}
-	}
+		}*/
+	//}
+	
 	private: System::Void txtPassword_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if(e->KeyData == Keys::Enter)
 			btnEntrar->PerformClick();

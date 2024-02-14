@@ -12,6 +12,7 @@ namespace AutoPrintView {
 	using namespace System::Drawing;
 	using namespace AutoPrintPersistance;
 
+
 	/// <summary>
 	/// Resumen de Inicio
 	/// </summary>

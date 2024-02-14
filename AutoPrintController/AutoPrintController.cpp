@@ -7,31 +7,102 @@ using namespace AutoPrintController;
 
 /*Ricardo y Luis*/
 
-int AutoPrintController::Controller::AddCustomer(User^ user) {
-    return ::Persistance::AddCustomer(user);
+int AutoPrintController::Controller::AddUser(User^ user) {
+    return ::Persistance::AddUser(user);
 
 }
 
-void AutoPrintController::Controller::UpdateCustomer(User^ user) {
-    return ::Persistance::UpdateCustomer(user);
+int AutoPrintController::Controller::AddCostumer(Customer^ customer)
+{
+    return ::Persistance::AddCostumer(customer);
 }
 
-void AutoPrintController::Controller::DeleteCustomer(int CustomerId) {
-    return ::Persistance::DeleteCustomer(CustomerId);
+int AutoPrintController::Controller::AddEmployee(Employee^ employee)
+{
+    return ::Persistance::AddEmployee(employee);
+}
+
+int AutoPrintController::Controller::AddBoss(Boss^ boss)
+{
+    return ::Persistance::AddBoss(boss);
+}
+
+void AutoPrintController::Controller::UpdateUser(User^ user) {
+    return ::Persistance::UpdateUser(user);
+}
+
+void AutoPrintController::Controller::UpdateCostumer(Customer^ user)
+{
+    return ::Persistance::UpdateCostumer(user);
+}
+
+void AutoPrintController::Controller::UpdateEmployee(Employee^ user)
+{
+    return ::Persistance::UpdateEmployee(user);
+}
+
+void AutoPrintController::Controller::UpdateBoss(Boss^ user)
+{
+    throw gcnew System::NotImplementedException();
+}
+
+void AutoPrintController::Controller::DeleteUser(int userDNI) {
+    return ::Persistance::DeleteUser(userDNI);
 
 }
 
-User^ AutoPrintController::Controller::QueryCustomerById(int CustomerId) {
-    return Persistance::QueryCustomerById(CustomerId);
+void AutoPrintController::Controller::DeleteCustomer(int userDNI)
+{
+    return ::Persistance::DeleteCustomer(userDNI);
+}
+
+User^ AutoPrintController::Controller::QueryUserByDNI(int UserDNI) {
+    return Persistance::QueryUserByDNI(UserDNI);
 
 }
 
-List<User^>^ AutoPrintController::Controller::QueryAllCustomers() {
+Customer^ AutoPrintController::Controller::QueryCustomerByDNI(int userDNI)
+{
+    return Persistance::QueryCustomerByDNI(userDNI);
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+Employee^ AutoPrintController::Controller::QueryEmployeeByDNI(int userDNI)
+{
+    return Persistance::QueryEmployeeByDNI(userDNI);
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+Boss^ AutoPrintController::Controller::QueryBossByDNI(int userDNI)
+{
+    return Persistance::QueryBossByDNI(userDNI);
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+List<User^>^ AutoPrintController::Controller::QueryAllUsers() {
+    return Persistance::QueryAllUsers();
+}
+
+List<Customer^>^ AutoPrintController::Controller::QueryAllCustomers()
+{
     return Persistance::QueryAllCustomers();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+List<Employee^>^ AutoPrintController::Controller::QueryAllEmployees()
+{
+    return Persistance::QueryAllEmployees();
+    // TODO: Insertar una instrucción "return" aquí
+}
+
+List<Boss^>^ AutoPrintController::Controller::QueryAllBoss()
+{
+    return Persistance::QueryAllBoss();
+    // TODO: Insertar una instrucción "return" aquí
 }
 
 //intento para login
-bool AutoPrintController::Controller::Login(String^ dni, String^ password) {
+User^ AutoPrintController::Controller::Login(int dni, String^ password) {
     return Persistance::Login(dni,password);
 }
 
