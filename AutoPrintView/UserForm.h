@@ -412,7 +412,7 @@ namespace AutoPrintView {
 #pragma endregion
 //-----------------------------------------------------------------------------------------------------------------CAMBIOS DE LUIS-----------------------------------------------------------------------
 	private: System::Void btnContinue_Click(System::Object^ sender, System::EventArgs^ e) { //FUNCIONALIDAD DEL BOTÓN PARA TERMINAR DE REGISTRARSE
-		User^ newUser = gcnew User(); //instanciamos al nuevo usuario
+		Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
 
 		//Antes debemos ver si los items están llenos:
 		if ((txtName->Text == "") || (txtCellphoneNumber->Text == "") || (txtSurname->Text == "") || (txtDNI->Text == "") || (txtGender->Text == "")
@@ -432,7 +432,7 @@ namespace AutoPrintView {
 		newUser->Password = txtConfirmPassword->Text; //Acá no estoy seguro si deberíamos colocar otro atributo que almacene la misma contraseña para comparar y asegurar que sea la misma
 		newUser->Money_in_wallet = 0;
 		//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
-		Controller::AddUser(newUser); //Añadimos al usuario
+		Controller::AddCostumer(newUser); //Añadimos al usuario
 		Close(); //Una vez añadido el nuevo usario, cerramos esa pestaña
 
 	}
