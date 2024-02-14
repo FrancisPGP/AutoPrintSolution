@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCustomer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Customer>
-    <Money_in_wallet>69.4</Money_in_wallet>
+    <Money_in_wallet>0.29999999999999849</Money_in_wallet>
     <Birthdate>07/07/07</Birthdate>
     <Email>juancito123@gmail.com</Email>
     <Password>123</Password>
@@ -13,15 +13,26 @@
     <record />
   </Customer>
   <Customer>
-    <Money_in_wallet>97.6</Money_in_wallet>
-    <Birthdate>987</Birthdate>
-    <Email>987</Email>
+    <Money_in_wallet>0</Money_in_wallet>
+    <Birthdate>321</Birthdate>
+    <Email>321</Email>
     <Password>123</Password>
-    <Gender>Indefinido</Gender>
-    <Dni>45678912</Dni>
-    <Phone_number>987</Phone_number>
-    <LastName>Si</LastName>
+    <Gender>Masculino</Gender>
+    <Dni>76543211</Dni>
+    <Phone_number>321</Phone_number>
+    <LastName>Adios</LastName>
     <Name>Hola</Name>
     <record />
+  </Customer>
+  <Customer>
+    <Money_in_wallet>0</Money_in_wallet>
+    <Birthdate>213</Birthdate>
+    <Email>321</Email>
+    <Password>123</Password>
+    <Gender>Femenino</Gender>
+    <Dni>76543212</Dni>
+    <Phone_number>312</Phone_number>
+    <LastName>gente</LastName>
+    <Name>Hola</Name>
   </Customer>
 </ArrayOfCustomer>

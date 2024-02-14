@@ -27,7 +27,20 @@ int Main(array<System::String^>^ args)
     Controller::AddCostumer(u3);*/
 
     //User^ U=Controller::Login(12345678,"123");
+   /* Order^ f5 = gcnew Order(5, "Blanco y negro", "Hoja Bond", "A4", 3, "Ciencias Sociales", 1.5, "Lunes");
+    Order^ f6 = gcnew Order(6, "Blanco y negro", "Hoja Bond", "A4", 4, "Ciencias Sociales", 1.2, "Martes");
+    Order^ f7 = gcnew Order(7, "Color", "Papel Fotográfico", "A4", 5, "Ciencias Sociales", 2, "Jueves");
+    Order^ f8 = gcnew Order(8, "Color", "Papel Fotográfico", "A3", 2, "Ciencias Sociales", 5, "Viernes");
+    Order^ f9 = gcnew Order(9, "Color", "Hoja Bond", "A4", 2, "Ciencias Sociales", 1.5, "Sabado");
 
+
+    Controller::AddOrder(f5);
+    Controller::AddOrder(f6);
+    Controller::AddOrder(f7);
+    Controller::AddOrder(f8);
+    Controller::AddOrder(f9);
+    */
+    
     //AutoPrintView::Inicio form;//Luego de haber creado la instancia..
     AutoPrintView::PrintMainForm form;
     Application::Run(% form); //Run hará que las interfaces funcionen tal que cuando recién se cierre la ventana principal pasará a la línea 14 (% form es para que saque la dirección)
