@@ -908,7 +908,42 @@ namespace AutoPrintView {
 		if (dialogoPDF->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			// Configurar la ruta del archivo PDF en el control WebBrowser
 			WB_PDF_imprimir->Navigate(dialogoPDF->FileName);
+
+			numpage = GetNumberOfPages(dialogoPDF->FileName);
+		}
+		else {
+			MessageBox::Show("El archivo PDF no existe en la ruta especificada.");
 		}
 	}
+		   int GetNumberOfPages(String^ pdfFilePath) {
+			   try {
+				   // Use pdftk to get the number of pages in the PDF
+				   Process^ pdftkProcess = gcnew Process();
+				   pdftkProcess->StartInfo->FileName = "pdftk"; // Assuming pdftk is in the system PATH
+				   pdftkProcess->StartInfo->Arguments = "\"" + pdfFilePath + "\" dump_data | grep NumberOfPages";
+				   pdftkProcess->StartInfo->RedirectStandardOutput = true;
+				   pdftkProcess->StartInfo->UseShellExecute = false;
+				   pdftkProcess->StartInfo->CreateNoWindow = true;
+
+				   pdftkProcess->Start();
+				   String^ output = pdftkProcess->StandardOutput->ReadToEnd();
+				   pdftkProcess->WaitForExit();
+
+				   // Extract the number of pages from the output
+				   int numberOfPages = 0;
+				   if (output->Contains("NumberOfPages")) {
+					   int index = output->IndexOf("NumberOfPages") + 15;
+					   String^ pagesSubstring = output->Substring(index, output->IndexOf("\n", index) - index);
+					   numberOfPages = System::Convert::ToInt32(pagesSubstring);
+				   }
+
+				   return numberOfPages;
+			   }
+			   catch (Exception^ ex) {
+				   // Handle exceptions as needed
+				   MessageBox::Show("Error al obtener el número de páginas del PDF: " + ex->Message);
+				   return -1; // Devolver -1 para indicar un error
+			   }
+		   }
 };
 }
