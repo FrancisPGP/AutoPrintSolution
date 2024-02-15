@@ -1,5 +1,11 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <msclr/marshal_cppstd.h>
+
 #include "CardVISAForm.h"
 #include "WalletForm.h"
 #include <ctime>
@@ -114,6 +120,7 @@ namespace AutoPrintView {
 
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_imprimir;
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_historial;
+	private: System::Windows::Forms::Label^ NumPages;
 
 
 
@@ -274,6 +281,7 @@ namespace AutoPrintView {
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_local = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NumPages = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			this->tabPage1->SuspendLayout();
@@ -295,6 +303,7 @@ namespace AutoPrintView {
 			// 
 			// TPage_impre
 			// 
+			this->TPage_impre->Controls->Add(this->NumPages);
 			this->TPage_impre->Controls->Add(this->WB_PDF_imprimir);
 			this->TPage_impre->Controls->Add(this->BT_SubirPDF);
 			this->TPage_impre->Controls->Add(this->cmbNUMcopias);
@@ -651,6 +660,14 @@ namespace AutoPrintView {
 			this->dgv_precio->ReadOnly = true;
 			this->dgv_precio->Width = 50;
 			// 
+			// NumPages
+			// 
+			this->NumPages->AutoSize = true;
+			this->NumPages->Location = System::Drawing::Point(387, 368);
+			this->NumPages->Name = L"NumPages";
+			this->NumPages->Size = System::Drawing::Size(0, 16);
+			this->NumPages->TabIndex = 42;
+			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -935,38 +952,47 @@ namespace AutoPrintView {
 		OpenFileDialog^ dialogoPDF = gcnew OpenFileDialog();
 		dialogoPDF->Filter = "Archivos PDF|*.pdf";
 		if (dialogoPDF->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+
 			// Configurar la ruta del archivo PDF en el control WebBrowser
 			WB_PDF_imprimir->Navigate(dialogoPDF->FileName);
 
-			numpage = GetNumberOfPages(dialogoPDF->FileName);
+			std::string rutaPDF = msclr::interop::marshal_as<std::string>(dialogoPDF->FileName);
+
+			numpage = GetNumberOfPages(rutaPDF);
+
+			NumPages->Text = Convert::ToString(numpage);
+
+			//numpage = GetNumberOfPages(dialogoPDF->FileName);
 		}
 		else {
 			MessageBox::Show("El archivo PDF no existe en la ruta especificada.");
 		}
 	}
-		   int GetNumberOfPages(String^ pdfFilePath) {
+		   int GetNumberOfPages(const std::string& rutaPDF) {
 			   try {
-				   // Use pdftk to get the number of pages in the PDF
-				   Process^ pdftkProcess = gcnew Process();
-				   pdftkProcess->StartInfo->FileName = "pdftk"; // Assuming pdftk is in the system PATH
-				   pdftkProcess->StartInfo->Arguments = "\"" + pdfFilePath + "\" dump_data | grep NumberOfPages";
-				   pdftkProcess->StartInfo->RedirectStandardOutput = true;
-				   pdftkProcess->StartInfo->UseShellExecute = false;
-				   pdftkProcess->StartInfo->CreateNoWindow = true;
+				   
+				   std::ifstream archivoPDF(rutaPDF, std::ios::binary);
 
-				   pdftkProcess->Start();
-				   String^ output = pdftkProcess->StandardOutput->ReadToEnd();
-				   pdftkProcess->WaitForExit();
+				   // Buscar el número de páginas en el archivo PDF
+				   std::stringstream contenidoPDF;
+				   contenidoPDF << archivoPDF.rdbuf();
 
-				   // Extract the number of pages from the output
-				   int numberOfPages = 0;
-				   if (output->Contains("NumberOfPages")) {
-					   int index = output->IndexOf("NumberOfPages") + 15;
-					   String^ pagesSubstring = output->Substring(index, output->IndexOf("\n", index) - index);
-					   numberOfPages = System::Convert::ToInt32(pagesSubstring);
+				   std::size_t posInicio = contenidoPDF.str().find("/Count ");
+				   if (posInicio == std::string::npos) {
+					   std::cerr << "No se encontró la información de recuento de páginas en el archivo PDF." << std::endl;
+					   return -1;
 				   }
 
-				   return numberOfPages;
+				   std::size_t posFin = contenidoPDF.str().find_first_of("0123456789", posInicio);
+				   if (posFin == std::string::npos) {
+					   std::cerr << "No se pudo determinar el número de páginas en el archivo PDF." << std::endl;
+					   return -1;
+				   }
+
+				   std::string countString = contenidoPDF.str().substr(posFin);
+				   int numeroDePaginas = std::stoi(countString);
+
+				   return numeroDePaginas;
 			   }
 			   catch (Exception^ ex) {
 				   // Handle exceptions as needed
