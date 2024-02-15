@@ -14,9 +14,9 @@ int Main(array<System::String^>^ args)
 {
     Application::EnableVisualStyles(); //Application nos lo da "System::Windows::Forms" y ahora habilitaremos los estilos visuales
     Application::SetCompatibleTextRenderingDefault(false); //Ponemos false para que el renderizado sea automático
-    array<Byte>^ enblanco = enblanco;
-    array<Byte>^ enblanco2 = enblanco2;
-    array<Byte>^ enblanco3 = enblanco3;
+    //array<Byte>^ enblanco = enblanco;
+    //array<Byte>^ enblanco2 = enblanco2;
+    //array<Byte>^ enblanco3 = enblanco3;
 
 
    /* Boss^ u1 = gcnew Boss("Francis", "Elcapi", "999888777", 98765432, "Masculino", "123", "elcapi@gmail.com", "05/05/02", enblanco, 20);
