@@ -2,6 +2,7 @@
 
 #include "CardVISAForm.h"
 #include "WalletForm.h"
+#include <ctime>
 
 namespace AutoPrintView {
 
@@ -753,6 +754,34 @@ namespace AutoPrintView {
 			   File_order->num_copies = Int32::Parse(cmbNUMcopias->Text);
 			   File_order->Location = cmbLocal->Text;
 			   File_order->price = monto;
+			   time_t now = time(0);
+			   tm* time = localtime(&now);
+			   int dia = time->tm_wday;
+			   if(dia==0){
+				   File_order->date = "Domingo";
+
+			   }
+			   else  if (dia == 1) {
+				   File_order->date = "Lunes";
+
+			   } else if (dia == 2) {
+				   File_order->date = "Martes";
+
+			   }else if (dia == 3) {
+				   File_order->date = "Miercoles";
+
+			   } else if (dia == 4) {
+				   File_order->date = "Jueves";
+
+			   } else if (dia == 5) {
+				   File_order->date = "Viernes";
+
+			   }else if (dia == 6) {
+				   File_order->date = "Sabado";
+
+			   }
+
+
 
 			   /*if (PB_PDF_imprimir != nullptr && PB_PDF_imprimir->Image != nullptr) {
 				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();

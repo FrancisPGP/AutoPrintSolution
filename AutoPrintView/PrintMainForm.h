@@ -5,6 +5,7 @@
 #include "UserTableForm.h"
 #include "WalletForm.h"
 #include "MyProfile.h"
+#include "BossGraphicsForm.h"
 
 namespace AutoPrintView {
 
@@ -157,6 +158,7 @@ namespace AutoPrintView {
 			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
 			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(79, 20);
 			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
+			this->estadisticasToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrintMainForm::estadisticasToolStripMenuItem_Click);
 			// 
 			// PrintMainForm
 			// 
@@ -182,17 +184,21 @@ namespace AutoPrintView {
 		Inicio^ inicio = gcnew Inicio();
 		inicio->ControlBox = false;
 		inicio->ShowDialog(); //Se muestra como un diálogo.
+		if (userG != nullptr) {
+
 		Dni_Ahora= userG->Dni;
-		if (userG->GetType() == Customer::typeid) {
-			EnableCustomerPermission();
-		}
-		else 
-			if (userG->GetType() == Employee::typeid) {
-				EnableEmployeePermission();
-		}else
-			if (userG->GetType() == Boss::typeid) {
-				EnableBossPermission();
+			if (userG->GetType() == Customer::typeid) {
+				EnableCustomerPermission();
 			}
+			else
+				if (userG->GetType() == Employee::typeid) {
+					EnableEmployeePermission();
+				}
+				else
+					if (userG->GetType() == Boss::typeid) {
+						EnableBossPermission();
+			}
+		}
 
 	}
 	private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -234,8 +240,14 @@ namespace AutoPrintView {
 				   this->usuariosToolStripMenuItem->Visible = false;
 				   this->estadisticasToolStripMenuItem->Visible = false;
 				   this->actualizarDatosToolStripMenuItem->Visible = true;
+				   this->ordenesToolStripMenuItem->Visible = false;
 			   }
 private: System::Void ordenesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void estadisticasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	BossGraphicsForm^ boss = gcnew BossGraphicsForm();
+	boss->MdiParent = this;
+	boss->Show();
 }
 };
 }
