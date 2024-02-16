@@ -120,11 +120,11 @@ namespace AutoPrintView {
 
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_imprimir;
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_historial;
-	private: System::Windows::Forms::Label^ NumPages;
+
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label11;
-	private: System::Windows::Forms::Timer^ timer1;
+
 	private: System::Windows::Forms::Label^ LB_Time1;
 
 	private: System::Windows::Forms::Label^ LB_NameDoc1;
@@ -193,6 +193,26 @@ private: System::Windows::Forms::Label^ LB_Pos10;
 
 
 private: System::Windows::Forms::Label^ LB_Pos9;
+private: System::Windows::Forms::PictureBox^ pictureBox1;
+private: System::Windows::Forms::Timer^ timer1;
+private: System::Windows::Forms::Timer^ timer2;
+private: System::Windows::Forms::Timer^ timer3;
+private: System::Windows::Forms::Timer^ timer4;
+private: System::Windows::Forms::Timer^ timer5;
+private: System::Windows::Forms::Timer^ timer6;
+private: System::Windows::Forms::Timer^ timer7;
+private: System::Windows::Forms::Timer^ timer8;
+private: System::Windows::Forms::Timer^ timer9;
+private: System::Windows::Forms::Timer^ timer10;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -329,9 +349,10 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PrintForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
-			this->NumPages = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_imprimir = (gcnew System::Windows::Forms::WebBrowser());
 			this->BT_SubirPDF = (gcnew System::Windows::Forms::Button());
 			this->cmbNUMcopias = (gcnew System::Windows::Forms::ComboBox());
@@ -395,8 +416,18 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			this->dgv_local = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer3 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer4 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer5 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer6 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer7 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer8 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer9 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer10 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->TPage_historial->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->BeginInit();
@@ -417,7 +448,7 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			// 
 			// TPage_impre
 			// 
-			this->TPage_impre->Controls->Add(this->NumPages);
+			this->TPage_impre->Controls->Add(this->pictureBox1);
 			this->TPage_impre->Controls->Add(this->WB_PDF_imprimir);
 			this->TPage_impre->Controls->Add(this->BT_SubirPDF);
 			this->TPage_impre->Controls->Add(this->cmbNUMcopias);
@@ -445,13 +476,16 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			this->TPage_impre->UseVisualStyleBackColor = true;
 			this->TPage_impre->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
 			// 
-			// NumPages
+			// pictureBox1
 			// 
-			this->NumPages->AutoSize = true;
-			this->NumPages->Location = System::Drawing::Point(387, 368);
-			this->NumPages->Name = L"NumPages";
-			this->NumPages->Size = System::Drawing::Size(0, 16);
-			this->NumPages->TabIndex = 42;
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->Location = System::Drawing::Point(493, 0);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(431, 108);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
 			// 
 			// WB_PDF_imprimir
 			// 
@@ -1213,7 +1247,43 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			// 
 			// timer1
 			// 
-			this->timer1->Tick += gcnew System::EventHandler(this, &PrintForm::timer1_Tick);
+			this->timer1->Interval = 1000;
+			// 
+			// timer2
+			// 
+			this->timer2->Interval = 1000;
+			// 
+			// timer3
+			// 
+			this->timer3->Interval = 1000;
+			// 
+			// timer4
+			// 
+			this->timer4->Interval = 1000;
+			// 
+			// timer5
+			// 
+			this->timer5->Interval = 1000;
+			// 
+			// timer6
+			// 
+			this->timer6->Interval = 1000;
+			// 
+			// timer7
+			// 
+			this->timer7->Interval = 1000;
+			// 
+			// timer8
+			// 
+			this->timer8->Interval = 1000;
+			// 
+			// timer9
+			// 
+			this->timer9->Interval = 1000;
+			// 
+			// timer10
+			// 
+			this->timer10->Interval = 1000;
 			// 
 			// PrintForm
 			// 
@@ -1230,6 +1300,7 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			this->tabControl1->ResumeLayout(false);
 			this->TPage_impre->ResumeLayout(false);
 			this->TPage_impre->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->TPage_historial->ResumeLayout(false);
 			this->TPage_historial->PerformLayout();
 			this->tabPage1->ResumeLayout(false);
@@ -1315,6 +1386,7 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			   else if (cmbTinta->Text == "Blanco y negro") {
 				   monto = 0.3 * numpage * (Int32::Parse(cmbNUMcopias->Text));
 			   }
+			   TimePrint = 5 * numpage;
 
 			   //Contenidos de dgvs (No entendí lo que dijo el profe)
 			   //AGREGUÉ using namespace AutoPrintModel; para poder usar la clase Order
@@ -1328,9 +1400,11 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			   File_order->num_copies = Int32::Parse(cmbNUMcopias->Text);
 			   File_order->Location = cmbLocal->Text;
 			   File_order->price = monto;
+
 			   time_t now = time(0);
 			   tm* time = localtime(&now);
 			   int dia = time->tm_wday;
+
 			   if(dia==0){
 				   File_order->date = "Domingo";
 
@@ -1355,8 +1429,6 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 
 			   }
 
-
-
 			   /*if (PB_PDF_imprimir != nullptr && PB_PDF_imprimir->Image != nullptr) {
 				   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 				   PB_PDF_imprimir->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
@@ -1376,6 +1448,7 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 				   }
 			   }
 
+			   File_order->time_print = TimePrint;
 
 			   AutoPrintController::Controller::AddOrder(File_order);
 		   }
@@ -1462,7 +1535,6 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 
 			   // Limpiar el WebBrowser
 			   WB_PDF_imprimir->Navigate("about:blank");
-
 		   }
 
 	private: System::Void dgvHistorial_Files_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
@@ -1510,25 +1582,18 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 		OpenFileDialog^ dialogoPDF = gcnew OpenFileDialog();
 		dialogoPDF->Filter = "Archivos PDF|*.pdf";
 		if (dialogoPDF->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-
 			// Configurar la ruta del archivo PDF en el control WebBrowser
 			WB_PDF_imprimir->Navigate(dialogoPDF->FileName);
-
 			std::string rutaPDF = msclr::interop::marshal_as<std::string>(dialogoPDF->FileName);
-
 			numpage = GetNumberOfPages(rutaPDF);
-
-			NumPages->Text = Convert::ToString(numpage);
-
-			//numpage = GetNumberOfPages(dialogoPDF->FileName);
 		}
 		else {
 			MessageBox::Show("El archivo PDF no existe en la ruta especificada.");
 		}
 	}
+
 		   int GetNumberOfPages(const std::string& rutaPDF) {
 			   try {
-				   
 				   std::ifstream archivoPDF(rutaPDF, std::ios::binary);
 
 				   // Buscar el número de páginas en el archivo PDF
@@ -1557,35 +1622,37 @@ private: System::Windows::Forms::Label^ LB_Pos9;
 			   }
 		   }
 
-
-	
 		   Void ReiniciarTemporizador() {
 			   TimePrint = 7*numpage;
 			   LB_Time1->Text = (TimePrint).ToString();
-
 			   // Detén el temporizador si está en marcha
 			   Timer->Stop();
-
 			   // Elimina todos los manejadores de eventos Tick
 			   Timer->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-
 			   // Configura el intervalo del temporizador en milisegundos (1 segundo)
 			   Timer->Interval = 1000;
-
 			   // Asocia el evento Tick con el manejador timer_Tick
 			   Timer->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-
 			   // Inicia el temporizador
 			   Timer->Start();
 		   }
+
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		TimePrint = TimePrint - 1;
-		
-		// Actualizar el texto del Label con el tiempo restante
-		LB_Time1->Text = (TimePrint).ToString();
-		if (TimePrint == 0) {
-			Timer->Stop();
-			LB_Time1->Text = "Para recoger";
+		List<Order^>^ orderfiles = Controller::QueryAllFiles();
+		if (orderfiles != nullptr && orderfiles->Count > 0) {
+			TimePrint = TimePrint - 1;
+
+			// Actualizar el texto del Label con el tiempo restante
+			if (-3 <= TimePrint && TimePrint <= 0) {
+				Timer->Stop();
+				LB_Time1->Text = "Listo para recoger";
+			}
+			else if (0 < TimePrint) {
+				LB_Time1->Text = (TimePrint).ToString();
+			}
+			else {
+				LB_Time1->Text = "tiempo";
+			}
 		}
 	}
 };

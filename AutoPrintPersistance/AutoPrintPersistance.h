@@ -17,8 +17,9 @@ namespace AutoPrintPersistance {
 
 		/*Francis*/
 		static List<Order^>^ orderList = gcnew List<Order^>();
-		/*Cesar*/
 
+
+		/*Cesar*/
 
 	public:
 		static int costumerid=1;
@@ -31,9 +32,10 @@ namespace AutoPrintPersistance {
 		static String^ CUSTOMER_XML_FILE_NAME = "Customers.xml";
 
 
-
 		//Francis
 		static String^ Lista_Order_BIN = "Orders.bin";
+
+
 		//Cesar
 
 
@@ -84,10 +86,11 @@ namespace AutoPrintPersistance {
 		static User^ Login(int dni, String^ password);
 
 		/*Francis*/
-		//           Files
+		// Files
 		static void AddFile(Order^ file);
 		static List<Order^>^ QueryAllFiles();
 		static Order^ QueryFileById(int orderId);
+		static Order^ QueryFileByPosition(int time_print);
 
 
 		/*Cesar*/
