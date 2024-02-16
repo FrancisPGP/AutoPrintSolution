@@ -18,8 +18,9 @@ namespace AutoPrintPersistance {
 
 		/*Francis*/
 		static List<Order^>^ orderList = gcnew List<Order^>();
-		/*Cesar*/
 
+
+		/*Cesar*/
 
 	public:
 		static int costumerid=1;
@@ -35,9 +36,10 @@ namespace AutoPrintPersistance {
 		//Método que retorna un objeto conexión a la BD
 		static SqlConnection^ GetConnection();
 
-
 		//Francis
 		static String^ Lista_Order_BIN = "Orders.bin";
+
+
 		//Cesar
 
 
@@ -88,10 +90,11 @@ namespace AutoPrintPersistance {
 		static User^ Login(int dni, String^ password);
 
 		/*Francis*/
-		//           Files
+		// Files
 		static void AddFile(Order^ file);
 		static List<Order^>^ QueryAllFiles();
 		static Order^ QueryFileById(int orderId);
+		static Order^ QueryFileByPosition(int time_print);
 
 
 		/*Cesar*/
