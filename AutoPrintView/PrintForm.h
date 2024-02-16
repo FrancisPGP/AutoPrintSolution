@@ -121,6 +121,84 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_imprimir;
 	private: System::Windows::Forms::WebBrowser^ WB_PDF_historial;
 	private: System::Windows::Forms::Label^ NumPages;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Label^ LB_Time1;
+
+	private: System::Windows::Forms::Label^ LB_NameDoc1;
+	private: System::Windows::Forms::Label^ LB_Pos1;
+	private: System::Windows::Forms::Label^ LB_Pos2;
+	private: System::Windows::Forms::Label^ LB_Pos3;
+
+
+
+
+	private: System::Windows::Forms::Label^ LB_Time2;
+
+
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc2;
+private: System::Windows::Forms::Label^ LB_NameDoc8;
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc7;
+
+private: System::Windows::Forms::Label^ LB_NameDoc6;
+
+private: System::Windows::Forms::Label^ LB_NameDoc5;
+private: System::Windows::Forms::Label^ LB_Time4;
+
+
+private: System::Windows::Forms::Label^ LB_Time3;
+private: System::Windows::Forms::Label^ LB_Pos6;
+
+
+private: System::Windows::Forms::Label^ LB_Pos5;
+
+
+private: System::Windows::Forms::Label^ LB_Pos4;
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc4;
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc3;
+private: System::Windows::Forms::Label^ LB_Time10;
+
+
+private: System::Windows::Forms::Label^ LB_Time9;
+
+private: System::Windows::Forms::Label^ LB_Time8;
+
+private: System::Windows::Forms::Label^ LB_Time7;
+
+private: System::Windows::Forms::Label^ LB_Time6;
+
+private: System::Windows::Forms::Label^ LB_Time5;
+private: System::Windows::Forms::Label^ LB_Pos8;
+
+
+private: System::Windows::Forms::Label^ LB_Pos7;
+
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc10;
+
+
+private: System::Windows::Forms::Label^ LB_NameDoc9;
+private: System::Windows::Forms::Label^ LB_Pos10;
+
+
+private: System::Windows::Forms::Label^ LB_Pos9;
+private: System::Windows::Forms::Button^ Inicio_Tiempo;
+
+
+
+
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -241,7 +319,7 @@ namespace AutoPrintView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -250,8 +328,10 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
+			this->NumPages = (gcnew System::Windows::Forms::Label());
 			this->WB_PDF_imprimir = (gcnew System::Windows::Forms::WebBrowser());
 			this->BT_SubirPDF = (gcnew System::Windows::Forms::Button());
 			this->cmbNUMcopias = (gcnew System::Windows::Forms::ComboBox());
@@ -271,6 +351,40 @@ namespace AutoPrintView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->TPage_historial = (gcnew System::Windows::Forms::TabPage());
+			this->Inicio_Tiempo = (gcnew System::Windows::Forms::Button());
+			this->LB_NameDoc10 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc9 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos10 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos9 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time10 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time9 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time8 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time7 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time6 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time5 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos8 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos7 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc8 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc7 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc6 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc5 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time4 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time3 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos6 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos5 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos4 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc4 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc3 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos3 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time2 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc2 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos2 = (gcnew System::Windows::Forms::Label());
+			this->LB_Time1 = (gcnew System::Windows::Forms::Label());
+			this->LB_NameDoc1 = (gcnew System::Windows::Forms::Label());
+			this->LB_Pos1 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->WB_PDF_historial = (gcnew System::Windows::Forms::WebBrowser());
 			this->dgvHistorial_Files = (gcnew System::Windows::Forms::DataGridView());
@@ -281,9 +395,10 @@ namespace AutoPrintView {
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_local = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NumPages = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
+			this->TPage_historial->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->BeginInit();
 			this->SuspendLayout();
@@ -330,6 +445,14 @@ namespace AutoPrintView {
 			this->TPage_impre->Text = L"Imprimir";
 			this->TPage_impre->UseVisualStyleBackColor = true;
 			this->TPage_impre->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
+			// 
+			// NumPages
+			// 
+			this->NumPages->AutoSize = true;
+			this->NumPages->Location = System::Drawing::Point(387, 368);
+			this->NumPages->Name = L"NumPages";
+			this->NumPages->Size = System::Drawing::Size(0, 16);
+			this->NumPages->TabIndex = 42;
 			// 
 			// WB_PDF_imprimir
 			// 
@@ -548,13 +671,453 @@ namespace AutoPrintView {
 			// 
 			// TPage_historial
 			// 
+			this->TPage_historial->Controls->Add(this->Inicio_Tiempo);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc10);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc9);
+			this->TPage_historial->Controls->Add(this->LB_Pos10);
+			this->TPage_historial->Controls->Add(this->LB_Pos9);
+			this->TPage_historial->Controls->Add(this->LB_Time10);
+			this->TPage_historial->Controls->Add(this->LB_Time9);
+			this->TPage_historial->Controls->Add(this->LB_Time8);
+			this->TPage_historial->Controls->Add(this->LB_Time7);
+			this->TPage_historial->Controls->Add(this->LB_Time6);
+			this->TPage_historial->Controls->Add(this->LB_Time5);
+			this->TPage_historial->Controls->Add(this->LB_Pos8);
+			this->TPage_historial->Controls->Add(this->LB_Pos7);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc8);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc7);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc6);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc5);
+			this->TPage_historial->Controls->Add(this->LB_Time4);
+			this->TPage_historial->Controls->Add(this->LB_Time3);
+			this->TPage_historial->Controls->Add(this->LB_Pos6);
+			this->TPage_historial->Controls->Add(this->LB_Pos5);
+			this->TPage_historial->Controls->Add(this->LB_Pos4);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc4);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc3);
+			this->TPage_historial->Controls->Add(this->LB_Pos3);
+			this->TPage_historial->Controls->Add(this->LB_Time2);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc2);
+			this->TPage_historial->Controls->Add(this->LB_Pos2);
+			this->TPage_historial->Controls->Add(this->LB_Time1);
+			this->TPage_historial->Controls->Add(this->LB_NameDoc1);
+			this->TPage_historial->Controls->Add(this->LB_Pos1);
+			this->TPage_historial->Controls->Add(this->label11);
+			this->TPage_historial->Controls->Add(this->label9);
+			this->TPage_historial->Controls->Add(this->label6);
 			this->TPage_historial->Location = System::Drawing::Point(4, 25);
 			this->TPage_historial->Name = L"TPage_historial";
 			this->TPage_historial->Padding = System::Windows::Forms::Padding(3);
 			this->TPage_historial->Size = System::Drawing::Size(924, 514);
 			this->TPage_historial->TabIndex = 1;
-			this->TPage_historial->Text = L"Cola";
+			this->TPage_historial->Text = L"posición";
 			this->TPage_historial->UseVisualStyleBackColor = true;
+			// 
+			// Inicio_Tiempo
+			// 
+			this->Inicio_Tiempo->Location = System::Drawing::Point(398, 11);
+			this->Inicio_Tiempo->Name = L"Inicio_Tiempo";
+			this->Inicio_Tiempo->Size = System::Drawing::Size(53, 23);
+			this->Inicio_Tiempo->TabIndex = 52;
+			this->Inicio_Tiempo->Text = L"Inico";
+			this->Inicio_Tiempo->UseVisualStyleBackColor = true;
+			this->Inicio_Tiempo->Click += gcnew System::EventHandler(this, &PrintForm::Inicio_Tiempo_Click);
+			// 
+			// LB_NameDoc10
+			// 
+			this->LB_NameDoc10->AutoSize = true;
+			this->LB_NameDoc10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc10->Location = System::Drawing::Point(182, 439);
+			this->LB_NameDoc10->Name = L"LB_NameDoc10";
+			this->LB_NameDoc10->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc10->TabIndex = 51;
+			this->LB_NameDoc10->Text = L"nombre de documento";
+			this->LB_NameDoc10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc9
+			// 
+			this->LB_NameDoc9->AutoSize = true;
+			this->LB_NameDoc9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc9->Location = System::Drawing::Point(182, 399);
+			this->LB_NameDoc9->Name = L"LB_NameDoc9";
+			this->LB_NameDoc9->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc9->TabIndex = 50;
+			this->LB_NameDoc9->Text = L"nombre de documento";
+			this->LB_NameDoc9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos10
+			// 
+			this->LB_Pos10->AutoSize = true;
+			this->LB_Pos10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos10->Location = System::Drawing::Point(31, 439);
+			this->LB_Pos10->Name = L"LB_Pos10";
+			this->LB_Pos10->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos10->TabIndex = 49;
+			this->LB_Pos10->Text = L"posición";
+			this->LB_Pos10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos9
+			// 
+			this->LB_Pos9->AutoSize = true;
+			this->LB_Pos9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos9->Location = System::Drawing::Point(31, 399);
+			this->LB_Pos9->Name = L"LB_Pos9";
+			this->LB_Pos9->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos9->TabIndex = 48;
+			this->LB_Pos9->Text = L"posición";
+			this->LB_Pos9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time10
+			// 
+			this->LB_Time10->AutoSize = true;
+			this->LB_Time10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time10->Location = System::Drawing::Point(636, 439);
+			this->LB_Time10->Name = L"LB_Time10";
+			this->LB_Time10->Size = System::Drawing::Size(87, 29);
+			this->LB_Time10->TabIndex = 47;
+			this->LB_Time10->Text = L"tiempo";
+			this->LB_Time10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time9
+			// 
+			this->LB_Time9->AutoSize = true;
+			this->LB_Time9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time9->Location = System::Drawing::Point(636, 399);
+			this->LB_Time9->Name = L"LB_Time9";
+			this->LB_Time9->Size = System::Drawing::Size(87, 29);
+			this->LB_Time9->TabIndex = 46;
+			this->LB_Time9->Text = L"tiempo";
+			this->LB_Time9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time8
+			// 
+			this->LB_Time8->AutoSize = true;
+			this->LB_Time8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time8->Location = System::Drawing::Point(636, 359);
+			this->LB_Time8->Name = L"LB_Time8";
+			this->LB_Time8->Size = System::Drawing::Size(87, 29);
+			this->LB_Time8->TabIndex = 45;
+			this->LB_Time8->Text = L"tiempo";
+			this->LB_Time8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time7
+			// 
+			this->LB_Time7->AutoSize = true;
+			this->LB_Time7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time7->Location = System::Drawing::Point(636, 319);
+			this->LB_Time7->Name = L"LB_Time7";
+			this->LB_Time7->Size = System::Drawing::Size(87, 29);
+			this->LB_Time7->TabIndex = 44;
+			this->LB_Time7->Text = L"tiempo";
+			this->LB_Time7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time6
+			// 
+			this->LB_Time6->AutoSize = true;
+			this->LB_Time6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time6->Location = System::Drawing::Point(636, 279);
+			this->LB_Time6->Name = L"LB_Time6";
+			this->LB_Time6->Size = System::Drawing::Size(87, 29);
+			this->LB_Time6->TabIndex = 41;
+			this->LB_Time6->Text = L"tiempo";
+			this->LB_Time6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time5
+			// 
+			this->LB_Time5->AutoSize = true;
+			this->LB_Time5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time5->Location = System::Drawing::Point(636, 239);
+			this->LB_Time5->Name = L"LB_Time5";
+			this->LB_Time5->Size = System::Drawing::Size(87, 29);
+			this->LB_Time5->TabIndex = 40;
+			this->LB_Time5->Text = L"tiempo";
+			this->LB_Time5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos8
+			// 
+			this->LB_Pos8->AutoSize = true;
+			this->LB_Pos8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos8->Location = System::Drawing::Point(31, 359);
+			this->LB_Pos8->Name = L"LB_Pos8";
+			this->LB_Pos8->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos8->TabIndex = 39;
+			this->LB_Pos8->Text = L"posición";
+			this->LB_Pos8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos7
+			// 
+			this->LB_Pos7->AutoSize = true;
+			this->LB_Pos7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos7->Location = System::Drawing::Point(31, 319);
+			this->LB_Pos7->Name = L"LB_Pos7";
+			this->LB_Pos7->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos7->TabIndex = 38;
+			this->LB_Pos7->Text = L"posición";
+			this->LB_Pos7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc8
+			// 
+			this->LB_NameDoc8->AutoSize = true;
+			this->LB_NameDoc8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc8->Location = System::Drawing::Point(182, 359);
+			this->LB_NameDoc8->Name = L"LB_NameDoc8";
+			this->LB_NameDoc8->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc8->TabIndex = 37;
+			this->LB_NameDoc8->Text = L"nombre de documento";
+			this->LB_NameDoc8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc7
+			// 
+			this->LB_NameDoc7->AutoSize = true;
+			this->LB_NameDoc7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc7->Location = System::Drawing::Point(182, 319);
+			this->LB_NameDoc7->Name = L"LB_NameDoc7";
+			this->LB_NameDoc7->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc7->TabIndex = 36;
+			this->LB_NameDoc7->Text = L"nombre de documento";
+			this->LB_NameDoc7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc6
+			// 
+			this->LB_NameDoc6->AutoSize = true;
+			this->LB_NameDoc6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc6->Location = System::Drawing::Point(182, 279);
+			this->LB_NameDoc6->Name = L"LB_NameDoc6";
+			this->LB_NameDoc6->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc6->TabIndex = 35;
+			this->LB_NameDoc6->Text = L"nombre de documento";
+			this->LB_NameDoc6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc5
+			// 
+			this->LB_NameDoc5->AutoSize = true;
+			this->LB_NameDoc5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc5->Location = System::Drawing::Point(182, 239);
+			this->LB_NameDoc5->Name = L"LB_NameDoc5";
+			this->LB_NameDoc5->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc5->TabIndex = 34;
+			this->LB_NameDoc5->Text = L"nombre de documento";
+			this->LB_NameDoc5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time4
+			// 
+			this->LB_Time4->AutoSize = true;
+			this->LB_Time4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time4->Location = System::Drawing::Point(636, 199);
+			this->LB_Time4->Name = L"LB_Time4";
+			this->LB_Time4->Size = System::Drawing::Size(87, 29);
+			this->LB_Time4->TabIndex = 33;
+			this->LB_Time4->Text = L"tiempo";
+			this->LB_Time4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time3
+			// 
+			this->LB_Time3->AutoSize = true;
+			this->LB_Time3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time3->Location = System::Drawing::Point(636, 159);
+			this->LB_Time3->Name = L"LB_Time3";
+			this->LB_Time3->Size = System::Drawing::Size(87, 29);
+			this->LB_Time3->TabIndex = 32;
+			this->LB_Time3->Text = L"tiempo";
+			this->LB_Time3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos6
+			// 
+			this->LB_Pos6->AutoSize = true;
+			this->LB_Pos6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos6->Location = System::Drawing::Point(31, 279);
+			this->LB_Pos6->Name = L"LB_Pos6";
+			this->LB_Pos6->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos6->TabIndex = 31;
+			this->LB_Pos6->Text = L"posición";
+			this->LB_Pos6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos5
+			// 
+			this->LB_Pos5->AutoSize = true;
+			this->LB_Pos5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos5->Location = System::Drawing::Point(31, 239);
+			this->LB_Pos5->Name = L"LB_Pos5";
+			this->LB_Pos5->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos5->TabIndex = 30;
+			this->LB_Pos5->Text = L"posición";
+			this->LB_Pos5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos4
+			// 
+			this->LB_Pos4->AutoSize = true;
+			this->LB_Pos4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos4->Location = System::Drawing::Point(31, 199);
+			this->LB_Pos4->Name = L"LB_Pos4";
+			this->LB_Pos4->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos4->TabIndex = 29;
+			this->LB_Pos4->Text = L"posición";
+			this->LB_Pos4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc4
+			// 
+			this->LB_NameDoc4->AutoSize = true;
+			this->LB_NameDoc4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc4->Location = System::Drawing::Point(182, 199);
+			this->LB_NameDoc4->Name = L"LB_NameDoc4";
+			this->LB_NameDoc4->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc4->TabIndex = 28;
+			this->LB_NameDoc4->Text = L"nombre de documento";
+			this->LB_NameDoc4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc3
+			// 
+			this->LB_NameDoc3->AutoSize = true;
+			this->LB_NameDoc3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc3->Location = System::Drawing::Point(182, 159);
+			this->LB_NameDoc3->Name = L"LB_NameDoc3";
+			this->LB_NameDoc3->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc3->TabIndex = 27;
+			this->LB_NameDoc3->Text = L"nombre de documento";
+			this->LB_NameDoc3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos3
+			// 
+			this->LB_Pos3->AutoSize = true;
+			this->LB_Pos3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos3->Location = System::Drawing::Point(31, 159);
+			this->LB_Pos3->Name = L"LB_Pos3";
+			this->LB_Pos3->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos3->TabIndex = 26;
+			this->LB_Pos3->Text = L"posición";
+			this->LB_Pos3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time2
+			// 
+			this->LB_Time2->AutoSize = true;
+			this->LB_Time2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time2->Location = System::Drawing::Point(636, 119);
+			this->LB_Time2->Name = L"LB_Time2";
+			this->LB_Time2->Size = System::Drawing::Size(87, 29);
+			this->LB_Time2->TabIndex = 25;
+			this->LB_Time2->Text = L"tiempo";
+			this->LB_Time2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc2
+			// 
+			this->LB_NameDoc2->AutoSize = true;
+			this->LB_NameDoc2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc2->Location = System::Drawing::Point(182, 119);
+			this->LB_NameDoc2->Name = L"LB_NameDoc2";
+			this->LB_NameDoc2->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc2->TabIndex = 24;
+			this->LB_NameDoc2->Text = L"nombre de documento";
+			this->LB_NameDoc2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos2
+			// 
+			this->LB_Pos2->AutoSize = true;
+			this->LB_Pos2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos2->Location = System::Drawing::Point(31, 119);
+			this->LB_Pos2->Name = L"LB_Pos2";
+			this->LB_Pos2->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos2->TabIndex = 23;
+			this->LB_Pos2->Text = L"posición";
+			this->LB_Pos2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Time1
+			// 
+			this->LB_Time1->AutoSize = true;
+			this->LB_Time1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Time1->Location = System::Drawing::Point(636, 79);
+			this->LB_Time1->Name = L"LB_Time1";
+			this->LB_Time1->Size = System::Drawing::Size(87, 29);
+			this->LB_Time1->TabIndex = 22;
+			this->LB_Time1->Text = L"tiempo";
+			this->LB_Time1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_NameDoc1
+			// 
+			this->LB_NameDoc1->AutoSize = true;
+			this->LB_NameDoc1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NameDoc1->Location = System::Drawing::Point(182, 79);
+			this->LB_NameDoc1->Name = L"LB_NameDoc1";
+			this->LB_NameDoc1->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc1->TabIndex = 21;
+			this->LB_NameDoc1->Text = L"nombre de documento";
+			this->LB_NameDoc1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// LB_Pos1
+			// 
+			this->LB_Pos1->AutoSize = true;
+			this->LB_Pos1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_Pos1->Location = System::Drawing::Point(31, 79);
+			this->LB_Pos1->Name = L"LB_Pos1";
+			this->LB_Pos1->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos1->TabIndex = 20;
+			this->LB_Pos1->Text = L"posición";
+			this->LB_Pos1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label11->Location = System::Drawing::Point(633, 34);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(255, 29);
+			this->label11->TabIndex = 19;
+			this->label11->Text = L"Tiempo estimado (s)";
+			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(182, 34);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(280, 29);
+			this->label9->TabIndex = 18;
+			this->label9->Text = L"Nombre de documento";
+			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(29, 34);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(114, 29);
+			this->label6->TabIndex = 17;
+			this->label6->Text = L"Posición";
+			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// tabPage1
 			// 
@@ -660,13 +1223,9 @@ namespace AutoPrintView {
 			this->dgv_precio->ReadOnly = true;
 			this->dgv_precio->Width = 50;
 			// 
-			// NumPages
+			// timer1
 			// 
-			this->NumPages->AutoSize = true;
-			this->NumPages->Location = System::Drawing::Point(387, 368);
-			this->NumPages->Name = L"NumPages";
-			this->NumPages->Size = System::Drawing::Size(0, 16);
-			this->NumPages->TabIndex = 42;
+			this->timer1->Tick += gcnew System::EventHandler(this, &PrintForm::timer1_Tick);
 			// 
 			// PrintForm
 			// 
@@ -683,6 +1242,8 @@ namespace AutoPrintView {
 			this->tabControl1->ResumeLayout(false);
 			this->TPage_impre->ResumeLayout(false);
 			this->TPage_impre->PerformLayout();
+			this->TPage_historial->ResumeLayout(false);
+			this->TPage_historial->PerformLayout();
 			this->tabPage1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->EndInit();
 			this->ResumeLayout(false);
@@ -691,8 +1252,12 @@ namespace AutoPrintView {
 #pragma endregion
 		double monto = 0;
 		double numpage = 1;
+		System::Windows::Forms::Timer^ Timer = gcnew System::Windows::Forms::Timer();
+		System::Windows::Forms::Timer^ NextTimer = gcnew System::Windows::Forms::Timer();
+		int TimePrint = 0;
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
+		LB_Pos1->Text;
 		if (NotEmpty()) {
 			UpOrder();
 			ShowOrderFiles();
@@ -979,13 +1544,11 @@ namespace AutoPrintView {
 
 				   std::size_t posInicio = contenidoPDF.str().find("/Count ");
 				   if (posInicio == std::string::npos) {
-					   std::cerr << "No se encontró la información de recuento de páginas en el archivo PDF." << std::endl;
 					   return -1;
 				   }
 
 				   std::size_t posFin = contenidoPDF.str().find_first_of("0123456789", posInicio);
 				   if (posFin == std::string::npos) {
-					   std::cerr << "No se pudo determinar el número de páginas en el archivo PDF." << std::endl;
 					   return -1;
 				   }
 
@@ -1000,5 +1563,18 @@ namespace AutoPrintView {
 				   return -1; // Devolver -1 para indicar un error
 			   }
 		   }
+
+	private: System::Void Inicio_Tiempo_Click(System::Object^ sender, System::EventArgs^ e) {
+		TimePrint = 10;
+		Timer->Interval = 1000; //Configura el intervalo del temporizador en milisegundos (1 segundo)
+		Timer->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+		Timer->Start();
+		LB_Time1->Text = (TimePrint).ToString();
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		TimePrint = TimePrint - 1;
+		// Actualizar el texto del Label con el tiempo restante
+		LB_Time1->Text = (TimePrint).ToString();
+	}
 };
 }
