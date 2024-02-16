@@ -1393,6 +1393,10 @@ private: System::Windows::Forms::Timer^ timer10;
 			   Order^ File_order = gcnew Order();
 			   //Atributos de Vehicule: Id,Type,Company,License_Plate
 			   //Estos datos son del dgv
+
+			   int dni_wallet = Dni_Ahora;
+
+			   File_order->dni_history = dni_wallet;
 			   File_order->order_id = ordenId;
 			   File_order->sheet_type = cmbTipoHoja->Text;
 			   File_order->sheet_size = cmbTamaHoja->Text;
@@ -1470,15 +1474,17 @@ private: System::Windows::Forms::Timer^ timer10;
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   //dgvHistorial_Files es el nombre de la tabla de historial
-					   dgvHistorial_Files->Rows->Add(gcnew array<String^>{
-						   "" + File_order->order_id,
-							   File_order->sheet_type,
-							   File_order->sheet_size,
-							   File_order->color_page,
-							   "" + File_order->num_copies,
-							   File_order->Location,
-							   "" + File_order->price
-					   });
+					   if (File_order->dni_history == Dni_Ahora) {
+						   dgvHistorial_Files->Rows->Add(gcnew array<String^>{
+							   "" + File_order->order_id,
+								   File_order->sheet_type,
+								   File_order->sheet_size,
+								   File_order->color_page,
+								   "" + File_order->num_copies,
+								   File_order->Location,
+								   "" + File_order->price
+						   });
+					   }
 				   }
 			   }
 		   }
