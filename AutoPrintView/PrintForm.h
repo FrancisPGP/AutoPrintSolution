@@ -1453,9 +1453,10 @@ private: System::Windows::Forms::Timer^ timer10;
 			   }
 
 			   try {
+				   for (int i; i < 10; i++) {
+					   Order^ position_order = Controller::QueryFileByPosition(1);
 
-				   Order^ position_order = Controller::QueryFileByPosition(1);
-				  
+				   }
 
 				   File_order->time_print = TimePrint;
 			   }
@@ -1467,6 +1468,7 @@ private: System::Windows::Forms::Timer^ timer10;
 
 			   AutoPrintController::Controller::AddOrder(File_order);
 		   }
+		   /*****************************************************************************************************************************************/
 		   void ShowOrderFiles() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr && orderfiles->Count > 0) {
@@ -1538,7 +1540,7 @@ private: System::Windows::Forms::Timer^ timer10;
 				   }
 			   }
 			   catch (Exception^ ex) {
-				   MessageBox::Show("La utilidad no está disponible en su sistema operativo");
+				   MessageBox::Show("La impresora no está disponible en su sistema operativo");
 			   }
 		   }
 		   void RefreshPage() {
