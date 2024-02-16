@@ -42,6 +42,7 @@ namespace AutoPrintController {
         static void AddOrder(Order^);
         static List<Order^>^ QueryAllFiles();
         static Order^ QueryFileById(int orderId);
+        static Order^ QueryFileByPosition(int time_print);
 
         
         /*Cesar*/
