@@ -1155,7 +1155,6 @@ private: System::Windows::Forms::Timer^ timer10;
 			// 
 			// WB_PDF_historial
 			// 
-			this->WB_PDF_historial->AllowNavigation = false;
 			this->WB_PDF_historial->Dock = System::Windows::Forms::DockStyle::Right;
 			this->WB_PDF_historial->Location = System::Drawing::Point(543, 3);
 			this->WB_PDF_historial->MinimumSize = System::Drawing::Size(20, 20);
@@ -1555,13 +1554,13 @@ private: System::Windows::Forms::Timer^ timer10;
 		   }
 
 	private: System::Void dgvHistorial_Files_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		
 		if (dgvHistorial_Files->SelectedCells->Count > 0 &&
 			dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr &&
 			!String::IsNullOrEmpty(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString())) {
 
 			// Solo ejecutar si hay una celda seleccionada y el valor no es nulo o vacío
-			int orderId = Int32::Parse(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]
-				->Cells[0]->Value->ToString());
+			int orderId = Int32::Parse(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 
 			Order^ File_order = Controller::QueryFileById(orderId);
 
