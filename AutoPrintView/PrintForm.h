@@ -1313,7 +1313,6 @@ private: System::Windows::Forms::Timer^ timer10;
 		double numpage = 1;
 		System::Windows::Forms::Timer^ Timer = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ NextTimer = gcnew System::Windows::Forms::Timer();
-		int TimePrint = 0;
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		
@@ -1374,6 +1373,7 @@ private: System::Windows::Forms::Timer^ timer10;
 		   void UpOrder() {
 			   //valor inicial
 			   int ordenId = 1;
+			   int TimePrint = 0;
 			   //QueryFileById
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr && orderfiles->Count > 0) {
@@ -1448,7 +1448,17 @@ private: System::Windows::Forms::Timer^ timer10;
 				   }
 			   }
 
-			   File_order->time_print = TimePrint;
+			   try {
+				   Order^ position_order = Controller::QueryFileByPosition(1);
+				   position_order->time_print;
+
+				   File_order->time_print = TimePrint;
+			   }
+			   catch (Exception^ ex) {
+				   File_order->time_print = 1;
+			   }
+
+			   File_order->num_spooler = monto;
 
 			   AutoPrintController::Controller::AddOrder(File_order);
 		   }
@@ -1623,8 +1633,9 @@ private: System::Windows::Forms::Timer^ timer10;
 		   }
 
 		   Void ReiniciarTemporizador() {
-			   TimePrint = 7*numpage;
-			   LB_Time1->Text = (TimePrint).ToString();
+			   //TimePrint = 7*numpage;
+			   //LB_Time1->Text = (TimePrint).ToString();
+			   
 			   // Detén el temporizador si está en marcha
 			   Timer->Stop();
 			   // Elimina todos los manejadores de eventos Tick
@@ -1638,21 +1649,19 @@ private: System::Windows::Forms::Timer^ timer10;
 		   }
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		List<Order^>^ orderfiles = Controller::QueryAllFiles();
-		if (orderfiles != nullptr && orderfiles->Count > 0) {
-			TimePrint = TimePrint - 1;
+		Order^ time_order = Controller::QueryFileByPosition(1);
+		time_order->time_print--;
 
-			// Actualizar el texto del Label con el tiempo restante
-			if (-3 <= TimePrint && TimePrint <= 0) {
-				Timer->Stop();
-				LB_Time1->Text = "Listo para recoger";
-			}
-			else if (0 < TimePrint) {
-				LB_Time1->Text = (TimePrint).ToString();
-			}
-			else {
-				LB_Time1->Text = "tiempo";
-			}
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= time_order->time_print && time_order->time_print <= 0) {
+			Timer->Stop();
+			LB_Time1->Text = "Listo para recoger";
+		}
+		else if (0 < time_order->time_print) {
+			LB_Time1->Text = (time_order->time_print).ToString();
+		}
+		else {
+			LB_Time1->Text = "tiempo";
 		}
 	}
 };
