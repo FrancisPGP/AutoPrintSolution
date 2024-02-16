@@ -620,5 +620,14 @@ Order^ Persistance::QueryFileById(int orderId) {
     return nullptr;
 }
 
+Order^ Persistance::QueryFileByPosition(int time_print) {
+    orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
+    for (int i = 0; i < orderList->Count; i++) {
+        if (orderList[i]->order_id == time_print)
+            return orderList[i];
+    }
+    return nullptr;
+}
+
 /*Cesar*/
 
