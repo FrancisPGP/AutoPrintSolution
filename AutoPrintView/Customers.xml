@@ -34,5 +34,18 @@
     <Phone_number>312</Phone_number>
     <LastName>gente</LastName>
     <Name>Hola</Name>
+    <record />
+  </Customer>
+  <Customer>
+    <Money_in_wallet>2</Money_in_wallet>
+    <Birthdate>201003</Birthdate>
+    <Email>aftc20@pucp.com</Email>
+    <Password>123</Password>
+    <Gender>Masculino</Gender>
+    <Dni>72778681</Dni>
+    <Phone_number>12333</Phone_number>
+    <LastName>TTT</LastName>
+    <Name>AAA</Name>
+    <record />
   </Customer>
 </ArrayOfCustomer>

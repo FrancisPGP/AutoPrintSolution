@@ -193,7 +193,7 @@ private: System::Windows::Forms::Label^ LB_Pos10;
 
 
 private: System::Windows::Forms::Label^ LB_Pos9;
-private: System::Windows::Forms::Button^ Inicio_Tiempo;
+
 
 
 
@@ -351,7 +351,6 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->TPage_historial = (gcnew System::Windows::Forms::TabPage());
-			this->Inicio_Tiempo = (gcnew System::Windows::Forms::Button());
 			this->LB_NameDoc10 = (gcnew System::Windows::Forms::Label());
 			this->LB_NameDoc9 = (gcnew System::Windows::Forms::Label());
 			this->LB_Pos10 = (gcnew System::Windows::Forms::Label());
@@ -671,7 +670,6 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			// 
 			// TPage_historial
 			// 
-			this->TPage_historial->Controls->Add(this->Inicio_Tiempo);
 			this->TPage_historial->Controls->Add(this->LB_NameDoc10);
 			this->TPage_historial->Controls->Add(this->LB_NameDoc9);
 			this->TPage_historial->Controls->Add(this->LB_Pos10);
@@ -712,16 +710,6 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			this->TPage_historial->TabIndex = 1;
 			this->TPage_historial->Text = L"posición";
 			this->TPage_historial->UseVisualStyleBackColor = true;
-			// 
-			// Inicio_Tiempo
-			// 
-			this->Inicio_Tiempo->Location = System::Drawing::Point(398, 11);
-			this->Inicio_Tiempo->Name = L"Inicio_Tiempo";
-			this->Inicio_Tiempo->Size = System::Drawing::Size(53, 23);
-			this->Inicio_Tiempo->TabIndex = 52;
-			this->Inicio_Tiempo->Text = L"Inico";
-			this->Inicio_Tiempo->UseVisualStyleBackColor = true;
-			this->Inicio_Tiempo->Click += gcnew System::EventHandler(this, &PrintForm::Inicio_Tiempo_Click);
 			// 
 			// LB_NameDoc10
 			// 
@@ -1257,7 +1245,7 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 		int TimePrint = 0;
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
-		LB_Pos1->Text;
+		
 		if (NotEmpty()) {
 			UpOrder();
 			ShowOrderFiles();
@@ -1267,8 +1255,10 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			cardVISAForm->ShowDialog();
 			//RefreshPage();
 			PrintPDF();
-			Close();
+			//Close();
+			RefreshPage();
 		}
+		ReiniciarTemporizador();
 
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1284,13 +1274,15 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 				MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 				//RefreshPage();
 				PrintPDF();
-				Close();
+				//Close();
+				RefreshPage();
 			}
 			else {
 				MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
 				WalletForm^ walletForm = gcnew WalletForm();
 				walletForm->Show();
 			}
+			ReiniciarTemporizador();
 		}
 	}
 
@@ -1459,7 +1451,7 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 				   MessageBox::Show("La utilidad no está disponible en su sistema operativo");
 			   }
 		   }
-		   /*void RefreshPage() {
+		   void RefreshPage() {
 			   // Limpiar valores de ComboBox
 			   cmbTipoHoja->SelectedIndex = -1;
 			   cmbTamaHoja->SelectedIndex = -1;
@@ -1469,8 +1461,9 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			   MontoPago->Text = "0";
 
 			   // Limpiar el WebBrowser
-			   WB_PDF_imprimir->();
-		   }*/
+			   WB_PDF_imprimir->Navigate("about:blank");
+
+		   }
 
 	private: System::Void dgvHistorial_Files_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		if (dgvHistorial_Files->SelectedCells->Count > 0 &&
@@ -1564,17 +1557,36 @@ private: System::Windows::Forms::Button^ Inicio_Tiempo;
 			   }
 		   }
 
-	private: System::Void Inicio_Tiempo_Click(System::Object^ sender, System::EventArgs^ e) {
-		TimePrint = 10;
-		Timer->Interval = 1000; //Configura el intervalo del temporizador en milisegundos (1 segundo)
-		Timer->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-		Timer->Start();
-		LB_Time1->Text = (TimePrint).ToString();
-	}
+
+	
+		   Void ReiniciarTemporizador() {
+			   TimePrint = 7*numpage;
+			   LB_Time1->Text = (TimePrint).ToString();
+
+			   // Detén el temporizador si está en marcha
+			   Timer->Stop();
+
+			   // Elimina todos los manejadores de eventos Tick
+			   Timer->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+
+			   // Configura el intervalo del temporizador en milisegundos (1 segundo)
+			   Timer->Interval = 1000;
+
+			   // Asocia el evento Tick con el manejador timer_Tick
+			   Timer->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+
+			   // Inicia el temporizador
+			   Timer->Start();
+		   }
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		TimePrint = TimePrint - 1;
+		
 		// Actualizar el texto del Label con el tiempo restante
 		LB_Time1->Text = (TimePrint).ToString();
+		if (TimePrint == 0) {
+			Timer->Stop();
+			LB_Time1->Text = "Para recoger";
+		}
 	}
 };
 }
