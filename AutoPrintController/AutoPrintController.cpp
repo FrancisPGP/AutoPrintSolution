@@ -9,10 +9,17 @@ using namespace AutoPrintController;
 
 int AutoPrintController::Controller::AddUser(User^ user) {
     return ::Persistance::AddUser(user);
-
 }
 
-
+int AutoPrintController::Controller::AddCostumer(Customer^ customer) {
+    int res;
+    try {
+        res = Persistance::AddCostumer(customer);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    return res;
 }
 
 int AutoPrintController::Controller::AddEmployee(Employee^ employee) {
