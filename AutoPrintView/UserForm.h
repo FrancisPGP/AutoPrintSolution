@@ -412,28 +412,33 @@ namespace AutoPrintView {
 #pragma endregion
 //-----------------------------------------------------------------------------------------------------------------CAMBIOS DE LUIS-----------------------------------------------------------------------
 	private: System::Void btnContinue_Click(System::Object^ sender, System::EventArgs^ e) { //FUNCIONALIDAD DEL BOTÓN PARA TERMINAR DE REGISTRARSE
-		Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
+		try {
+			Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
 
-		//Antes debemos ver si los items están llenos:
-		if ((txtName->Text == "") || (txtCellphoneNumber->Text == "") || (txtSurname->Text == "") || (txtDNI->Text == "") || (txtGender->Text == "")
-			|| (txtPassword->Text == "") || (txtDateOfBirth->Text == "") || (txtConfirmPassword->Text == "") || (txtMail->Text == "") ) {
-			MessageBox::Show("Falta colocar algunos datos");
-			return;
+			//Antes debemos ver si los items están llenos:
+			if ((txtName->Text == "") || (txtCellphoneNumber->Text == "") || (txtSurname->Text == "") || (txtDNI->Text == "") || (txtGender->Text == "")
+				|| (txtPassword->Text == "") || (txtDateOfBirth->Text == "") || (txtConfirmPassword->Text == "") || (txtMail->Text == "")) {
+				MessageBox::Show("Falta colocar algunos datos");
+				return;
+			}
+
+			newUser->Name = txtName->Text;
+			newUser->LastName = txtSurname->Text;
+			newUser->Gender = txtGender->Text;
+			newUser->Birthdate = txtDateOfBirth->Text;
+			newUser->Email = txtMail->Text;
+			newUser->Phone_number = txtCellphoneNumber->Text;
+			newUser->Dni = Int32::Parse(txtDNI->Text);
+			newUser->Password = txtPassword->Text;
+			newUser->Password = txtConfirmPassword->Text; //Acá no estoy seguro si deberíamos colocar otro atributo que almacene la misma contraseña para comparar y asegurar que sea la misma
+			newUser->Money_in_wallet = 0;
+			//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
+			Controller::AddCostumer(newUser); //Añadimos al usuario
+			Close(); //Una vez añadido el nuevo usario, cerramos esa pestaña
 		}
-
-		newUser->Name = txtName->Text;
-		newUser->LastName = txtSurname->Text;
-		newUser->Gender = txtGender->Text;
-		newUser->Birthdate = txtDateOfBirth->Text;
-		newUser->Email = txtMail->Text;
-		newUser->Phone_number = txtCellphoneNumber->Text;
-		newUser->Dni = Int32::Parse(txtDNI->Text);
-		newUser->Password = txtPassword->Text;
-		newUser->Password = txtConfirmPassword->Text; //Acá no estoy seguro si deberíamos colocar otro atributo que almacene la misma contraseña para comparar y asegurar que sea la misma
-		newUser->Money_in_wallet = 0;
-		//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
-		Controller::AddCostumer(newUser); //Añadimos al usuario
-		Close(); //Una vez añadido el nuevo usario, cerramos esa pestaña
+		catch (Exception^ ex) {
+			MessageBox::Show(ex->ToString());
+		}
 
 	}
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

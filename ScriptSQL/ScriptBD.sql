@@ -1,0 +1,92 @@
+--DROP DATABASE (Nunca lo ejecutes)
+--Sentencia SQL DDL para crear la tabla CUSTOMER_TABLE_LC
+CREATE TABLE CUSTOMER_TABLE_LC (
+	NAME 			VARCHAR(200),
+	LASTNAME 		VARCHAR(200),
+	PHONE_NUMBER 	VARCHAR(200),
+	DNI 			INT NOT NULL PRIMARY KEY,
+	GENDER 			VARCHAR(200),
+	PASSWORD 		VARCHAR(200),
+	EMAIL 			VARCHAR(200),
+	BIRTHDATE 		VARCHAR(200),
+	PHOTO 			IMAGE NULL,
+	MONEY_IN_WALLET	DECIMAL(10,2)
+)
+GO
+--Sentencia SQL DML para insertar un registro a la tabla CUSTOMER_TABLE_LC
+INSERT INTO CUSTOMER_TABLE_LC (DNI, NAME, LASTNAME, EMAIL)
+VALUES (76543212, 'Hola', 'gente', '321')
+GO
+INSERT INTO CUSTOMER_TABLE_LC (DNI, NAME, LASTNAME, EMAIL)
+VALUES (76543211, 'Hola', 'Adios', '321')
+GO
+INSERT INTO CUSTOMER_TABLE_LC (DNI, NAME, LASTNAME, EMAIL)
+VALUES (45612378, 'Juancito2', 'Alimaña', '123')
+GO
+--Sentencia SQL para consultar registros de la tabla CUSTOMER_TABLE_LC
+--SELECT DNI, NAME, LASTNAME, EMAIL
+--FROM CUSTOMER_TABLE_LC
+--Retorna todas las columnas
+--SELECT *
+--FROM CUSTOMER_TABLE_LC
+--Filtra
+--SELECT *
+--FROM CUSTOMER_TABLE_LC
+--WHERE DNI < 50000000
+
+--SELECT *
+--FROM CUSTOMER_TABLE_LC
+--WHERE DNI = 76543211
+--Modificaciones
+--UPDATE CUSTOMER_TABLE_LC
+--SET EMAIL = '123'
+--WHERE DNI = 76543212
+--Eliminar
+--DELETE FROM CUSTOMER_TABLE_LC
+--WHERE DNI = 76543211
+--Persistance en AutoPrint
+IF EXISTS ( SELECT *
+		   FROM sysobjects
+		   WHERE id = object_id(N'[dbo].[usp_AddCostumer_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+	DROP PROCEDURE [dbo].[usp_AddCostumer_LC]
+END
+GO
+
+CREATE PROCEDURE dbo.usp_AddCostumer_LC(
+    @NAME               VARCHAR(200),
+    @LASTNAME           VARCHAR(200),
+    @PHONE_NUMBER       VARCHAR(200),
+    @DNI                INT,
+    @GENDER             VARCHAR(200),
+    @PASSWORD           VARCHAR(200),
+    @EMAIL              VARCHAR(200),
+    @BIRTHDATE          VARCHAR(200),
+    @PHOTO              IMAGE,
+    @MONEY_IN_WALLET    DECIMAL(10,2)
+) AS
+	BEGIN
+        INSERT INTO CUSTOMER_TABLE_LC (NAME, LASTNAME, PHONE_NUMBER, DNI,
+        GENDER, PASSWORD, EMAIL, BIRTHDATE, PHOTO, MONEY_IN_WALLET)
+        SELECT @NAME, @LASTNAME, @PHONE_NUMBER, @DNI, @GENDER, @PASSWORD,
+        @EMAIL, @BIRTHDATE, @PHOTO, @MONEY_IN_WALLET
+	END
+GO
+--EXEC dbo.usp_AddCostumer_LC @NAME = 'Luis', @LASTNAME = 'Cruz', @PHONE_NUMBER = '943079416',
+--@DNI = 73999758, @GENDER = 'Masculino', @PASSWORD = '12345', @EMAIL = 'a20191288@pucp.edu.pe',
+--@BIRTHDATE= '21/08/2002', @PHOTO = NULL, @MONEY_IN_WALLET = 0
+IF EXISTS ( SELECT *
+		   FROM sysobjects
+		   WHERE id = object_id(N'[dbo].[usp_QueryAllCostumers_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+	DROP PROCEDURE [dbo].[usp_QueryAllCostumers_LC]
+END
+GO
+
+CREATE PROCEDURE dbo.usp_QueryAllCostumers_LC AS
+	BEGIN
+        SELECT * FROM CUSTOMER_TABLE_LC
+	END
+GO

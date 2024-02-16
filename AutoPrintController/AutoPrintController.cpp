@@ -12,8 +12,7 @@ int AutoPrintController::Controller::AddUser(User^ user) {
 
 }
 
-int AutoPrintController::Controller::AddCostumer(Customer^ customer) {
-    return ::Persistance::AddCostumer(customer);
+
 }
 
 int AutoPrintController::Controller::AddEmployee(Employee^ employee) {
@@ -54,17 +53,17 @@ User^ AutoPrintController::Controller::QueryUserByDNI(int UserDNI) {
 
 Customer^ AutoPrintController::Controller::QueryCustomerByDNI(int userDNI) {
     return Persistance::QueryCustomerByDNI(userDNI);
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 Employee^ AutoPrintController::Controller::QueryEmployeeByDNI(int userDNI) {
     return Persistance::QueryEmployeeByDNI(userDNI);
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 Boss^ AutoPrintController::Controller::QueryBossByDNI(int userDNI) {
     return Persistance::QueryBossByDNI(userDNI);
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 List<User^>^ AutoPrintController::Controller::QueryAllUsers() {
@@ -73,18 +72,18 @@ List<User^>^ AutoPrintController::Controller::QueryAllUsers() {
 
 List<Customer^>^ AutoPrintController::Controller::QueryAllCustomers() {
     return Persistance::QueryAllCustomers();
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 List<Employee^>^ AutoPrintController::Controller::QueryAllEmployees()
 {
     return Persistance::QueryAllEmployees();
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 List<Boss^>^ AutoPrintController::Controller::QueryAllBoss() {
     return Persistance::QueryAllBoss();
-    // TODO: Insertar una instrucción "return" aquí
+    // TODO: Insertar una instrucciÃ³n "return" aquÃ­
 }
 
 //intento para login
