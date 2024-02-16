@@ -170,7 +170,7 @@ namespace AutoPrintView {
 			// 
 			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
 			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(99, 24);
-			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
+			this->estadisticasToolStripMenuItem->Text = L"Estadísticas";
 			this->estadisticasToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrintMainForm::estadisticasToolStripMenuItem_Click);
 			// 
 			// timer10

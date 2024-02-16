@@ -1369,6 +1369,20 @@ private: System::Windows::Forms::Timer^ timer10;
 				   return true;
 			   }
 		   }
+		   bool NotPosition10() {
+			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
+			   for (int i = 0; i < orderfiles->Count; i++) {
+				   Order^ position_order = orderfiles[i];
+				   if (position_order->time_print == 10) {
+					   MessageBox::Show("Hay 10 PDFs en cola");
+					   return false;
+				   }
+				   else {
+					   return true;
+				   }
+			   }
+		   }
+/*********************************************************************************************************************************/
 		   void UpOrder() {
 			   //valor inicial
 			   int ordenId = 1;
@@ -1451,23 +1465,49 @@ private: System::Windows::Forms::Timer^ timer10;
 				   }
 			   }
 
-			   try {
-				   for (int i; i < 10; i++) {
-					   Order^ position_order = Controller::QueryFileByPosition(1);
+			   int position = 1;
 
+			   for (int i = 0; i < orderfiles->Count; i++) {
+				   Order^ position_order = orderfiles[i];
+				   if (position_order->time_print == 1) {
+					   position++;
 				   }
-
-				   File_order->time_print = TimePrint;
+				   if (position_order->time_print == 1) {
+					   position++;
+				   }
+				   if (position_order->time_print == 2) {
+					   position++;
+				   }
+				   if (position_order->time_print == 3) {
+					   position++;
+				   }
+				   if (position_order->time_print == 4) {
+					   position++;
+				   }
+				   if (position_order->time_print == 5) {
+					   position++;
+				   }
+				   if (position_order->time_print == 6) {
+					   position++;
+				   }
+				   if (position_order->time_print == 7) {
+					   position++;
+				   }
+				   if (position_order->time_print == 8) {
+					   position++;
+				   }
+				   if (position_order->time_print == 9) {
+					   position++;
+				   }
 			   }
-			   catch (Exception^ ex) {
-				   File_order->time_print = 1;
-			   }
 
-			   File_order->num_spooler = monto;
+			   File_order->num_spooler = position;
+
+			   File_order->time_print = 1;
 
 			   AutoPrintController::Controller::AddOrder(File_order);
 		   }
-		   /*****************************************************************************************************************************************/
+/*****************************************************************************************************************************************/
 		   void ShowOrderFiles() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr && orderfiles->Count > 0) {
