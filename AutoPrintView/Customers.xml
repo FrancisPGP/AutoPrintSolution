@@ -2,18 +2,6 @@
 <ArrayOfCustomer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Customer>
     <Money_in_wallet>0</Money_in_wallet>
-    <Birthdate>321</Birthdate>
-    <Email>321</Email>
-    <Password>123</Password>
-    <Gender>Masculino</Gender>
-    <Dni>76543211</Dni>
-    <Phone_number>321</Phone_number>
-    <LastName>Adios</LastName>
-    <Name>Hola</Name>
-    <record />
-  </Customer>
-  <Customer>
-    <Money_in_wallet>0</Money_in_wallet>
     <Birthdate>213</Birthdate>
     <Email>321</Email>
     <Password>123</Password>

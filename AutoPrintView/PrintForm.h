@@ -1449,8 +1449,9 @@ private: System::Windows::Forms::Timer^ timer10;
 			   }
 
 			   try {
+
 				   Order^ position_order = Controller::QueryFileByPosition(1);
-				   position_order->time_print;
+				  
 
 				   File_order->time_print = TimePrint;
 			   }
