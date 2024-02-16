@@ -14,7 +14,14 @@ int AutoPrintController::Controller::AddUser(User^ user) {
 
 int AutoPrintController::Controller::AddCostumer(Customer^ customer)
 {
-    return ::Persistance::AddCostumer(customer);
+    int res;
+    try {
+        res = Persistance::AddCostumer(customer);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    return res;
 }
 
 int AutoPrintController::Controller::AddEmployee(Employee^ employee)

@@ -3,6 +3,7 @@
 using namespace System;
 using namespace AutoPrintModel;
 using namespace System::Collections::Generic;
+using namespace System::Data::SqlClient;
 
 namespace AutoPrintPersistance {
 	public ref class Persistance
@@ -30,6 +31,9 @@ namespace AutoPrintPersistance {
 		static String^ BOSS_XML_FILE_NAME = "Boss.xml";
 		static String^ CUSTOMER_XML_FILE_NAME = "Customers.xml";
 
+		//Luis y Ricardo
+		//Método que retorna un objeto conexión a la BD
+		static SqlConnection^ GetConnection();
 
 
 		//Francis

@@ -752,24 +752,27 @@ namespace AutoPrintView {
 
 	private: System::Void bregistro_Click(System::Object^ sender, System::EventArgs^ e) {
 				
+		try {
+			Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
+			//newUser->User_Id = Int32::Parse(TB_userID_reg->Text);
+			newUser->Name = TB_name_reg->Text;
+			newUser->LastName = TB_lastname_reg->Text;
+			newUser->Dni = Int32::Parse(TB_dni_reg->Text);
+			newUser->Email = TB_correo_reg->Text;
+			newUser->Password = TB_contraseña_reg->Text;
+			newUser->Birthdate = TB_Fecha_re->Text;
+			newUser->Gender = TB_gender_registro->Text;
+			newUser->Phone_number = TB_Num_reg->Text;
+			newUser->Password = TB_Contra_reg->Text;
 
-		Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
-		//newUser->User_Id = Int32::Parse(TB_userID_reg->Text);
-		newUser->Name = TB_name_reg->Text;
-		newUser->LastName = TB_lastname_reg->Text;
-		newUser->Dni = Int32::Parse(TB_dni_reg->Text);
-		newUser->Email = TB_correo_reg->Text;
-		newUser->Password = TB_contraseña_reg->Text;
-		newUser->Birthdate = TB_Fecha_re->Text;
-		newUser->Gender = TB_gender_registro->Text;
-		newUser->Phone_number = TB_Num_reg->Text;
-		newUser->Password = TB_Contra_reg->Text;
+			//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
+			Controller::AddCostumer(newUser); //Añadimos al usuario
 
-		//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
-		Controller::AddCostumer(newUser); //Añadimos al usuario
-
-		RefreshGrid();
-
+			RefreshGrid();
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show(ex->ToString());
+		}
 	}
 
 	private: System::Void beliminar_Click(System::Object^ sender, System::EventArgs^ e) {
