@@ -742,7 +742,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			this->TPage_historial->Padding = System::Windows::Forms::Padding(3);
 			this->TPage_historial->Size = System::Drawing::Size(924, 514);
 			this->TPage_historial->TabIndex = 1;
-			this->TPage_historial->Text = L"posición";
+			this->TPage_historial->Text = L"Cola";
 			this->TPage_historial->UseVisualStyleBackColor = true;
 			// 
 			// LB_NameDoc10
@@ -1251,38 +1251,47 @@ private: System::Windows::Forms::Timer^ timer10;
 			// timer2
 			// 
 			this->timer2->Interval = 1000;
+			this->timer2->Tick += gcnew System::EventHandler(this, &PrintForm::timer2_Tick);
 			// 
 			// timer3
 			// 
 			this->timer3->Interval = 1000;
+			this->timer3->Tick += gcnew System::EventHandler(this, &PrintForm::timer3_Tick);
 			// 
 			// timer4
 			// 
 			this->timer4->Interval = 1000;
+			this->timer4->Tick += gcnew System::EventHandler(this, &PrintForm::timer4_Tick);
 			// 
 			// timer5
 			// 
 			this->timer5->Interval = 1000;
+			this->timer5->Tick += gcnew System::EventHandler(this, &PrintForm::timer5_Tick);
 			// 
 			// timer6
 			// 
 			this->timer6->Interval = 1000;
+			this->timer6->Tick += gcnew System::EventHandler(this, &PrintForm::timer6_Tick);
 			// 
 			// timer7
 			// 
 			this->timer7->Interval = 1000;
+			this->timer7->Tick += gcnew System::EventHandler(this, &PrintForm::timer7_Tick);
 			// 
 			// timer8
 			// 
 			this->timer8->Interval = 1000;
+			this->timer8->Tick += gcnew System::EventHandler(this, &PrintForm::timer8_Tick);
 			// 
 			// timer9
 			// 
 			this->timer9->Interval = 1000;
+			this->timer9->Tick += gcnew System::EventHandler(this, &PrintForm::timer9_Tick);
 			// 
 			// timer10
 			// 
 			this->timer10->Interval = 1000;
+			this->timer10->Tick += gcnew System::EventHandler(this, &PrintForm::timer10_Tick);
 			// 
 			// PrintForm
 			// 
@@ -1310,25 +1319,36 @@ private: System::Windows::Forms::Timer^ timer10;
 #pragma endregion
 		double monto = 0;
 		double numpage = 1;
-		System::Windows::Forms::Timer^ Timer = gcnew System::Windows::Forms::Timer();
-		System::Windows::Forms::Timer^ NextTimer = gcnew System::Windows::Forms::Timer();
+
+
+		int tiempo1 = 0;
+		int tiempo2 = 0;
+		int tiempo3 = 0;
+		int tiempo4 = 0;
+		int tiempo5 = 0;
+		int tiempo6 = 0;
+		int tiempo7 = 0;
+		int tiempo8 = 0;
+		int tiempo9 = 0;
+		int tiempo10 = 0;
+
+
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
-		
 		if (NotEmpty()) {
 			UpOrder();
-			ShowOrderFiles();
-			//if(el usuario paga)
-			CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
-			cardVISAForm->ControlBox = true;
-			cardVISAForm->ShowDialog();
-			//RefreshPage();
-			PrintPDF();
-			//Close();
-			RefreshPage();
+			if (NotPosition10()) {
+				ShowOrderFiles();
+				//if(el usuario paga)
+				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
+				cardVISAForm->ControlBox = true;
+				cardVISAForm->ShowDialog();
+				//RefreshPage();
+				PrintPDF();
+				//Close();
+				RefreshPage();
+			}
 		}
-		ReiniciarTemporizador();
-
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
@@ -1337,21 +1357,22 @@ private: System::Windows::Forms::Timer^ timer10;
 			Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 			if (user_wallet->Money_in_wallet >= monto) {
 				UpOrder();
-				ShowOrderFiles();
-				user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
-				Controller::UpdateCostumer(user_wallet);
-				MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-				//RefreshPage();
-				PrintPDF();
-				//Close();
-				RefreshPage();
+				if (NotPosition10()) {
+					ShowOrderFiles();
+					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
+					Controller::UpdateCostumer(user_wallet);
+					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+					//RefreshPage();
+					PrintPDF();
+					//Close();
+					RefreshPage();
+				}
 			}
 			else {
 				MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
 				WalletForm^ walletForm = gcnew WalletForm();
 				walletForm->Show();
 			}
-			ReiniciarTemporizador();
 		}
 	}
 
@@ -1399,7 +1420,6 @@ private: System::Windows::Forms::Timer^ timer10;
 			   else if (cmbTinta->Text == "Blanco y negro") {
 				   monto = 0.3 * numpage * (Int32::Parse(cmbNUMcopias->Text));
 			   }
-			   TimePrint = 5 * numpage;
 
 			   //Contenidos de dgvs (No entendí lo que dijo el profe)
 			   //AGREGUÉ using namespace AutoPrintModel; para poder usar la clase Order
@@ -1432,7 +1452,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			   } else if (dia == 2) {
 				   File_order->date = "Martes";
 
-			   }else if (dia == 3) {
+			   } else if (dia == 3) {
 				   File_order->date = "Miercoles";
 
 			   } else if (dia == 4) {
@@ -1441,7 +1461,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			   } else if (dia == 5) {
 				   File_order->date = "Viernes";
 
-			   }else if (dia == 6) {
+			   } else if (dia == 6) {
 				   File_order->date = "Sabado";
 
 			   }
@@ -1472,9 +1492,6 @@ private: System::Windows::Forms::Timer^ timer10;
 				   if (position_order->time_print == 1) {
 					   position++;
 				   }
-				   if (position_order->time_print == 1) {
-					   position++;
-				   }
 				   if (position_order->time_print == 2) {
 					   position++;
 				   }
@@ -1499,13 +1516,99 @@ private: System::Windows::Forms::Timer^ timer10;
 				   if (position_order->time_print == 9) {
 					   position++;
 				   }
+				   if (position_order->time_print == 10) {
+					   return;
+				   }
 			   }
 
 			   File_order->num_spooler = position;
 
-			   File_order->time_print = 1;
+			   File_order->time_print = 5 * numpage;
 
 			   AutoPrintController::Controller::AddOrder(File_order);
+
+			   if (position == 1 ) {
+				   tiempo1 = 5 * numpage;
+				   
+				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
+				   Timer1->Interval = 1000;
+				   // Asocia el evento Tick con el manejador timer_Tick
+				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				   // Inicia el temporizador
+				   Timer1->Start();
+			   }
+			   else if (position == 2) {
+				   Order^ time_order = Controller::QueryFileByPosition(1);
+				   tiempo2 = 5 * numpage + time_order->time_print;
+
+				   Timer2->Interval = 1000;
+				   Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				   Timer2->Start();
+			   }
+			   else if (position == 3) {
+				   Order^ time_order = Controller::QueryFileByPosition(2);
+				   tiempo3 = 5 * numpage + time_order->time_print;
+
+				   Timer3->Interval = 1000;
+				   Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
+				   Timer3->Start();
+			   }
+			   else if (position == 4) {
+				   Order^ time_order = Controller::QueryFileByPosition(3);
+				   tiempo4 = 5 * numpage + time_order->time_print;
+
+				   Timer4->Interval = 1000;
+				   Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
+				   Timer4->Start();
+			   }
+			   else if (position == 5) {
+				   Order^ time_order = Controller::QueryFileByPosition(4);
+				   tiempo5 = 5 * numpage + time_order->time_print;
+
+				   Timer5->Interval = 1000;
+				   Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
+				   Timer5->Start();
+			   }
+			   else if (position == 6) {
+				   Order^ time_order = Controller::QueryFileByPosition(5);
+				   tiempo6 = 5 * numpage + time_order->time_print;
+
+				   Timer6->Interval = 1000;
+				   Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
+				   Timer6->Start();
+			   }
+			   else if (position == 7) {
+				   Order^ time_order = Controller::QueryFileByPosition(6);
+				   tiempo7 = 5 * numpage + time_order->time_print;
+
+				   Timer7->Interval = 1000;
+				   Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
+				   Timer7->Start();
+			   }
+			   else if (position == 8) {
+				   Order^ time_order = Controller::QueryFileByPosition(7);
+				   tiempo8 = 5 * numpage + time_order->time_print;
+
+				   Timer8->Interval = 1000;
+				   Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
+				   Timer8->Start();
+			   }
+			   else if (position == 9) {
+				   Order^ time_order = Controller::QueryFileByPosition(8);
+				   tiempo9 = 5 * numpage + time_order->time_print;
+
+				   Timer9->Interval = 1000;
+				   Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
+				   Timer9->Start();
+			   }
+			   else if (position == 10) {
+				   Order^ time_order = Controller::QueryFileByPosition(9);
+				   tiempo10 = 5 * numpage + time_order->time_print;
+
+				   Timer10->Interval = 1000;
+				   Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
+				   Timer10->Start();
+			   }
 		   }
 /*****************************************************************************************************************************************/
 		   void ShowOrderFiles() {
@@ -1680,36 +1783,254 @@ private: System::Windows::Forms::Timer^ timer10;
 			   }
 		   }
 
-		   Void ReiniciarTemporizador() {
-			   //TimePrint = 7*numpage;
-			   //LB_Time1->Text = (TimePrint).ToString();
-			   
-			   // Detén el temporizador si está en marcha
-			   Timer->Stop();
-			   // Elimina todos los manejadores de eventos Tick
-			   Timer->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-			   // Configura el intervalo del temporizador en milisegundos (1 segundo)
-			   Timer->Interval = 1000;
-			   // Asocia el evento Tick con el manejador timer_Tick
-			   Timer->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-			   // Inicia el temporizador
-			   Timer->Start();
-		   }
+		   System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer3 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer4 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer5 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer6 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer7 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer8 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer9 = gcnew System::Windows::Forms::Timer();
+		   System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(1);
+		Order^ time_order = Controller::QueryFileByPosition(1); // Cambiado a posición 1
+
+		tiempo1--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo1 && tiempo1 <= 0) {
+			LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
+		}
+		else if (0 < tiempo1) {
+			LB_Time1->Text = (tiempo1).ToString(); // Cambiado a LB_Time1
+			LB_Pos1->Text = "1"; // Cambiado a LB_Pos1
+			LB_NameDoc1->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc1
+		}
+		else {
+			LB_Time1->Text = "tiempo"; // Cambiado a LB_Time1
+			LB_Pos1->Text = "posición"; // Cambiado a LB_Pos1
+			LB_NameDoc1->Text = "nombre de documento"; // Cambiado a LB_NameDoc1
+			// Detén el temporizador si está en marcha
+			Timer1->Stop(); // Cambiado a Timer1
+			// Elimina todos los manejadores de eventos Tick
+			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick); // Cambiado a Timer1 y timer1_Tick
+		}
+	}
+	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(2); // Cambiado a posición 2
+
+		tiempo2--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo2 && tiempo2 <= 0) {
+			LB_Time2->Text = "Listo para recoger"; // Cambiado a LB_Time2
+		}
+		else if (0 < tiempo2) {
+			LB_Time2->Text = (tiempo2).ToString(); // Cambiado a LB_Time2
+			LB_Pos2->Text = "2"; // Cambiado a LB_Pos2
+			LB_NameDoc2->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc2
+		}
+		else {
+			LB_Time2->Text = "tiempo"; // Cambiado a LB_Time2
+			LB_Pos2->Text = "posición"; // Cambiado a LB_Pos2
+			LB_NameDoc2->Text = "nombre de documento"; // Cambiado a LB_NameDoc2
+			// Detén el temporizador si está en marcha
+			Timer2->Stop(); // Cambiado a Timer2
+			// Elimina todos los manejadores de eventos Tick
+			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick); // Cambiado a Timer2 y timer2_Tick
+		}
+	}
+	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(3); // Cambiado a posición 3
+
+		tiempo3--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo3 && tiempo3 <= 0) {
+			LB_Time3->Text = "Listo para recoger"; // Cambiado a LB_Time3
+		}
+		else if (0 < tiempo3) {
+			LB_Time3->Text = (tiempo3).ToString(); // Cambiado a LB_Time3
+			LB_Pos3->Text = "3"; // Cambiado a LB_Pos3
+			LB_NameDoc3->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc3
+		}
+		else {
+			LB_Time3->Text = "tiempo"; // Cambiado a LB_Time3
+			LB_Pos3->Text = "posición"; // Cambiado a LB_Pos3
+			LB_NameDoc3->Text = "nombre de documento"; // Cambiado a LB_NameDoc3
+			// Detén el temporizador si está en marcha
+			Timer3->Stop(); // Cambiado a Timer3
+			// Elimina todos los manejadores de eventos Tick
+			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick); // Cambiado a Timer3 y timer3_Tick
+		}
+	}
+	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(4); // Cambiado a posición 4
 		time_order->time_print--;
 
 		// Actualizar el texto del Label con el tiempo restante
 		if (-3 <= time_order->time_print && time_order->time_print <= 0) {
-			Timer->Stop();
-			LB_Time1->Text = "Listo para recoger";
+			LB_Time4->Text = "Listo para recoger"; // Cambiado a LB_Time4
 		}
 		else if (0 < time_order->time_print) {
-			LB_Time1->Text = (time_order->time_print).ToString();
+			LB_Time4->Text = (time_order->time_print).ToString(); // Cambiado a LB_Time4
+			LB_Pos4->Text = "4"; // Cambiado a LB_Pos4
+			LB_NameDoc4->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc4
 		}
 		else {
-			LB_Time1->Text = "tiempo";
+			LB_Time4->Text = "tiempo"; // Cambiado a LB_Time4
+			LB_Pos4->Text = "posición"; // Cambiado a LB_Pos4
+			LB_NameDoc4->Text = "nombre de documento"; // Cambiado a LB_NameDoc4
+			// Detén el temporizador si está en marcha
+			Timer4->Stop(); // Cambiado a Timer4
+			// Elimina todos los manejadores de eventos Tick
+			Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick); // Cambiado a Timer4 y timer4_Tick
+		}
+	}
+	private: System::Void timer5_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(5); // Cambiado a posición 5
+
+		tiempo5--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo5 && tiempo5 <= 0) {
+			LB_Time5->Text = "Listo para recoger"; // Cambiado a LB_Time5
+		}
+		else if (0 < tiempo5) {
+			LB_Time5->Text = (tiempo5).ToString(); // Cambiado a LB_Time5
+			LB_Pos5->Text = "5"; // Cambiado a LB_Pos5
+			LB_NameDoc5->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc5
+		}
+		else {
+			LB_Time5->Text = "tiempo"; // Cambiado a LB_Time5
+			LB_Pos5->Text = "posición"; // Cambiado a LB_Pos5
+			LB_NameDoc5->Text = "nombre de documento"; // Cambiado a LB_NameDoc5
+			// Detén el temporizador si está en marcha
+			Timer5->Stop(); // Cambiado a Timer5
+			// Elimina todos los manejadores de eventos Tick
+			Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick); // Cambiado a Timer5 y timer5_Tick
+		}
+	}
+	private: System::Void timer6_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(6); // Cambiado a posición 6
+
+		tiempo6--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo6 && tiempo6 <= 0) {
+			LB_Time6->Text = "Listo para recoger"; // Cambiado a LB_Time6
+		}
+		else if (0 < tiempo6) {
+			LB_Time6->Text = (tiempo6).ToString(); // Cambiado a LB_Time6
+			LB_Pos6->Text = "6"; // Cambiado a LB_Pos6
+			LB_NameDoc6->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc6
+		}
+		else {
+			LB_Time6->Text = "tiempo"; // Cambiado a LB_Time6
+			LB_Pos6->Text = "posición"; // Cambiado a LB_Pos6
+			LB_NameDoc6->Text = "nombre de documento"; // Cambiado a LB_NameDoc6
+			// Detén el temporizador si está en marcha
+			Timer6->Stop(); // Cambiado a Timer6
+			// Elimina todos los manejadores de eventos Tick
+			Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick); // Cambiado a Timer6 y timer6_Tick
+		}
+	}
+	private: System::Void timer7_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(7); // Cambiado a posición 7
+
+		tiempo7--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo7 && tiempo7 <= 0) {
+			LB_Time7->Text = "Listo para recoger"; // Cambiado a LB_Time7
+		}
+		else if (0 < tiempo7) {
+			LB_Time7->Text = (tiempo7).ToString(); // Cambiado a LB_Time7
+			LB_Pos7->Text = "7"; // Cambiado a LB_Pos7
+			LB_NameDoc7->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc7
+		}
+		else {
+			LB_Time7->Text = "tiempo"; // Cambiado a LB_Time7
+			LB_Pos7->Text = "posición"; // Cambiado a LB_Pos7
+			LB_NameDoc7->Text = "nombre de documento"; // Cambiado a LB_NameDoc7
+			// Detén el temporizador si está en marcha
+			Timer7->Stop(); // Cambiado a Timer7
+			// Elimina todos los manejadores de eventos Tick
+			Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick); // Cambiado a Timer7 y timer7_Tick
+		}
+	}
+	private: System::Void timer8_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(8); // Cambiado a posición 8
+
+		tiempo8--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo8 && tiempo8 <= 0) {
+			LB_Time8->Text = "Listo para recoger"; // Cambiado a LB_Time8
+		}
+		else if (0 < tiempo8) {
+			LB_Time8->Text = (tiempo8).ToString(); // Cambiado a LB_Time8
+			LB_Pos8->Text = "8"; // Cambiado a LB_Pos8
+			LB_NameDoc8->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc8
+		}
+		else {
+			LB_Time8->Text = "tiempo"; // Cambiado a LB_Time8
+			LB_Pos8->Text = "posición"; // Cambiado a LB_Pos8
+			LB_NameDoc8->Text = "nombre de documento"; // Cambiado a LB_NameDoc8
+			// Detén el temporizador si está en marcha
+			Timer8->Stop(); // Cambiado a Timer8
+			// Elimina todos los manejadores de eventos Tick
+			Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick); // Cambiado a Timer8 y timer8_Tick
+		}
+	}
+	private: System::Void timer9_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(9); // Cambiado a posición 9
+
+		tiempo9--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo9 && tiempo9 <= 0) {
+			LB_Time9->Text = "Listo para recoger"; // Cambiado a LB_Time9
+		}
+		else if (0 < tiempo9) {
+			LB_Time9->Text = (tiempo9).ToString(); // Cambiado a LB_Time9
+			LB_Pos9->Text = "9"; // Cambiado a LB_Pos9
+			LB_NameDoc9->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc9
+		}
+		else {
+			LB_Time9->Text = "tiempo"; // Cambiado a LB_Time9
+			LB_Pos9->Text = "posición"; // Cambiado a LB_Pos9
+			LB_NameDoc9->Text = "nombre de documento"; // Cambiado a LB_NameDoc9
+			// Detén el temporizador si está en marcha
+			Timer9->Stop(); // Cambiado a Timer9
+			// Elimina todos los manejadores de eventos Tick
+			Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick); // Cambiado a Timer9 y timer9_Tick
+		}
+	}
+	private: System::Void timer10_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(10); // Cambiado a posición 10
+		
+		tiempo10--;
+
+		// Actualizar el texto del Label con el tiempo restante
+		if (-3 <= tiempo10 && tiempo10 <= 0) {
+			LB_Time10->Text = "Listo para recoger"; // Cambiado a LB_Time10
+		}
+		else if (0 < tiempo10) {
+			LB_Time10->Text = (tiempo10).ToString(); // Cambiado a LB_Time10
+			LB_Pos10->Text = "10"; // Cambiado a LB_Pos10
+			LB_NameDoc10->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc10
+		}
+		else {
+			LB_Time10->Text = "tiempo"; // Cambiado a LB_Time10
+			LB_Pos10->Text = "posición"; // Cambiado a LB_Pos10
+			LB_NameDoc10->Text = "nombre de documento"; // Cambiado a LB_NameDoc10
+			// Detén el temporizador si está en marcha
+			Timer10->Stop(); // Cambiado a Timer10
+			// Elimina todos los manejadores de eventos Tick
+			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick); // Cambiado a Timer10 y timer10_Tick
 		}
 	}
 };
