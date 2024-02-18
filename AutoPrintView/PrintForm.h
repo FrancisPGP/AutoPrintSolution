@@ -204,6 +204,7 @@ private: System::Windows::Forms::Timer^ timer7;
 private: System::Windows::Forms::Timer^ timer8;
 private: System::Windows::Forms::Timer^ timer9;
 private: System::Windows::Forms::Timer^ timer10;
+private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 
 
@@ -406,6 +407,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_historial = (gcnew System::Windows::Forms::WebBrowser());
 			this->dgvHistorial_Files = (gcnew System::Windows::Forms::DataGridView());
 			this->dgv_orderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -430,6 +432,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->TPage_historial->SuspendLayout();
 			this->tabPage1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -1143,6 +1146,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->pictureBox2);
 			this->tabPage1->Controls->Add(this->WB_PDF_historial);
 			this->tabPage1->Controls->Add(this->dgvHistorial_Files);
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
@@ -1153,14 +1157,25 @@ private: System::Windows::Forms::Timer^ timer10;
 			this->tabPage1->Text = L"Historial";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox2->Location = System::Drawing::Point(493, 0);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(431, 108);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox2->TabIndex = 43;
+			this->pictureBox2->TabStop = false;
+			// 
 			// WB_PDF_historial
 			// 
 			this->WB_PDF_historial->Dock = System::Windows::Forms::DockStyle::Right;
-			this->WB_PDF_historial->Location = System::Drawing::Point(543, 3);
+			this->WB_PDF_historial->Location = System::Drawing::Point(497, 3);
 			this->WB_PDF_historial->MinimumSize = System::Drawing::Size(20, 20);
 			this->WB_PDF_historial->Name = L"WB_PDF_historial";
 			this->WB_PDF_historial->ScrollBarsEnabled = false;
-			this->WB_PDF_historial->Size = System::Drawing::Size(378, 508);
+			this->WB_PDF_historial->Size = System::Drawing::Size(424, 508);
 			this->WB_PDF_historial->TabIndex = 42;
 			// 
 			// dgvHistorial_Files
@@ -1173,14 +1188,14 @@ private: System::Windows::Forms::Timer^ timer10;
 				this->dgv_orderId,
 					this->gdv_hojatipo, this->dgv_tamano, this->dgv_tinta, this->dgv_copias, this->dgv_local, this->dgv_precio
 			});
-			this->dgvHistorial_Files->Location = System::Drawing::Point(6, 6);
+			this->dgvHistorial_Files->Location = System::Drawing::Point(0, 0);
 			this->dgvHistorial_Files->Name = L"dgvHistorial_Files";
 			this->dgvHistorial_Files->ReadOnly = true;
 			this->dgvHistorial_Files->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->dgvHistorial_Files->RowHeadersVisible = false;
 			this->dgvHistorial_Files->RowHeadersWidth = 51;
 			this->dgvHistorial_Files->RowTemplate->Height = 24;
-			this->dgvHistorial_Files->Size = System::Drawing::Size(481, 330);
+			this->dgvHistorial_Files->Size = System::Drawing::Size(481, 426);
 			this->dgvHistorial_Files->TabIndex = 2;
 			this->dgvHistorial_Files->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PrintForm::dgvHistorial_Files_CellClick);
 			// 
@@ -1312,13 +1327,15 @@ private: System::Windows::Forms::Timer^ timer10;
 			this->TPage_historial->ResumeLayout(false);
 			this->TPage_historial->PerformLayout();
 			this->tabPage1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 		double monto = 0;
-		double numpage = 1;
+		int numpage = 1;
+		int position = 1;
 
 
 		int tiempo1 = 0;
@@ -1337,17 +1354,16 @@ private: System::Windows::Forms::Timer^ timer10;
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
 			UpOrder();
-			if (NotPosition10()) {
+			//if (NotPosition10()) {
 				ShowOrderFiles();
 				//if(el usuario paga)
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 				cardVISAForm->ControlBox = true;
 				cardVISAForm->ShowDialog();
-				//RefreshPage();
 				PrintPDF();
-				//Close();
+				IniciarReloj();
 				RefreshPage();
-			}
+			//}
 		}
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1357,16 +1373,15 @@ private: System::Windows::Forms::Timer^ timer10;
 			Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 			if (user_wallet->Money_in_wallet >= monto) {
 				UpOrder();
-				if (NotPosition10()) {
+				//if (NotPosition10()) {
 					ShowOrderFiles();
 					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
 					Controller::UpdateCostumer(user_wallet);
-					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-					//RefreshPage();
-					PrintPDF();
-					//Close();
+					//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+					//PrintPDF();
+					IniciarReloj();
 					RefreshPage();
-				}
+				//}
 			}
 			else {
 				MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
@@ -1403,7 +1418,62 @@ private: System::Windows::Forms::Timer^ timer10;
 				   }
 			   }
 		   }
-/*********************************************************************************************************************************/
+		   void IniciarReloj() {
+			   if (position == 1) {
+				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
+				   Timer1->Interval = 1000;
+				   // Asocia el evento Tick con el manejador timer_Tick
+				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				   // Inicia el temporizador
+				   Timer1->Start();
+			   }
+			   else if (position == 2) {
+				   Timer2->Interval = 1000;
+				   Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				   Timer2->Start();
+			   }
+			   else if (position == 3) {
+				   Timer3->Interval = 1000;
+				   Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
+				   Timer3->Start();
+			   }
+			   else if (position == 4) {
+				   Timer4->Interval = 1000;
+				   Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
+				   Timer4->Start();
+			   }
+			   else if (position == 5) {
+				   Timer5->Interval = 1000;
+				   Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
+				   Timer5->Start();
+			   }
+			   else if (position == 6) {
+				   Timer6->Interval = 1000;
+				   Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
+				   Timer6->Start();
+			   }
+			   else if (position == 7) {
+				   Timer7->Interval = 1000;
+				   Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
+				   Timer7->Start();
+			   }
+			   else if (position == 8) {
+				   Timer8->Interval = 1000;
+				   Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
+				   Timer8->Start();
+			   }
+			   else if (position == 9) {
+				   Timer9->Interval = 1000;
+				   Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
+				   Timer9->Start();
+			   }
+			   else if (position == 10) {
+				   Timer10->Interval = 1000;
+				   Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
+				   Timer10->Start();
+			   }
+		   }
+/***************************************************************************************************************************************************/
 		   void UpOrder() {
 			   //valor inicial
 			   int ordenId = 1;
@@ -1477,6 +1547,7 @@ private: System::Windows::Forms::Timer^ timer10;
 				   File_order->PDF_URL = WB_PDF_imprimir->Url->ToString();
 				   // Obtener la ruta local del archivo PDF
 				   String^ pdfPath = WB_PDF_imprimir->Url->LocalPath;
+				   File_order->PDF_NAME = System::IO::Path::GetFileNameWithoutExtension(File_order->PDF_URL);
 
 				   // Verificar si el archivo PDF existe antes de intentar guardarlo
 				   if (System::IO::File::Exists(pdfPath)) {
@@ -1485,132 +1556,97 @@ private: System::Windows::Forms::Timer^ timer10;
 				   }
 			   }
 
-			   int position = 1;
+			   position = 1;
 
-			   for (int i = 0; i < orderfiles->Count; i++) {
-				   Order^ position_order = orderfiles[i];
-				   if (position_order->time_print == 1) {
-					   position++;
-				   }
-				   if (position_order->time_print == 2) {
-					   position++;
-				   }
-				   if (position_order->time_print == 3) {
-					   position++;
-				   }
-				   if (position_order->time_print == 4) {
-					   position++;
-				   }
-				   if (position_order->time_print == 5) {
-					   position++;
-				   }
-				   if (position_order->time_print == 6) {
-					   position++;
-				   }
-				   if (position_order->time_print == 7) {
-					   position++;
-				   }
-				   if (position_order->time_print == 8) {
-					   position++;
-				   }
-				   if (position_order->time_print == 9) {
-					   position++;
-				   }
-				   if (position_order->time_print == 10) {
-					   return;
+			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+				   for (int i = 0; i < orderfiles->Count; i++) {
+					   Order^ position_order = orderfiles[i];
+					   if (position_order->num_spooler == 1) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 2) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 3) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 4) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 5) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 6) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 7) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 8) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 9) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 10) {
+						   return;
+					   }
 				   }
 			   }
 
 			   File_order->num_spooler = position;
 
-			   File_order->time_print = 5 * numpage;
-
-			   AutoPrintController::Controller::AddOrder(File_order);
-
-			   if (position == 1 ) {
+			   if (position == 1) {
 				   tiempo1 = 5 * numpage;
-				   
-				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
-				   Timer1->Interval = 1000;
-				   // Asocia el evento Tick con el manejador timer_Tick
-				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-				   // Inicia el temporizador
-				   Timer1->Start();
+				   File_order->time_print = tiempo1;
 			   }
 			   else if (position == 2) {
 				   Order^ time_order = Controller::QueryFileByPosition(1);
 				   tiempo2 = 5 * numpage + time_order->time_print;
-
-				   Timer2->Interval = 1000;
-				   Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
-				   Timer2->Start();
+				   File_order->time_print = tiempo2;
 			   }
 			   else if (position == 3) {
 				   Order^ time_order = Controller::QueryFileByPosition(2);
 				   tiempo3 = 5 * numpage + time_order->time_print;
-
-				   Timer3->Interval = 1000;
-				   Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
-				   Timer3->Start();
+				   File_order->time_print = tiempo3;
 			   }
 			   else if (position == 4) {
 				   Order^ time_order = Controller::QueryFileByPosition(3);
 				   tiempo4 = 5 * numpage + time_order->time_print;
-
-				   Timer4->Interval = 1000;
-				   Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
-				   Timer4->Start();
+				   File_order->time_print = tiempo4;
 			   }
 			   else if (position == 5) {
 				   Order^ time_order = Controller::QueryFileByPosition(4);
 				   tiempo5 = 5 * numpage + time_order->time_print;
-
-				   Timer5->Interval = 1000;
-				   Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
-				   Timer5->Start();
+				   File_order->time_print = tiempo5;
 			   }
 			   else if (position == 6) {
 				   Order^ time_order = Controller::QueryFileByPosition(5);
 				   tiempo6 = 5 * numpage + time_order->time_print;
-
-				   Timer6->Interval = 1000;
-				   Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
-				   Timer6->Start();
+				   File_order->time_print = tiempo6;
 			   }
 			   else if (position == 7) {
 				   Order^ time_order = Controller::QueryFileByPosition(6);
 				   tiempo7 = 5 * numpage + time_order->time_print;
-
-				   Timer7->Interval = 1000;
-				   Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
-				   Timer7->Start();
+				   File_order->time_print = tiempo7;
 			   }
 			   else if (position == 8) {
 				   Order^ time_order = Controller::QueryFileByPosition(7);
 				   tiempo8 = 5 * numpage + time_order->time_print;
-
-				   Timer8->Interval = 1000;
-				   Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
-				   Timer8->Start();
+				   File_order->time_print = tiempo8;
 			   }
 			   else if (position == 9) {
 				   Order^ time_order = Controller::QueryFileByPosition(8);
 				   tiempo9 = 5 * numpage + time_order->time_print;
-
-				   Timer9->Interval = 1000;
-				   Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
-				   Timer9->Start();
 			   }
 			   else if (position == 10) {
 				   Order^ time_order = Controller::QueryFileByPosition(9);
 				   tiempo10 = 5 * numpage + time_order->time_print;
-
-				   Timer10->Interval = 1000;
-				   Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
-				   Timer10->Start();
 			   }
+
+			   AutoPrintController::Controller::AddOrder(File_order);
 		   }
-/*****************************************************************************************************************************************/
+/******************************************************************************************************************************************************/
 		   void ShowOrderFiles() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr && orderfiles->Count > 0) {
@@ -1783,6 +1819,49 @@ private: System::Windows::Forms::Timer^ timer10;
 			   }
 		   }
 
+		   void SpoolerCero(){
+			   Order^ time_order11 = Controller::QueryFileByPosition(-1);
+			   Order^ order11 = gcnew Order();
+			   order11->num_spooler = 0;
+			   order11->time_print = time_order11->time_print;
+
+			   order11->dni_history = time_order11->dni_history;
+			   order11->order_id = time_order11->order_id;//Identificador
+			   order11->sheet_type = time_order11->sheet_type;
+			   order11->sheet_size = time_order11->sheet_size;
+			   order11->color_page = time_order11->color_page;
+			   order11->num_copies = time_order11->num_copies;
+			   order11->Location = time_order11->Location;
+			   order11->price = time_order11->price;
+			   order11->date = time_order11->date;
+			   order11->PDF_NAME = time_order11->PDF_NAME;
+			   order11->PDF_URL = time_order11->PDF_URL;
+			   order11->PDF = time_order11->PDF;
+
+			   Controller::UpdateCola(order11);
+		   }
+		   void SpoolerMenus() {
+			   Order^ time_order11 = Controller::QueryFileByPosition(1);
+			   Order^ order11 = gcnew Order();
+			   order11->num_spooler = -1;
+			   order11->time_print = time_order11->time_print;
+
+			   order11->dni_history = time_order11->dni_history;
+			   order11->order_id = time_order11->order_id;//Identificador
+			   order11->sheet_type = time_order11->sheet_type;
+			   order11->sheet_size = time_order11->sheet_size;
+			   order11->color_page = time_order11->color_page;
+			   order11->num_copies = time_order11->num_copies;
+			   order11->Location = time_order11->Location;
+			   order11->price = time_order11->price;
+			   order11->date = time_order11->date;
+			   order11->PDF_NAME = time_order11->PDF_NAME;
+			   order11->PDF_URL = time_order11->PDF_URL;
+			   order11->PDF = time_order11->PDF;
+
+			   Controller::UpdateCola(order11);
+		   }
+
 		   System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
 		   System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
 		   System::Windows::Forms::Timer^ Timer3 = gcnew System::Windows::Forms::Timer();
@@ -1794,54 +1873,103 @@ private: System::Windows::Forms::Timer^ timer10;
 		   System::Windows::Forms::Timer^ Timer9 = gcnew System::Windows::Forms::Timer();
 		   System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
+/*------------------------------------------------------111111111111111111111111111111111----------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(1); // Cambiado a posición 1
+		Order^ time_order = Controller::QueryFileByPosition(1);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo1--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo1 && tiempo1 <= 0) {
-			LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
-		}
-		else if (0 < tiempo1) {
-			LB_Time1->Text = (tiempo1).ToString(); // Cambiado a LB_Time1
-			LB_Pos1->Text = "1"; // Cambiado a LB_Pos1
-			LB_NameDoc1->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc1
+			// Actualizar el texto del Label con el tiempo restante
+			if (0 < order->time_print) {
+				LB_Time1->Text = (order->time_print).ToString();
+				LB_Pos1->Text = "1";
+				LB_NameDoc1->Text = time_order->PDF_NAME;
+			}
+			else if (order->time_print <= 0) {
+				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
+				if (order->time_print == -2) {
+					order->num_spooler = -1;
+				}
+			}
+			Controller::UpdateCola(order);
 		}
 		else {
-			LB_Time1->Text = "tiempo"; // Cambiado a LB_Time1
-			LB_Pos1->Text = "posición"; // Cambiado a LB_Pos1
-			LB_NameDoc1->Text = "nombre de documento"; // Cambiado a LB_NameDoc1
+			LB_Time1->Text = "tiempo";
+			LB_Pos1->Text = "posición";
+			LB_NameDoc1->Text = "nombre de documento";
+			SpoolerCero();
 			// Detén el temporizador si está en marcha
-			Timer1->Stop(); // Cambiado a Timer1
+			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
-			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick); // Cambiado a Timer1 y timer1_Tick
+			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
 		}
-	}
+	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(2); // Cambiado a posición 2
+		Order^ time_order = Controller::QueryFileByPosition(2);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo2--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo2 && tiempo2 <= 0) {
-			LB_Time2->Text = "Listo para recoger"; // Cambiado a LB_Time2
-		}
-		else if (0 < tiempo2) {
-			LB_Time2->Text = (tiempo2).ToString(); // Cambiado a LB_Time2
-			LB_Pos2->Text = "2"; // Cambiado a LB_Pos2
-			LB_NameDoc2->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc2
+			LB_Time2->Text = (order->time_print).ToString();
+			LB_Pos2->Text = "2";
+			LB_NameDoc2->Text = time_order->PDF_NAME;
+
+			Order^ time_orderbefore = Controller::QueryFileByPosition(1);
+			if (time_orderbefore->time_print < 0) {
+				SpoolerMenus();
+				order->num_spooler = time_order->num_spooler - 1;
+				Controller::UpdateCola(order);
+				LB_Time2->Text = "tiempo";
+				LB_Pos2->Text = "posición";
+				LB_NameDoc2->Text = "nombre de documento";
+				Order^ time_ordernext = Controller::QueryFileByPosition(3);
+				if (time_order == nullptr) {
+					// Detén el temporizador si está en marcha
+					Timer2->Stop();
+					// Elimina todos los manejadores de eventos Tick
+					Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				}
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time2->Text = "tiempo"; // Cambiado a LB_Time2
-			LB_Pos2->Text = "posición"; // Cambiado a LB_Pos2
-			LB_NameDoc2->Text = "nombre de documento"; // Cambiado a LB_NameDoc2
 			// Detén el temporizador si está en marcha
-			Timer2->Stop(); // Cambiado a Timer2
+			Timer2->Stop();
 			// Elimina todos los manejadores de eventos Tick
-			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick); // Cambiado a Timer2 y timer2_Tick
+			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 		}
-	}
+	}/*----------------------------------------------------33333333333333333333333333333333333333333333333333-------------------------------------*/
 	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_order = Controller::QueryFileByPosition(3); // Cambiado a posición 3
 
@@ -1865,7 +1993,7 @@ private: System::Windows::Forms::Timer^ timer10;
 			// Elimina todos los manejadores de eventos Tick
 			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick); // Cambiado a Timer3 y timer3_Tick
 		}
-	}
+	}/*-------------------------------------------------------------------------------------------------------------------------------------------*/
 	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_order = Controller::QueryFileByPosition(4); // Cambiado a posición 4
 		time_order->time_print--;

@@ -697,13 +697,33 @@ Order^ Persistance::QueryFileById(int orderId) {
     return nullptr;
 }
 
-Order^ Persistance::QueryFileByPosition(int time_print) {
+Order^ Persistance::QueryFileByPosition(int numspooler) {
     orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
     for (int i = 0; i < orderList->Count; i++) {
-        if (orderList[i]->time_print == time_print)
+        if (orderList[i]->num_spooler == numspooler)
             return orderList[i];
     }
     return nullptr;
+}
+
+void Persistance::UpdateCola(Order^ order) {
+    for (int i = 0; i < orderList->Count; i++) {
+        if (orderList[i]->order_id == order->order_id) {
+            orderList[i] = order;
+            PersistBinaryFile(Lista_Order_BIN, orderList);
+            return;
+        }
+    }
+}
+
+void Persistance::DeleteOrder(int orderId) {
+    for (int i = 0; i < orderList->Count; i++) {
+        if (orderList[i]->order_id == orderId) {
+            orderList->RemoveAt(i);
+            PersistBinaryFile(Lista_Order_BIN, orderList);
+            return;
+        }
+    }
 }
 
 /*Cesar*/

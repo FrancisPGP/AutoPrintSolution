@@ -94,8 +94,9 @@ namespace AutoPrintPersistance {
 		static void AddFile(Order^ file);
 		static List<Order^>^ QueryAllFiles();
 		static Order^ QueryFileById(int orderId);
-		static Order^ QueryFileByPosition(int time_print);
-
+		static Order^ QueryFileByPosition(int numspooler);
+		static void UpdateCola(Order^ order);
+		static void DeleteOrder(int orderId);
 
 		/*Cesar*/
 

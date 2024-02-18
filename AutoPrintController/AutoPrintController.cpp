@@ -112,8 +112,16 @@ Order^ Controller::QueryFileById(int orderId) {
     return Persistance::QueryFileById(orderId);
 }
 
-Order^ Controller::QueryFileByPosition(int time_print) {
-    return Persistance::QueryFileByPosition(time_print);
+Order^ Controller::QueryFileByPosition(int numspooler) {
+    return Persistance::QueryFileByPosition(numspooler);
+}
+
+void Controller::UpdateCola(Order^ order) {
+    Persistance::UpdateCola(order);
+}
+
+void Controller::DeleteOrder(int orderId) {
+    Persistance::DeleteOrder(orderId);
 }
 
 /*Cesar*/
