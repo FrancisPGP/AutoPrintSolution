@@ -24,13 +24,15 @@ namespace AutoPrintModel {
         property String^ date;
 
         property String^ Location;
+        property String^ PDF_NAME;
         property String^ PDF_URL;
         property array<Byte>^ PDF;
-        property int time_print;
+
+        property int time_print;// tiempo en cola
         property int dni_history;
 
         Order (){}
-        Order(int dni, int id, String^ color, String^ sheet_type, String^ sheet_size, int num_copies, String^ location, double price, String^ date, int num_spooler, String^ Location, String^ PDF_URL, array<Byte>^ PDF, int time_print) {
+        Order(int dni, int id, String^ color, String^ sheet_type, String^ sheet_size, int num_copies, String^ location, double price, String^ date, int num_spooler, String^ Location, String^ PDF_NAME, String^ PDF_URL, array<Byte>^ PDF, int time_print) {
             this->dni_history = dni;
             this->order_id = id;
             this->color_page = color;
@@ -42,6 +44,7 @@ namespace AutoPrintModel {
             this->date = date;
             this->num_spooler = num_spooler;
             this->Location = Location;
+            this->PDF_NAME = PDF_NAME;
             this->PDF_URL = PDF_URL;
             this->PDF = PDF;
             this->time_print = time_print;
