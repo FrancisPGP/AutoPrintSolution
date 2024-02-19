@@ -383,7 +383,8 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			}
 			Controller::UpdateCostumer(currentUser);
 			FillTextBoxes(currentUser);
-
+			MessageBox::Show("Perfil actualizado");
+			Close();
 
 		}
 		if (actEmp != nullptr) {
@@ -392,12 +393,12 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			currentUser->Phone_number = txtNUMP->Text;
 			currentUser->Password = txtConP->Text;
 
-			currentUser->Name = actUser->Name;
-			currentUser->LastName = actUser->LastName;
-			currentUser->Dni = actUser->Dni;
-			currentUser->Birthdate = actUser->Birthdate;
-			currentUser->Photo = actUser->Photo;
-			currentUser->Gender = actUser->Gender;
+			currentUser->Name = actEmp->Name;
+			currentUser->LastName = actEmp->LastName;
+			currentUser->Dni = actEmp->Dni;
+			currentUser->Birthdate = actEmp->Birthdate;
+			currentUser->Photo = actEmp->Photo;
+			currentUser->Gender = actEmp->Gender;
 
 			if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
 				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
@@ -406,6 +407,8 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			}
 			Controller::UpdateEmployee(currentUser);
 			FillTextBoxes(currentUser);
+			MessageBox::Show("Perfil actualizado");
+			Close();
 
 
 		}
@@ -415,12 +418,12 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			currentUser->Phone_number = txtNUMP->Text;
 			currentUser->Password = txtConP->Text;
 
-			currentUser->Name = actUser->Name;
-			currentUser->LastName = actUser->LastName;
-			currentUser->Dni = actUser->Dni;
-			currentUser->Birthdate = actUser->Birthdate;
-			currentUser->Photo = actUser->Photo;
-			currentUser->Gender = actUser->Gender;
+			currentUser->Name = actBos->Name;
+			currentUser->LastName = actBos->LastName;
+			currentUser->Dni = actBos->Dni;
+			currentUser->Birthdate = actBos->Birthdate;
+			currentUser->Photo = actBos->Photo;
+			currentUser->Gender = actBos->Gender;
 
 			if (pbPhoto != nullptr && pbPhoto->Image != nullptr) {
 				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
@@ -429,6 +432,9 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			}
 			Controller::UpdateBoss(currentUser);
 			FillTextBoxes(currentUser);
+			MessageBox::Show("Perfil actualizado");
+
+			Close();
 
 
 		}

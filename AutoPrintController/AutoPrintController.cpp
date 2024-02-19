@@ -43,7 +43,7 @@ void AutoPrintController::Controller::UpdateEmployee(Employee^ user) {
 }
 
 void AutoPrintController::Controller::UpdateBoss(Boss^ user) {
-    throw gcnew System::NotImplementedException();
+    return ::Persistance::UpdateBoss(user);
 }
 
 void AutoPrintController::Controller::DeleteUser(int userDNI) {
