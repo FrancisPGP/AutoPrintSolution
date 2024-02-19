@@ -17,13 +17,13 @@ namespace AutoPrintView {
 	public ref class BossGraphicsForm : public System::Windows::Forms::Form
 	{
 	public:
-		int l = 0;
-		int m = 0;
-		int mi = 0;
-		int j = 0;
-		int v = 0;
-		int s = 0;
-		int d = 0;
+		double l = 0;
+		double m = 0;
+		double mi = 0;
+	    double j = 0;
+		double v = 0;
+		double s = 0;
+		double d = 0;
 
 		int b=0;
 		int c = 0;
@@ -63,12 +63,12 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chartIgresos = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->ChartComparacion = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartIgresos))->BeginInit();
@@ -77,48 +77,60 @@ namespace AutoPrintView {
 			// 
 			// chartIgresos
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chartIgresos->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chartIgresos->Legends->Add(legend3);
-			this->chartIgresos->Location = System::Drawing::Point(57, 75);
-			this->chartIgresos->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->chartIgresos->BorderlineColor = System::Drawing::Color::YellowGreen;
+			this->chartIgresos->BorderlineDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::Solid;
+			this->chartIgresos->BorderlineWidth = 3;
+			chartArea1->Name = L"ChartArea1";
+			this->chartIgresos->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chartIgresos->Legends->Add(legend1);
+			this->chartIgresos->Location = System::Drawing::Point(22, 61);
 			this->chartIgresos->Name = L"chartIgresos";
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"price";
-			this->chartIgresos->Series->Add(series3);
-			this->chartIgresos->Size = System::Drawing::Size(373, 246);
+			this->chartIgresos->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::SeaGreen;
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"price";
+			this->chartIgresos->Series->Add(series1);
+			this->chartIgresos->Size = System::Drawing::Size(280, 200);
 			this->chartIgresos->TabIndex = 0;
 			this->chartIgresos->Text = L"chart1";
 			// 
 			// ChartComparacion
 			// 
-			chartArea4->Name = L"ChartArea1";
-			this->ChartComparacion->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->ChartComparacion->Legends->Add(legend4);
-			this->ChartComparacion->Location = System::Drawing::Point(485, 75);
-			this->ChartComparacion->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->ChartComparacion->BorderlineColor = System::Drawing::Color::YellowGreen;
+			this->ChartComparacion->BorderlineDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::Solid;
+			this->ChartComparacion->BorderlineWidth = 3;
+			chartArea2->Name = L"ChartArea1";
+			this->ChartComparacion->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->ChartComparacion->Legends->Add(legend2);
+			this->ChartComparacion->Location = System::Drawing::Point(349, 61);
 			this->ChartComparacion->Name = L"ChartComparacion";
-			series4->ChartArea = L"ChartArea1";
-			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series4->Legend = L"Legend1";
-			series4->Name = L"color";
-			this->ChartComparacion->Series->Add(series4);
-			this->ChartComparacion->Size = System::Drawing::Size(373, 246);
+			this->ChartComparacion->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::SeaGreen;
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			series2->LabelBorderDashStyle = System::Windows::Forms::DataVisualization::Charting::ChartDashStyle::NotSet;
+			series2->LabelForeColor = System::Drawing::Color::Transparent;
+			series2->Legend = L"Legend1";
+			series2->MarkerBorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			series2->Name = L"color";
+			this->ChartComparacion->Series->Add(series2);
+			this->ChartComparacion->Size = System::Drawing::Size(280, 200);
 			this->ChartComparacion->TabIndex = 1;
 			this->ChartComparacion->Text = L"chart2";
 			this->ChartComparacion->Click += gcnew System::EventHandler(this, &BossGraphicsForm::ChartComparacion_Click);
 			// 
 			// BossGraphicsForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(875, 458);
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->ClientSize = System::Drawing::Size(656, 372);
 			this->Controls->Add(this->ChartComparacion);
 			this->Controls->Add(this->chartIgresos);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"BossGraphicsForm";
 			this->Text = L"Estadísticas";
 			this->Load += gcnew System::EventHandler(this, &BossGraphicsForm::BossGraphicsForm_Load);
