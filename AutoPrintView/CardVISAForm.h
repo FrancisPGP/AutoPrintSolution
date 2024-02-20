@@ -1,4 +1,5 @@
 #pragma once
+#include"LoginForm.h"
 
 namespace AutoPrintView {
 
@@ -11,6 +12,11 @@ namespace AutoPrintView {
 
 	using namespace AutoPrintModel;
 	using namespace AutoPrintController;
+	using namespace System::Collections::Generic;
+
+
+	using namespace System::Web;
+	using namespace System::Net::Mail;
 
 	/// <summary>
 	/// Resumen de CardVISAForm
@@ -349,7 +355,9 @@ namespace AutoPrintView {
 		}
 		else {
 			MessageBox::Show("Operación exitosa. El documento ya se encuentra en fila de impresión");
+			email_tarjeta();
 			Close();
+			
 		}
 	}
 
@@ -400,6 +408,34 @@ namespace AutoPrintView {
 		checkFill = 4;
 		FillOut();
 		checkFill = 0;
+		
 	}
-	};
+	public:
+			void email_tarjeta() {
+				int dniP = Dni_Ahora;
+				String^ dnic = "" + dniP;
+				double pago;
+				
+				List<Order^>^ orders = Controller::QueryAllFiles();
+				for (int i = 0; i < orders->Count; i++) {
+					if (orders[i]->dni_history == dniP&& i==((orders->Count)-1)) {
+						pago = orders[i]->price;
+					}
+				}
+					String^ pagoc = "" + pago;
+
+				Customer^ currentUser = Controller::QueryCustomerByDNI(dniP);
+				String^ correo = currentUser->Email;
+						  MailMessage^ mail = gcnew MailMessage("AutoprintConnect@outlook.com", correo,
+							  "Recibo Electronico de Impresion", 
+							  "Constancia de Pago\n Se ha registrado con exito el pago de su impresion\n DNI:"+dnic+"\n Pago total:"+pagoc+"\n AUTOPRINT CONNECT");
+						  SmtpClient^ client = gcnew SmtpClient("smtp-mail.outlook.com");
+						  client->Port = 587;
+						  client->Credentials = gcnew System::Net::NetworkCredential("AutoprintConnect@outlook.com", "Autoprint123");
+						  client->EnableSsl = true;
+						  client->Send(mail);
+					
+		  }
+};
+
 }

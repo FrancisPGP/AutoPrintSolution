@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "LoginForm.h"
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -25,6 +26,9 @@ namespace AutoPrintView {
 
 	using namespace System::Diagnostics;
 	using namespace System::Threading;
+
+	using namespace System::Web;
+	using namespace System::Net::Mail;
 
 	//Agregamos variable universal para tener el monto a pagar en otra pestaña
 	static double Total_a_apagar;
@@ -1369,6 +1373,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
 			double monto = Convert::ToDouble(MontoPago->Text);
+			Total_a_apagar = monto;
 			int dni_wallet = Dni_Ahora;
 			Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 			if (user_wallet->Money_in_wallet >= monto) {
@@ -1381,6 +1386,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 					//PrintPDF();
 					IniciarReloj();
 					RefreshPage();
+					email();
+
 				//}
 			}
 			else {
@@ -1473,6 +1480,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				   Timer10->Start();
 			   }
 		   }
+
+
 /***************************************************************************************************************************************************/
 		   void UpOrder() {
 			   //valor inicial
@@ -2161,5 +2170,28 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick); // Cambiado a Timer10 y timer10_Tick
 		}
 	}
+		  public:
+           void email(){
+			   int dniP = Dni_Ahora;
+			   String^ dnic = "" + dniP;
+			   double pago = Total_a_apagar;
+			   String^ pagoc = "" + pago;
+
+			   Customer^ currentUser = Controller::QueryCustomerByDNI(dniP);
+			   String^ correo = currentUser->Email;
+
+			   MailMessage^ mail = gcnew MailMessage("AutoprintConnect@outlook.com", correo,
+				   "Recibo Electronico de Impresion",
+				   "Constancia de Pago\n Se ha registrado con exito el pago de su impresion\n DNI:" + dnic + "\n Pago total:" + pagoc + "\n AUTOPRINT CONNECT");
+			   
+			   SmtpClient^ client =gcnew SmtpClient("smtp-mail.outlook.com");
+			   client->Port = 587;
+			   client->Credentials = gcnew System::Net::NetworkCredential("AutoprintConnect@outlook.com", "Autoprint123");
+			   client->EnableSsl = true;
+			   client->Send(mail);
+		   
+		   }
+
+
 };
 }

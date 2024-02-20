@@ -143,28 +143,30 @@ namespace AutoPrintView {
 	private: System::Void BossGraphicsForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		List<Order^>^ orders=AutoPrintController::Controller::QueryAllFiles();
 		for (int i = 0; i < orders->Count; i++) {
-			if (orders[i]->date == "Lunes") {
-				l = l + orders[i]->price;
-			}
-			else
-			if (orders[i]->date == "Martes") {
-					m = m + orders[i]->price;
-			}
-			else
-			if (orders[i]->date == "Miercoles") {
-						mi = mi + orders[i]->price;
-			}
-		   else if(orders[i]->date == "Jueves") {
-			   j = j + orders[i]->price;
-		   }
-		   else if (orders[i]->date == "Viernes") {
-				v = v + orders[i]->price;
-			}
-		   else if (orders[i]->date == "Sabado") {
-				s = s + orders[i]->price;
-			}
-		   else if (orders[i]->date == "Domingo") {
-				d = d + orders[i]->price;
+			if (orders[i] != nullptr) {
+				if (orders[i]->date == "Lunes") {
+					l = l + orders[i]->price;
+				}
+				else
+					if (orders[i]->date == "Martes") {
+						m = m + orders[i]->price;
+					}
+					else
+						if (orders[i]->date == "Miercoles") {
+							mi = mi + orders[i]->price;
+						}
+						else if (orders[i]->date == "Jueves") {
+							j = j + orders[i]->price;
+						}
+						else if (orders[i]->date == "Viernes") {
+							v = v + orders[i]->price;
+						}
+						else if (orders[i]->date == "Sabado") {
+							s = s + orders[i]->price;
+						}
+						else if (orders[i]->date == "Domingo") {
+							d = d + orders[i]->price;
+						}
 			}
 		}
 		chartIgresos->Series["price"]->Points->AddXY("Lunes",l);
