@@ -755,9 +755,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc10->Location = System::Drawing::Point(182, 439);
 			this->LB_NameDoc10->Name = L"LB_NameDoc10";
-			this->LB_NameDoc10->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc10->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc10->TabIndex = 51;
-			this->LB_NameDoc10->Text = L"nombre de documento";
 			this->LB_NameDoc10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc9
@@ -767,9 +766,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc9->Location = System::Drawing::Point(182, 399);
 			this->LB_NameDoc9->Name = L"LB_NameDoc9";
-			this->LB_NameDoc9->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc9->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc9->TabIndex = 50;
-			this->LB_NameDoc9->Text = L"nombre de documento";
 			this->LB_NameDoc9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos10
@@ -779,9 +777,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos10->Location = System::Drawing::Point(31, 439);
 			this->LB_Pos10->Name = L"LB_Pos10";
-			this->LB_Pos10->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos10->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos10->TabIndex = 49;
-			this->LB_Pos10->Text = L"posición";
 			this->LB_Pos10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos9
@@ -791,9 +788,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos9->Location = System::Drawing::Point(31, 399);
 			this->LB_Pos9->Name = L"LB_Pos9";
-			this->LB_Pos9->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos9->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos9->TabIndex = 48;
-			this->LB_Pos9->Text = L"posición";
 			this->LB_Pos9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time10
@@ -803,9 +799,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time10->Location = System::Drawing::Point(636, 439);
 			this->LB_Time10->Name = L"LB_Time10";
-			this->LB_Time10->Size = System::Drawing::Size(87, 29);
+			this->LB_Time10->Size = System::Drawing::Size(0, 29);
 			this->LB_Time10->TabIndex = 47;
-			this->LB_Time10->Text = L"tiempo";
 			this->LB_Time10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time9
@@ -815,9 +810,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time9->Location = System::Drawing::Point(636, 399);
 			this->LB_Time9->Name = L"LB_Time9";
-			this->LB_Time9->Size = System::Drawing::Size(87, 29);
+			this->LB_Time9->Size = System::Drawing::Size(0, 29);
 			this->LB_Time9->TabIndex = 46;
-			this->LB_Time9->Text = L"tiempo";
 			this->LB_Time9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time8
@@ -827,9 +821,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time8->Location = System::Drawing::Point(636, 359);
 			this->LB_Time8->Name = L"LB_Time8";
-			this->LB_Time8->Size = System::Drawing::Size(87, 29);
+			this->LB_Time8->Size = System::Drawing::Size(0, 29);
 			this->LB_Time8->TabIndex = 45;
-			this->LB_Time8->Text = L"tiempo";
 			this->LB_Time8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time7
@@ -839,9 +832,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time7->Location = System::Drawing::Point(636, 319);
 			this->LB_Time7->Name = L"LB_Time7";
-			this->LB_Time7->Size = System::Drawing::Size(87, 29);
+			this->LB_Time7->Size = System::Drawing::Size(0, 29);
 			this->LB_Time7->TabIndex = 44;
-			this->LB_Time7->Text = L"tiempo";
 			this->LB_Time7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time6
@@ -851,9 +843,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time6->Location = System::Drawing::Point(636, 279);
 			this->LB_Time6->Name = L"LB_Time6";
-			this->LB_Time6->Size = System::Drawing::Size(87, 29);
+			this->LB_Time6->Size = System::Drawing::Size(0, 29);
 			this->LB_Time6->TabIndex = 41;
-			this->LB_Time6->Text = L"tiempo";
 			this->LB_Time6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time5
@@ -863,9 +854,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time5->Location = System::Drawing::Point(636, 239);
 			this->LB_Time5->Name = L"LB_Time5";
-			this->LB_Time5->Size = System::Drawing::Size(87, 29);
+			this->LB_Time5->Size = System::Drawing::Size(0, 29);
 			this->LB_Time5->TabIndex = 40;
-			this->LB_Time5->Text = L"tiempo";
 			this->LB_Time5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos8
@@ -875,9 +865,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos8->Location = System::Drawing::Point(31, 359);
 			this->LB_Pos8->Name = L"LB_Pos8";
-			this->LB_Pos8->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos8->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos8->TabIndex = 39;
-			this->LB_Pos8->Text = L"posición";
 			this->LB_Pos8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos7
@@ -887,9 +876,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos7->Location = System::Drawing::Point(31, 319);
 			this->LB_Pos7->Name = L"LB_Pos7";
-			this->LB_Pos7->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos7->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos7->TabIndex = 38;
-			this->LB_Pos7->Text = L"posición";
 			this->LB_Pos7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc8
@@ -899,9 +887,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc8->Location = System::Drawing::Point(182, 359);
 			this->LB_NameDoc8->Name = L"LB_NameDoc8";
-			this->LB_NameDoc8->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc8->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc8->TabIndex = 37;
-			this->LB_NameDoc8->Text = L"nombre de documento";
 			this->LB_NameDoc8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc7
@@ -911,9 +898,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc7->Location = System::Drawing::Point(182, 319);
 			this->LB_NameDoc7->Name = L"LB_NameDoc7";
-			this->LB_NameDoc7->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc7->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc7->TabIndex = 36;
-			this->LB_NameDoc7->Text = L"nombre de documento";
 			this->LB_NameDoc7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc6
@@ -923,9 +909,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc6->Location = System::Drawing::Point(182, 279);
 			this->LB_NameDoc6->Name = L"LB_NameDoc6";
-			this->LB_NameDoc6->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc6->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc6->TabIndex = 35;
-			this->LB_NameDoc6->Text = L"nombre de documento";
 			this->LB_NameDoc6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc5
@@ -935,9 +920,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc5->Location = System::Drawing::Point(182, 239);
 			this->LB_NameDoc5->Name = L"LB_NameDoc5";
-			this->LB_NameDoc5->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc5->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc5->TabIndex = 34;
-			this->LB_NameDoc5->Text = L"nombre de documento";
 			this->LB_NameDoc5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time4
@@ -947,9 +931,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time4->Location = System::Drawing::Point(636, 199);
 			this->LB_Time4->Name = L"LB_Time4";
-			this->LB_Time4->Size = System::Drawing::Size(87, 29);
+			this->LB_Time4->Size = System::Drawing::Size(0, 29);
 			this->LB_Time4->TabIndex = 33;
-			this->LB_Time4->Text = L"tiempo";
 			this->LB_Time4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time3
@@ -959,9 +942,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time3->Location = System::Drawing::Point(636, 159);
 			this->LB_Time3->Name = L"LB_Time3";
-			this->LB_Time3->Size = System::Drawing::Size(87, 29);
+			this->LB_Time3->Size = System::Drawing::Size(0, 29);
 			this->LB_Time3->TabIndex = 32;
-			this->LB_Time3->Text = L"tiempo";
 			this->LB_Time3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos6
@@ -971,9 +953,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos6->Location = System::Drawing::Point(31, 279);
 			this->LB_Pos6->Name = L"LB_Pos6";
-			this->LB_Pos6->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos6->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos6->TabIndex = 31;
-			this->LB_Pos6->Text = L"posición";
 			this->LB_Pos6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos5
@@ -983,9 +964,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos5->Location = System::Drawing::Point(31, 239);
 			this->LB_Pos5->Name = L"LB_Pos5";
-			this->LB_Pos5->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos5->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos5->TabIndex = 30;
-			this->LB_Pos5->Text = L"posición";
 			this->LB_Pos5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos4
@@ -995,9 +975,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos4->Location = System::Drawing::Point(31, 199);
 			this->LB_Pos4->Name = L"LB_Pos4";
-			this->LB_Pos4->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos4->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos4->TabIndex = 29;
-			this->LB_Pos4->Text = L"posición";
 			this->LB_Pos4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc4
@@ -1007,9 +986,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc4->Location = System::Drawing::Point(182, 199);
 			this->LB_NameDoc4->Name = L"LB_NameDoc4";
-			this->LB_NameDoc4->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc4->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc4->TabIndex = 28;
-			this->LB_NameDoc4->Text = L"nombre de documento";
 			this->LB_NameDoc4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc3
@@ -1019,9 +997,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc3->Location = System::Drawing::Point(182, 159);
 			this->LB_NameDoc3->Name = L"LB_NameDoc3";
-			this->LB_NameDoc3->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc3->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc3->TabIndex = 27;
-			this->LB_NameDoc3->Text = L"nombre de documento";
 			this->LB_NameDoc3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos3
@@ -1031,9 +1008,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos3->Location = System::Drawing::Point(31, 159);
 			this->LB_Pos3->Name = L"LB_Pos3";
-			this->LB_Pos3->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos3->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos3->TabIndex = 26;
-			this->LB_Pos3->Text = L"posición";
 			this->LB_Pos3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time2
@@ -1043,9 +1019,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time2->Location = System::Drawing::Point(636, 119);
 			this->LB_Time2->Name = L"LB_Time2";
-			this->LB_Time2->Size = System::Drawing::Size(87, 29);
+			this->LB_Time2->Size = System::Drawing::Size(0, 29);
 			this->LB_Time2->TabIndex = 25;
-			this->LB_Time2->Text = L"tiempo";
 			this->LB_Time2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc2
@@ -1055,9 +1030,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc2->Location = System::Drawing::Point(182, 119);
 			this->LB_NameDoc2->Name = L"LB_NameDoc2";
-			this->LB_NameDoc2->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc2->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc2->TabIndex = 24;
-			this->LB_NameDoc2->Text = L"nombre de documento";
 			this->LB_NameDoc2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos2
@@ -1067,9 +1041,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos2->Location = System::Drawing::Point(31, 119);
 			this->LB_Pos2->Name = L"LB_Pos2";
-			this->LB_Pos2->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos2->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos2->TabIndex = 23;
-			this->LB_Pos2->Text = L"posición";
 			this->LB_Pos2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time1
@@ -1079,9 +1052,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Time1->Location = System::Drawing::Point(636, 79);
 			this->LB_Time1->Name = L"LB_Time1";
-			this->LB_Time1->Size = System::Drawing::Size(87, 29);
+			this->LB_Time1->Size = System::Drawing::Size(0, 29);
 			this->LB_Time1->TabIndex = 22;
-			this->LB_Time1->Text = L"tiempo";
 			this->LB_Time1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc1
@@ -1091,9 +1063,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc1->Location = System::Drawing::Point(182, 79);
 			this->LB_NameDoc1->Name = L"LB_NameDoc1";
-			this->LB_NameDoc1->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc1->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc1->TabIndex = 21;
-			this->LB_NameDoc1->Text = L"nombre de documento";
 			this->LB_NameDoc1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos1
@@ -1103,9 +1074,8 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos1->Location = System::Drawing::Point(31, 79);
 			this->LB_Pos1->Name = L"LB_Pos1";
-			this->LB_Pos1->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos1->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos1->TabIndex = 20;
-			this->LB_Pos1->Text = L"posición";
 			this->LB_Pos1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label11
@@ -1840,7 +1810,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 			   Controller::UpdateCola(order11);
 		   }
-		   void SpoolerMenus() {
+		   void SpoolerMinus() {
 			   Order^ time_order11 = Controller::QueryFileByPosition(1);
 			   Order^ order11 = gcnew Order();
 			   order11->num_spooler = -1;
@@ -1894,13 +1864,11 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			order->PDF_URL = time_order->PDF_URL;
 			order->PDF = time_order->PDF;
 
-			// Actualizar el texto del Label con el tiempo restante
-			if (0 < order->time_print) {
-				LB_Time1->Text = (order->time_print).ToString();
-				LB_Pos1->Text = "1";
-				LB_NameDoc1->Text = time_order->PDF_NAME;
-			}
-			else if (order->time_print <= 0) {
+			LB_Time1->Text = (order->time_print).ToString();
+			LB_Pos1->Text = "1";
+			LB_NameDoc1->Text = time_order->PDF_NAME;
+
+			if (order->time_print <= 0) {
 				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
 				if (order->time_print == -2) {
 					order->num_spooler = -1;
@@ -1909,9 +1877,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			Controller::UpdateCola(order);
 		}
 		else {
-			LB_Time1->Text = "tiempo";
-			LB_Pos1->Text = "posición";
-			LB_NameDoc1->Text = "nombre de documento";
+			LB_Time1->Text = "1111";
+			LB_Pos1->Text = "1111";
+			LB_NameDoc1->Text = "1111";
 			SpoolerCero();
 			// Detén el temporizador si está en marcha
 			Timer1->Stop();
@@ -1944,29 +1912,30 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			LB_NameDoc2->Text = time_order->PDF_NAME;
 
 			Order^ time_orderbefore = Controller::QueryFileByPosition(1);
-			if (time_orderbefore->time_print < 0) {
-				SpoolerMenus();
+			if (time_orderbefore->time_print <= 0) {
+				SpoolerMinus();
 				order->num_spooler = time_order->num_spooler - 1;
 				Controller::UpdateCola(order);
-				LB_Time2->Text = "tiempo";
-				LB_Pos2->Text = "posición";
-				LB_NameDoc2->Text = "nombre de documento";
 				Order^ time_ordernext = Controller::QueryFileByPosition(3);
 				if (time_order == nullptr) {
-					// Detén el temporizador si está en marcha
+					Timer1->Stop();
+					Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+					Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+					Timer1->Start();
+
 					Timer2->Stop();
-					// Elimina todos los manejadores de eventos Tick
 					Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 				}
+				LB_Time2->Text = "2222";
+				LB_Pos2->Text = "2222";
+				LB_NameDoc2->Text = "2222";
 			}
 			else {
 				Controller::UpdateCola(order);
 			}
 		}
 		else {
-			// Detén el temporizador si está en marcha
 			Timer2->Stop();
-			// Elimina todos los manejadores de eventos Tick
 			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 		}
 	}/*----------------------------------------------------33333333333333333333333333333333333333333333333333-------------------------------------*/
