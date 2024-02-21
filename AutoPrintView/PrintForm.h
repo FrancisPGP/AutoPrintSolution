@@ -1364,7 +1364,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 				cardVISAForm->ControlBox = true;
 				cardVISAForm->ShowDialog();
-				//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+				//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");				
 				PrintPDF();
 				IniciarReloj();
 				RefreshPage();
@@ -1380,14 +1380,15 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			if (user_wallet->Money_in_wallet >= monto) {
 				UpOrder();
 				//if (NotPosition10()) {
-					ShowOrderFiles();
-					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
-					Controller::UpdateCostumer(user_wallet);
-					//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-					PrintPDF();
-					IniciarReloj();
-					RefreshPage();
-					email();
+				ShowOrderFiles();
+				ProbErrorBILL();
+				user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
+				Controller::UpdateCostumer(user_wallet);
+				//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+				PrintPDF();
+				IniciarReloj();
+				RefreshPage();
+				email();
 
 				//}
 			}
@@ -1398,6 +1399,16 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			}
 		}
 	}
+
+		   void ProbErrorBILL() {
+			   srand(static_cast<unsigned int>(time(nullptr))); //Genera un número aleatorio con el tiempo actual
+			   int random = (rand() % 10) + 1; //Se crea el número aleatorio entre 1 a 10
+
+			   if (random == 1 || random == 2) //Si coincide con 1 o 2 (probabilidad del 20%), mostrará el mensaje de error
+			   {
+				   MessageBox::Show("Error: La impresora está atascada. En breve se solucionará el problema para que se proceda a la impresión.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   }
+		   }
 
 		   bool NotEmpty() {
 			   //WB_PDF_imprimir->DocumentStream == nullptr || WB_PDF_imprimir->Url == nullptr
