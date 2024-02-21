@@ -1,10 +1,11 @@
 #pragma once
 #include "Inicio.h"
 
-#include "PrintForm.h"
-#include "UserTableForm.h"
-#include "WalletForm.h"
 #include "MyProfile.h"
+#include "PrintForm.h"
+#include "WalletForm.h"
+#include "OrdenForm.h"
+#include "UserTableForm.h"
 #include "BossGraphicsForm.h"
 
 namespace AutoPrintView {
@@ -65,7 +66,7 @@ namespace AutoPrintView {
 
 
 
-	private: System::Windows::Forms::Timer^ timer10;
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -83,7 +84,6 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->miCuentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->actualizarDatosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -93,7 +93,6 @@ namespace AutoPrintView {
 			this->ordenesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->usuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estadisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->timer10 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -172,10 +171,6 @@ namespace AutoPrintView {
 			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(99, 24);
 			this->estadisticasToolStripMenuItem->Text = L"Estadísticas";
 			this->estadisticasToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrintMainForm::estadisticasToolStripMenuItem_Click);
-			// 
-			// timer10
-			// 
-			this->timer10->Interval = 1000;
 			// 
 			// PrintMainForm
 			// 
@@ -260,7 +255,9 @@ namespace AutoPrintView {
 				   this->ordenesToolStripMenuItem->Visible = false;
 			   }
 	private: System::Void ordenesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		OrdenForm^ ordenForm = gcnew OrdenForm();
+		ordenForm->MdiParent = this;
+		ordenForm->Show();
 	}
 	private: System::Void estadisticasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		BossGraphicsForm^ boss = gcnew BossGraphicsForm();
