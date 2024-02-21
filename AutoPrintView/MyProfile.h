@@ -234,6 +234,7 @@ namespace AutoPrintView {
 				static_cast<System::Byte>(0)));
 			this->txtDNIP->Location = System::Drawing::Point(246, 250);
 			this->txtDNIP->Margin = System::Windows::Forms::Padding(4);
+			this->txtDNIP->MaxLength = 8;
 			this->txtDNIP->Name = L"txtDNIP";
 			this->txtDNIP->Size = System::Drawing::Size(196, 30);
 			this->txtDNIP->TabIndex = 11;
