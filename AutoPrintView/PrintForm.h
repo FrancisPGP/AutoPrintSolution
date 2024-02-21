@@ -1731,6 +1731,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			   }
 		   }
 		   void RefreshPage() {
+			   // Limpiar el WebBrowser
+			   WB_PDF_imprimir->Navigate("about:blank");
+			   
 			   // Limpiar valores de ComboBox
 			   cmbTipoHoja->SelectedIndex = -1;
 			   cmbTamaHoja->SelectedIndex = -1;
@@ -1738,9 +1741,6 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			   cmbNUMcopias->SelectedIndex = -1;
 			   cmbLocal->SelectedIndex = -1;
 			   MontoPago->Text = "0";
-
-			   // Limpiar el WebBrowser
-			   WB_PDF_imprimir->Navigate("about:blank");
 		   }
 
 	private: System::Void dgvHistorial_Files_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
@@ -1909,7 +1909,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 			if (order->time_print <= 0) {
 				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
-				if (order->time_print == -2) {
+				if (order->time_print == -1) {
 					order->num_spooler = -1;
 				}
 			}
@@ -1951,29 +1951,27 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			LB_NameDoc2->Text = time_order->PDF_NAME;
 
 			Order^ time_orderbefore = Controller::QueryFileByPosition(1);
-			if (time_orderbefore->time_print <= 0) {
+			// time_orderbefore->time_print <= 0
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer1->Stop();
+				Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				
 				SpoolerMinus();
 				order->num_spooler = time_order->num_spooler - 1;
+				
 				Controller::UpdateCola(order);
-				if (time_order == nullptr) {
-					Timer1->Stop();
-					Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-					Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-					Timer1->Start();
-
-					Timer2->Stop();
-					Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
-				}
-				Order^ time_ordernext = Controller::QueryFileByPosition(3);
-				LB_Time2->Text = "2222";
-				LB_Pos2->Text = "2222";
-				LB_NameDoc2->Text = "2222";
+				
+				Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				Timer1->Start();
 			}
 			else {
 				Controller::UpdateCola(order);
 			}
 		}
 		else {
+			LB_Time2->Text = "2222";
+			LB_Pos2->Text = "2222";
+			LB_NameDoc2->Text = "2222";
 			Timer2->Stop();
 			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 		}
@@ -2001,7 +1999,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			// Elimina todos los manejadores de eventos Tick
 			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick); // Cambiado a Timer3 y timer3_Tick
 		}
-	}/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+	}/*----------------------------------------------------444444444444444444444444444444444444444444444444444-----------------------------------*/
 	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_order = Controller::QueryFileByPosition(4); // Cambiado a posición 4
 		time_order->time_print--;

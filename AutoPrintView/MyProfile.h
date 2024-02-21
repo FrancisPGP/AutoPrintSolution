@@ -357,7 +357,6 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 
 		}
 	private: System::Void btn_modificar_perfil_Click(System::Object^ sender, System::EventArgs^ e) {
-
 		//Para que no se borre lo que no se modifica se requiere de dnic
 		int dnic=Dni_Ahora;
 		Customer^ actUser = Controller::QueryCustomerByDNI(dnic);
@@ -410,7 +409,6 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			MessageBox::Show("Perfil actualizado");
 			Close();
 
-
 		}
 		if (actBos != nullptr) {
 			Boss^ currentUser = gcnew Boss();
@@ -433,15 +431,10 @@ private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArg
 			Controller::UpdateBoss(currentUser);
 			FillTextBoxes(currentUser);
 			MessageBox::Show("Perfil actualizado");
-
 			Close();
 
-
 		}
-
 		
-		
-
 	}
 private: System::Void btn_foto_perfil_Click(System::Object^ sender, System::EventArgs^ e) {
 	OpenFileDialog^ ofd = gcnew OpenFileDialog();
