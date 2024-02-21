@@ -1,5 +1,8 @@
 #pragma once
 #include"LoginForm.h"
+#include <ctime>
+#include <cstdlib>
+#include <windows.h>
 
 namespace AutoPrintView {
 
@@ -342,6 +345,7 @@ namespace AutoPrintView {
 		int checkFill = 0;
 
 	private: System::Void btnPrintCardVisa_Click(System::Object^ sender, System::EventArgs^ e) {
+		ProbErrorTARJ(); //Chance de que ocurra un atasco en la impresora
 		Card^ newCardWallet = gcnew Card(); //instanciamos la nueva tarjeta a emplear
 
 		newCardWallet->account_number = txtCardNumberVisa->Text;
@@ -360,6 +364,15 @@ namespace AutoPrintView {
 			
 		}
 	}
+		   void ProbErrorTARJ() {
+			   srand(static_cast<unsigned int>(time(nullptr))); //Genera un número aleatorio con el tiempo actual
+			   int random = (rand() % 10) + 1; //Se crea el número aleatorio entre 1 a 10
+
+			   if (random == 1 || random == 2) //Si coincide con 1 o 2 (probabilidad del 20%), mostrará el mensaje de error
+			   {
+				   MessageBox::Show("Error: La impresora está atascada. En breve se solucionará el problema para que se proceda al pago.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   }
+		   }
 
 		   void FillOut() {
 			   if (txtCardNumberVisa->Text == "" && checkFill != 1) {
