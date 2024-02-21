@@ -259,7 +259,7 @@ namespace AutoPrintView {
 			// TB_userID
 			// 
 			this->TB_userID->Location = System::Drawing::Point(188, 21);
-			this->TB_userID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->TB_userID->Margin = System::Windows::Forms::Padding(4);
 			this->TB_userID->Name = L"TB_userID";
 			this->TB_userID->Size = System::Drawing::Size(65, 22);
 			this->TB_userID->TabIndex = 48;
@@ -267,7 +267,7 @@ namespace AutoPrintView {
 			// bmodificar
 			// 
 			this->bmodificar->Location = System::Drawing::Point(167, 196);
-			this->bmodificar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->bmodificar->Margin = System::Windows::Forms::Padding(4);
 			this->bmodificar->Name = L"bmodificar";
 			this->bmodificar->Size = System::Drawing::Size(120, 26);
 			this->bmodificar->TabIndex = 47;
@@ -278,7 +278,7 @@ namespace AutoPrintView {
 			// beliminar
 			// 
 			this->beliminar->Location = System::Drawing::Point(333, 193);
-			this->beliminar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->beliminar->Margin = System::Windows::Forms::Padding(4);
 			this->beliminar->Name = L"beliminar";
 			this->beliminar->Size = System::Drawing::Size(100, 28);
 			this->beliminar->TabIndex = 46;
@@ -301,7 +301,7 @@ namespace AutoPrintView {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(61, 142);
+			this->label5->Location = System::Drawing::Point(61, 141);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(55, 18);
 			this->label5->TabIndex = 44;
@@ -379,6 +379,7 @@ namespace AutoPrintView {
 				static_cast<System::Byte>(0)));
 			this->TB_dni->Location = System::Drawing::Point(187, 108);
 			this->TB_dni->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->TB_dni->MaxLength = 8;
 			this->TB_dni->Name = L"TB_dni";
 			this->TB_dni->Size = System::Drawing::Size(167, 24);
 			this->TB_dni->TabIndex = 38;
@@ -430,7 +431,7 @@ namespace AutoPrintView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(61, 50);
+			this->label2->Location = System::Drawing::Point(61, 51);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(62, 18);
 			this->label2->TabIndex = 33;
@@ -441,7 +442,7 @@ namespace AutoPrintView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(61, 21);
+			this->label1->Location = System::Drawing::Point(61, 22);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(19, 18);
 			this->label1->TabIndex = 32;
@@ -481,80 +482,96 @@ namespace AutoPrintView {
 			// 
 			// TB_Contra_reg
 			// 
-			this->TB_Contra_reg->Location = System::Drawing::Point(568, 230);
-			this->TB_Contra_reg->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->TB_Contra_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TB_Contra_reg->Location = System::Drawing::Point(421, 284);
+			this->TB_Contra_reg->Margin = System::Windows::Forms::Padding(4);
 			this->TB_Contra_reg->Name = L"TB_Contra_reg";
-			this->TB_Contra_reg->Size = System::Drawing::Size(132, 22);
+			this->TB_Contra_reg->Size = System::Drawing::Size(201, 28);
 			this->TB_Contra_reg->TabIndex = 70;
 			// 
 			// TB_Num_reg
 			// 
-			this->TB_Num_reg->Location = System::Drawing::Point(532, 155);
-			this->TB_Num_reg->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->TB_Num_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TB_Num_reg->Location = System::Drawing::Point(597, 162);
+			this->TB_Num_reg->Margin = System::Windows::Forms::Padding(4);
 			this->TB_Num_reg->Name = L"TB_Num_reg";
-			this->TB_Num_reg->Size = System::Drawing::Size(132, 22);
+			this->TB_Num_reg->Size = System::Drawing::Size(132, 28);
 			this->TB_Num_reg->TabIndex = 69;
 			// 
 			// TB_Fecha_re
 			// 
-			this->TB_Fecha_re->Location = System::Drawing::Point(564, 105);
-			this->TB_Fecha_re->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->TB_Fecha_re->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TB_Fecha_re->Location = System::Drawing::Point(597, 122);
+			this->TB_Fecha_re->Margin = System::Windows::Forms::Padding(4);
 			this->TB_Fecha_re->Name = L"TB_Fecha_re";
-			this->TB_Fecha_re->Size = System::Drawing::Size(132, 22);
+			this->TB_Fecha_re->Size = System::Drawing::Size(132, 28);
 			this->TB_Fecha_re->TabIndex = 68;
 			// 
 			// TB_gender_registro
 			// 
-			this->TB_gender_registro->Location = System::Drawing::Point(532, 60);
-			this->TB_gender_registro->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->TB_gender_registro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->TB_gender_registro->Location = System::Drawing::Point(597, 81);
+			this->TB_gender_registro->Margin = System::Windows::Forms::Padding(4);
 			this->TB_gender_registro->Name = L"TB_gender_registro";
-			this->TB_gender_registro->Size = System::Drawing::Size(132, 22);
+			this->TB_gender_registro->Size = System::Drawing::Size(132, 28);
 			this->TB_gender_registro->TabIndex = 67;
 			// 
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(417, 159);
+			this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(417, 165);
 			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(55, 16);
+			this->label16->Size = System::Drawing::Size(73, 22);
 			this->label16->TabIndex = 66;
 			this->label16->Text = L"Numero";
 			// 
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(417, 234);
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label15->Location = System::Drawing::Point(417, 244);
 			this->label15->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(134, 16);
+			this->label15->Size = System::Drawing::Size(182, 22);
 			this->label15->TabIndex = 65;
 			this->label15->Text = L"Confirmar contraseña";
 			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(417, 113);
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(417, 125);
 			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(129, 16);
+			this->label13->Size = System::Drawing::Size(172, 22);
 			this->label13->TabIndex = 63;
 			this->label13->Text = L"Fecha de nacimento";
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(417, 69);
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(417, 84);
 			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(52, 16);
+			this->label12->Size = System::Drawing::Size(70, 22);
 			this->label12->TabIndex = 62;
 			this->label12->Text = L"Genero";
 			// 
 			// bregistro
 			// 
-			this->bregistro->Location = System::Drawing::Point(323, 350);
-			this->bregistro->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->bregistro->Location = System::Drawing::Point(272, 440);
+			this->bregistro->Margin = System::Windows::Forms::Padding(4);
 			this->bregistro->Name = L"bregistro";
 			this->bregistro->Size = System::Drawing::Size(100, 28);
 			this->bregistro->TabIndex = 61;
@@ -564,127 +581,128 @@ namespace AutoPrintView {
 			// 
 			// TB_contraseña_reg
 			// 
-			this->TB_contraseña_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+			this->TB_contraseña_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->TB_contraseña_reg->Location = System::Drawing::Point(153, 267);
+			this->TB_contraseña_reg->Location = System::Drawing::Point(146, 284);
 			this->TB_contraseña_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TB_contraseña_reg->Name = L"TB_contraseña_reg";
-			this->TB_contraseña_reg->Size = System::Drawing::Size(203, 27);
+			this->TB_contraseña_reg->Size = System::Drawing::Size(203, 28);
 			this->TB_contraseña_reg->TabIndex = 60;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(28, 270);
+			this->label11->Location = System::Drawing::Point(21, 285);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(95, 20);
+			this->label11->Size = System::Drawing::Size(103, 22);
 			this->label11->TabIndex = 59;
 			this->label11->Text = L"Contraseña";
 			// 
 			// TB_correo_reg
 			// 
-			this->TB_correo_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TB_correo_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_correo_reg->Location = System::Drawing::Point(153, 226);
+			this->TB_correo_reg->Location = System::Drawing::Point(146, 243);
 			this->TB_correo_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TB_correo_reg->Name = L"TB_correo_reg";
-			this->TB_correo_reg->Size = System::Drawing::Size(245, 27);
+			this->TB_correo_reg->Size = System::Drawing::Size(245, 28);
 			this->TB_correo_reg->TabIndex = 58;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(28, 229);
+			this->label6->Location = System::Drawing::Point(21, 244);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(60, 20);
+			this->label6->Size = System::Drawing::Size(65, 22);
 			this->label6->TabIndex = 57;
 			this->label6->Text = L"Correo";
 			// 
 			// TB_userID_reg
 			// 
-			this->TB_userID_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TB_userID_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_userID_reg->Location = System::Drawing::Point(153, 66);
+			this->TB_userID_reg->Location = System::Drawing::Point(146, 83);
 			this->TB_userID_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TB_userID_reg->Name = L"TB_userID_reg";
-			this->TB_userID_reg->Size = System::Drawing::Size(124, 27);
+			this->TB_userID_reg->Size = System::Drawing::Size(124, 28);
 			this->TB_userID_reg->TabIndex = 56;
 			// 
 			// TB_dni_reg
 			// 
-			this->TB_dni_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TB_dni_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_dni_reg->Location = System::Drawing::Point(153, 187);
+			this->TB_dni_reg->Location = System::Drawing::Point(146, 204);
 			this->TB_dni_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->TB_dni_reg->MaxLength = 8;
 			this->TB_dni_reg->Name = L"TB_dni_reg";
-			this->TB_dni_reg->Size = System::Drawing::Size(124, 27);
+			this->TB_dni_reg->Size = System::Drawing::Size(124, 28);
 			this->TB_dni_reg->TabIndex = 52;
 			// 
 			// TB_lastname_reg
 			// 
-			this->TB_lastname_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TB_lastname_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_lastname_reg->Location = System::Drawing::Point(153, 146);
+			this->TB_lastname_reg->Location = System::Drawing::Point(146, 164);
 			this->TB_lastname_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TB_lastname_reg->Name = L"TB_lastname_reg";
-			this->TB_lastname_reg->Size = System::Drawing::Size(203, 27);
+			this->TB_lastname_reg->Size = System::Drawing::Size(203, 28);
 			this->TB_lastname_reg->TabIndex = 51;
 			// 
 			// TB_name_reg
 			// 
-			this->TB_name_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TB_name_reg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_name_reg->Location = System::Drawing::Point(153, 107);
+			this->TB_name_reg->Location = System::Drawing::Point(146, 124);
 			this->TB_name_reg->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TB_name_reg->Name = L"TB_name_reg";
-			this->TB_name_reg->Size = System::Drawing::Size(203, 27);
+			this->TB_name_reg->Size = System::Drawing::Size(203, 28);
 			this->TB_name_reg->TabIndex = 50;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(28, 190);
+			this->label7->Location = System::Drawing::Point(21, 205);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(38, 20);
+			this->label7->Size = System::Drawing::Size(40, 22);
 			this->label7->TabIndex = 49;
 			this->label7->Text = L"DNI";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(28, 150);
+			this->label8->Location = System::Drawing::Point(21, 165);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(77, 20);
+			this->label8->Size = System::Drawing::Size(83, 22);
 			this->label8->TabIndex = 48;
 			this->label8->Text = L"Apellidos";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(28, 110);
+			this->label9->Location = System::Drawing::Point(21, 125);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(68, 20);
+			this->label9->Size = System::Drawing::Size(73, 22);
 			this->label9->TabIndex = 47;
 			this->label9->Text = L"Nombre";
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(28, 69);
+			this->label10->Location = System::Drawing::Point(21, 84);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(22, 20);
+			this->label10->Size = System::Drawing::Size(24, 22);
 			this->label10->TabIndex = 46;
 			this->label10->Text = L"Id";
 			// 
