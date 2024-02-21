@@ -1950,8 +1950,6 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			LB_Pos2->Text = "2";
 			LB_NameDoc2->Text = time_order->PDF_NAME;
 
-			Order^ time_orderbefore = Controller::QueryFileByPosition(1);
-			// time_orderbefore->time_print <= 0
 			if (LB_Time1->Text == "Listo para recoger") {
 				Timer1->Stop();
 				Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
@@ -1977,196 +1975,391 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 		}
 	}/*----------------------------------------------------33333333333333333333333333333333333333333333333333-------------------------------------*/
 	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(3); // Cambiado a posición 3
+		Order^ time_order = Controller::QueryFileByPosition(3);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo3--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo3 && tiempo3 <= 0) {
-			LB_Time3->Text = "Listo para recoger"; // Cambiado a LB_Time3
-		}
-		else if (0 < tiempo3) {
-			LB_Time3->Text = (tiempo3).ToString(); // Cambiado a LB_Time3
-			LB_Pos3->Text = "3"; // Cambiado a LB_Pos3
-			LB_NameDoc3->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc3
+			LB_Time3->Text = (order->time_print).ToString();
+			LB_Pos3->Text = "3";
+			LB_NameDoc3->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer2->Stop();
+				Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				Timer2->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time3->Text = "tiempo"; // Cambiado a LB_Time3
-			LB_Pos3->Text = "posición"; // Cambiado a LB_Pos3
-			LB_NameDoc3->Text = "nombre de documento"; // Cambiado a LB_NameDoc3
-			// Detén el temporizador si está en marcha
-			Timer3->Stop(); // Cambiado a Timer3
-			// Elimina todos los manejadores de eventos Tick
-			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick); // Cambiado a Timer3 y timer3_Tick
+			LB_Time3->Text = "3333";
+			LB_Pos3->Text = "3333";
+			LB_NameDoc3->Text = "3333";
+			Timer3->Stop();
+			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick);
 		}
 	}/*----------------------------------------------------444444444444444444444444444444444444444444444444444-----------------------------------*/
 	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(4); // Cambiado a posición 4
-		time_order->time_print--;
+		Order^ time_order = Controller::QueryFileByPosition(4);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= time_order->time_print && time_order->time_print <= 0) {
-			LB_Time4->Text = "Listo para recoger"; // Cambiado a LB_Time4
-		}
-		else if (0 < time_order->time_print) {
-			LB_Time4->Text = (time_order->time_print).ToString(); // Cambiado a LB_Time4
-			LB_Pos4->Text = "4"; // Cambiado a LB_Pos4
-			LB_NameDoc4->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc4
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
+
+			LB_Time4->Text = (order->time_print).ToString();
+			LB_Pos4->Text = "4";
+			LB_NameDoc4->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer3->Stop();
+				Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
+				Timer3->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time4->Text = "tiempo"; // Cambiado a LB_Time4
-			LB_Pos4->Text = "posición"; // Cambiado a LB_Pos4
-			LB_NameDoc4->Text = "nombre de documento"; // Cambiado a LB_NameDoc4
-			// Detén el temporizador si está en marcha
-			Timer4->Stop(); // Cambiado a Timer4
-			// Elimina todos los manejadores de eventos Tick
-			Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick); // Cambiado a Timer4 y timer4_Tick
+			LB_Time4->Text = "4444";
+			LB_Pos4->Text = "4444";
+			LB_NameDoc4->Text = "4444";
+			Timer4->Stop();
+			Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick);
 		}
-	}
+	}/*----------------------------------------------------55555555555555555555555555555555555555555555555555-----------------------------------*/
 	private: System::Void timer5_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(5); // Cambiado a posición 5
+		Order^ time_order = Controller::QueryFileByPosition(5);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo5--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo5 && tiempo5 <= 0) {
-			LB_Time5->Text = "Listo para recoger"; // Cambiado a LB_Time5
-		}
-		else if (0 < tiempo5) {
-			LB_Time5->Text = (tiempo5).ToString(); // Cambiado a LB_Time5
-			LB_Pos5->Text = "5"; // Cambiado a LB_Pos5
-			LB_NameDoc5->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc5
+			LB_Time5->Text = (order->time_print).ToString();
+			LB_Pos5->Text = "5";
+			LB_NameDoc5->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer4->Stop();
+				Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
+				Timer4->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time5->Text = "tiempo"; // Cambiado a LB_Time5
-			LB_Pos5->Text = "posición"; // Cambiado a LB_Pos5
-			LB_NameDoc5->Text = "nombre de documento"; // Cambiado a LB_NameDoc5
-			// Detén el temporizador si está en marcha
-			Timer5->Stop(); // Cambiado a Timer5
-			// Elimina todos los manejadores de eventos Tick
-			Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick); // Cambiado a Timer5 y timer5_Tick
+			LB_Time5->Text = "5555";
+			LB_Pos5->Text = "5555";
+			LB_NameDoc5->Text = "5555";
+			Timer5->Stop();
+			Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick);
 		}
-	}
+	}/*----------------------------------------------------66666666666666666666666666666666666666666666666666-----------------------------------*/
 	private: System::Void timer6_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(6); // Cambiado a posición 6
+		Order^ time_order = Controller::QueryFileByPosition(6);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo6--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo6 && tiempo6 <= 0) {
-			LB_Time6->Text = "Listo para recoger"; // Cambiado a LB_Time6
-		}
-		else if (0 < tiempo6) {
-			LB_Time6->Text = (tiempo6).ToString(); // Cambiado a LB_Time6
-			LB_Pos6->Text = "6"; // Cambiado a LB_Pos6
-			LB_NameDoc6->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc6
+			LB_Time6->Text = (order->time_print).ToString();
+			LB_Pos6->Text = "5";
+			LB_NameDoc6->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer5->Stop();
+				Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
+				Timer5->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time6->Text = "tiempo"; // Cambiado a LB_Time6
-			LB_Pos6->Text = "posición"; // Cambiado a LB_Pos6
-			LB_NameDoc6->Text = "nombre de documento"; // Cambiado a LB_NameDoc6
-			// Detén el temporizador si está en marcha
-			Timer6->Stop(); // Cambiado a Timer6
-			// Elimina todos los manejadores de eventos Tick
-			Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick); // Cambiado a Timer6 y timer6_Tick
+			LB_Time6->Text = "6666";
+			LB_Pos6->Text = "6666";
+			LB_NameDoc6->Text = "6666";
+			Timer6->Stop();
+			Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick);
 		}
-	}
+	}/*----------------------------------------------------7777777777777777777777777777777777777777777777777-----------------------------------*/
 	private: System::Void timer7_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(7); // Cambiado a posición 7
+		Order^ time_order = Controller::QueryFileByPosition(7);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo7--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo7 && tiempo7 <= 0) {
-			LB_Time7->Text = "Listo para recoger"; // Cambiado a LB_Time7
-		}
-		else if (0 < tiempo7) {
-			LB_Time7->Text = (tiempo7).ToString(); // Cambiado a LB_Time7
-			LB_Pos7->Text = "7"; // Cambiado a LB_Pos7
-			LB_NameDoc7->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc7
+			LB_Time7->Text = (order->time_print).ToString();
+			LB_Pos7->Text = "7";
+			LB_NameDoc7->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer6->Stop();
+				Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
+				Timer6->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time7->Text = "tiempo"; // Cambiado a LB_Time7
-			LB_Pos7->Text = "posición"; // Cambiado a LB_Pos7
-			LB_NameDoc7->Text = "nombre de documento"; // Cambiado a LB_NameDoc7
-			// Detén el temporizador si está en marcha
-			Timer7->Stop(); // Cambiado a Timer7
-			// Elimina todos los manejadores de eventos Tick
-			Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick); // Cambiado a Timer7 y timer7_Tick
+			LB_Time7->Text = "7777";
+			LB_Pos7->Text = "7777";
+			LB_NameDoc7->Text = "7777";
+			Timer7->Stop();
+			Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick);
 		}
-	}
+	}/*----------------------------------------------------8888888888888888888888888888888888888888888888888-----------------------------------*/
 	private: System::Void timer8_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(8); // Cambiado a posición 8
+		Order^ time_order = Controller::QueryFileByPosition(8);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo8--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo8 && tiempo8 <= 0) {
-			LB_Time8->Text = "Listo para recoger"; // Cambiado a LB_Time8
-		}
-		else if (0 < tiempo8) {
-			LB_Time8->Text = (tiempo8).ToString(); // Cambiado a LB_Time8
-			LB_Pos8->Text = "8"; // Cambiado a LB_Pos8
-			LB_NameDoc8->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc8
+			LB_Time8->Text = (order->time_print).ToString();
+			LB_Pos8->Text = "8";
+			LB_NameDoc8->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer7->Stop();
+				Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
+				Timer7->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time8->Text = "tiempo"; // Cambiado a LB_Time8
-			LB_Pos8->Text = "posición"; // Cambiado a LB_Pos8
-			LB_NameDoc8->Text = "nombre de documento"; // Cambiado a LB_NameDoc8
-			// Detén el temporizador si está en marcha
-			Timer8->Stop(); // Cambiado a Timer8
-			// Elimina todos los manejadores de eventos Tick
-			Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick); // Cambiado a Timer8 y timer8_Tick
+			LB_Time8->Text = "8888";
+			LB_Pos8->Text = "8888";
+			LB_NameDoc8->Text = "8888";
+			Timer8->Stop();
+			Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick);
 		}
-	}
+	}/*----------------------------------------------------999999999999999999999999999999999999999999999999-----------------------------------*/
 	private: System::Void timer9_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(9); // Cambiado a posición 9
+		Order^ time_order = Controller::QueryFileByPosition(9);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		tiempo9--;
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo9 && tiempo9 <= 0) {
-			LB_Time9->Text = "Listo para recoger"; // Cambiado a LB_Time9
-		}
-		else if (0 < tiempo9) {
-			LB_Time9->Text = (tiempo9).ToString(); // Cambiado a LB_Time9
-			LB_Pos9->Text = "9"; // Cambiado a LB_Pos9
-			LB_NameDoc9->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc9
+			LB_Time9->Text = (order->time_print).ToString();
+			LB_Pos9->Text = "9";
+			LB_NameDoc9->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer8->Stop();
+				Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
+				Timer8->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time9->Text = "tiempo"; // Cambiado a LB_Time9
-			LB_Pos9->Text = "posición"; // Cambiado a LB_Pos9
-			LB_NameDoc9->Text = "nombre de documento"; // Cambiado a LB_NameDoc9
-			// Detén el temporizador si está en marcha
-			Timer9->Stop(); // Cambiado a Timer9
-			// Elimina todos los manejadores de eventos Tick
-			Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick); // Cambiado a Timer9 y timer9_Tick
+			LB_Time9->Text = "9999";
+			LB_Pos9->Text = "9999";
+			LB_NameDoc9->Text = "9999";
+			Timer9->Stop();
+			Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick);
 		}
-	}
+	}/*----------------------------------------------------10101010101010101010101010101010101010101010101010-----------------------------------*/
 	private: System::Void timer10_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(10); // Cambiado a posición 10
-		
-		tiempo10--;
+		Order^ time_order = Controller::QueryFileByPosition(10);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - 1;
 
-		// Actualizar el texto del Label con el tiempo restante
-		if (-3 <= tiempo10 && tiempo10 <= 0) {
-			LB_Time10->Text = "Listo para recoger"; // Cambiado a LB_Time10
-		}
-		else if (0 < tiempo10) {
-			LB_Time10->Text = (tiempo10).ToString(); // Cambiado a LB_Time10
-			LB_Pos10->Text = "10"; // Cambiado a LB_Pos10
-			LB_NameDoc10->Text = time_order->PDF_URL; // Cambiado a LB_NameDoc10
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
+
+			LB_Time10->Text = (order->time_print).ToString();
+			LB_Pos10->Text = "10";
+			LB_NameDoc10->Text = time_order->PDF_NAME;
+
+			if (LB_Time1->Text == "Listo para recoger") {
+				Timer9->Stop();
+				Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick);
+
+				SpoolerMinus();
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
+				Timer9->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
 		}
 		else {
-			LB_Time10->Text = "tiempo"; // Cambiado a LB_Time10
-			LB_Pos10->Text = "posición"; // Cambiado a LB_Pos10
-			LB_NameDoc10->Text = "nombre de documento"; // Cambiado a LB_NameDoc10
-			// Detén el temporizador si está en marcha
-			Timer10->Stop(); // Cambiado a Timer10
-			// Elimina todos los manejadores de eventos Tick
-			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick); // Cambiado a Timer10 y timer10_Tick
+			LB_Time10->Text = "1010";
+			LB_Pos10->Text = "1010";
+			LB_NameDoc10->Text = "1010";
+			Timer10->Stop();
+			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick);
 		}
 	}
+
+		   // Excelente trabajo Ricardo. Francis
 		  public:
            void email(){
 			   int dniP = Dni_Ahora;

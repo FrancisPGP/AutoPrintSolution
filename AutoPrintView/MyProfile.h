@@ -114,7 +114,7 @@ namespace AutoPrintView {
 			// pbPhoto
 			// 
 			this->pbPhoto->BackColor = System::Drawing::Color::Transparent;
-			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pbPhoto->Location = System::Drawing::Point(517, 150);
 			this->pbPhoto->Margin = System::Windows::Forms::Padding(4);
 			this->pbPhoto->Name = L"pbPhoto";
