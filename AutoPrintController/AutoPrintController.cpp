@@ -54,6 +54,11 @@ void AutoPrintController::Controller::DeleteCustomer(int userDNI) {
     return ::Persistance::DeleteCustomer(userDNI);
 }
 
+void AutoPrintController::Controller::DeleteEmployee(int userDNI)
+{
+    return ::Persistance::DeleteEmployee(userDNI);
+}
+
 User^ AutoPrintController::Controller::QueryUserByDNI(int UserDNI) {
     return Persistance::QueryUserByDNI(UserDNI);
 }

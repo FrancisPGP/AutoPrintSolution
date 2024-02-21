@@ -71,6 +71,7 @@ namespace AutoPrintPersistance {
 
 		static void DeleteUser(int userDNI);
 		static void DeleteCustomer(int userDNI);
+		static void DeleteEmployee(int userDNI);
 
 
 

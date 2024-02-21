@@ -223,14 +223,66 @@ int AutoPrintPersistance::Persistance::AddCostumer(Customer^ customer)
 
 int AutoPrintPersistance::Persistance::AddEmployee(Employee^ employee)
 {
-    employeeListDB = (List<Employee^>^)Persistance::LoadXMLFile(EMPLOYEE_XML_FILE_NAME);
+    /* employeeListDB = (List<Employee^>^)Persistance::LoadXMLFile(EMPLOYEE_XML_FILE_NAME);
 
-    if (employeeListDB == nullptr) {
-        employeeListDB = gcnew List<Employee^>();
+   if (employeeListDB == nullptr) {
+       employeeListDB = gcnew List<Employee^>();
+   }
+   employeeListDB->Add(employee);
+   //PersistTextFile(USER_FILE_NAME, CustomerListDB);
+   PersistXMLFile(EMPLOYEE_XML_FILE_NAME, employeeListDB);*/
+    SqlConnection^ conn;
+
+    try {
+        //Paso 1: Se obtien la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la setencia SQL
+        String^ sqlStr = "dbo.usp_AddEmployee_LC";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@NAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@LASTNAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PHONE_NUMBER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@GENDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PASSWORD", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@EMAIL", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@BIRTHDATE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PHOTO", System::Data::SqlDbType::Image);
+        cmd->Parameters->Add("@MONEY_IN_WALLET", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@MONEY_IN_WALLET"]->Precision = 10;
+        cmd->Parameters["@MONEY_IN_WALLET"]->Scale = 2;
+        cmd->Prepare();
+
+        cmd->Parameters["@NAME"]->Value = employee->Name;
+        cmd->Parameters["@LASTNAME"]->Value = employee->LastName;
+        cmd->Parameters["@PHONE_NUMBER"]->Value = employee->Phone_number;
+        cmd->Parameters["@DNI"]->Value = employee->Dni;
+        cmd->Parameters["@GENDER"]->Value = employee->Gender;
+        cmd->Parameters["@PASSWORD"]->Value = employee->Password;
+        cmd->Parameters["@EMAIL"]->Value = employee->Email;
+        cmd->Parameters["@BIRTHDATE"]->Value = employee->Birthdate;
+        cmd->Parameters["@MONEY_IN_WALLET"]->Value = employee->Money_in_wallet;
+        if (employee->Photo == nullptr)
+            cmd->Parameters["@PHOTO"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@PHOTO"]->Value = employee->Photo;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+
     }
-    employeeListDB->Add(employee);
-    //PersistTextFile(USER_FILE_NAME, CustomerListDB);
-    PersistXMLFile(EMPLOYEE_XML_FILE_NAME, employeeListDB);
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
+
     return 1;
 }
 
@@ -326,7 +378,7 @@ finally {
 
 void AutoPrintPersistance::Persistance::UpdateEmployee(Employee^ user)
 {
-    for (int i = 0; i < employeeListDB->Count; i++) {
+    /*for (int i = 0; i < employeeListDB->Count; i++) {
         if (employeeListDB[i]->Dni == user->Dni) {
             employeeListDB[i] = user;
             //PersistTextFile(USER_FILE_NAME, CustomerListDB);
@@ -334,6 +386,56 @@ void AutoPrintPersistance::Persistance::UpdateEmployee(Employee^ user)
 
             return;
         }
+    }*/
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Se obtien la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la setencia SQL
+        String^ sqlStr = "dbo.usp_UpdateEmployee_LC";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@NAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@LASTNAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PHONE_NUMBER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@GENDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PASSWORD", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@EMAIL", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@BIRTHDATE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PHOTO", System::Data::SqlDbType::Image);
+        cmd->Parameters->Add("@MONEY_IN_WALLET", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@MONEY_IN_WALLET"]->Precision = 10;
+        cmd->Parameters["@MONEY_IN_WALLET"]->Scale = 2;
+        cmd->Prepare();
+
+        cmd->Parameters["@NAME"]->Value = user->Name;
+        cmd->Parameters["@LASTNAME"]->Value = user->LastName;
+        cmd->Parameters["@PHONE_NUMBER"]->Value = user->Phone_number;
+        cmd->Parameters["@DNI"]->Value = user->Dni;
+        cmd->Parameters["@GENDER"]->Value = user->Gender;
+        cmd->Parameters["@PASSWORD"]->Value = user->Password;
+        cmd->Parameters["@EMAIL"]->Value = user->Email;
+        cmd->Parameters["@BIRTHDATE"]->Value = user->Birthdate;
+        cmd->Parameters["@MONEY_IN_WALLET"]->Value = user->Money_in_wallet;
+        if (user->Photo == nullptr)
+            cmd->Parameters["@PHOTO"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@PHOTO"]->Value = user->Photo;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
     }
 }
 
@@ -414,6 +516,44 @@ finally {
     //Paso 5: Se cierran los objetos de conexión.
     if (conn != nullptr) conn->Close();
 }
+}
+
+void AutoPrintPersistance::Persistance::DeleteEmployee(int userDNI)
+{
+    /*if (employeeListDB != nullptr) {
+       for (int i = employeeListDB->Count - 1; i >= 0; i--) {
+           if (userDNI == employeeListDB[i]->Dni) {
+               employeeListDB->RemoveAt(i);
+           }
+       }
+       // Guardar la lista actualizada en el archivo binario
+       PersistXMLFile(EMPLOYEE_XML_FILE_NAME, employeeListDB);
+   }*/
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_DeleteEmployee_LC";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@DNI"]->Value = userDNI;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados.
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
 }
 
 User^ AutoPrintPersistance::Persistance::QueryUserByDNI(int UserDNI)
@@ -497,16 +637,61 @@ Customer^ AutoPrintPersistance::Persistance::QueryCustomerByDNI(int userDNI)
 
 Employee^ AutoPrintPersistance::Persistance::QueryEmployeeByDNI(int userDNI)
 {
-    Employee^ user = nullptr;
-    for (int i = 0; i < employeeListDB->Count; i++) {
-        if (employeeListDB[i]->Dni == userDNI) {
-            user = employeeListDB[i];
-            return user;
+    Employee^ employee = nullptr;
+    /* for (int i = 0; i < employeeListDB->Count; i++) {
+         if (employeeListDB[i]->Dni == userDNI) {
+             user = employeeListDB[i];
+             return user;
 
+         }
+
+     }*/
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Se obtien la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la setencia SQL
+        String^ sqlStr = "dbo.usp_QueryEmployeeByDNI_LC";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@DNI", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+
+        cmd->Parameters["@DNI"]->Value = userDNI;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Se procesan los resultados
+        if (reader->Read()) {
+            employee = gcnew Employee();
+            employee->Name = reader["NAME"]->ToString();
+            employee->LastName = reader["LASTNAME"]->ToString();
+            employee->Phone_number = reader["PHONE_NUMBER"]->ToString();
+            employee->Dni = Convert::ToInt32(reader["DNI"]->ToString());
+            employee->Gender = reader["GENDER"]->ToString();
+            employee->Password = reader["PASSWORD"]->ToString();
+            employee->Email = reader["EMAIL"]->ToString();
+            employee->Birthdate = reader["BIRTHDATE"]->ToString();
+            if (!DBNull::Value->Equals(reader["MONEY_IN_WALLET"]))
+                employee->Money_in_wallet = Convert::ToDouble(reader["MONEY_IN_WALLET"]->ToString());
+            else
+                employee->Money_in_wallet = 0;
+            if (!DBNull::Value->Equals(reader["PHOTO"]))
+                employee->Photo = (array<Byte>^)reader["PHOTO"];
         }
-
     }
-    return user;
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
+    return employee;
 
 }
 
@@ -592,10 +777,55 @@ List<Customer^>^ AutoPrintPersistance::Persistance::QueryAllCustomers()
 }
 List<Employee^>^ AutoPrintPersistance::Persistance::QueryAllEmployees()
 {
-    employeeListDB = (List<Employee^>^) LoadXMLFile(EMPLOYEE_XML_FILE_NAME);
+    /*employeeListDB = (List<Employee^>^) LoadXMLFile(EMPLOYEE_XML_FILE_NAME);
 
-    if (employeeListDB == nullptr)
-        employeeListDB = gcnew List<Employee^>();
+     if (employeeListDB == nullptr)
+         employeeListDB = gcnew List<Employee^>();
+     return employeeListDB;*/
+    employeeListDB = gcnew List<Employee^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Se obtien la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la setencia SQL
+        String^ sqlStr = "dbo.usp_QueryAllEmployees_LC";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Se procesan los resultados
+        while (reader->Read()) {
+            Employee^ emp = gcnew Employee();
+            emp->Name = reader["NAME"]->ToString();
+            emp->LastName = reader["LASTNAME"]->ToString();
+            emp->Phone_number = reader["PHONE_NUMBER"]->ToString();
+            emp->Dni = Convert::ToInt32(reader["DNI"]->ToString());
+            emp->Gender = reader["GENDER"]->ToString();
+            emp->Password = reader["PASSWORD"]->ToString();
+            emp->Email = reader["EMAIL"]->ToString();
+            emp->Birthdate = reader["BIRTHDATE"]->ToString();
+            if (!DBNull::Value->Equals(reader["MONEY_IN_WALLET"]))
+                emp->Money_in_wallet = Convert::ToDouble(reader["MONEY_IN_WALLET"]->ToString());
+            else
+                emp->Money_in_wallet = 0;
+            if (!DBNull::Value->Equals(reader["PHOTO"]))
+                emp->Photo = (array<Byte>^)reader["PHOTO"];
+            employeeListDB->Add(emp);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
     return employeeListDB;
 }
 List<Boss^>^ AutoPrintPersistance::Persistance::QueryAllBoss()
