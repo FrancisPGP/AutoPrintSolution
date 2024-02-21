@@ -90,3 +90,125 @@ CREATE PROCEDURE dbo.usp_QueryAllCostumers_LC AS
         SELECT * FROM CUSTOMER_TABLE_LC
 	END
 GO
+--PERSISTENCIA SQL PARA LOS EMPLEADOS
+
+CREATE TABLE EMPLOYEE_TABLE_LC (
+	NAME 			VARCHAR(200),
+	LASTNAME 		VARCHAR(200),
+	PHONE_NUMBER 	VARCHAR(200),
+	DNI 			INT NOT NULL PRIMARY KEY,
+	GENDER 			VARCHAR(200),
+	PASSWORD 		VARCHAR(200),
+	EMAIL 			VARCHAR(200),
+	BIRTHDATE 		VARCHAR(200),
+	PHOTO 			IMAGE NULL,
+	MONEY_IN_WALLET	DECIMAL(10,2)
+)
+GO
+INSERT INTO EMPLOYEE_TABLE_LC (DNI, NAME, LASTNAME, EMAIL)
+VALUES (12345678, 'Ricardo', 'Amaya', 'abc')
+GO
+
+
+CREATE PROCEDURE dbo.usp_AddEmployee_LC(
+    @NAME               VARCHAR(200),
+    @LASTNAME           VARCHAR(200),
+    @PHONE_NUMBER       VARCHAR(200),
+    @DNI                INT,
+    @GENDER             VARCHAR(200),
+    @PASSWORD           VARCHAR(200),
+    @EMAIL              VARCHAR(200),
+    @BIRTHDATE          VARCHAR(200),
+    @PHOTO              IMAGE,
+    @MONEY_IN_WALLET    DECIMAL(10,2)
+) AS
+	BEGIN
+        INSERT INTO EMPLOYEE_TABLE_LC (NAME, LASTNAME, PHONE_NUMBER, DNI,
+        GENDER, PASSWORD, EMAIL, BIRTHDATE, PHOTO, MONEY_IN_WALLET)
+        SELECT @NAME, @LASTNAME, @PHONE_NUMBER, @DNI, @GENDER, @PASSWORD,
+        @EMAIL, @BIRTHDATE, @PHOTO, @MONEY_IN_WALLET
+	END
+GO
+
+--EXEC dbo.usp_AddEmployee_LC @NAME = 'Luis', @LASTNAME = 'Cruz', @PHONE_NUMBER = '943079416',
+--@DNI = 55555555, @GENDER = 'Masculino', @PASSWORD = '12345', @EMAIL = 'a20191288@pucp.edu.pe',
+--@BIRTHDATE= '21/08/2002', @PHOTO = NULL, @MONEY_IN_WALLET = 0
+
+IF EXISTS ( SELECT *
+		   FROM sysobjects
+		   WHERE id = object_id(N'[dbo].[usp_QueryAllEmployees_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+	DROP PROCEDURE [dbo].[usp_QueryAllEmployees_LC]
+END
+GO
+
+CREATE PROCEDURE dbo.usp_QueryAllEmployees_LC AS
+	BEGIN
+	   SELECT * FROM EMPLOYEE_TABLE_LC
+       
+	END
+GO
+
+IF EXISTS ( SELECT *
+		   FROM sysobjects
+		   WHERE id = object_id(N'[dbo].[usp_QueryEmployeeByDNI_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+	DROP PROCEDURE [dbo].[usp_QueryEmployeeByDNI_LC]
+END
+GO
+
+CREATE PROCEDURE dbo.usp_QueryEmployeeByDNI1_LC (
+ @DNI INT
+)AS
+	BEGIN
+	   SELECT * FROM EMPLOYEE_TABLE_LC
+	   WHERE DNI=@DNI
+       
+	END
+GO
+
+IF EXISTS ( SELECT *
+			FROM sysobjects
+			WHERE id= object_id(N'[dbo].[usp_DeleteEmployee_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+	DROP PROCEDURE [dbo].[usp_DeleteEmployee_LC]
+END
+GO
+CREATE PROCEDURE dbo.usp_DeleteEmployee_LC(
+	@DNI				INT
+) AS	
+	BEGIN
+		DELETE FROM EMPLOYEE_TABLE_LC 
+		WHERE DNI=@DNI
+	END
+GO
+IF EXISTS ( SELECT *
+			FROM sysobjects
+			WHERE id= object_id(N'[dbo].[usp_UpdateEmployee_LC]')
+				AND OBJECTPROPERTY(id, N'IsProcedure') = 1 )
+BEGIN
+	DROP PROCEDURE [dbo].[usp_UpdateEmployee_LC]
+END
+GO	
+CREATE PROCEDURE dbo.usp_UpdateEmployee_LC(
+    @NAME               VARCHAR(200),
+    @LASTNAME           VARCHAR(200),
+    @PHONE_NUMBER       VARCHAR(200),
+    @DNI                INT,
+    @GENDER             VARCHAR(200),
+    @PASSWORD           VARCHAR(200),
+    @EMAIL              VARCHAR(200),
+    @BIRTHDATE          VARCHAR(200),
+    @PHOTO              IMAGE,
+    @MONEY_IN_WALLET    DECIMAL(10,2)
+) AS	
+	BEGIN
+		UPDATE EMPLOYEE_TABLE_LC 
+		SET NAME=@NAME, LASTNAME=@LASTNAME, PHONE_NUMBER=@PHONE_NUMBER, GENDER=@GENDER,PASSWORD= @PASSWORD,
+        EMAIL=@EMAIL, BIRTHDATE=@BIRTHDATE, PHOTO=@PHOTO, MONEY_IN_WALLET=@MONEY_IN_WALLET
+		WHERE DNI=@DNI
+	END
+GO	

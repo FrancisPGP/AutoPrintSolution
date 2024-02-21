@@ -24,6 +24,8 @@ namespace AutoPrintController {
 
         static void DeleteUser(int userDNI);
         static void DeleteCustomer(int userDNI);
+        static void DeleteEmployee(int userDNI);
+
 
         static User^ QueryUserByDNI(int UserDNI); // Buscar el id del custome
         static Customer^ QueryCustomerByDNI(int userDNI); // Buscar el id del custome
