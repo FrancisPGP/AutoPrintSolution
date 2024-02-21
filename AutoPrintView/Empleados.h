@@ -17,10 +17,10 @@ namespace AutoPrintView {
 	/// <summary>
 	/// Resumen de UserTableForm
 	/// </summary>
-	public ref class UserTableForm : public System::Windows::Forms::Form
+	public ref class Empleados : public System::Windows::Forms::Form
 	{
 	public:
-		UserTableForm(void)
+		Empleados(void)
 		{
 			InitializeComponent();
 			RefreshGrid();
@@ -34,7 +34,7 @@ namespace AutoPrintView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~UserTableForm()
+		~Empleados()
 		{
 			if (components)
 			{
@@ -52,7 +52,8 @@ namespace AutoPrintView {
 
 
 	private: System::Windows::Forms::PictureBox^ PB_imageUSER;
-	private: System::Windows::Forms::DataGridView^ dgvUserTable;
+	private: System::Windows::Forms::DataGridView^ dgvUserTableE;
+
 
 
 
@@ -172,7 +173,6 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UserTableForm::typeid));
 			this->PB_imageREGIS = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->bmodificar = (gcnew System::Windows::Forms::Button());
@@ -180,7 +180,7 @@ namespace AutoPrintView {
 			this->TB_correo = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->PB_imageUSER = (gcnew System::Windows::Forms::PictureBox());
-			this->dgvUserTable = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvUserTableE = (gcnew System::Windows::Forms::DataGridView());
 			this->UT_dni = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->UT_nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->UT_apellido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -214,7 +214,7 @@ namespace AutoPrintView {
 			this->PB_imageREGIS->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PB_imageUSER))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserTable))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserTableE))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -236,7 +236,7 @@ namespace AutoPrintView {
 			this->tabPage1->Controls->Add(this->TB_correo);
 			this->tabPage1->Controls->Add(this->label5);
 			this->tabPage1->Controls->Add(this->PB_imageUSER);
-			this->tabPage1->Controls->Add(this->dgvUserTable);
+			this->tabPage1->Controls->Add(this->dgvUserTableE);
 			this->tabPage1->Controls->Add(this->TB_dni);
 			this->tabPage1->Controls->Add(this->TB_lastname);
 			this->tabPage1->Controls->Add(this->TB_name);
@@ -249,7 +249,7 @@ namespace AutoPrintView {
 			this->tabPage1->Padding = System::Windows::Forms::Padding(2);
 			this->tabPage1->Size = System::Drawing::Size(582, 418);
 			this->tabPage1->TabIndex = 0;
-			this->tabPage1->Text = L"Usuarios";
+			this->tabPage1->Text = L"Empleados";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
 			// bmodificar
@@ -260,7 +260,7 @@ namespace AutoPrintView {
 			this->bmodificar->TabIndex = 47;
 			this->bmodificar->Text = L"Modificar";
 			this->bmodificar->UseVisualStyleBackColor = true;
-			this->bmodificar->Click += gcnew System::EventHandler(this, &UserTableForm::bmodificar_Click);
+			this->bmodificar->Click += gcnew System::EventHandler(this, &Empleados::bmodificar_Click);
 			// 
 			// beliminar
 			// 
@@ -270,7 +270,7 @@ namespace AutoPrintView {
 			this->beliminar->TabIndex = 46;
 			this->beliminar->Text = L"Eliminar";
 			this->beliminar->UseVisualStyleBackColor = true;
-			this->beliminar->Click += gcnew System::EventHandler(this, &UserTableForm::beliminar_Click);
+			this->beliminar->Click += gcnew System::EventHandler(this, &Empleados::beliminar_Click);
 			// 
 			// TB_correo
 			// 
@@ -298,7 +298,6 @@ namespace AutoPrintView {
 			// 
 			this->PB_imageUSER->BackColor = System::Drawing::SystemColors::Control;
 			this->PB_imageUSER->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->PB_imageUSER->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"PB_imageUSER.Image")));
 			this->PB_imageUSER->Location = System::Drawing::Point(371, 15);
 			this->PB_imageUSER->Margin = System::Windows::Forms::Padding(2);
 			this->PB_imageUSER->Name = L"PB_imageUSER";
@@ -307,26 +306,26 @@ namespace AutoPrintView {
 			this->PB_imageUSER->TabIndex = 42;
 			this->PB_imageUSER->TabStop = false;
 			// 
-			// dgvUserTable
+			// dgvUserTableE
 			// 
-			this->dgvUserTable->AllowUserToAddRows = false;
-			this->dgvUserTable->AllowUserToResizeRows = false;
-			this->dgvUserTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvUserTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+			this->dgvUserTableE->AllowUserToAddRows = false;
+			this->dgvUserTableE->AllowUserToResizeRows = false;
+			this->dgvUserTableE->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvUserTableE->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->UT_dni,
 					this->UT_nombre, this->UT_apellido, this->UT_correo
 			});
-			this->dgvUserTable->Location = System::Drawing::Point(14, 197);
-			this->dgvUserTable->Margin = System::Windows::Forms::Padding(2);
-			this->dgvUserTable->Name = L"dgvUserTable";
-			this->dgvUserTable->ReadOnly = true;
-			this->dgvUserTable->RowHeadersVisible = false;
-			this->dgvUserTable->RowHeadersWidth = 82;
-			this->dgvUserTable->RowTemplate->Height = 33;
-			this->dgvUserTable->Size = System::Drawing::Size(553, 206);
-			this->dgvUserTable->TabIndex = 41;
-			this->dgvUserTable->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UserTableForm::dgvUserTable_CellClick);
-			this->dgvUserTable->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UserTableForm::dgvUserTable_CellContentClick);
+			this->dgvUserTableE->Location = System::Drawing::Point(14, 197);
+			this->dgvUserTableE->Margin = System::Windows::Forms::Padding(2);
+			this->dgvUserTableE->Name = L"dgvUserTableE";
+			this->dgvUserTableE->ReadOnly = true;
+			this->dgvUserTableE->RowHeadersVisible = false;
+			this->dgvUserTableE->RowHeadersWidth = 82;
+			this->dgvUserTableE->RowTemplate->Height = 33;
+			this->dgvUserTableE->Size = System::Drawing::Size(553, 206);
+			this->dgvUserTableE->TabIndex = 41;
+			this->dgvUserTableE->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Empleados::dgvUserTable_CellClick);
+			this->dgvUserTableE->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Empleados::dgvUserTable_CellContentClick);
 			// 
 			// UT_dni
 			// 
@@ -375,7 +374,7 @@ namespace AutoPrintView {
 			// 
 			this->TB_lastname->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_lastname->Location = System::Drawing::Point(140, 80);
+			this->TB_lastname->Location = System::Drawing::Point(140, 87);
 			this->TB_lastname->Margin = System::Windows::Forms::Padding(2);
 			this->TB_lastname->Name = L"TB_lastname";
 			this->TB_lastname->Size = System::Drawing::Size(153, 21);
@@ -385,7 +384,7 @@ namespace AutoPrintView {
 			// 
 			this->TB_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TB_name->Location = System::Drawing::Point(140, 47);
+			this->TB_name->Location = System::Drawing::Point(140, 49);
 			this->TB_name->Margin = System::Windows::Forms::Padding(2);
 			this->TB_name->Name = L"TB_name";
 			this->TB_name->Size = System::Drawing::Size(153, 21);
@@ -396,7 +395,7 @@ namespace AutoPrintView {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(46, 15);
+			this->label4->Location = System::Drawing::Point(46, 18);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(28, 15);
@@ -408,7 +407,7 @@ namespace AutoPrintView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(46, 86);
+			this->label3->Location = System::Drawing::Point(46, 87);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(57, 15);
@@ -420,7 +419,7 @@ namespace AutoPrintView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(46, 50);
+			this->label2->Location = System::Drawing::Point(46, 55);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 15);
@@ -493,7 +492,7 @@ namespace AutoPrintView {
 			this->label16->Size = System::Drawing::Size(44, 13);
 			this->label16->TabIndex = 66;
 			this->label16->Text = L"Numero";
-			this->label16->Click += gcnew System::EventHandler(this, &UserTableForm::label16_Click);
+			this->label16->Click += gcnew System::EventHandler(this, &Empleados::label16_Click);
 			// 
 			// label15
 			// 
@@ -530,7 +529,7 @@ namespace AutoPrintView {
 			this->bregistro->TabIndex = 61;
 			this->bregistro->Text = L"registro";
 			this->bregistro->UseVisualStyleBackColor = true;
-			this->bregistro->Click += gcnew System::EventHandler(this, &UserTableForm::bregistro_Click);
+			this->bregistro->Click += gcnew System::EventHandler(this, &Empleados::bregistro_Click);
 			// 
 			// TB_contraseña_reg
 			// 
@@ -642,7 +641,7 @@ namespace AutoPrintView {
 			this->label9->TabIndex = 47;
 			this->label9->Text = L"Nombre";
 			// 
-			// UserTableForm
+			// Empleados
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -650,14 +649,14 @@ namespace AutoPrintView {
 			this->Controls->Add(this->PB_imageREGIS);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Margin = System::Windows::Forms::Padding(2);
-			this->Name = L"UserTableForm";
+			this->Name = L"Empleados";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
-			this->Text = L"Usuarios";
+			this->Text = L"Empleados";
 			this->PB_imageREGIS->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PB_imageUSER))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserTable))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserTableE))->EndInit();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
 			this->ResumeLayout(false);
@@ -667,13 +666,13 @@ namespace AutoPrintView {
 
 
 		void RefreshGrid() {
-			List<Customer^>^ userList = Controller::QueryAllCustomers(); ///
+			List<Employee^>^ userList = Controller::QueryAllEmployees(); ///
 
-			dgvUserTable->Rows->Clear();
+			dgvUserTableE->Rows->Clear();
 			for (int i = 0; i < userList->Count; i++) {
 				User^ user = userList[i];
 				if (user != nullptr) {
-					dgvUserTable->Rows->Add(gcnew array<String^> {"" + user->Dni, user->Name,
+					dgvUserTableE->Rows->Add(gcnew array<String^> {"" + user->Dni, user->Name,
 						user->LastName, user->Email });
 				}
 			}
@@ -682,8 +681,8 @@ namespace AutoPrintView {
 
 
 	private: System::Void dgvUserTable_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-		int UserDNI = Int32::Parse(dgvUserTable->Rows[dgvUserTable->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-		User^ newUser = Controller::QueryCustomerByDNI(UserDNI);
+		int UserDNI = Int32::Parse(dgvUserTableE->Rows[dgvUserTableE->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+		User^ newUser = Controller::QueryEmployeeByDNI(UserDNI);
 
 		//if (newUser != nullptr) {
 		TB_dni->Text = Convert::ToString(newUser->Dni);
@@ -707,7 +706,7 @@ namespace AutoPrintView {
 	private: System::Void bregistro_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		try {
-			Customer^ newUser = gcnew Customer(); //instanciamos al nuevo usuario
+			Employee^ newUser = gcnew Employee(); //instanciamos al nuevo usuario
 			//newUser->User_Id = Int32::Parse(TB_userID_reg->Text);
 			newUser->Name = TB_name_reg->Text;
 			newUser->LastName = TB_lastname_reg->Text;
@@ -720,7 +719,7 @@ namespace AutoPrintView {
 			newUser->Password = TB_Contra_reg->Text;
 
 			//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
-			Controller::AddCostumer(newUser); //Añadimos al usuario
+			Controller::AddEmployee(newUser); //Añadimos al usuario
 
 			RefreshGrid();
 		}
@@ -731,15 +730,15 @@ namespace AutoPrintView {
 
 	private: System::Void beliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		int id = Int32::Parse(TB_dni->Text);
-		Controller::DeleteCustomer(id);
+		Controller::DeleteEmployee(id);
 		RefreshGrid();
 	}
 
 	private: System::Void bmodificar_Click(System::Object^ sender, System::EventArgs^ e) {
-		Customer^ newUser = gcnew Customer();
+		Employee^ newUser = gcnew Employee();
 		//Para que no se borre lo que se va a modificar se requiere del actUser
-		int UserDNI = Int32::Parse(dgvUserTable->Rows[dgvUserTable->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-		User^ actUser = Controller::QueryCustomerByDNI(UserDNI);
+		int UserDNI = Int32::Parse(dgvUserTableE->Rows[dgvUserTableE->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+		User^ actUser = Controller::QueryEmployeeByDNI(UserDNI);
 		//newUser->User_Id = Int32::Parse(TB_userID->Text);
 		newUser->Name = TB_name->Text;
 		newUser->LastName = TB_lastname->Text;
@@ -758,7 +757,7 @@ namespace AutoPrintView {
 			newUser->Photo = ms->ToArray();
 		}
 
-		Controller::UpdateCostumer(newUser);
+		Controller::UpdateEmployee(newUser);
 		RefreshGrid();
 
 	}
@@ -768,7 +767,7 @@ namespace AutoPrintView {
 		int DNI = Int32::Parse(TB_dni->Text);
 		String^ correo = TB_correo->Text;
 
-		Customer^ newUser = gcnew Customer();
+		Employee^ newUser = gcnew Employee();
 		newUser->Name = nombre;
 		newUser->LastName = apellido;
 		newUser->Dni = DNI;

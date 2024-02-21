@@ -133,6 +133,9 @@
     <ClInclude Include="CardVISAForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Empleados.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -168,6 +171,7 @@
     <ClCompile Include="AutoPrintView.cpp" />
     <ClCompile Include="BossGraphicsForm.cpp" />
     <ClCompile Include="CardVISAForm.cpp" />
+    <ClCompile Include="Empleados.cpp" />
     <ClCompile Include="Inicio.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MyProfile.cpp" />
