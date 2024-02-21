@@ -1849,7 +1849,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 
 			   Controller::UpdateCola(order11);
 		   }
-		   void SpoolerMenus() {
+		   void SpoolerMinus() {
 			   Order^ time_order11 = Controller::QueryFileByPosition(1);
 			   Order^ order11 = gcnew Order();
 			   order11->num_spooler = -1;
@@ -1903,13 +1903,11 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			order->PDF_URL = time_order->PDF_URL;
 			order->PDF = time_order->PDF;
 
-			// Actualizar el texto del Label con el tiempo restante
-			if (0 < order->time_print) {
-				LB_Time1->Text = (order->time_print).ToString();
-				LB_Pos1->Text = "1";
-				LB_NameDoc1->Text = time_order->PDF_NAME;
-			}
-			else if (order->time_print <= 0) {
+			LB_Time1->Text = (order->time_print).ToString();
+			LB_Pos1->Text = "1";
+			LB_NameDoc1->Text = time_order->PDF_NAME;
+
+			if (order->time_print <= 0) {
 				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
 				if (order->time_print == -2) {
 					order->num_spooler = -1;
@@ -1918,9 +1916,9 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			Controller::UpdateCola(order);
 		}
 		else {
-			LB_Time1->Text = "tiempo";
-			LB_Pos1->Text = "posición";
-			LB_NameDoc1->Text = "nombre de documento";
+			LB_Time1->Text = "1111";
+			LB_Pos1->Text = "1111";
+			LB_NameDoc1->Text = "1111";
 			SpoolerCero();
 			// Detén el temporizador si está en marcha
 			Timer1->Stop();
@@ -1953,29 +1951,30 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			LB_NameDoc2->Text = time_order->PDF_NAME;
 
 			Order^ time_orderbefore = Controller::QueryFileByPosition(1);
-			if (time_orderbefore->time_print < 0) {
-				SpoolerMenus();
+			if (time_orderbefore->time_print <= 0) {
+				SpoolerMinus();
 				order->num_spooler = time_order->num_spooler - 1;
 				Controller::UpdateCola(order);
-				LB_Time2->Text = "tiempo";
-				LB_Pos2->Text = "posición";
-				LB_NameDoc2->Text = "nombre de documento";
-				Order^ time_ordernext = Controller::QueryFileByPosition(3);
 				if (time_order == nullptr) {
-					// Detén el temporizador si está en marcha
+					Timer1->Stop();
+					Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+					Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+					Timer1->Start();
+
 					Timer2->Stop();
-					// Elimina todos los manejadores de eventos Tick
 					Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 				}
+				Order^ time_ordernext = Controller::QueryFileByPosition(3);
+				LB_Time2->Text = "2222";
+				LB_Pos2->Text = "2222";
+				LB_NameDoc2->Text = "2222";
 			}
 			else {
 				Controller::UpdateCola(order);
 			}
 		}
 		else {
-			// Detén el temporizador si está en marcha
 			Timer2->Stop();
-			// Elimina todos los manejadores de eventos Tick
 			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 		}
 	}/*----------------------------------------------------33333333333333333333333333333333333333333333333333-------------------------------------*/
