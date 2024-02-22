@@ -1784,20 +1784,43 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 			Order^ File_order = Controller::QueryFileById(orderId);
 
-			if (File_order->PDF_URL != nullptr) {
-				WB_PDF_historial->Navigate(File_order->PDF_URL);
-				//MessageBox::Show(File_order->PDF_URL);
-			}
-			else {
-				WB_PDF_historial->Navigate("");
-				WB_PDF_historial->Invalidate();
-			}
+			// Cargar el contenido del PDF en el control WebBrowser
+			LoadPdfContent(File_order);
 		}
 		else {
 			//Si el valor es nulo/vacío
 			MessageBox::Show("Seleccione una fila con un código existente");
 		}
 	}
+
+		   // Función para cargar el contenido del PDF en el control WebBrowser
+		   void LoadPdfContent(Order^ order) {
+			   if (order != nullptr) {
+				   // Verificar si el contenido del PDF está disponible
+				   if (order->PDF != nullptr && order->PDF->Length > 0) {
+					   try {
+						   // Guardar el contenido del PDF en un archivo temporal
+						   String^ tempPdfPath = System::IO::Path::GetTempFileName() + ".pdf";
+						   System::IO::File::WriteAllBytes(tempPdfPath, order->PDF);
+
+						   // Navegar al control WebBrowser al archivo PDF temporal
+						   WB_PDF_historial->Navigate(tempPdfPath);
+					   }
+					   catch (Exception^ ex) {
+						   throw ex;
+					   }
+				   }
+				   else if (!String::IsNullOrEmpty(order->PDF_URL)) {
+					   // Si el contenido del PDF no está disponible, navegar a la URL del PDF
+					   WB_PDF_historial->Navigate(order->PDF_URL);
+				   }
+				   else {
+					   // Si no hay contenido ni URL del PDF disponibles, limpiar el control WebBrowser
+					   WB_PDF_historial->Navigate("about:blank");
+					   WB_PDF_historial->Invalidate();
+				   }
+			   }
+		   }
 
 	private: System::Void TPage_impre_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//Actualiza el monto
