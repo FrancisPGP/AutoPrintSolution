@@ -22,7 +22,6 @@ namespace AutoPrintView {
 	using namespace AutoPrintModel;
 	using namespace AutoPrintController;
 	using namespace System::Collections::Generic;
-	using namespace AutoPrintModel;
 
 	using namespace System::Diagnostics;
 	using namespace System::Threading;
@@ -209,6 +208,8 @@ private: System::Windows::Forms::Timer^ timer8;
 private: System::Windows::Forms::Timer^ timer9;
 private: System::Windows::Forms::Timer^ timer10;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
+private: System::Windows::Forms::Label^ LB_NumPage;
+
 
 
 
@@ -357,6 +358,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PrintForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
+			this->LB_NumPage = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_imprimir = (gcnew System::Windows::Forms::WebBrowser());
 			this->BT_SubirPDF = (gcnew System::Windows::Forms::Button());
@@ -455,6 +457,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			// 
 			// TPage_impre
 			// 
+			this->TPage_impre->Controls->Add(this->LB_NumPage);
 			this->TPage_impre->Controls->Add(this->pictureBox1);
 			this->TPage_impre->Controls->Add(this->WB_PDF_imprimir);
 			this->TPage_impre->Controls->Add(this->BT_SubirPDF);
@@ -482,6 +485,18 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 			this->TPage_impre->Text = L"Imprimir";
 			this->TPage_impre->UseVisualStyleBackColor = true;
 			this->TPage_impre->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
+			// 
+			// LB_NumPage
+			// 
+			this->LB_NumPage->AutoSize = true;
+			this->LB_NumPage->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_NumPage->Location = System::Drawing::Point(246, 383);
+			this->LB_NumPage->Name = L"LB_NumPage";
+			this->LB_NumPage->Size = System::Drawing::Size(0, 25);
+			this->LB_NumPage->TabIndex = 43;
+			this->LB_NumPage->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->LB_NumPage->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
 			// 
 			// pictureBox1
 			// 
@@ -1338,7 +1353,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 		}
 #pragma endregion
 		double monto = 0;
-		int numpage = 1;
+		int numpage = 0;
 		int position = 1;
 
 
@@ -1691,7 +1706,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 		   }
 		   Void ShowPrice() {
 			   monto = 0;
-			   if (cmbNUMcopias->Text != "") {
+			   if (cmbNUMcopias->Text != "" && numpage != 0) {
 				   if (cmbTinta->Text == "Color") {
 					   monto = 0.5 * numpage * (Int32::Parse(cmbNUMcopias->Text));
 				   }
@@ -1700,8 +1715,11 @@ private: System::Windows::Forms::PictureBox^ pictureBox2;
 				   }
 				   MontoPago->Text = (monto).ToString();
 			   }
-			   else if (cmbTinta->Text != "") {
+			   else if (cmbTinta->Text != "" && numpage != 0) {
 				   MontoPago->Text = (monto).ToString();
+			   }
+			   if (cmbTinta->Text != "" && cmbNUMcopias->Text != "" && numpage != 0) {
+				   LB_NumPage->Text = "por " + numpage + " páginas";
 			   }
 		   }
 		   Void PrintPDF() {
