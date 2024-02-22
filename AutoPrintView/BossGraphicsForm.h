@@ -182,13 +182,15 @@ namespace AutoPrintView {
 
 
 		for (int i = 0; i < orders->Count; i++) {
-			if (orders[i]->color_page == "Blanco y negro") {
-				b++;
+			if (orders[i] != nullptr) {
+
+				if (orders[i]->color_page == "Blanco y negro") {
+					b++;
+				}
+				else {
+					c++;
+				}
 			}
-			else {
-				c++;
-			}
-		
 		}
 			ChartComparacion->Series["color"]->Points->AddXY("Blanco y negro: "+b, b);
 			ChartComparacion->Series["color"]->Points->AddXY("Color: "+c, c);
