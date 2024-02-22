@@ -8,6 +8,9 @@ namespace AutoPrintView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace AutoPrintModel;
+	using namespace AutoPrintController;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de OrdenForm
