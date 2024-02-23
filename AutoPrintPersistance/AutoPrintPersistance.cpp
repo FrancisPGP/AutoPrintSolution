@@ -929,9 +929,11 @@ Order^ Persistance::QueryFileById(int orderId) {
 
 Order^ Persistance::QueryFileByPosition(int numspooler) {
     orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
-    for (int i = 0; i < orderList->Count; i++) {
-        if (orderList[i]->num_spooler == numspooler)
-            return orderList[i];
+    if (orderList != nullptr) {
+        for (int i = 0; i < orderList->Count; i++) {
+            if (orderList[i]->num_spooler == numspooler)
+                return orderList[i];
+        }
     }
     return nullptr;
 }
