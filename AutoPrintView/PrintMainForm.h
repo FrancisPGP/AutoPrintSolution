@@ -17,6 +17,7 @@ namespace AutoPrintView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Threading;
 
 	/// <summary>
 	/// Resumen de PrintMainForm
@@ -24,6 +25,7 @@ namespace AutoPrintView {
 	public ref class PrintMainForm : public System::Windows::Forms::Form
 	{
 	public:
+		Thread^ myThread;
 		static User^ userG;
 		PrintMainForm(void)
 		{
@@ -177,14 +179,14 @@ namespace AutoPrintView {
 			// clientesToolStripMenuItem
 			// 
 			this->clientesToolStripMenuItem->Name = L"clientesToolStripMenuItem";
-			this->clientesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->clientesToolStripMenuItem->Size = System::Drawing::Size(132, 22);
 			this->clientesToolStripMenuItem->Text = L"Clientes";
 			this->clientesToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrintMainForm::clientesToolStripMenuItem_Click);
 			// 
 			// empleadosToolStripMenuItem
 			// 
 			this->empleadosToolStripMenuItem->Name = L"empleadosToolStripMenuItem";
-			this->empleadosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->empleadosToolStripMenuItem->Size = System::Drawing::Size(132, 22);
 			this->empleadosToolStripMenuItem->Text = L"Empleados";
 			this->empleadosToolStripMenuItem->Click += gcnew System::EventHandler(this, &PrintMainForm::empleadosToolStripMenuItem_Click);
 			// 
@@ -207,6 +209,7 @@ namespace AutoPrintView {
 			this->Name = L"PrintMainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Bienvenido a AutoPrint Connect";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &PrintMainForm::PrintMainForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &PrintMainForm::PrintMainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -219,6 +222,7 @@ namespace AutoPrintView {
 		Inicio^ inicio = gcnew Inicio();
 		inicio->ControlBox = false;
 		inicio->ShowDialog(); //Se muestra como un diálogo.
+		myThread = gcnew Thread(gcnew ThreadStart(this, &PrintMainForm::MyRun));
 		if (userG != nullptr) {
 
 			Dni_Ahora = userG->Dni;
@@ -228,6 +232,7 @@ namespace AutoPrintView {
 			else
 				if (userG->GetType() == Employee::typeid) {
 					EnableEmployeePermission();
+					myThread->Start();
 				}
 				else
 					if (userG->GetType() == Boss::typeid) {
@@ -236,6 +241,26 @@ namespace AutoPrintView {
 		}
 
 	}
+		   delegate void MyDelegate();
+
+		   void MyRun() {
+			   Random^ rnd = gcnew Random();
+			   while (true) {
+				   try {
+					   double expo = -180.0 * Math::Log(rnd->NextDouble());
+					   int waitTime = (int)expo * 1000; // Convertir a milisegundos
+					   myThread->Sleep(waitTime);
+					   ShowPrinterErrorMessageBox();
+				   }
+				   catch (Exception^ ex) {
+					   return;
+				   }
+			   }
+		   }
+
+		   void ShowPrinterErrorMessageBox() {
+			   MessageBox::Show("La impresora se atascó. Por favor, una vez solucionado, presiona Aceptar.", "Atasco de la impresora", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		   }
 	private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Application::Exit();
 		Application::Restart();
@@ -298,6 +323,12 @@ namespace AutoPrintView {
 		Empleados^ emp = gcnew  Empleados();
 		emp->MdiParent = this;
 		emp->Show();
+	}
+	private: System::Void PrintMainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		// Detener el hilo myThread antes de cerrar la ventana principal
+		if (myThread != nullptr && myThread->IsAlive) {
+			myThread->Abort();
+		}
 	}
 };
 }
