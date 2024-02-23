@@ -798,7 +798,7 @@ namespace AutoPrintView {
 			   Random^ rnd = gcnew Random();
 			   while (true) {
 				   try {
-					   myThread->Sleep((rnd->Next() % 5 + 1) * 1000);
+					   myThread->Sleep(30000);
 					   Invoke(gcnew MyDelegate(this, &UserTableForm::RefreshGrid));
 				   }
 				   catch (Exception^ ex) {
