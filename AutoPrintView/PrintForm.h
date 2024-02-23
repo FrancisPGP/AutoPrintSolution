@@ -197,16 +197,16 @@ private: System::Windows::Forms::Label^ LB_Pos10;
 
 private: System::Windows::Forms::Label^ LB_Pos9;
 private: System::Windows::Forms::PictureBox^ pictureBox1;
-private: System::Windows::Forms::Timer^ timer1;
-private: System::Windows::Forms::Timer^ timer2;
-private: System::Windows::Forms::Timer^ timer3;
-private: System::Windows::Forms::Timer^ timer4;
-private: System::Windows::Forms::Timer^ timer5;
-private: System::Windows::Forms::Timer^ timer6;
-private: System::Windows::Forms::Timer^ timer7;
-private: System::Windows::Forms::Timer^ timer8;
-private: System::Windows::Forms::Timer^ timer9;
-private: System::Windows::Forms::Timer^ timer10;
+
+
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::Label^ LB_NumPage;
 
@@ -354,7 +354,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PrintForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
@@ -423,16 +422,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_local = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer3 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer4 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer5 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer6 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer7 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer8 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer9 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->timer10 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -1278,55 +1267,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->dgv_precio->ReadOnly = true;
 			this->dgv_precio->Width = 50;
 			// 
-			// timer1
-			// 
-			this->timer1->Interval = 1000;
-			// 
-			// timer2
-			// 
-			this->timer2->Interval = 1000;
-			this->timer2->Tick += gcnew System::EventHandler(this, &PrintForm::timer2_Tick);
-			// 
-			// timer3
-			// 
-			this->timer3->Interval = 1000;
-			this->timer3->Tick += gcnew System::EventHandler(this, &PrintForm::timer3_Tick);
-			// 
-			// timer4
-			// 
-			this->timer4->Interval = 1000;
-			this->timer4->Tick += gcnew System::EventHandler(this, &PrintForm::timer4_Tick);
-			// 
-			// timer5
-			// 
-			this->timer5->Interval = 1000;
-			this->timer5->Tick += gcnew System::EventHandler(this, &PrintForm::timer5_Tick);
-			// 
-			// timer6
-			// 
-			this->timer6->Interval = 1000;
-			this->timer6->Tick += gcnew System::EventHandler(this, &PrintForm::timer6_Tick);
-			// 
-			// timer7
-			// 
-			this->timer7->Interval = 1000;
-			this->timer7->Tick += gcnew System::EventHandler(this, &PrintForm::timer7_Tick);
-			// 
-			// timer8
-			// 
-			this->timer8->Interval = 1000;
-			this->timer8->Tick += gcnew System::EventHandler(this, &PrintForm::timer8_Tick);
-			// 
-			// timer9
-			// 
-			this->timer9->Interval = 1000;
-			this->timer9->Tick += gcnew System::EventHandler(this, &PrintForm::timer9_Tick);
-			// 
-			// timer10
-			// 
-			this->timer10->Interval = 1000;
-			this->timer10->Tick += gcnew System::EventHandler(this, &PrintForm::timer10_Tick);
-			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1454,7 +1394,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   if (position == 1) {
 				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
 				   Timer1->Interval = 1000;
-				   // Asocia el evento Tick con el manejador timer_Tick
+				   // Asocia el evento Tick con el manejador timer1_Tick
 				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
 				   // Inicia el temporizador
 				   Timer1->Start();
@@ -1933,8 +1873,9 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		   System::Windows::Forms::Timer^ Timer9 = gcnew System::Windows::Forms::Timer();
 		   System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
+
 /*------------------------------------------------------111111111111111111111111111111111----------------------------------------------------------*/
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
 		Order^ time_order = Controller::QueryFileByPosition(1);
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
@@ -2432,7 +2373,5 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   client->Send(mail);
 		   
 		   }
-
-
 };
 }
