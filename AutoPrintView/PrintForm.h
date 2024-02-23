@@ -1372,8 +1372,12 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			UpOrder();
-			//if (NotPosition10()) {
+			Order^ time_order = Controller::QueryFileByPosition(2);
+			if (time_order != nullptr) {
+				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
+			}
+			else {
+				UpOrder();
 				ShowOrderFiles();
 				//if(el usuario paga)
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
@@ -1383,34 +1387,41 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				PrintPDF();
 				IniciarReloj();
 				RefreshPage();
-			//}
+
+			}
 		}
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			double monto = Convert::ToDouble(MontoPago->Text);
-			Total_a_apagar = monto;
-			int dni_wallet = Dni_Ahora;
-			Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
-			if (user_wallet->Money_in_wallet >= monto) {
-				UpOrder();
-				//if (NotPosition10()) {
-				ShowOrderFiles();
-				ProbErrorBILL();
-				user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
-				Controller::UpdateCostumer(user_wallet);
-				//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-				PrintPDF();
-				IniciarReloj();
-				RefreshPage();
-				email();
-
-				//}
+			Order^ time_order = Controller::QueryFileByPosition(2);
+			if (time_order != nullptr) {
+				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
 			}
 			else {
-				MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
-				WalletForm^ walletForm = gcnew WalletForm();
-				walletForm->Show();
+				double monto = Convert::ToDouble(MontoPago->Text);
+				Total_a_apagar = monto;
+				int dni_wallet = Dni_Ahora;
+				Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
+				if (user_wallet->Money_in_wallet >= monto) {
+					UpOrder();
+					//if (NotPosition10()) {
+					ShowOrderFiles();
+					ProbErrorBILL();
+					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
+					Controller::UpdateCostumer(user_wallet);
+					//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+					PrintPDF();
+					IniciarReloj();
+					RefreshPage();
+					email();
+
+					//}
+				}
+				else {
+					MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
+					WalletForm^ walletForm = gcnew WalletForm();
+					walletForm->Show();
+				}
 			}
 		}
 	}
@@ -1437,19 +1448,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   }
 			   else {
 				   return true;
-			   }
-		   }
-		   bool NotPosition10() {
-			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   for (int i = 0; i < orderfiles->Count; i++) {
-				   Order^ position_order = orderfiles[i];
-				   if (position_order->time_print == 10) {
-					   MessageBox::Show("Hay 10 PDFs en cola");
-					   return false;
-				   }
-				   else {
-					   return true;
-				   }
 			   }
 		   }
 		   void IniciarReloj() {
