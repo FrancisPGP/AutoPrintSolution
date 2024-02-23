@@ -1312,7 +1312,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(2);
+			Order^ time_order = Controller::QueryFileByPosition(10);
 			if (time_order != nullptr) {
 				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
 			}
@@ -1333,7 +1333,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(2);
+			Order^ time_order = Controller::QueryFileByPosition(10);
 			if (time_order != nullptr) {
 				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
 			}
