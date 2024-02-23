@@ -67,6 +67,8 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 	private: System::Windows::Forms::Button^ BT_PDFrecogido;
 	private: System::Windows::Forms::Button^ btnShowList;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 
 
@@ -98,6 +100,7 @@ namespace AutoPrintView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(OrdenForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->btnShowList = (gcnew System::Windows::Forms::Button());
@@ -113,11 +116,13 @@ namespace AutoPrintView {
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_listo))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -134,6 +139,7 @@ namespace AutoPrintView {
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->pictureBox1);
 			this->tabPage1->Controls->Add(this->btnShowList);
 			this->tabPage1->Controls->Add(this->dgvOrdenes_imprimiendo);
 			this->tabPage1->Location = System::Drawing::Point(4, 25);
@@ -147,7 +153,7 @@ namespace AutoPrintView {
 			// 
 			// btnShowList
 			// 
-			this->btnShowList->Location = System::Drawing::Point(290, 396);
+			this->btnShowList->Location = System::Drawing::Point(327, 383);
 			this->btnShowList->Name = L"btnShowList";
 			this->btnShowList->Size = System::Drawing::Size(167, 64);
 			this->btnShowList->TabIndex = 45;
@@ -285,6 +291,16 @@ namespace AutoPrintView {
 			this->dataGridViewTextBoxColumn4->ReadOnly = true;
 			this->dataGridViewTextBoxColumn4->Width = 300;
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(35, 28);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(761, 309);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 46;
+			this->pictureBox1->TabStop = false;
+			// 
 			// OrdenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -301,6 +317,7 @@ namespace AutoPrintView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->EndInit();
 			this->tabPage2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_listo))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}

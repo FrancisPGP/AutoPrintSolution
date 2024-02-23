@@ -100,13 +100,13 @@ List<Boss^>^ AutoPrintController::Controller::QueryAllBoss() {
 
 //intento para login
 User^ AutoPrintController::Controller::Login(int dni, String^ password) {
-    return Persistance::Login(dni,password);
+    return Persistance::Login(dni, password);
 }
 
 /*Francis*/
 void Controller::AddOrder(Order^ file) {
     //using namespace|Clase|Metodo || Los nombres son diferentes
-     Persistance::AddFile(file);
+    Persistance::AddFile(file);
 }
 
 List<Order^>^ Controller::QueryAllFiles() {
@@ -146,13 +146,20 @@ void AutoPrintController::Controller::ShowList(int listNum)
             ArduinoPort->Write(prueba2);
         }
         */
-        String^ ListNames="";
+        String^ ListNames = "";
         for (int i = 1; i <= 10; i++) {
             Order^ orden_cola = QueryFileByPosition(i);
             if (orden_cola != nullptr) {
                 Customer^ cliente = QueryCustomerByDNI(orden_cola->dni_history);
-                ListNames = ListNames + " " + cliente->Name;
-                //Cesar Faridh Francis
+                if (cliente == nullptr) {
+                    Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(orden_cola->dni_history);
+                    ListNames = ListNames + " " + emp_user_wallet->Name;
+                }
+                else {
+                    ListNames = ListNames + " " + cliente->Name;
+                    //Cesar Faridh Francis
+                }
+
             }
         }
         if (ListNames != "") {
