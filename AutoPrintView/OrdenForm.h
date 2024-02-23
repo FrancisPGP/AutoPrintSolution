@@ -66,6 +66,9 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 	private: System::Windows::Forms::Button^ BT_PDFrecogido;
+	private: System::Windows::Forms::Button^ btnShowList;
+
+
 
 
 
@@ -97,6 +100,7 @@ namespace AutoPrintView {
 		{
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->btnShowList = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_imprimiendo = (gcnew System::Windows::Forms::DataGridView());
 			this->OrPDF_dni = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->OrPDF_nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -122,23 +126,34 @@ namespace AutoPrintView {
 			this->tabControl1->Controls->Add(this->tabPage2);
 			this->tabControl1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tabControl1->Location = System::Drawing::Point(0, 0);
-			this->tabControl1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tabControl1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(699, 441);
+			this->tabControl1->Size = System::Drawing::Size(821, 543);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->btnShowList);
 			this->tabPage1->Controls->Add(this->dgvOrdenes_imprimiendo);
-			this->tabPage1->Location = System::Drawing::Point(4, 22);
-			this->tabPage1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tabPage1->Location = System::Drawing::Point(4, 25);
+			this->tabPage1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPage1->Name = L"tabPage1";
-			this->tabPage1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->tabPage1->Size = System::Drawing::Size(691, 415);
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tabPage1->Size = System::Drawing::Size(813, 514);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Imprimiendo";
 			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// btnShowList
+			// 
+			this->btnShowList->Location = System::Drawing::Point(290, 396);
+			this->btnShowList->Name = L"btnShowList";
+			this->btnShowList->Size = System::Drawing::Size(167, 64);
+			this->btnShowList->TabIndex = 45;
+			this->btnShowList->Text = L"Mostrar en pantalla";
+			this->btnShowList->UseVisualStyleBackColor = true;
+			this->btnShowList->Click += gcnew System::EventHandler(this, &OrdenForm::btnShowList_Click);
 			// 
 			// dgvOrdenes_imprimiendo
 			// 
@@ -149,15 +164,14 @@ namespace AutoPrintView {
 				this->OrPDF_dni,
 					this->OrPDF_nombre, this->OrPDF__documento, this->OrPDF_estado
 			});
-			this->dgvOrdenes_imprimiendo->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dgvOrdenes_imprimiendo->Location = System::Drawing::Point(2, 2);
-			this->dgvOrdenes_imprimiendo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgvOrdenes_imprimiendo->Location = System::Drawing::Point(35, 41);
+			this->dgvOrdenes_imprimiendo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvOrdenes_imprimiendo->Name = L"dgvOrdenes_imprimiendo";
 			this->dgvOrdenes_imprimiendo->ReadOnly = true;
 			this->dgvOrdenes_imprimiendo->RowHeadersVisible = false;
 			this->dgvOrdenes_imprimiendo->RowHeadersWidth = 82;
 			this->dgvOrdenes_imprimiendo->RowTemplate->Height = 33;
-			this->dgvOrdenes_imprimiendo->Size = System::Drawing::Size(687, 411);
+			this->dgvOrdenes_imprimiendo->Size = System::Drawing::Size(724, 254);
 			this->dgvOrdenes_imprimiendo->TabIndex = 44;
 			this->dgvOrdenes_imprimiendo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_imprimiendo_CellClick);
 			// 
@@ -197,11 +211,11 @@ namespace AutoPrintView {
 			// 
 			this->tabPage2->Controls->Add(this->BT_PDFrecogido);
 			this->tabPage2->Controls->Add(this->dgvOrdenes_listo);
-			this->tabPage2->Location = System::Drawing::Point(4, 22);
-			this->tabPage2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tabPage2->Location = System::Drawing::Point(4, 25);
+			this->tabPage2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPage2->Name = L"tabPage2";
-			this->tabPage2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->tabPage2->Size = System::Drawing::Size(691, 415);
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tabPage2->Size = System::Drawing::Size(813, 514);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Listo";
 			this->tabPage2->UseVisualStyleBackColor = true;
@@ -210,10 +224,10 @@ namespace AutoPrintView {
 			// 
 			this->BT_PDFrecogido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_PDFrecogido->Location = System::Drawing::Point(262, 11);
-			this->BT_PDFrecogido->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->BT_PDFrecogido->Location = System::Drawing::Point(349, 14);
+			this->BT_PDFrecogido->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->BT_PDFrecogido->Name = L"BT_PDFrecogido";
-			this->BT_PDFrecogido->Size = System::Drawing::Size(176, 36);
+			this->BT_PDFrecogido->Size = System::Drawing::Size(235, 44);
 			this->BT_PDFrecogido->TabIndex = 47;
 			this->BT_PDFrecogido->Text = L"PDF recogido";
 			this->BT_PDFrecogido->UseVisualStyleBackColor = true;
@@ -228,14 +242,14 @@ namespace AutoPrintView {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4
 			});
-			this->dgvOrdenes_listo->Location = System::Drawing::Point(6, 61);
-			this->dgvOrdenes_listo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgvOrdenes_listo->Location = System::Drawing::Point(8, 75);
+			this->dgvOrdenes_listo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvOrdenes_listo->Name = L"dgvOrdenes_listo";
 			this->dgvOrdenes_listo->ReadOnly = true;
 			this->dgvOrdenes_listo->RowHeadersVisible = false;
 			this->dgvOrdenes_listo->RowHeadersWidth = 82;
 			this->dgvOrdenes_listo->RowTemplate->Height = 33;
-			this->dgvOrdenes_listo->Size = System::Drawing::Size(681, 346);
+			this->dgvOrdenes_listo->Size = System::Drawing::Size(908, 426);
 			this->dgvOrdenes_listo->TabIndex = 46;
 			this->dgvOrdenes_listo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_listo_CellClick);
 			// 
@@ -273,11 +287,11 @@ namespace AutoPrintView {
 			// 
 			// OrdenForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(699, 441);
+			this->ClientSize = System::Drawing::Size(821, 543);
 			this->Controls->Add(this->tabControl1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"OrdenForm";
 			this->Text = L"Ordenes";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &OrdenForm::OrdenForm_FormClosing);
@@ -337,6 +351,14 @@ namespace AutoPrintView {
 		}
 	}
 	private: System::Void OrdenForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	}
+		   void ExecuteShowList(int listNum) {
+			   AutoPrintController::Controller::ShowList(listNum);
+		   }
+
+	private: System::Void btnShowList_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		ExecuteShowList(1);
 	}
 };
 }

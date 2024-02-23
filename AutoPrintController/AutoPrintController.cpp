@@ -129,4 +129,65 @@ void Controller::DeleteOrder(int orderId) {
     Persistance::DeleteOrder(orderId);
 }
 
-/*Cesar*/
+//-----------------Cesar---------------//Arduino
+
+void AutoPrintController::Controller::ShowList(int listNum)
+{
+    try {
+        OpenPort();
+        //ArduinoPort->Write(Convert::ToString(listNum));
+        /*
+        if (listNum == 1) {
+            String^ prueba1 = "Ricardo Luis Francis Faridh Cesar";
+            ArduinoPort->Write(prueba1);
+        }
+        if (listNum == 2) {
+            String^ prueba2 = "Duke Cesar Lisa Lola";
+            ArduinoPort->Write(prueba2);
+        }
+        */
+        String^ ListNames="";
+        for (int i = 1; i <= 10; i++) {
+            Order^ orden_cola = QueryFileByPosition(i);
+            if (orden_cola != nullptr) {
+                Customer^ cliente = QueryCustomerByDNI(orden_cola->dni_history);
+                ListNames = ListNames + " " + cliente->Name;
+                //Cesar Faridh Francis
+            }
+        }
+        if (ListNames != "") {
+            ArduinoPort->Write(ListNames);
+        }
+        else {
+            ArduinoPort->Write("ListaVacia");
+        }
+        ClosePort();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+}
+
+void AutoPrintController::Controller::OpenPort() {
+    try {
+        ArduinoPort = gcnew SerialPort();
+        ArduinoPort->PortName = "COM3";
+        ArduinoPort->BaudRate = 9600;
+        ArduinoPort->Open();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+}
+
+void AutoPrintController::Controller::ClosePort()
+{
+    try {
+        if (ArduinoPort->IsOpen) ArduinoPort->Close();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+}
+
+
