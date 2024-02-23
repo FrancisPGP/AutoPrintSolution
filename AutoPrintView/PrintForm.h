@@ -1873,7 +1873,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		   System::Windows::Forms::Timer^ Timer9 = gcnew System::Windows::Forms::Timer();
 		   System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
-
 /*------------------------------------------------------111111111111111111111111111111111----------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
 		Order^ time_order = Controller::QueryFileByPosition(1);
