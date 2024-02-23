@@ -217,6 +217,9 @@
     <EmbeddedResource Include="CardVISAForm.resx">
       <DependentUpon>CardVISAForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Empleados.resx">
+      <DependentUpon>Empleados.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.h</DependentUpon>
     </EmbeddedResource>

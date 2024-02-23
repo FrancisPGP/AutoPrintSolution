@@ -12,7 +12,7 @@ namespace AutoPrintView {
 	using namespace AutoPrintModel;
 	using namespace AutoPrintController;
 	using namespace System::Collections::Generic;
-
+	using namespace System::Threading;
 
 	/// <summary>
 	/// Resumen de UserTableForm
@@ -20,6 +20,7 @@ namespace AutoPrintView {
 	public ref class Empleados : public System::Windows::Forms::Form
 	{
 	public:
+		Thread^ myThread;
 		Empleados(void)
 		{
 			InitializeComponent();
@@ -652,6 +653,7 @@ namespace AutoPrintView {
 			this->Name = L"Empleados";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
 			this->Text = L"Empleados";
+			this->Load += gcnew System::EventHandler(this, &Empleados::Empleados_Load);
 			this->PB_imageREGIS->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
@@ -782,5 +784,24 @@ namespace AutoPrintView {
 
 	private: System::Void label16_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void Empleados_Load(System::Object^ sender, System::EventArgs^ e) {
+		myThread = gcnew Thread(gcnew ThreadStart(this, &Empleados::MyRun));
+		myThread->Start();
+		RefreshGrid();
+	}
+		   delegate void MyDelegate();
+
+		   void MyRun() {
+			   Random^ rnd = gcnew Random();
+			   while (true) {
+				   try {
+					   myThread->Sleep((rnd->Next() % 5 + 1) * 1000);
+					   Invoke(gcnew MyDelegate(this, &Empleados::RefreshGrid));
+				   }
+				   catch (Exception^ ex) {
+					   return;
+				   }
+			   }
+		   }
+};
 }
