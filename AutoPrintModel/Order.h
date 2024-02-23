@@ -20,7 +20,7 @@ namespace AutoPrintModel {
         property String^ sheet_type;
         property String^ sheet_size;
         property String^ status_order;//no se usó
-        property  double price; // precio, pe
+        property double price; // precio, pe
         property String^ date;
 
         property String^ Location;

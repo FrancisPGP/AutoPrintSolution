@@ -15,7 +15,7 @@ SqlConnection^ AutoPrintPersistance::Persistance::GetConnection()
     SqlConnection^ conn = gcnew SqlConnection();
     String^ password = "qcfie5Pv";
     conn->ConnectionString = "Server=200.16.7.140;Database=a20191288;User ID=a20191288;Password=" +
-        password + ";";
+                                password + ";";
     conn->Open();
     return conn;
 }
@@ -710,7 +710,6 @@ Boss^ AutoPrintPersistance::Persistance::QueryBossByDNI(int userDNI)
     
 }
 
-
 List<User^>^ AutoPrintPersistance::Persistance::QueryAllUsers()
 {
     //CustomerListDB = (List<User^>^) LoadTextFile(USER_FILE_NAME );
@@ -860,7 +859,7 @@ User^ AutoPrintPersistance::Persistance::Login(int dni, String^ password) {
     return nullptr;
 }
 
-/*Francis*/
+/** FRANCIS **********************************************************************/
 
 void Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject) {
     FileStream^ file;
@@ -912,6 +911,76 @@ void Persistance::AddFile(Order^ file) {
     }
     orderList->Add(file);
     PersistBinaryFile(Lista_Order_BIN, orderList);
+
+    /*****************************/
+    /*
+    //property int order_id;
+    int orderId;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_AddRobotWaiter_JB";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+
+        cmd->Parameters->Add("@COLOR_PAGE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@NUM_SPOOLER", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@NUM_COPIES", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@SHEET_TYPE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@SHEET_SIZE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@STATUS_ORDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PRICE", System::Data::SqlDbType::Decimal);
+            cmd->Parameters["@PRICE"]->Precision = 10;
+            cmd->Parameters["@PRICE"]->Scale = 2;
+        cmd->Parameters->Add("@DATE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@LOCATION", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PDF_NAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PDF", System::Data::SqlDbType::Image);// INVESTIGAR
+        cmd->Parameters->Add("@TIME_PRINT", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@DNI_HISTORY", System::Data::SqlDbType::Int);
+
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@ID", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+
+        
+
+        cmd->Parameters["@COLOR_PAGE"]->Value = file->color_page;
+        cmd->Parameters["@NUM_SPOOLER"]->Value = file->num_spooler;
+        cmd->Parameters["@NUM_COPIES"]->Value = file->num_copies;
+        cmd->Parameters["@SHEET_TYPE"]->Value = file->sheet_type;
+        cmd->Parameters["@SHEET_SIZE"]->Value = file->sheet_size;
+        cmd->Parameters["@STATUS_ORDER"]->Value = file->status_order;
+        cmd->Parameters["@PRICE"]->Value = file->price;
+        cmd->Parameters["@DATE"]->Value = file->date;
+        cmd->Parameters["@LOCATION"]->Value = file->Location;
+        cmd->Parameters["@PDF_NAME"]->Value = file->PDF_NAME;
+        cmd->Parameters["@TIME_PRINT"]->Value = file->time_print;
+        cmd->Parameters["@DNI_HISTORY"]->Value = file->dni_history;
+
+        if (file->PDF == nullptr)
+            cmd->Parameters["@PDF"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@PDF"]->Value = file->PDF;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados.
+        orderId = Convert::ToInt32(cmd->Parameters["@ORDER_ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
+    return orderId;*/
 }
 List<Order^>^ Persistance::QueryAllFiles() {
     orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
