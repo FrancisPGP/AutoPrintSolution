@@ -1342,25 +1342,52 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				Total_a_apagar = monto;
 				int dni_wallet = Dni_Ahora;
 				Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
-				if (user_wallet->Money_in_wallet >= monto) {
-					UpOrder();
-					//if (NotPosition10()) {
-					ShowOrderFiles();
-					ProbErrorBILL();
-					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
-					Controller::UpdateCostumer(user_wallet);
-					//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-					PrintPDF();
-					IniciarReloj();
-					RefreshPage();
-					email();
 
-					//}
+				if (user_wallet == nullptr) {
+					Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
+
+					if (emp_user_wallet->Money_in_wallet >= monto) {
+						UpOrder();
+						//if (NotPosition10()) {
+						ShowOrderFiles();
+						ProbErrorBILL();
+						emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
+						Controller::UpdateEmployee(emp_user_wallet);
+						//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+						PrintPDF();
+						IniciarReloj();
+						RefreshPage();
+						email();
+
+						//}
+					}
+					else {
+						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
+						WalletForm^ walletForm = gcnew WalletForm();
+						walletForm->Show();
+					}
 				}
 				else {
-					MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
-					WalletForm^ walletForm = gcnew WalletForm();
-					walletForm->Show();
+					if (user_wallet->Money_in_wallet >= monto) {
+						UpOrder();
+						//if (NotPosition10()) {
+						ShowOrderFiles();
+						ProbErrorBILL();
+						user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
+						Controller::UpdateCostumer(user_wallet);
+						//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+						PrintPDF();
+						IniciarReloj();
+						RefreshPage();
+						email();
+
+						//}
+					}
+					else {
+						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
+						WalletForm^ walletForm = gcnew WalletForm();
+						walletForm->Show();
+					}
 				}
 			}
 		}
@@ -2352,25 +2379,43 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 		   // Excelente trabajo Ricardo. Francis
 		  public:
-           void email(){
-			   int dniP = Dni_Ahora;
-			   String^ dnic = "" + dniP;
-			   double pago = Total_a_apagar;
-			   String^ pagoc = "" + pago;
+			  void email() {
+				  int dniP = Dni_Ahora;
+				  String^ dnic = "" + dniP;
+				  double pago = Total_a_apagar;
+				  String^ pagoc = "" + pago;
 
-			   Customer^ currentUser = Controller::QueryCustomerByDNI(dniP);
-			   String^ correo = currentUser->Email;
+				  Customer^ user_wallet = Controller::QueryCustomerByDNI(dniP);
 
-			   MailMessage^ mail = gcnew MailMessage("AutoprintConnect@outlook.com", correo,
-				   "Recibo Electronico de Impresion",
-				   "Constancia de Pago\n Se ha registrado con exito el pago de su impresion\n DNI:" + dnic + "\n Pago total:" + pagoc + "\n AUTOPRINT CONNECT");
-			   
-			   SmtpClient^ client =gcnew SmtpClient("smtp-mail.outlook.com");
-			   client->Port = 587;
-			   client->Credentials = gcnew System::Net::NetworkCredential("AutoprintConnect@outlook.com", "Autoprint123");
-			   client->EnableSsl = true;
-			   client->Send(mail);
-		   
-		   }
+				  if (user_wallet == nullptr) {
+					  Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dniP);
+
+					  String^ correo = emp_user_wallet->Email;
+
+					  MailMessage^ mail = gcnew MailMessage("AutoprintConnect@outlook.com", correo,
+						  "Recibo Electronico de Impresion",
+						  "Constancia de Pago\n Se ha registrado con exito el pago de su impresion\n DNI:" + dnic + "\n Pago total:" + pagoc + "\n AUTOPRINT CONNECT");
+
+					  SmtpClient^ client = gcnew SmtpClient("smtp-mail.outlook.com");
+					  client->Port = 587;
+					  client->Credentials = gcnew System::Net::NetworkCredential("AutoprintConnect@outlook.com", "Autoprint123");
+					  client->EnableSsl = true;
+					  client->Send(mail);
+				  }
+				  else {
+					  String^ correo = user_wallet->Email;
+
+					  MailMessage^ mail = gcnew MailMessage("AutoprintConnect@outlook.com", correo,
+						  "Recibo Electronico de Impresion",
+						  "Constancia de Pago\n Se ha registrado con exito el pago de su impresion\n DNI:" + dnic + "\n Pago total:" + pagoc + "\n AUTOPRINT CONNECT");
+
+					  SmtpClient^ client = gcnew SmtpClient("smtp-mail.outlook.com");
+					  client->Port = 587;
+					  client->Credentials = gcnew System::Net::NetworkCredential("AutoprintConnect@outlook.com", "Autoprint123");
+					  client->EnableSsl = true;
+					  client->Send(mail);
+				  }
+
+			  }
 };
 }
