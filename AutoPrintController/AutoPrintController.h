@@ -8,6 +8,8 @@ using namespace System::IO::Ports;
 namespace AutoPrintController {
     public ref class Controller
     {
+    private:
+        static  SerialPort^ ArduinoPort;
       
     public:
         /*Ricardo y Luis*/
@@ -48,6 +50,10 @@ namespace AutoPrintController {
         static void DeleteOrder(int orderId);
         
         /*Cesar*/
+        static void ShowList(int listNum);
+        //Metodos para interactuar con Arduinizi
+        static void OpenPort();
+        static void ClosePort();
 
     };
 }
