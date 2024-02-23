@@ -409,19 +409,39 @@ namespace AutoPrintView {
 		int dni_wallet = Dni_Ahora;
 		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 
-		if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
-			(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
-			MessageBox::Show("Debe rellenar todas las casillas");
+		if (user_wallet == nullptr) {
+			Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
+
+			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+				MessageBox::Show("Debe rellenar todas las casillas");
+			}
+			else {
+				emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
+				lblBalance->Text = Convert::ToString(emp_user_wallet->Money_in_wallet);
+				Controller::UpdateEmployee(emp_user_wallet);
+				txtAmountToRechange->Text = "";
+				txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
+				txtMMAAWallet->Text = "MM/AA";
+				txtCVVWallet->Text = "XXX";
+				txtOwnerWallet->Text = "NOMBRE APELLIDO";
+			}
 		}
 		else {
-			user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
-			lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
-			Controller::UpdateCostumer(user_wallet);
-			txtAmountToRechange->Text = "";
-			txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
-			txtMMAAWallet->Text = "MM/AA";
-			txtCVVWallet->Text = "XXX";
-			txtOwnerWallet->Text = "NOMBRE APELLIDO";
+			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+				MessageBox::Show("Debe rellenar todas las casillas");
+			}
+			else {
+				user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
+				lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+				Controller::UpdateCostumer(user_wallet);
+				txtAmountToRechange->Text = "";
+				txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
+				txtMMAAWallet->Text = "MM/AA";
+				txtCVVWallet->Text = "XXX";
+				txtOwnerWallet->Text = "NOMBRE APELLIDO";
+			}
 		}
 	}
 
@@ -480,7 +500,13 @@ namespace AutoPrintView {
 	private: System::Void WalletForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		int dni_wallet = Dni_Ahora;
 		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
-		lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+		if (user_wallet == nullptr) {
+			Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
+			lblBalance->Text = Convert::ToString(emp_user_wallet->Money_in_wallet);
+		}
+		else {
+			lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+		}
 	}
 	};
 }

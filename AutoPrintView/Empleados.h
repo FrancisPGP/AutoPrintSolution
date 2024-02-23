@@ -719,6 +719,7 @@ namespace AutoPrintView {
 			newUser->Gender = TB_gender_registro->Text;
 			newUser->Phone_number = TB_Num_reg->Text;
 			newUser->Password = TB_Contra_reg->Text;
+			newUser->Money_in_wallet = 0;
 
 			//Ya cargados los datos, lo pasamos como parámetro al método AddCustomer
 			Controller::AddEmployee(newUser); //Añadimos al usuario
