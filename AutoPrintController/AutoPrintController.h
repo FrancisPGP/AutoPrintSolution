@@ -40,7 +40,7 @@ namespace AutoPrintController {
         static User^ Login(int dni, String^ password);
 
         /*Francis*/
-        static void AddOrder(Order^);
+        static int AddOrder(Order^);
         static List<Order^>^ QueryAllFiles();
         static Order^ QueryFileById(int orderId);
         static Order^ QueryFileByPosition(int numspooler);
