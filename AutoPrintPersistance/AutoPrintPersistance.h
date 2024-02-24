@@ -92,12 +92,13 @@ namespace AutoPrintPersistance {
 
 		/*Francis*/
 		// Files
-		static void AddFile(Order^ file);
+		static int AddFile(Order^ file);
+		static void UpdateCola(Order^ order);
+		static void DeleteOrder(int orderId);
 		static List<Order^>^ QueryAllFiles();
 		static Order^ QueryFileById(int orderId);
 		static Order^ QueryFileByPosition(int numspooler);
-		static void UpdateCola(Order^ order);
-		static void DeleteOrder(int orderId);
+		
 
 		/*Cesar*/
 
