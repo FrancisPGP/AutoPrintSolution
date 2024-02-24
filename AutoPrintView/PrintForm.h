@@ -1323,11 +1323,11 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 				cardVISAForm->ControlBox = true;
 				cardVISAForm->ShowDialog();
-				//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");				
+				MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");				
 				PrintPDF();
 				IniciarReloj();
 				RefreshPage();
-
+				email();
 			}
 		}
 	}
@@ -1348,18 +1348,15 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 					if (emp_user_wallet->Money_in_wallet >= monto) {
 						UpOrder();
-						//if (NotPosition10()) {
 						ShowOrderFiles();
 						ProbErrorBILL();
 						emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
 						Controller::UpdateEmployee(emp_user_wallet);
-						//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 						PrintPDF();
 						IniciarReloj();
 						RefreshPage();
 						email();
-
-						//}
 					}
 					else {
 						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
@@ -1902,6 +1899,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 /*------------------------------------------------------111111111111111111111111111111111----------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
+		String^ Documento_name;
 		Order^ time_order = Controller::QueryFileByPosition(1);
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
@@ -1929,6 +1927,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
 				if (order->time_print == -1) {
 					order->num_spooler = -1;
+					Documento_name = time_order->PDF_NAME;
 				}
 			}
 			Controller::UpdateCola(order);
@@ -1942,6 +1941,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
 			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+			MessageBox::Show("Su documento " + Documento_name + " está listo para recoger.");
 		}
 	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
