@@ -852,7 +852,7 @@ User^ AutoPrintPersistance::Persistance::Login(int dni, String^ password) {
 
 
 
-/** FRANCIS *********************************************** FRANCIS ****************************/
+/*** FRANCIS *********************************************** FRANCIS ****************************/
 
 void Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject) {
     FileStream^ file;
@@ -1158,16 +1158,103 @@ void Persistance::UpdateCola(Order^ order) {
 
     /*****************************/
 
+    /*SqlConnection^ conn;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
 
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_UpdateCola_FG";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        
+        cmd->Parameters->Add("@ORDER_ID", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@COLOR_PAGE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@NUM_SPOOLER", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@NUM_COPIES", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@SHEET_TYPE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@SHEET_SIZE", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@STATUS_ORDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PRICE", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@PRICE"]->Precision = 10;
+        cmd->Parameters["@PRICE"]->Scale = 2;
+        cmd->Parameters->Add("@DATE_ORDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@LOCATION_ORDER", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PDF_NAME", System::Data::SqlDbType::VarChar, 200);
+        cmd->Parameters->Add("@PDF", System::Data::SqlDbType::Image);
+        cmd->Parameters->Add("@TIME_PRINT", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@DNI_HISTORY", System::Data::SqlDbType::Int);
+
+        cmd->Prepare();
+
+        cmd->Parameters["@ORDER_ID"]->Value = order->order_id;
+        cmd->Parameters["@COLOR_PAGE"]->Value = order->color_page;
+        cmd->Parameters["@NUM_SPOOLER"]->Value = order->num_spooler;
+        cmd->Parameters["@NUM_COPIES"]->Value = order->num_copies;
+        cmd->Parameters["@SHEET_TYPE"]->Value = order->sheet_type;
+        cmd->Parameters["@SHEET_SIZE"]->Value = order->sheet_size;
+        cmd->Parameters["@STATUS_ORDER"]->Value = order->status_order;
+        cmd->Parameters["@PRICE"]->Value = order->price;
+        cmd->Parameters["@DATE_ORDER"]->Value = order->date;
+        cmd->Parameters["@LOCATION_ORDER"]->Value = order->Location;
+        cmd->Parameters["@PDF_NAME"]->Value = order->PDF_NAME;
+        cmd->Parameters["@TIME_PRINT"]->Value = order->time_print;
+        cmd->Parameters["@DNI_HISTORY"]->Value = order->dni_history;
+
+        if (order->PDF == nullptr)
+            cmd->Parameters["@PDF"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@PDF"]->Value = order->PDF;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados.
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }*/
 }
 
 void Persistance::DeleteOrder(int orderId) {
-    for (int i = 0; i < orderList->Count; i++) {
+    /*for (int i = 0; i < orderList->Count; i++) {
         if (orderList[i]->order_id == orderId) {
             orderList->RemoveAt(i);
             PersistBinaryFile(Lista_Order_BIN, orderList);
             return;
         }
+    }*/
+
+    /*****************************/
+
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_DeleteOrder_FG";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@ORDER_ID", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@ORDER_ID"]->Value = orderId;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados.
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
     }
 }
 

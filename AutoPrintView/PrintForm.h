@@ -1336,6 +1336,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		double monto = 0;
 		int numpage = 0;
 		int position = 1;
+		int delete_orderId = 0;
 
 		int tiempo1 = 0;
 		int tiempo2 = 0;
@@ -1413,6 +1414,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
 			Timer10->Start();
 		}
+		delete_orderId = 0;
 		ShowOrderFiles();
 	}
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1847,12 +1849,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (dgvHistorial_Files->SelectedCells->Count > 0 &&
 			dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr &&
 			!String::IsNullOrEmpty(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString())) {
-
+			
 			// Solo ejecutar si hay una celda seleccionada y el valor no es nulo o vacío
 			int orderId = Int32::Parse(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-
 			Order^ File_order = Controller::QueryFileById(orderId);
-
+			delete_orderId = File_order->order_id;
 			// Cargar el contenido del PDF en el control WebBrowser
 			LoadPdfContent(File_order);
 		}
@@ -1920,7 +1921,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		}
 	}
 	private: System::Void BT_DeletePDFs_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		if (delete_orderId !=0) {
+			Controller::DeleteOrder(delete_orderId);
+			ShowOrderFiles();
+			delete_orderId = 0;
+		}
 	}
 
 		   int GetNumberOfPages(const std::string& rutaPDF) {
@@ -2018,6 +2023,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2037,7 +2043,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
 				if (order->time_print == -1) {
 					order->num_spooler = -1;
-					Documento_name = time_order->PDF_NAME;
+					//Documento_name = time_order->PDF_NAME;
+					order->status_order = "Listo";
+					MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
 				}
 			}
 			Controller::UpdateCola(order);
@@ -2051,7 +2059,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
 			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-			MessageBox::Show("Su documento " + Documento_name + " está listo para recoger.");
 		}
 	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -2063,6 +2070,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2111,6 +2119,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2159,6 +2168,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2207,6 +2217,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2255,6 +2266,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2303,6 +2315,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2351,6 +2364,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2399,6 +2413,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
@@ -2447,6 +2462,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
 			order->sheet_type = time_order->sheet_type;
 			order->sheet_size = time_order->sheet_size;
 			order->color_page = time_order->color_page;
