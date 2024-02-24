@@ -849,6 +849,9 @@ User^ AutoPrintPersistance::Persistance::Login(int dni, String^ password) {
     return nullptr;
 }
 
+
+
+
 /** FRANCIS *********************************************** FRANCIS ****************************/
 
 void Persistance::PersistBinaryFile(String^ fileName, Object^ persistObject) {
@@ -1084,24 +1087,78 @@ Order^ Persistance::QueryFileById(int orderId) {
 }
 
 Order^ Persistance::QueryFileByPosition(int numspooler) {
-    orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
+    /*orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
     if (orderList != nullptr) {
         for (int i = 0; i < orderList->Count; i++) {
             if (orderList[i]->num_spooler == numspooler)
                 return orderList[i];
         }
     }
-    return nullptr;
+    return nullptr;*/
+
+    /*****************************/
+
+    Order^ order = nullptr;
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryFileByPosition_FG";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@NUM_SPOOLER", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@NUM_SPOOLER"]->Value = numspooler;
+
+        //Paso 3: Se ejecuta la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Se procesan los resultados.
+        if (reader->Read()) {
+            order = gcnew Order();
+            order->order_id = Convert::ToInt32(reader["ORDER_ID"]->ToString());
+            order->color_page = reader["COLOR_PAGE"]->ToString();
+            order->num_spooler = Convert::ToInt32(reader["NUM_SPOOLER"]->ToString());
+            order->num_copies = Convert::ToInt32(reader["NUM_COPIES"]->ToString());
+            order->sheet_type = reader["SHEET_TYPE"]->ToString();
+            order->sheet_size = reader["SHEET_SIZE"]->ToString();
+            order->status_order = reader["STATUS_ORDER"]->ToString();
+            order->price = Convert::ToDouble(reader["PRICE"]->ToString());
+            order->date = reader["DATE_ORDER"]->ToString();
+            order->Location = reader["LOCATION_ORDER"]->ToString();
+            order->PDF_NAME = reader["PDF_NAME"]->ToString();
+            order->time_print = Convert::ToInt32(reader["TIME_PRINT"]->ToString());
+            order->dni_history = Convert::ToInt32(reader["DNI_HISTORY"]->ToString());
+
+            if (!DBNull::Value->Equals(reader["PDF"]))
+                order->PDF = (array<Byte>^)reader["PDF"];
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
+    return order;
 }
 
 void Persistance::UpdateCola(Order^ order) {
-    for (int i = 0; i < orderList->Count; i++) {
+    /*for (int i = 0; i < orderList->Count; i++) {
         if (orderList[i]->order_id == order->order_id) {
             orderList[i] = order;
             PersistBinaryFile(Lista_Order_BIN, orderList);
             return;
         }
-    }
+    }*/
+
+    /*****************************/
+
+
 }
 
 void Persistance::DeleteOrder(int orderId) {

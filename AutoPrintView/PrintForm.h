@@ -108,13 +108,13 @@ namespace AutoPrintView {
 
 	private: System::Windows::Forms::ComboBox^ cmbTinta;
 	private: System::Windows::Forms::ComboBox^ cmbNUMcopias;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_orderId;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copias;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_local;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_precio;
+
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ BT_SubirPDF;
 
 
@@ -209,6 +209,43 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::Label^ LB_NumPage;
+private: System::Windows::Forms::Button^ BT_DeletePDFs;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_orderId;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_namedoc;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_local;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_precio;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_status;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copias;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -412,16 +449,19 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->BT_DeletePDFs = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_historial = (gcnew System::Windows::Forms::WebBrowser());
 			this->dgvHistorial_Files = (gcnew System::Windows::Forms::DataGridView());
 			this->dgv_orderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_tinta = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->gdv_namedoc = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_local = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->gdv_status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tinta = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -763,9 +803,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc10->Location = System::Drawing::Point(182, 439);
 			this->LB_NameDoc10->Name = L"LB_NameDoc10";
-			this->LB_NameDoc10->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc10->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc10->TabIndex = 51;
-			this->LB_NameDoc10->Text = L"nombre de documento";
 			this->LB_NameDoc10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc9
@@ -775,9 +814,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc9->Location = System::Drawing::Point(182, 399);
 			this->LB_NameDoc9->Name = L"LB_NameDoc9";
-			this->LB_NameDoc9->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc9->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc9->TabIndex = 50;
-			this->LB_NameDoc9->Text = L"nombre de documento";
 			this->LB_NameDoc9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos10
@@ -787,9 +825,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos10->Location = System::Drawing::Point(31, 439);
 			this->LB_Pos10->Name = L"LB_Pos10";
-			this->LB_Pos10->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos10->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos10->TabIndex = 49;
-			this->LB_Pos10->Text = L"posición";
 			this->LB_Pos10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos9
@@ -799,9 +836,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos9->Location = System::Drawing::Point(31, 399);
 			this->LB_Pos9->Name = L"LB_Pos9";
-			this->LB_Pos9->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos9->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos9->TabIndex = 48;
-			this->LB_Pos9->Text = L"posición";
 			this->LB_Pos9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time10
@@ -811,9 +847,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time10->Location = System::Drawing::Point(636, 439);
 			this->LB_Time10->Name = L"LB_Time10";
-			this->LB_Time10->Size = System::Drawing::Size(87, 29);
+			this->LB_Time10->Size = System::Drawing::Size(0, 29);
 			this->LB_Time10->TabIndex = 47;
-			this->LB_Time10->Text = L"tiempo";
 			this->LB_Time10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time9
@@ -823,9 +858,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time9->Location = System::Drawing::Point(636, 399);
 			this->LB_Time9->Name = L"LB_Time9";
-			this->LB_Time9->Size = System::Drawing::Size(87, 29);
+			this->LB_Time9->Size = System::Drawing::Size(0, 29);
 			this->LB_Time9->TabIndex = 46;
-			this->LB_Time9->Text = L"tiempo";
 			this->LB_Time9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time8
@@ -835,9 +869,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time8->Location = System::Drawing::Point(636, 359);
 			this->LB_Time8->Name = L"LB_Time8";
-			this->LB_Time8->Size = System::Drawing::Size(87, 29);
+			this->LB_Time8->Size = System::Drawing::Size(0, 29);
 			this->LB_Time8->TabIndex = 45;
-			this->LB_Time8->Text = L"tiempo";
 			this->LB_Time8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time7
@@ -847,9 +880,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time7->Location = System::Drawing::Point(636, 319);
 			this->LB_Time7->Name = L"LB_Time7";
-			this->LB_Time7->Size = System::Drawing::Size(87, 29);
+			this->LB_Time7->Size = System::Drawing::Size(0, 29);
 			this->LB_Time7->TabIndex = 44;
-			this->LB_Time7->Text = L"tiempo";
 			this->LB_Time7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time6
@@ -859,9 +891,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time6->Location = System::Drawing::Point(636, 279);
 			this->LB_Time6->Name = L"LB_Time6";
-			this->LB_Time6->Size = System::Drawing::Size(87, 29);
+			this->LB_Time6->Size = System::Drawing::Size(0, 29);
 			this->LB_Time6->TabIndex = 41;
-			this->LB_Time6->Text = L"tiempo";
 			this->LB_Time6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time5
@@ -871,9 +902,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time5->Location = System::Drawing::Point(636, 239);
 			this->LB_Time5->Name = L"LB_Time5";
-			this->LB_Time5->Size = System::Drawing::Size(87, 29);
+			this->LB_Time5->Size = System::Drawing::Size(0, 29);
 			this->LB_Time5->TabIndex = 40;
-			this->LB_Time5->Text = L"tiempo";
 			this->LB_Time5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos8
@@ -883,9 +913,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos8->Location = System::Drawing::Point(31, 359);
 			this->LB_Pos8->Name = L"LB_Pos8";
-			this->LB_Pos8->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos8->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos8->TabIndex = 39;
-			this->LB_Pos8->Text = L"posición";
 			this->LB_Pos8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos7
@@ -895,9 +924,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos7->Location = System::Drawing::Point(31, 319);
 			this->LB_Pos7->Name = L"LB_Pos7";
-			this->LB_Pos7->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos7->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos7->TabIndex = 38;
-			this->LB_Pos7->Text = L"posición";
 			this->LB_Pos7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc8
@@ -907,9 +935,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc8->Location = System::Drawing::Point(182, 359);
 			this->LB_NameDoc8->Name = L"LB_NameDoc8";
-			this->LB_NameDoc8->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc8->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc8->TabIndex = 37;
-			this->LB_NameDoc8->Text = L"nombre de documento";
 			this->LB_NameDoc8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc7
@@ -919,9 +946,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc7->Location = System::Drawing::Point(182, 319);
 			this->LB_NameDoc7->Name = L"LB_NameDoc7";
-			this->LB_NameDoc7->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc7->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc7->TabIndex = 36;
-			this->LB_NameDoc7->Text = L"nombre de documento";
 			this->LB_NameDoc7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc6
@@ -931,9 +957,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc6->Location = System::Drawing::Point(182, 279);
 			this->LB_NameDoc6->Name = L"LB_NameDoc6";
-			this->LB_NameDoc6->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc6->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc6->TabIndex = 35;
-			this->LB_NameDoc6->Text = L"nombre de documento";
 			this->LB_NameDoc6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc5
@@ -943,9 +968,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc5->Location = System::Drawing::Point(182, 239);
 			this->LB_NameDoc5->Name = L"LB_NameDoc5";
-			this->LB_NameDoc5->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc5->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc5->TabIndex = 34;
-			this->LB_NameDoc5->Text = L"nombre de documento";
 			this->LB_NameDoc5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time4
@@ -955,9 +979,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time4->Location = System::Drawing::Point(636, 199);
 			this->LB_Time4->Name = L"LB_Time4";
-			this->LB_Time4->Size = System::Drawing::Size(87, 29);
+			this->LB_Time4->Size = System::Drawing::Size(0, 29);
 			this->LB_Time4->TabIndex = 33;
-			this->LB_Time4->Text = L"tiempo";
 			this->LB_Time4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time3
@@ -967,9 +990,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time3->Location = System::Drawing::Point(636, 159);
 			this->LB_Time3->Name = L"LB_Time3";
-			this->LB_Time3->Size = System::Drawing::Size(87, 29);
+			this->LB_Time3->Size = System::Drawing::Size(0, 29);
 			this->LB_Time3->TabIndex = 32;
-			this->LB_Time3->Text = L"tiempo";
 			this->LB_Time3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos6
@@ -979,9 +1001,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos6->Location = System::Drawing::Point(31, 279);
 			this->LB_Pos6->Name = L"LB_Pos6";
-			this->LB_Pos6->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos6->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos6->TabIndex = 31;
-			this->LB_Pos6->Text = L"posición";
 			this->LB_Pos6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos5
@@ -991,9 +1012,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos5->Location = System::Drawing::Point(31, 239);
 			this->LB_Pos5->Name = L"LB_Pos5";
-			this->LB_Pos5->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos5->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos5->TabIndex = 30;
-			this->LB_Pos5->Text = L"posición";
 			this->LB_Pos5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos4
@@ -1003,9 +1023,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos4->Location = System::Drawing::Point(31, 199);
 			this->LB_Pos4->Name = L"LB_Pos4";
-			this->LB_Pos4->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos4->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos4->TabIndex = 29;
-			this->LB_Pos4->Text = L"posición";
 			this->LB_Pos4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc4
@@ -1015,9 +1034,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc4->Location = System::Drawing::Point(182, 199);
 			this->LB_NameDoc4->Name = L"LB_NameDoc4";
-			this->LB_NameDoc4->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc4->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc4->TabIndex = 28;
-			this->LB_NameDoc4->Text = L"nombre de documento";
 			this->LB_NameDoc4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc3
@@ -1027,9 +1045,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc3->Location = System::Drawing::Point(182, 159);
 			this->LB_NameDoc3->Name = L"LB_NameDoc3";
-			this->LB_NameDoc3->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc3->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc3->TabIndex = 27;
-			this->LB_NameDoc3->Text = L"nombre de documento";
 			this->LB_NameDoc3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos3
@@ -1039,9 +1056,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos3->Location = System::Drawing::Point(31, 159);
 			this->LB_Pos3->Name = L"LB_Pos3";
-			this->LB_Pos3->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos3->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos3->TabIndex = 26;
-			this->LB_Pos3->Text = L"posición";
 			this->LB_Pos3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time2
@@ -1051,9 +1067,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time2->Location = System::Drawing::Point(636, 119);
 			this->LB_Time2->Name = L"LB_Time2";
-			this->LB_Time2->Size = System::Drawing::Size(87, 29);
+			this->LB_Time2->Size = System::Drawing::Size(0, 29);
 			this->LB_Time2->TabIndex = 25;
-			this->LB_Time2->Text = L"tiempo";
 			this->LB_Time2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc2
@@ -1063,9 +1078,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc2->Location = System::Drawing::Point(182, 119);
 			this->LB_NameDoc2->Name = L"LB_NameDoc2";
-			this->LB_NameDoc2->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc2->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc2->TabIndex = 24;
-			this->LB_NameDoc2->Text = L"nombre de documento";
 			this->LB_NameDoc2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos2
@@ -1075,9 +1089,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos2->Location = System::Drawing::Point(31, 119);
 			this->LB_Pos2->Name = L"LB_Pos2";
-			this->LB_Pos2->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos2->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos2->TabIndex = 23;
-			this->LB_Pos2->Text = L"posición";
 			this->LB_Pos2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Time1
@@ -1087,9 +1100,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Time1->Location = System::Drawing::Point(636, 79);
 			this->LB_Time1->Name = L"LB_Time1";
-			this->LB_Time1->Size = System::Drawing::Size(87, 29);
+			this->LB_Time1->Size = System::Drawing::Size(0, 29);
 			this->LB_Time1->TabIndex = 22;
-			this->LB_Time1->Text = L"tiempo";
 			this->LB_Time1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc1
@@ -1099,9 +1111,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_NameDoc1->Location = System::Drawing::Point(182, 79);
 			this->LB_NameDoc1->Name = L"LB_NameDoc1";
-			this->LB_NameDoc1->Size = System::Drawing::Size(256, 29);
+			this->LB_NameDoc1->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc1->TabIndex = 21;
-			this->LB_NameDoc1->Text = L"nombre de documento";
 			this->LB_NameDoc1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos1
@@ -1111,9 +1122,8 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				static_cast<System::Byte>(0)));
 			this->LB_Pos1->Location = System::Drawing::Point(31, 79);
 			this->LB_Pos1->Name = L"LB_Pos1";
-			this->LB_Pos1->Size = System::Drawing::Size(104, 29);
+			this->LB_Pos1->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos1->TabIndex = 20;
-			this->LB_Pos1->Text = L"posición";
 			this->LB_Pos1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label11
@@ -1154,6 +1164,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->BT_DeletePDFs);
 			this->tabPage1->Controls->Add(this->pictureBox2);
 			this->tabPage1->Controls->Add(this->WB_PDF_historial);
 			this->tabPage1->Controls->Add(this->dgvHistorial_Files);
@@ -1164,6 +1175,18 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->tabPage1->TabIndex = 2;
 			this->tabPage1->Text = L"Historial";
 			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// BT_DeletePDFs
+			// 
+			this->BT_DeletePDFs->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->BT_DeletePDFs->Location = System::Drawing::Point(112, 446);
+			this->BT_DeletePDFs->Name = L"BT_DeletePDFs";
+			this->BT_DeletePDFs->Size = System::Drawing::Size(234, 44);
+			this->BT_DeletePDFs->TabIndex = 44;
+			this->BT_DeletePDFs->Text = L"Eliminar historial";
+			this->BT_DeletePDFs->UseVisualStyleBackColor = true;
+			this->BT_DeletePDFs->Click += gcnew System::EventHandler(this, &PrintForm::BT_DeletePDFs_Click);
 			// 
 			// pictureBox2
 			// 
@@ -1192,9 +1215,10 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->dgvHistorial_Files->AllowUserToResizeRows = false;
 			this->dgvHistorial_Files->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvHistorial_Files->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvHistorial_Files->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+			this->dgvHistorial_Files->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
 				this->dgv_orderId,
-					this->gdv_hojatipo, this->dgv_tamano, this->dgv_tinta, this->dgv_copias, this->dgv_local, this->dgv_precio
+					this->gdv_namedoc, this->dgv_local, this->dgv_precio, this->gdv_status, this->dgv_tinta, this->dgv_copias, this->gdv_hojatipo,
+					this->dgv_tamano
 			});
 			this->dgvHistorial_Files->Location = System::Drawing::Point(0, 0);
 			this->dgvHistorial_Files->Name = L"dgvHistorial_Files";
@@ -1216,23 +1240,37 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->dgv_orderId->ReadOnly = true;
 			this->dgv_orderId->Width = 50;
 			// 
-			// gdv_hojatipo
+			// gdv_namedoc
 			// 
-			this->gdv_hojatipo->FillWeight = 87.38197F;
-			this->gdv_hojatipo->HeaderText = L"Tipo de Hoja";
-			this->gdv_hojatipo->MinimumWidth = 8;
-			this->gdv_hojatipo->Name = L"gdv_hojatipo";
-			this->gdv_hojatipo->ReadOnly = true;
-			this->gdv_hojatipo->Width = 70;
+			this->gdv_namedoc->HeaderText = L"Documento";
+			this->gdv_namedoc->MinimumWidth = 8;
+			this->gdv_namedoc->Name = L"gdv_namedoc";
+			this->gdv_namedoc->ReadOnly = true;
+			this->gdv_namedoc->Width = 110;
 			// 
-			// dgv_tamano
+			// dgv_local
 			// 
-			this->dgv_tamano->FillWeight = 130.1627F;
-			this->dgv_tamano->HeaderText = L"Tamaño";
-			this->dgv_tamano->MinimumWidth = 8;
-			this->dgv_tamano->Name = L"dgv_tamano";
-			this->dgv_tamano->ReadOnly = true;
-			this->dgv_tamano->Width = 65;
+			this->dgv_local->HeaderText = L"Local de recojo";
+			this->dgv_local->MinimumWidth = 8;
+			this->dgv_local->Name = L"dgv_local";
+			this->dgv_local->ReadOnly = true;
+			this->dgv_local->Width = 120;
+			// 
+			// dgv_precio
+			// 
+			this->dgv_precio->HeaderText = L"Precio (S/)";
+			this->dgv_precio->MinimumWidth = 8;
+			this->dgv_precio->Name = L"dgv_precio";
+			this->dgv_precio->ReadOnly = true;
+			this->dgv_precio->Width = 50;
+			// 
+			// gdv_status
+			// 
+			this->gdv_status->HeaderText = L"Estado";
+			this->gdv_status->MinimumWidth = 8;
+			this->gdv_status->Name = L"gdv_status";
+			this->gdv_status->ReadOnly = true;
+			this->gdv_status->Width = 80;
 			// 
 			// dgv_tinta
 			// 
@@ -1251,21 +1289,23 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->dgv_copias->ReadOnly = true;
 			this->dgv_copias->Width = 60;
 			// 
-			// dgv_local
+			// gdv_hojatipo
 			// 
-			this->dgv_local->HeaderText = L"Local de recojo";
-			this->dgv_local->MinimumWidth = 8;
-			this->dgv_local->Name = L"dgv_local";
-			this->dgv_local->ReadOnly = true;
-			this->dgv_local->Width = 125;
+			this->gdv_hojatipo->FillWeight = 87.38197F;
+			this->gdv_hojatipo->HeaderText = L"Tipo de Hoja";
+			this->gdv_hojatipo->MinimumWidth = 8;
+			this->gdv_hojatipo->Name = L"gdv_hojatipo";
+			this->gdv_hojatipo->ReadOnly = true;
+			this->gdv_hojatipo->Width = 70;
 			// 
-			// dgv_precio
+			// dgv_tamano
 			// 
-			this->dgv_precio->HeaderText = L"Precio (S/)";
-			this->dgv_precio->MinimumWidth = 8;
-			this->dgv_precio->Name = L"dgv_precio";
-			this->dgv_precio->ReadOnly = true;
-			this->dgv_precio->Width = 50;
+			this->dgv_tamano->FillWeight = 130.1627F;
+			this->dgv_tamano->HeaderText = L"Tamaño";
+			this->dgv_tamano->MinimumWidth = 8;
+			this->dgv_tamano->Name = L"dgv_tamano";
+			this->dgv_tamano->ReadOnly = true;
+			this->dgv_tamano->Width = 65;
 			// 
 			// PrintForm
 			// 
@@ -1320,7 +1360,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		Order^ time_9 = Controller::QueryFileByPosition(9);
 		Order^ time_10 = Controller::QueryFileByPosition(10);
 
-		if (position == 1 && time_1 != nullptr) {
+		if (time_1 != nullptr) {
 			// Configura el intervalo del temporizador en milisegundos (1 segundo)
 			Timer1->Interval = 1000;
 			// Asocia el evento Tick con el manejador timer1_Tick
@@ -1328,51 +1368,52 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			// Inicia el temporizador
 			Timer1->Start();
 		}
-		if (position == 2 && time_2 != nullptr) {
+		if (time_2 != nullptr) {
 			Timer2->Interval = 1000;
 			Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
 			Timer2->Start();
 		}
-		if (position == 3 && time_3 != nullptr) {
+		if (time_3 != nullptr) {
 			Timer3->Interval = 1000;
 			Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
 			Timer3->Start();
 		}
-		if (position == 4 && time_4 != nullptr) {
+		if (time_4 != nullptr) {
 			Timer4->Interval = 1000;
 			Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
 			Timer4->Start();
 		}
-		if (position == 5 && time_5 != nullptr) {
+		if (time_5 != nullptr) {
 			Timer5->Interval = 1000;
 			Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
 			Timer5->Start();
 		}
-		if (position == 6 && time_6 != nullptr) {
+		if (time_6 != nullptr) {
 			Timer6->Interval = 1000;
 			Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
 			Timer6->Start();
 		}
-		if (position == 7 && time_7 != nullptr) {
+		if (time_7 != nullptr) {
 			Timer7->Interval = 1000;
 			Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
 			Timer7->Start();
 		}
-		if (position == 8 && time_8 != nullptr) {
+		if (time_8 != nullptr) {
 			Timer8->Interval = 1000;
 			Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
 			Timer8->Start();
 		}
-		if (position == 9 && time_9 != nullptr) {
+		if (time_9 != nullptr) {
 			Timer9->Interval = 1000;
 			Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
 			Timer9->Start();
 		}
-		if (position == 10 && time_10 != nullptr) {
+		if (time_10 != nullptr) {
 			Timer10->Interval = 1000;
 			Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
 			Timer10->Start();
 		}
+		ShowOrderFiles();
 	}
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
@@ -1382,7 +1423,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			}
 			else {
 				UpOrder();
-				ShowOrderFiles();
 				//if(el usuario paga)
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 				cardVISAForm->ControlBox = true;
@@ -1412,7 +1452,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 					if (emp_user_wallet->Money_in_wallet >= monto) {
 						UpOrder();
-						ShowOrderFiles();
 						ProbErrorBILL();
 						emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
 						Controller::UpdateEmployee(emp_user_wallet);
@@ -1432,7 +1471,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 					if (user_wallet->Money_in_wallet >= monto) {
 						UpOrder();
 						//if (NotPosition10()) {
-						ShowOrderFiles();
 						ProbErrorBILL();
 						user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
 						Controller::UpdateCostumer(user_wallet);
@@ -1708,6 +1746,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   }
 
 			   AutoPrintController::Controller::AddOrder(File_order);
+			   ShowOrderFiles();
 		   }
 /******************************************************************************************************************************************************/
 		   void ShowOrderFiles() {
@@ -1720,12 +1759,14 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 					   if (File_order->dni_history == Dni_Ahora) {
 						   dgvHistorial_Files->Rows->Add(gcnew array<String^>{
 							   "" + File_order->order_id,
-								   File_order->sheet_type,
-								   File_order->sheet_size,
+								   File_order->PDF_NAME,
+								   File_order->Location,
+								   "" + File_order->price,
+								   File_order->status_order,
 								   File_order->color_page,
 								   "" + File_order->num_copies,
-								   File_order->Location,
-								   "" + File_order->price
+								   File_order->sheet_type,
+								   File_order->sheet_size
 						   });
 					   }
 				   }
@@ -1855,7 +1896,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		ShowPrice();
 	}
 	private: System::Void tabControl1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		ShowOrderFiles();
+		//ShowOrderFiles();
 	}
 	/*private: System::Void PB_PDF_imprimir_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		//Precargado
@@ -1877,6 +1918,9 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		else {
 			MessageBox::Show("El archivo PDF no existe en la ruta especificada.");
 		}
+	}
+	private: System::Void BT_DeletePDFs_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 
 		   int GetNumberOfPages(const std::string& rutaPDF) {
@@ -2483,6 +2527,5 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				  }
 
 			  }
-
 };
 }
