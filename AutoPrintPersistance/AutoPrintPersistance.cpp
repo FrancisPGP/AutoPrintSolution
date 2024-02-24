@@ -988,7 +988,7 @@ List<Order^>^ Persistance::QueryAllFiles() {
 
     /*****************************/
 
-    orderList = gcnew List<Order^>();
+    /*orderList = gcnew List<Order^>();
     SqlConnection^ conn;
     SqlDataReader^ reader;
     try {
@@ -1032,7 +1032,7 @@ List<Order^>^ Persistance::QueryAllFiles() {
         //Paso 5: Se cierran los objetos de conexión.
         if (conn != nullptr) conn->Close();
     }
-    return orderList;
+    return orderList;*/
 }
 
 Order^ Persistance::QueryFileById(int orderId) {
