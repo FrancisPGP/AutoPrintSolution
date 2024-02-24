@@ -901,7 +901,7 @@ Object^ Persistance::LoadBinaryFile(String^ fileName) {
     return result;
 }
 
-int Persistance::AddFile(Order^ file) {
+void Persistance::AddFile(Order^ file) {
     // Asegúrate de que orderList está inicializado
     orderList = (List<Order^>^)Persistance::LoadBinaryFile(Lista_Order_BIN);
 
