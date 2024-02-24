@@ -104,16 +104,17 @@ User^ AutoPrintController::Controller::Login(int dni, String^ password) {
 }
 
 /*Francis*/
-int Controller::AddOrder(Order^ file) {
+void Controller::AddOrder(Order^ file) {
     //using namespace|Clase|Metodo || Los nombres son diferentes
-    int res;
+    return Persistance::AddFile(file);
+    /*int res;
     try {
         res = Persistance::AddFile(file);
     }
     catch (Exception^ ex) {
         throw ex;
     }
-    return res;
+    return res;*/
 }
 
 List<Order^>^ Controller::QueryAllFiles() {

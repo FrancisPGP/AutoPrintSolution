@@ -1278,6 +1278,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			this->Name = L"PrintForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
 			this->Text = L"Documentos";
+			this->Load += gcnew System::EventHandler(this, &PrintForm::PrintForm_Load);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
 			this->tabControl1->ResumeLayout(false);
 			this->TPage_impre->ResumeLayout(false);
@@ -1310,6 +1311,72 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 
 
 
+	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_1 = Controller::QueryFileByPosition(1);
+		Order^ time_2 = Controller::QueryFileByPosition(2);
+		Order^ time_3 = Controller::QueryFileByPosition(3);
+		Order^ time_4 = Controller::QueryFileByPosition(4);
+		Order^ time_5 = Controller::QueryFileByPosition(5);
+		Order^ time_6 = Controller::QueryFileByPosition(6);
+		Order^ time_7 = Controller::QueryFileByPosition(7);
+		Order^ time_8 = Controller::QueryFileByPosition(8);
+		Order^ time_9 = Controller::QueryFileByPosition(9);
+		Order^ time_10 = Controller::QueryFileByPosition(10);
+
+		if (position == 1 && time_1 != nullptr) {
+			// Configura el intervalo del temporizador en milisegundos (1 segundo)
+			Timer1->Interval = 1000;
+			// Asocia el evento Tick con el manejador timer1_Tick
+			Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+			// Inicia el temporizador
+			Timer1->Start();
+		}
+		if (position == 2 && time_2 != nullptr) {
+			Timer2->Interval = 1000;
+			Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
+			Timer2->Start();
+		}
+		if (position == 3 && time_3 != nullptr) {
+			Timer3->Interval = 1000;
+			Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
+			Timer3->Start();
+		}
+		if (position == 4 && time_4 != nullptr) {
+			Timer4->Interval = 1000;
+			Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
+			Timer4->Start();
+		}
+		if (position == 5 && time_5 != nullptr) {
+			Timer5->Interval = 1000;
+			Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
+			Timer5->Start();
+		}
+		if (position == 6 && time_6 != nullptr) {
+			Timer6->Interval = 1000;
+			Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
+			Timer6->Start();
+		}
+		if (position == 7 && time_7 != nullptr) {
+			Timer7->Interval = 1000;
+			Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
+			Timer7->Start();
+		}
+		if (position == 8 && time_8 != nullptr) {
+			Timer8->Interval = 1000;
+			Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
+			Timer8->Start();
+		}
+		if (position == 9 && time_9 != nullptr) {
+			Timer9->Interval = 1000;
+			Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
+			Timer9->Start();
+		}
+		if (position == 10 && time_10 != nullptr) {
+			Timer10->Interval = 1000;
+			Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
+			Timer10->Start();
+		}
+	}
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
 			Order^ time_order = Controller::QueryFileByPosition(10);
@@ -2417,5 +2484,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				  }
 
 			  }
+
 };
 }

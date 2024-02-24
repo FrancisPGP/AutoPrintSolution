@@ -92,7 +92,7 @@ namespace AutoPrintPersistance {
 
 		/*Francis*/
 		// Files
-		static int AddFile(Order^ file);
+		static void AddFile(Order^ file);
 		static List<Order^>^ QueryAllFiles();
 		static Order^ QueryFileById(int orderId);
 		static Order^ QueryFileByPosition(int numspooler);
