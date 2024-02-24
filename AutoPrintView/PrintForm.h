@@ -1297,7 +1297,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		int numpage = 0;
 		int position = 1;
 
-
 		int tiempo1 = 0;
 		int tiempo2 = 0;
 		int tiempo3 = 0;
@@ -1308,8 +1307,6 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 		int tiempo8 = 0;
 		int tiempo9 = 0;
 		int tiempo10 = 0;
-
-
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_1 = Controller::QueryFileByPosition(1);
@@ -1394,7 +1391,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 				PrintPDF();
 				IniciarReloj();
 				RefreshPage();
-				email();
+				//email();
 			}
 		}
 	}
@@ -1423,7 +1420,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 						PrintPDF();
 						IniciarReloj();
 						RefreshPage();
-						email();
+						//email();
 					}
 					else {
 						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
@@ -1439,7 +1436,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 						ProbErrorBILL();
 						user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
 						Controller::UpdateCostumer(user_wallet);
-						//MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 						PrintPDF();
 						IniciarReloj();
 						RefreshPage();
@@ -1572,6 +1569,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   File_order->num_copies = Int32::Parse(cmbNUMcopias->Text);
 			   File_order->Location = cmbLocal->Text;
 			   File_order->price = monto;
+			   File_order->status_order = "PRUEBAS";
 
 			   time_t now = time(0);
 			   tm* time = localtime(&now);
@@ -1800,6 +1798,7 @@ private: System::Windows::Forms::Label^ LB_NumPage;
 			   cmbNUMcopias->SelectedIndex = -1;
 			   cmbLocal->SelectedIndex = -1;
 			   MontoPago->Text = "0";
+			   LB_NumPage->Text = "0";
 		   }
 
 	private: System::Void dgvHistorial_Files_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
