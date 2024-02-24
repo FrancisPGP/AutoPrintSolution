@@ -914,7 +914,7 @@ int Persistance::AddFile(Order^ file) {
 
     /*****************************/
 
-    //property int order_id;
+    /*//property int order_id;
     int orderId;
     SqlConnection^ conn;
     try {
@@ -978,7 +978,7 @@ int Persistance::AddFile(Order^ file) {
         //Paso 5: Se cierran los objetos de conexión.
         if (conn != nullptr) conn->Close();
     }
-    return orderId;
+    return orderId;*/
 }
 
 List<Order^>^ Persistance::QueryAllFiles() {
