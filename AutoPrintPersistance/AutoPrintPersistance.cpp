@@ -947,8 +947,6 @@ int Persistance::AddFile(Order^ file) {
         cmd->Parameters->Add(outputIdParam);
         cmd->Prepare();
 
-        
-
         cmd->Parameters["@COLOR_PAGE"]->Value = file->color_page;
         cmd->Parameters["@NUM_SPOOLER"]->Value = file->num_spooler;
         cmd->Parameters["@NUM_COPIES"]->Value = file->num_copies;
@@ -982,8 +980,58 @@ int Persistance::AddFile(Order^ file) {
     }
     return orderId;
 }
+
 List<Order^>^ Persistance::QueryAllFiles() {
+    //dbo.usp_QueryAllFiles_FG
     orderList = (List<Order^>^)LoadBinaryFile(Lista_Order_BIN);
+    return orderList;
+
+    /*****************************/
+
+    orderList = gcnew List<Order^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Se obtiene la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryAllFiles_FG";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+        //Paso 3: Se ejecuta la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Se procesan los resultados.
+        while (reader->Read()) {
+            Order^ order = gcnew Order();
+            order->order_id = Convert::ToInt32(reader["ORDER_ID"]->ToString());
+            order->color_page = reader["COLOR_PAGE"]->ToString();
+            order->num_spooler = Convert::ToInt32(reader["NUM_SPOOLER"]->ToString());
+            order->num_copies = Convert::ToInt32(reader["NUM_COPIES"]->ToString());
+            order->sheet_type = reader["SHEET_TYPE"]->ToString();
+            order->sheet_size = reader["SHEET_SIZE"]->ToString();
+            order->status_order = reader["STATUS_ORDER"]->ToString();
+            order->price = Convert::ToDouble(reader["PRICE"]->ToString());
+            order->date = reader["DATE_ORDER"]->ToString();
+            order->Location = reader["LOCATION_ORDER"]->ToString();
+            order->PDF_NAME = reader["PDF_NAME"]->ToString();
+            order->time_print = Convert::ToInt32(reader["TIME_PRINT"]->ToString());
+            order->dni_history = Convert::ToInt32(reader["DNI_HISTORY"]->ToString());
+
+            if (!DBNull::Value->Equals(reader["PDF"]))
+                order->PDF = (array<Byte>^)reader["PDF"];
+            orderList->Add(order);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Se cierran los objetos de conexión.
+        if (conn != nullptr) conn->Close();
+    }
     return orderList;
 }
 
