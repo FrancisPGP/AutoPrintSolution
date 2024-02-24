@@ -310,6 +310,7 @@ namespace AutoPrintView {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyProfile";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
 			this->Text = L"Actualizar datos";
 			this->Load += gcnew System::EventHandler(this, &MyProfile::MyProfile_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->EndInit();
