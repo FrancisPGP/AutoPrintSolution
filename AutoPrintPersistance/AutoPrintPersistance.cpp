@@ -1158,7 +1158,7 @@ void Persistance::UpdateCola(Order^ order) {
 
     /*****************************/
 
-    /*SqlConnection^ conn;
+    SqlConnection^ conn;
     try {
         //Paso 1: Se obtiene la conexión a la BD
         conn = GetConnection();
@@ -1217,7 +1217,7 @@ void Persistance::UpdateCola(Order^ order) {
     finally {
         //Paso 5: Se cierran los objetos de conexión.
         if (conn != nullptr) conn->Close();
-    }*/
+    }
 }
 
 void Persistance::DeleteOrder(int orderId) {

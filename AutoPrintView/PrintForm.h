@@ -1337,6 +1337,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		int numpage = 0;
 		int position = 1;
 		int delete_orderId = 0;
+		int tiempo_print = 5;
 
 		int tiempo1 = 0;
 		int tiempo2 = 0;
@@ -1363,54 +1364,54 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 
 		if (time_1 != nullptr) {
 			// Configura el intervalo del temporizador en milisegundos (1 segundo)
-			Timer1->Interval = 1000;
+			Timer1->Interval = 1000 * tiempo_print;
 			// Asocia el evento Tick con el manejador timer1_Tick
 			Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
 			// Inicia el temporizador
 			Timer1->Start();
 		}
 		if (time_2 != nullptr) {
-			Timer2->Interval = 1000;
+			Timer2->Interval = 1000 * tiempo_print;
 			Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
 			Timer2->Start();
 		}
 		if (time_3 != nullptr) {
-			Timer3->Interval = 1000;
+			Timer3->Interval = 1000 * tiempo_print;
 			Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
 			Timer3->Start();
 		}
 		if (time_4 != nullptr) {
-			Timer4->Interval = 1000;
+			Timer4->Interval = 1000 * tiempo_print;
 			Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
 			Timer4->Start();
 		}
 		if (time_5 != nullptr) {
-			Timer5->Interval = 1000;
+			Timer5->Interval = 1000 * tiempo_print;
 			Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
 			Timer5->Start();
 		}
 		if (time_6 != nullptr) {
-			Timer6->Interval = 1000;
+			Timer6->Interval = 1000 * tiempo_print;
 			Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
 			Timer6->Start();
 		}
 		if (time_7 != nullptr) {
-			Timer7->Interval = 1000;
+			Timer7->Interval = 1000 * tiempo_print;
 			Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
 			Timer7->Start();
 		}
 		if (time_8 != nullptr) {
-			Timer8->Interval = 1000;
+			Timer8->Interval = 1000 * tiempo_print;
 			Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
 			Timer8->Start();
 		}
 		if (time_9 != nullptr) {
-			Timer9->Interval = 1000;
+			Timer9->Interval = 1000 * tiempo_print;
 			Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
 			Timer9->Start();
 		}
 		if (time_10 != nullptr) {
-			Timer10->Interval = 1000;
+			Timer10->Interval = 1000 * tiempo_print;
 			Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
 			Timer10->Start();
 		}
@@ -1521,54 +1522,54 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		   void IniciarReloj() {
 			   if (position == 1) {
 				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
-				   Timer1->Interval = 1000;
+				   Timer1->Interval = 1000 * tiempo_print;
 				   // Asocia el evento Tick con el manejador timer1_Tick
 				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
 				   // Inicia el temporizador
 				   Timer1->Start();
 			   }
 			   else if (position == 2) {
-				   Timer2->Interval = 1000;
+				   Timer2->Interval = 1000 * tiempo_print;
 				   Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
 				   Timer2->Start();
 			   }
 			   else if (position == 3) {
-				   Timer3->Interval = 1000;
+				   Timer3->Interval = 1000 * tiempo_print;
 				   Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
 				   Timer3->Start();
 			   }
 			   else if (position == 4) {
-				   Timer4->Interval = 1000;
+				   Timer4->Interval = 1000 * tiempo_print;
 				   Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
 				   Timer4->Start();
 			   }
 			   else if (position == 5) {
-				   Timer5->Interval = 1000;
+				   Timer5->Interval = 1000 * tiempo_print;
 				   Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
 				   Timer5->Start();
 			   }
 			   else if (position == 6) {
-				   Timer6->Interval = 1000;
+				   Timer6->Interval = 1000 * tiempo_print;
 				   Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
 				   Timer6->Start();
 			   }
 			   else if (position == 7) {
-				   Timer7->Interval = 1000;
+				   Timer7->Interval = 1000 * tiempo_print;
 				   Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
 				   Timer7->Start();
 			   }
 			   else if (position == 8) {
-				   Timer8->Interval = 1000;
+				   Timer8->Interval = 1000 * tiempo_print;
 				   Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
 				   Timer8->Start();
 			   }
 			   else if (position == 9) {
-				   Timer9->Interval = 1000;
+				   Timer9->Interval = 1000 * tiempo_print;
 				   Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
 				   Timer9->Start();
 			   }
 			   else if (position == 10) {
-				   Timer10->Interval = 1000;
+				   Timer10->Interval = 1000 * tiempo_print;
 				   Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
 				   Timer10->Start();
 			   }
@@ -1609,7 +1610,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   File_order->num_copies = Int32::Parse(cmbNUMcopias->Text);
 			   File_order->Location = cmbLocal->Text;
 			   File_order->price = monto;
-			   File_order->status_order = "PRUEBAS";
+			   File_order->status_order = "Imprimiendo";
 
 			   time_t now = time(0);
 			   tm* time = localtime(&now);
@@ -1700,51 +1701,51 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   File_order->num_spooler = position;
 
 			   if (position == 1) {
-				   tiempo1 = 5 * numpage;
+				   tiempo1 = tiempo_print * numpage;
 				   File_order->time_print = tiempo1;
 			   }
 			   else if (position == 2) {
 				   Order^ time_order = Controller::QueryFileByPosition(1);
-				   tiempo2 = 5 * numpage + time_order->time_print;
+				   tiempo2 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo2;
 			   }
 			   else if (position == 3) {
 				   Order^ time_order = Controller::QueryFileByPosition(2);
-				   tiempo3 = 5 * numpage + time_order->time_print;
+				   tiempo3 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo3;
 			   }
 			   else if (position == 4) {
 				   Order^ time_order = Controller::QueryFileByPosition(3);
-				   tiempo4 = 5 * numpage + time_order->time_print;
+				   tiempo4 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo4;
 			   }
 			   else if (position == 5) {
 				   Order^ time_order = Controller::QueryFileByPosition(4);
-				   tiempo5 = 5 * numpage + time_order->time_print;
+				   tiempo5 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo5;
 			   }
 			   else if (position == 6) {
 				   Order^ time_order = Controller::QueryFileByPosition(5);
-				   tiempo6 = 5 * numpage + time_order->time_print;
+				   tiempo6 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo6;
 			   }
 			   else if (position == 7) {
 				   Order^ time_order = Controller::QueryFileByPosition(6);
-				   tiempo7 = 5 * numpage + time_order->time_print;
+				   tiempo7 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo7;
 			   }
 			   else if (position == 8) {
 				   Order^ time_order = Controller::QueryFileByPosition(7);
-				   tiempo8 = 5 * numpage + time_order->time_print;
+				   tiempo8 = tiempo_print * numpage + time_order->time_print;
 				   File_order->time_print = tiempo8;
 			   }
 			   else if (position == 9) {
 				   Order^ time_order = Controller::QueryFileByPosition(8);
-				   tiempo9 = 5 * numpage + time_order->time_print;
+				   tiempo9 = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 10) {
 				   Order^ time_order = Controller::QueryFileByPosition(9);
-				   tiempo10 = 5 * numpage + time_order->time_print;
+				   tiempo10 = tiempo_print * numpage + time_order->time_print;
 			   }
 
 			   AutoPrintController::Controller::AddOrder(File_order);
@@ -1832,8 +1833,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		   }
 		   void RefreshPage() {
 			   // Limpiar el WebBrowser
-			   WB_PDF_imprimir->Navigate("about:blank");
-			   
+			   WB_PDF_imprimir->Navigate("");
+			   //about;blank
 			   // Limpiar valores de ComboBox
 			   cmbTipoHoja->SelectedIndex = -1;
 			   cmbTamaHoja->SelectedIndex = -1;
@@ -1959,27 +1960,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   }
 		   }
 
-		   void SpoolerCero(){
-			   Order^ time_order11 = Controller::QueryFileByPosition(-1);
-			   Order^ order11 = gcnew Order();
-			   order11->num_spooler = 0;
-			   order11->time_print = time_order11->time_print;
-
-			   order11->dni_history = time_order11->dni_history;
-			   order11->order_id = time_order11->order_id;//Identificador
-			   order11->sheet_type = time_order11->sheet_type;
-			   order11->sheet_size = time_order11->sheet_size;
-			   order11->color_page = time_order11->color_page;
-			   order11->num_copies = time_order11->num_copies;
-			   order11->Location = time_order11->Location;
-			   order11->price = time_order11->price;
-			   order11->date = time_order11->date;
-			   order11->PDF_NAME = time_order11->PDF_NAME;
-			   order11->PDF_URL = time_order11->PDF_URL;
-			   order11->PDF = time_order11->PDF;
-
-			   Controller::UpdateCola(order11);
-		   }
 		   void SpoolerMinus() {
 			   Order^ time_order11 = Controller::QueryFileByPosition(1);
 			   Order^ order11 = gcnew Order();
@@ -2020,7 +2000,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2041,12 +2021,13 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			LB_NameDoc1->Text = time_order->PDF_NAME;
 
 			if (order->time_print <= 0) {
-				LB_Time1->Text = "Listo para recoger"; // Cambiado a LB_Time1
-				if (order->time_print == -1) {
-					order->num_spooler = -1;
+				order->time_print = - 1;
+				LB_Time1->Text = "Listo para recoger";
+				if (order->time_print == -2) {
+					order->num_spooler = -2;
 					//Documento_name = time_order->PDF_NAME;
 					order->status_order = "Listo";
-					MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
+					//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
 				}
 			}
 			Controller::UpdateCola(order);
@@ -2055,7 +2036,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			LB_Time1->Text = "1111";
 			LB_Pos1->Text = "1111";
 			LB_NameDoc1->Text = "1111";
-			SpoolerCero();
 			// Detén el temporizador si está en marcha
 			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
@@ -2067,7 +2047,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2116,7 +2096,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2165,7 +2145,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2202,9 +2182,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time4->Text = "4444";
-			LB_Pos4->Text = "4444";
-			LB_NameDoc4->Text = "4444";
+			LB_Time4->Text = "";
+			LB_Pos4->Text = "";
+			LB_NameDoc4->Text = "";
 			Timer4->Stop();
 			Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick);
 		}
@@ -2214,7 +2194,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2251,9 +2231,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time5->Text = "5555";
-			LB_Pos5->Text = "5555";
-			LB_NameDoc5->Text = "5555";
+			LB_Time5->Text = "";
+			LB_Pos5->Text = "";
+			LB_NameDoc5->Text = "";
 			Timer5->Stop();
 			Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick);
 		}
@@ -2263,7 +2243,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2280,7 +2260,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			order->PDF = time_order->PDF;
 
 			LB_Time6->Text = (order->time_print).ToString();
-			LB_Pos6->Text = "5";
+			LB_Pos6->Text = "6";
 			LB_NameDoc6->Text = time_order->PDF_NAME;
 
 			if (LB_Time1->Text == "Listo para recoger") {
@@ -2300,9 +2280,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time6->Text = "6666";
-			LB_Pos6->Text = "6666";
-			LB_NameDoc6->Text = "6666";
+			LB_Time6->Text = "";
+			LB_Pos6->Text = "";
+			LB_NameDoc6->Text = "";
 			Timer6->Stop();
 			Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick);
 		}
@@ -2312,7 +2292,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2349,9 +2329,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time7->Text = "7777";
-			LB_Pos7->Text = "7777";
-			LB_NameDoc7->Text = "7777";
+			LB_Time7->Text = "";
+			LB_Pos7->Text = "";
+			LB_NameDoc7->Text = "";
 			Timer7->Stop();
 			Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick);
 		}
@@ -2361,7 +2341,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2398,9 +2378,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time8->Text = "8888";
-			LB_Pos8->Text = "8888";
-			LB_NameDoc8->Text = "8888";
+			LB_Time8->Text = "";
+			LB_Pos8->Text = "";
+			LB_NameDoc8->Text = "";
 			Timer8->Stop();
 			Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick);
 		}
@@ -2410,7 +2390,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2447,9 +2427,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time9->Text = "9999";
-			LB_Pos9->Text = "9999";
-			LB_NameDoc9->Text = "9999";
+			LB_Time9->Text = "";
+			LB_Pos9->Text = "";
+			LB_NameDoc9->Text = "";
 			Timer9->Stop();
 			Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick);
 		}
@@ -2459,7 +2439,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - 1;
+			order->time_print = time_order->time_print - tiempo_print;
 
 			order->dni_history = time_order->dni_history;
 			order->order_id = time_order->order_id;//Identificador
@@ -2496,9 +2476,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time10->Text = "1010";
-			LB_Pos10->Text = "1010";
-			LB_NameDoc10->Text = "1010";
+			LB_Time10->Text = "";
+			LB_Pos10->Text = "";
+			LB_NameDoc10->Text = "";
 			Timer10->Stop();
 			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick);
 		}
