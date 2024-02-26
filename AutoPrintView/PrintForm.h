@@ -602,7 +602,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->cmbTamaHoja->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbTamaHoja->FormattingEnabled = true;
-			this->cmbTamaHoja->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"A4", L"A3", L"A2", L"Carta" });
+			this->cmbTamaHoja->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"A4", L"Carta" });
 			this->cmbTamaHoja->Location = System::Drawing::Point(246, 124);
 			this->cmbTamaHoja->Name = L"cmbTamaHoja";
 			this->cmbTamaHoja->Size = System::Drawing::Size(163, 33);
@@ -2032,9 +2032,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			Controller::UpdateCola(order);
 		}
 		else {
-			LB_Time1->Text = "1111";
-			LB_Pos1->Text = "1111";
-			LB_NameDoc1->Text = "1111";
+			LB_Time1->Text = "";
+			LB_Pos1->Text = "";
+			LB_NameDoc1->Text = "";
 			// Detén el temporizador si está en marcha
 			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
@@ -2083,9 +2083,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time2->Text = "2222";
-			LB_Pos2->Text = "2222";
-			LB_NameDoc2->Text = "2222";
+			LB_Time2->Text = "";
+			LB_Pos2->Text = "";
+			LB_NameDoc2->Text = "";
 			Timer2->Stop();
 			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
 		}
@@ -2132,9 +2132,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			}
 		}
 		else {
-			LB_Time3->Text = "3333";
-			LB_Pos3->Text = "3333";
-			LB_NameDoc3->Text = "3333";
+			LB_Time3->Text = "";
+			LB_Pos3->Text = "";
+			LB_NameDoc3->Text = "";
 			Timer3->Stop();
 			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick);
 		}
