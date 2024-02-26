@@ -23,6 +23,8 @@ namespace AutoPrintView {
 	using namespace System::Web;
 	using namespace System::Net::Mail;
 
+	static bool ValidationCardVisa = false;
+
 	/// <summary>
 	/// Resumen de CardVISAForm
 	/// </summary>
@@ -354,7 +356,7 @@ namespace AutoPrintView {
 		}
 #pragma endregion
 
-		int checkFill = 0;
+		int checkFill = 0;		
 
 	private: System::Void btnPrintCardVisa_Click(System::Object^ sender, System::EventArgs^ e) {
 		ProbErrorTARJ(); //Chance de que ocurra un atasco en la impresora
@@ -376,6 +378,7 @@ namespace AutoPrintView {
 		}
 		else {
 			email_tarjeta();
+			ValidationCardVisa = true;
 			Close();
 			
 		}

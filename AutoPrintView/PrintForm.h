@@ -1425,16 +1425,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
 			}
 			else {
-				UpOrder();
 				//if(el usuario paga)
 				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 				cardVISAForm->ControlBox = true;
 				cardVISAForm->ShowDialog();
-				MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");				
-				PrintPDF();
-				IniciarReloj();
-				RefreshPage();
-				//email();
+				if (ValidationCardVisa) {
+					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+					UpOrder();
+					PrintPDF();
+					IniciarReloj();
+					RefreshPage();
+					//email();
+				}
+				ValidationCardVisa = false;
 			}
 		}
 	}
@@ -1481,7 +1484,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 						PrintPDF();
 						IniciarReloj();
 						RefreshPage();
-						email();
+						//email();
 
 						//}
 					}
