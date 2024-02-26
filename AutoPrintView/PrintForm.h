@@ -1849,11 +1849,12 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		if (dgvHistorial_Files->SelectedCells->Count > 0 &&
 			dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr &&
 			!String::IsNullOrEmpty(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString())) {
-			
+
 			// Solo ejecutar si hay una celda seleccionada y el valor no es nulo o vacío
 			int orderId = Int32::Parse(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 			Order^ File_order = Controller::QueryFileById(orderId);
-			delete_orderId = File_order->order_id;
+
+			delete_orderId = orderId;
 			// Cargar el contenido del PDF en el control WebBrowser
 			LoadPdfContent(File_order);
 		}
@@ -1863,7 +1864,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		}
 	}
 
-		   // Función para cargar el contenido del PDF en el control WebBrowser
+		   // Función para cargar el contenido del PDF en el control WebBrowser (WB_PDF_historial)
 		   void LoadPdfContent(Order^ order) {
 			   if (order != nullptr) {
 				   // Verificar si el contenido del PDF está disponible
