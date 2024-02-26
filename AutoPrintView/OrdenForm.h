@@ -500,11 +500,12 @@ namespace AutoPrintView {
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Imprimiendo") {
+						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
 						   //dgvOrdenes_imprimiendo es el nombre de la tabla de Imprimiendo
 						   dgvOrdenes_imprimiendo->Rows->Add(gcnew array<String^>{
 							   "" + File_order->order_id,
 								   "" + File_order->dni_history,
-								   File_order->Location,//nombre
+								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   File_order->PDF_NAME,
 								   File_order->status_order,
 								   "" + File_order->num_copies,
@@ -522,11 +523,12 @@ namespace AutoPrintView {
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Listo") {
+						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
 						   //dgvOrdenes_listo es el nombre de la tabla de Listo
 						   dgvOrdenes_listo->Rows->Add(gcnew array<String^>{
 							   "" + File_order->order_id,
 								   "" + File_order->dni_history,
-								   File_order->Location,//nombre
+								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   File_order->PDF_NAME,
 								   File_order->status_order,
 								   "" + File_order->num_copies,
@@ -560,6 +562,26 @@ namespace AutoPrintView {
 	private: System::Void BT_PDFrecogido_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (collected_orderId != 0) {
 			//cambiar el estado
+			Order^ time_order11 = Controller::QueryFileById(collected_orderId);
+			Order^ order11 = gcnew Order();
+			order11->num_spooler = -1;
+			order11->time_print = -1;
+
+			order11->dni_history = time_order11->dni_history;
+			order11->order_id = time_order11->order_id;//Identificador
+			order11->status_order = "Recogido";
+			order11->sheet_type = time_order11->sheet_type;
+			order11->sheet_size = time_order11->sheet_size;
+			order11->color_page = time_order11->color_page;
+			order11->num_copies = time_order11->num_copies;
+			order11->Location = time_order11->Location;
+			order11->price = time_order11->price;
+			order11->date = time_order11->date;
+			order11->PDF_NAME = time_order11->PDF_NAME;
+			order11->PDF_URL = time_order11->PDF_URL;
+			order11->PDF = time_order11->PDF;
+
+			Controller::UpdateCola(order11);
 			ShowFilesListo();
 			collected_orderId = 0;
 		}

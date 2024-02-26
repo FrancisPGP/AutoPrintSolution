@@ -1964,10 +1964,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   Order^ time_order11 = Controller::QueryFileByPosition(1);
 			   Order^ order11 = gcnew Order();
 			   order11->num_spooler = -1;
-			   order11->time_print = time_order11->time_print;
+			   order11->time_print = -1;
 
 			   order11->dni_history = time_order11->dni_history;
 			   order11->order_id = time_order11->order_id;//Identificador
+			   order11->status_order = time_order11->status_order;
 			   order11->sheet_type = time_order11->sheet_type;
 			   order11->sheet_size = time_order11->sheet_size;
 			   order11->color_page = time_order11->color_page;
@@ -2023,12 +2024,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			if (order->time_print <= 0) {
 				order->time_print = - 1;
 				LB_Time1->Text = "Listo para recoger";
-				if (order->time_print == -2) {
-					order->num_spooler = -2;
-					//Documento_name = time_order->PDF_NAME;
-					order->status_order = "Listo";
-					//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
-				}
+				order->num_spooler = -1;
+				//Documento_name = time_order->PDF_NAME;
+				order->status_order = "Listo";
+				//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
 			}
 			Controller::UpdateCola(order);
 		}
