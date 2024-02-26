@@ -54,7 +54,7 @@ namespace AutoPrintView {
 
 	private: System::Windows::Forms::TextBox^ txtSurname;
 
-	private: System::Windows::Forms::TextBox^ txtDateOfBirth;
+
 	private: System::Windows::Forms::TextBox^ txtDNI;
 
 
@@ -72,6 +72,8 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::ComboBox^ txtGender;
+	private: System::Windows::Forms::DateTimePicker^ txtDateOfBirth;
+
 
 
 
@@ -102,7 +104,6 @@ namespace AutoPrintView {
 			this->txtName = (gcnew System::Windows::Forms::TextBox());
 			this->txtMail = (gcnew System::Windows::Forms::TextBox());
 			this->txtSurname = (gcnew System::Windows::Forms::TextBox());
-			this->txtDateOfBirth = (gcnew System::Windows::Forms::TextBox());
 			this->txtDNI = (gcnew System::Windows::Forms::TextBox());
 			this->txtCellphoneNumber = (gcnew System::Windows::Forms::TextBox());
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
@@ -111,6 +112,7 @@ namespace AutoPrintView {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->txtGender = (gcnew System::Windows::Forms::ComboBox());
+			this->txtDateOfBirth = (gcnew System::Windows::Forms::DateTimePicker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -239,9 +241,9 @@ namespace AutoPrintView {
 				static_cast<System::Byte>(0)));
 			this->txtName->ForeColor = System::Drawing::SystemColors::MenuText;
 			this->txtName->Location = System::Drawing::Point(51, 75);
-			this->txtName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtName->Margin = System::Windows::Forms::Padding(4);
 			this->txtName->Name = L"txtName";
-			this->txtName->Size = System::Drawing::Size(172, 30);
+			this->txtName->Size = System::Drawing::Size(257, 30);
 			this->txtName->TabIndex = 10;
 			// 
 			// txtMail
@@ -251,9 +253,9 @@ namespace AutoPrintView {
 			this->txtMail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtMail->Location = System::Drawing::Point(51, 514);
-			this->txtMail->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtMail->Margin = System::Windows::Forms::Padding(4);
 			this->txtMail->Name = L"txtMail";
-			this->txtMail->Size = System::Drawing::Size(172, 30);
+			this->txtMail->Size = System::Drawing::Size(257, 30);
 			this->txtMail->TabIndex = 11;
 			// 
 			// txtSurname
@@ -263,22 +265,10 @@ namespace AutoPrintView {
 			this->txtSurname->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtSurname->Location = System::Drawing::Point(51, 185);
-			this->txtSurname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtSurname->Margin = System::Windows::Forms::Padding(4);
 			this->txtSurname->Name = L"txtSurname";
-			this->txtSurname->Size = System::Drawing::Size(172, 30);
+			this->txtSurname->Size = System::Drawing::Size(257, 30);
 			this->txtSurname->TabIndex = 12;
-			// 
-			// txtDateOfBirth
-			// 
-			this->txtDateOfBirth->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(128)));
-			this->txtDateOfBirth->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtDateOfBirth->Location = System::Drawing::Point(51, 405);
-			this->txtDateOfBirth->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->txtDateOfBirth->Name = L"txtDateOfBirth";
-			this->txtDateOfBirth->Size = System::Drawing::Size(172, 30);
-			this->txtDateOfBirth->TabIndex = 14;
 			// 
 			// txtDNI
 			// 
@@ -287,7 +277,7 @@ namespace AutoPrintView {
 			this->txtDNI->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtDNI->Location = System::Drawing::Point(404, 185);
-			this->txtDNI->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtDNI->Margin = System::Windows::Forms::Padding(4);
 			this->txtDNI->MaxLength = 8;
 			this->txtDNI->Name = L"txtDNI";
 			this->txtDNI->Size = System::Drawing::Size(172, 30);
@@ -300,7 +290,7 @@ namespace AutoPrintView {
 			this->txtCellphoneNumber->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtCellphoneNumber->Location = System::Drawing::Point(404, 75);
-			this->txtCellphoneNumber->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtCellphoneNumber->Margin = System::Windows::Forms::Padding(4);
 			this->txtCellphoneNumber->Name = L"txtCellphoneNumber";
 			this->txtCellphoneNumber->Size = System::Drawing::Size(172, 30);
 			this->txtCellphoneNumber->TabIndex = 16;
@@ -312,7 +302,7 @@ namespace AutoPrintView {
 			this->txtPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPassword->Location = System::Drawing::Point(404, 295);
-			this->txtPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtPassword->Margin = System::Windows::Forms::Padding(4);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->Size = System::Drawing::Size(172, 30);
 			this->txtPassword->TabIndex = 17;
@@ -324,7 +314,7 @@ namespace AutoPrintView {
 			this->txtConfirmPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtConfirmPassword->Location = System::Drawing::Point(404, 405);
-			this->txtConfirmPassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtConfirmPassword->Margin = System::Windows::Forms::Padding(4);
 			this->txtConfirmPassword->Name = L"txtConfirmPassword";
 			this->txtConfirmPassword->Size = System::Drawing::Size(172, 30);
 			this->txtConfirmPassword->TabIndex = 18;
@@ -338,7 +328,7 @@ namespace AutoPrintView {
 			this->btnContinue->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnContinue->Location = System::Drawing::Point(404, 498);
-			this->btnContinue->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnContinue->Margin = System::Windows::Forms::Padding(4);
 			this->btnContinue->Name = L"btnContinue";
 			this->btnContinue->Size = System::Drawing::Size(195, 62);
 			this->btnContinue->TabIndex = 19;
@@ -352,7 +342,7 @@ namespace AutoPrintView {
 			this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(699, 126);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(433, 475);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -384,11 +374,26 @@ namespace AutoPrintView {
 				static_cast<System::Byte>(0)));
 			this->txtGender->FormattingEnabled = true;
 			this->txtGender->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Femenino", L"Masculino" });
-			this->txtGender->Location = System::Drawing::Point(51, 295);
+			this->txtGender->Location = System::Drawing::Point(51, 292);
 			this->txtGender->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtGender->Name = L"txtGender";
 			this->txtGender->Size = System::Drawing::Size(172, 33);
 			this->txtGender->TabIndex = 36;
+			// 
+			// txtDateOfBirth
+			// 
+			this->txtDateOfBirth->CalendarTitleBackColor = System::Drawing::SystemColors::ControlText;
+			this->txtDateOfBirth->CalendarTitleForeColor = System::Drawing::SystemColors::GrayText;
+			this->txtDateOfBirth->CustomFormat = L"";
+			this->txtDateOfBirth->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtDateOfBirth->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->txtDateOfBirth->Location = System::Drawing::Point(50, 405);
+			this->txtDateOfBirth->Name = L"txtDateOfBirth";
+			this->txtDateOfBirth->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->txtDateOfBirth->Size = System::Drawing::Size(173, 30);
+			this->txtDateOfBirth->TabIndex = 37;
+			this->txtDateOfBirth->Value = System::DateTime(2024, 2, 26, 16, 41, 26, 0);
 			// 
 			// UserForm
 			// 
@@ -397,6 +402,7 @@ namespace AutoPrintView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1163, 633);
+			this->Controls->Add(this->txtDateOfBirth);
 			this->Controls->Add(this->txtGender);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->pictureBox1);
@@ -405,7 +411,6 @@ namespace AutoPrintView {
 			this->Controls->Add(this->txtPassword);
 			this->Controls->Add(this->txtCellphoneNumber);
 			this->Controls->Add(this->txtDNI);
-			this->Controls->Add(this->txtDateOfBirth);
 			this->Controls->Add(this->txtSurname);
 			this->Controls->Add(this->txtMail);
 			this->Controls->Add(this->txtName);
@@ -420,7 +425,7 @@ namespace AutoPrintView {
 			this->Controls->Add(this->label1);
 			this->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"UserForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

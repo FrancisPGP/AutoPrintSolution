@@ -180,6 +180,22 @@ namespace AutoPrintView {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	protected:
 
 	protected:
@@ -205,14 +221,6 @@ namespace AutoPrintView {
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->btnShowList = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_imprimiendo = (gcnew System::Windows::Forms::DataGridView());
-			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_status_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_copies_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_tinta_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->BT_PDFrecogido = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_listo = (gcnew System::Windows::Forms::DataGridView());
@@ -224,6 +232,14 @@ namespace AutoPrintView {
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_status_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_copies_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tinta_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -288,70 +304,6 @@ namespace AutoPrintView {
 			this->dgvOrdenes_imprimiendo->Size = System::Drawing::Size(807, 354);
 			this->dgvOrdenes_imprimiendo->TabIndex = 44;
 			this->dgvOrdenes_imprimiendo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_imprimiendo_CellClick);
-			// 
-			// dgv_id_impri
-			// 
-			this->dgv_id_impri->HeaderText = L"Código";
-			this->dgv_id_impri->MinimumWidth = 8;
-			this->dgv_id_impri->Name = L"dgv_id_impri";
-			this->dgv_id_impri->ReadOnly = true;
-			this->dgv_id_impri->Width = 50;
-			// 
-			// dgv_dni_impri
-			// 
-			this->dgv_dni_impri->HeaderText = L"DNI";
-			this->dgv_dni_impri->MinimumWidth = 8;
-			this->dgv_dni_impri->Name = L"dgv_dni_impri";
-			this->dgv_dni_impri->ReadOnly = true;
-			this->dgv_dni_impri->Width = 90;
-			// 
-			// dgv_name_impri
-			// 
-			this->dgv_name_impri->HeaderText = L"Nombre";
-			this->dgv_name_impri->MinimumWidth = 8;
-			this->dgv_name_impri->Name = L"dgv_name_impri";
-			this->dgv_name_impri->ReadOnly = true;
-			this->dgv_name_impri->Width = 200;
-			// 
-			// dgv_doc_impri
-			// 
-			this->dgv_doc_impri->HeaderText = L"Documento";
-			this->dgv_doc_impri->MinimumWidth = 8;
-			this->dgv_doc_impri->Name = L"dgv_doc_impri";
-			this->dgv_doc_impri->ReadOnly = true;
-			this->dgv_doc_impri->Width = 110;
-			// 
-			// dgv_status_impri
-			// 
-			this->dgv_status_impri->HeaderText = L"Estado";
-			this->dgv_status_impri->MinimumWidth = 8;
-			this->dgv_status_impri->Name = L"dgv_status_impri";
-			this->dgv_status_impri->ReadOnly = true;
-			this->dgv_status_impri->Width = 80;
-			// 
-			// dgv_copies_impri
-			// 
-			this->dgv_copies_impri->HeaderText = L"Número de copias";
-			this->dgv_copies_impri->MinimumWidth = 8;
-			this->dgv_copies_impri->Name = L"dgv_copies_impri";
-			this->dgv_copies_impri->ReadOnly = true;
-			this->dgv_copies_impri->Width = 60;
-			// 
-			// dgv_tinta_impri
-			// 
-			this->dgv_tinta_impri->HeaderText = L"Tinta";
-			this->dgv_tinta_impri->MinimumWidth = 8;
-			this->dgv_tinta_impri->Name = L"dgv_tinta_impri";
-			this->dgv_tinta_impri->ReadOnly = true;
-			this->dgv_tinta_impri->Width = 65;
-			// 
-			// dgv_price_impri
-			// 
-			this->dgv_price_impri->HeaderText = L"Precio";
-			this->dgv_price_impri->MinimumWidth = 8;
-			this->dgv_price_impri->Name = L"dgv_price_impri";
-			this->dgv_price_impri->ReadOnly = true;
-			this->dgv_price_impri->Width = 50;
 			// 
 			// tabPage2
 			// 
@@ -460,11 +412,75 @@ namespace AutoPrintView {
 			// 
 			// dgv_price_listo
 			// 
-			this->dgv_price_listo->HeaderText = L"Precio";
+			this->dgv_price_listo->HeaderText = L"Precio (S/)";
 			this->dgv_price_listo->MinimumWidth = 8;
 			this->dgv_price_listo->Name = L"dgv_price_listo";
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
+			// 
+			// dgv_id_impri
+			// 
+			this->dgv_id_impri->HeaderText = L"Código";
+			this->dgv_id_impri->MinimumWidth = 8;
+			this->dgv_id_impri->Name = L"dgv_id_impri";
+			this->dgv_id_impri->ReadOnly = true;
+			this->dgv_id_impri->Width = 50;
+			// 
+			// dgv_dni_impri
+			// 
+			this->dgv_dni_impri->HeaderText = L"DNI";
+			this->dgv_dni_impri->MinimumWidth = 8;
+			this->dgv_dni_impri->Name = L"dgv_dni_impri";
+			this->dgv_dni_impri->ReadOnly = true;
+			this->dgv_dni_impri->Width = 90;
+			// 
+			// dgv_name_impri
+			// 
+			this->dgv_name_impri->HeaderText = L"Nombre";
+			this->dgv_name_impri->MinimumWidth = 8;
+			this->dgv_name_impri->Name = L"dgv_name_impri";
+			this->dgv_name_impri->ReadOnly = true;
+			this->dgv_name_impri->Width = 200;
+			// 
+			// dgv_doc_impri
+			// 
+			this->dgv_doc_impri->HeaderText = L"Documento";
+			this->dgv_doc_impri->MinimumWidth = 8;
+			this->dgv_doc_impri->Name = L"dgv_doc_impri";
+			this->dgv_doc_impri->ReadOnly = true;
+			this->dgv_doc_impri->Width = 110;
+			// 
+			// dgv_status_impri
+			// 
+			this->dgv_status_impri->HeaderText = L"Estado";
+			this->dgv_status_impri->MinimumWidth = 8;
+			this->dgv_status_impri->Name = L"dgv_status_impri";
+			this->dgv_status_impri->ReadOnly = true;
+			this->dgv_status_impri->Width = 80;
+			// 
+			// dgv_copies_impri
+			// 
+			this->dgv_copies_impri->HeaderText = L"Número de copias";
+			this->dgv_copies_impri->MinimumWidth = 8;
+			this->dgv_copies_impri->Name = L"dgv_copies_impri";
+			this->dgv_copies_impri->ReadOnly = true;
+			this->dgv_copies_impri->Width = 60;
+			// 
+			// dgv_tinta_impri
+			// 
+			this->dgv_tinta_impri->HeaderText = L"Tinta";
+			this->dgv_tinta_impri->MinimumWidth = 8;
+			this->dgv_tinta_impri->Name = L"dgv_tinta_impri";
+			this->dgv_tinta_impri->ReadOnly = true;
+			this->dgv_tinta_impri->Width = 65;
+			// 
+			// dgv_price_impri
+			// 
+			this->dgv_price_impri->HeaderText = L"Precio (S/)";
+			this->dgv_price_impri->MinimumWidth = 8;
+			this->dgv_price_impri->Name = L"dgv_price_impri";
+			this->dgv_price_impri->ReadOnly = true;
+			this->dgv_price_impri->Width = 50;
 			// 
 			// OrdenForm
 			// 

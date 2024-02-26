@@ -65,7 +65,7 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::Button^ btnRecharge;
 	private: System::Windows::Forms::TextBox^ txtOwnerWallet;
 	private: System::Windows::Forms::TextBox^ txtCVVWallet;
-	private: System::Windows::Forms::TextBox^ txtMMAAWallet;
+
 	private: System::Windows::Forms::TextBox^ txtCardNumberWallet;
 	private: System::Windows::Forms::Label^ lblPropietor;
 	private: System::Windows::Forms::Label^ lblCVV;
@@ -79,6 +79,7 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::Button^ btnSave;
 	private: System::Windows::Forms::Button^ btnDelete;
 	private: System::Windows::Forms::PictureBox^ pbGuideCard;
+	private: System::Windows::Forms::DateTimePicker^ txtMMAAWallet;
 
 
 
@@ -107,7 +108,6 @@ namespace AutoPrintView {
 			this->btnRecharge = (gcnew System::Windows::Forms::Button());
 			this->txtOwnerWallet = (gcnew System::Windows::Forms::TextBox());
 			this->txtCVVWallet = (gcnew System::Windows::Forms::TextBox());
-			this->txtMMAAWallet = (gcnew System::Windows::Forms::TextBox());
 			this->txtCardNumberWallet = (gcnew System::Windows::Forms::TextBox());
 			this->lblPropietor = (gcnew System::Windows::Forms::Label());
 			this->lblCVV = (gcnew System::Windows::Forms::Label());
@@ -120,6 +120,7 @@ namespace AutoPrintView {
 			this->btnSave = (gcnew System::Windows::Forms::Button());
 			this->btnDelete = (gcnew System::Windows::Forms::Button());
 			this->pbGuideCard = (gcnew System::Windows::Forms::PictureBox());
+			this->txtMMAAWallet = (gcnew System::Windows::Forms::DateTimePicker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWallet))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbGuideCard))->BeginInit();
 			this->SuspendLayout();
@@ -209,19 +210,6 @@ namespace AutoPrintView {
 			this->txtCVVWallet->Text = L"XXX";
 			this->txtCVVWallet->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->txtCVVWallet->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &WalletForm::txtCVVWallet_MouseClick);
-			// 
-			// txtMMAAWallet
-			// 
-			this->txtMMAAWallet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtMMAAWallet->Location = System::Drawing::Point(33, 220);
-			this->txtMMAAWallet->MaxLength = 5;
-			this->txtMMAAWallet->Name = L"txtMMAAWallet";
-			this->txtMMAAWallet->Size = System::Drawing::Size(69, 28);
-			this->txtMMAAWallet->TabIndex = 40;
-			this->txtMMAAWallet->Text = L"MM/AA";
-			this->txtMMAAWallet->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->txtMMAAWallet->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &WalletForm::txtMMAAWallet_MouseClick);
 			// 
 			// txtCardNumberWallet
 			// 
@@ -360,19 +348,36 @@ namespace AutoPrintView {
 			this->pbGuideCard->TabIndex = 46;
 			this->pbGuideCard->TabStop = false;
 			// 
+			// txtMMAAWallet
+			// 
+			this->txtMMAAWallet->CalendarTitleBackColor = System::Drawing::SystemColors::ControlText;
+			this->txtMMAAWallet->CalendarTitleForeColor = System::Drawing::SystemColors::GrayText;
+			this->txtMMAAWallet->CustomFormat = L"MM/yy";
+			this->txtMMAAWallet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtMMAAWallet->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->txtMMAAWallet->Location = System::Drawing::Point(33, 220);
+			this->txtMMAAWallet->MinDate = System::DateTime(2024, 2, 26, 0, 0, 0, 0);
+			this->txtMMAAWallet->Name = L"txtMMAAWallet";
+			this->txtMMAAWallet->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->txtMMAAWallet->ShowUpDown = true;
+			this->txtMMAAWallet->Size = System::Drawing::Size(100, 28);
+			this->txtMMAAWallet->TabIndex = 56;
+			this->txtMMAAWallet->Value = System::DateTime(2024, 2, 26, 0, 0, 0, 0);
+			// 
 			// WalletForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(710, 512);
+			this->Controls->Add(this->txtMMAAWallet);
 			this->Controls->Add(this->pbGuideCard);
 			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->btnSave);
 			this->Controls->Add(this->dgvWallet);
 			this->Controls->Add(this->txtOwnerWallet);
 			this->Controls->Add(this->txtCVVWallet);
-			this->Controls->Add(this->txtMMAAWallet);
 			this->Controls->Add(this->txtCardNumberWallet);
 			this->Controls->Add(this->lblPropietor);
 			this->Controls->Add(this->lblCVV);
@@ -405,6 +410,8 @@ namespace AutoPrintView {
 		newCardWallet->account_number = txtCardNumberWallet->Text;
 		newCardWallet->cvv = txtCVVWallet->Text;
 		newCardWallet->dueDate = txtMMAAWallet->Text;
+		// Obtener la fecha actual
+		DateTime fechaActual = DateTime::Now;
 
 		int dni_wallet = Dni_Ahora;
 		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
@@ -412,35 +419,49 @@ namespace AutoPrintView {
 		if (user_wallet == nullptr) {
 			Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
 
-			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
-				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+
 				MessageBox::Show("Debe rellenar todas las casillas");
 			}
+			else if (txtMMAAWallet->Value <= fechaActual) {
+				MessageBox::Show("Su tarjeta está vencida.");
+			}
 			else {
-				emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
-				lblBalance->Text = Convert::ToString(emp_user_wallet->Money_in_wallet);
-				Controller::UpdateEmployee(emp_user_wallet);
-				txtAmountToRechange->Text = "";
-				txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
-				txtMMAAWallet->Text = "MM/AA";
-				txtCVVWallet->Text = "XXX";
-				txtOwnerWallet->Text = "NOMBRE APELLIDO";
+				if (1 <= Int32::Parse(txtAmountToRechange->Text)) {
+					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
+					lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+					Controller::UpdateCostumer(user_wallet);
+					txtAmountToRechange->Text = "";
+					txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
+					//txtMMAAWallet->Text = "MM/AA";
+					txtCVVWallet->Text = "XXX";
+					txtOwnerWallet->Text = "NOMBRE APELLIDO";
+				}
+				else {
+					MessageBox::Show("el monto mínimo a recargar es de S/1.");
+				}
 			}
 		}
 		else {
-			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
-				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtMMAAWallet->Text == "MM/AA") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
+			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Value <= fechaActual) || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
 				MessageBox::Show("Debe rellenar todas las casillas");
 			}
 			else {
-				user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
-				lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
-				Controller::UpdateCostumer(user_wallet);
-				txtAmountToRechange->Text = "";
-				txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
-				txtMMAAWallet->Text = "MM/AA";
-				txtCVVWallet->Text = "XXX";
-				txtOwnerWallet->Text = "NOMBRE APELLIDO";
+				if (1 <= Int32::Parse(txtAmountToRechange->Text)) {
+					user_wallet->Money_in_wallet = user_wallet->Money_in_wallet + Convert::ToDouble(txtAmountToRechange->Text);
+					lblBalance->Text = Convert::ToString(user_wallet->Money_in_wallet);
+					Controller::UpdateCostumer(user_wallet);
+					txtAmountToRechange->Text = "";
+					txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
+					//txtMMAAWallet->Text = "MM/AA";
+					txtCVVWallet->Text = "XXX";
+					txtOwnerWallet->Text = "NOMBRE APELLIDO";
+				}
+				else {
+					MessageBox::Show("el monto mínimo a recargar es de S/1.");
+				}
 			}
 		}
 	}
@@ -450,7 +471,7 @@ namespace AutoPrintView {
 				   txtCardNumberWallet->Text = "XXXX-XXXX-XXXX-XXXX";
 			   }
 			   if (txtMMAAWallet->Text == "" && checkFill != 2) {
-				   txtMMAAWallet->Text = "MM/AA";
+				   //txtMMAAWallet->Text = "MM/AA";
 			   }
 			   if (txtOwnerWallet->Text == "" && checkFill != 3) {
 				   txtOwnerWallet->Text = "NOMBRE APELLIDO";
@@ -470,7 +491,7 @@ namespace AutoPrintView {
 	}
 	private: System::Void txtMMAAWallet_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		if (txtMMAAWallet->Text == "MM/AA") {
-			txtMMAAWallet->Text = "";
+			//txtMMAAWallet->Text = "";
 		}
 		checkFill = 2;
 		FillOut();
@@ -498,6 +519,7 @@ namespace AutoPrintView {
 		checkFill = 0;
 	}
 	private: System::Void WalletForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		txtMMAAWallet->MinDate = DateTime::Now;
 		int dni_wallet = Dni_Ahora;
 		Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 		if (user_wallet == nullptr) {
