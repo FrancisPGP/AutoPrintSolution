@@ -144,19 +144,19 @@ namespace AutoPrintView {
 
 
 private: System::Windows::Forms::Label^ LB_NameDoc2;
-private: System::Windows::Forms::Label^ LB_NameDoc8;
 
 
-private: System::Windows::Forms::Label^ LB_NameDoc7;
 
-private: System::Windows::Forms::Label^ LB_NameDoc6;
+
+
+
 
 private: System::Windows::Forms::Label^ LB_NameDoc5;
 private: System::Windows::Forms::Label^ LB_Time4;
 
 
 private: System::Windows::Forms::Label^ LB_Time3;
-private: System::Windows::Forms::Label^ LB_Pos6;
+
 
 
 private: System::Windows::Forms::Label^ LB_Pos5;
@@ -169,33 +169,33 @@ private: System::Windows::Forms::Label^ LB_NameDoc4;
 
 
 private: System::Windows::Forms::Label^ LB_NameDoc3;
-private: System::Windows::Forms::Label^ LB_Time10;
 
 
-private: System::Windows::Forms::Label^ LB_Time9;
 
-private: System::Windows::Forms::Label^ LB_Time8;
 
-private: System::Windows::Forms::Label^ LB_Time7;
 
-private: System::Windows::Forms::Label^ LB_Time6;
+
+
+
+
+
 
 private: System::Windows::Forms::Label^ LB_Time5;
-private: System::Windows::Forms::Label^ LB_Pos8;
-
-
-private: System::Windows::Forms::Label^ LB_Pos7;
 
 
 
-private: System::Windows::Forms::Label^ LB_NameDoc10;
 
 
-private: System::Windows::Forms::Label^ LB_NameDoc9;
-private: System::Windows::Forms::Label^ LB_Pos10;
 
 
-private: System::Windows::Forms::Label^ LB_Pos9;
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 
@@ -219,6 +219,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copias;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
+private: System::Windows::Forms::Label^ label12;
+private: System::Windows::Forms::Label^ LB_EspacioCola;
+
 
 
 
@@ -415,25 +418,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->TPage_historial = (gcnew System::Windows::Forms::TabPage());
-			this->LB_NameDoc10 = (gcnew System::Windows::Forms::Label());
-			this->LB_NameDoc9 = (gcnew System::Windows::Forms::Label());
-			this->LB_Pos10 = (gcnew System::Windows::Forms::Label());
-			this->LB_Pos9 = (gcnew System::Windows::Forms::Label());
-			this->LB_Time10 = (gcnew System::Windows::Forms::Label());
-			this->LB_Time9 = (gcnew System::Windows::Forms::Label());
-			this->LB_Time8 = (gcnew System::Windows::Forms::Label());
-			this->LB_Time7 = (gcnew System::Windows::Forms::Label());
-			this->LB_Time6 = (gcnew System::Windows::Forms::Label());
 			this->LB_Time5 = (gcnew System::Windows::Forms::Label());
-			this->LB_Pos8 = (gcnew System::Windows::Forms::Label());
-			this->LB_Pos7 = (gcnew System::Windows::Forms::Label());
-			this->LB_NameDoc8 = (gcnew System::Windows::Forms::Label());
-			this->LB_NameDoc7 = (gcnew System::Windows::Forms::Label());
-			this->LB_NameDoc6 = (gcnew System::Windows::Forms::Label());
 			this->LB_NameDoc5 = (gcnew System::Windows::Forms::Label());
 			this->LB_Time4 = (gcnew System::Windows::Forms::Label());
 			this->LB_Time3 = (gcnew System::Windows::Forms::Label());
-			this->LB_Pos6 = (gcnew System::Windows::Forms::Label());
 			this->LB_Pos5 = (gcnew System::Windows::Forms::Label());
 			this->LB_Pos4 = (gcnew System::Windows::Forms::Label());
 			this->LB_NameDoc4 = (gcnew System::Windows::Forms::Label());
@@ -462,6 +450,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->LB_EspacioCola = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -755,25 +745,12 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			// 
 			// TPage_historial
 			// 
-			this->TPage_historial->Controls->Add(this->LB_NameDoc10);
-			this->TPage_historial->Controls->Add(this->LB_NameDoc9);
-			this->TPage_historial->Controls->Add(this->LB_Pos10);
-			this->TPage_historial->Controls->Add(this->LB_Pos9);
-			this->TPage_historial->Controls->Add(this->LB_Time10);
-			this->TPage_historial->Controls->Add(this->LB_Time9);
-			this->TPage_historial->Controls->Add(this->LB_Time8);
-			this->TPage_historial->Controls->Add(this->LB_Time7);
-			this->TPage_historial->Controls->Add(this->LB_Time6);
+			this->TPage_historial->Controls->Add(this->LB_EspacioCola);
+			this->TPage_historial->Controls->Add(this->label12);
 			this->TPage_historial->Controls->Add(this->LB_Time5);
-			this->TPage_historial->Controls->Add(this->LB_Pos8);
-			this->TPage_historial->Controls->Add(this->LB_Pos7);
-			this->TPage_historial->Controls->Add(this->LB_NameDoc8);
-			this->TPage_historial->Controls->Add(this->LB_NameDoc7);
-			this->TPage_historial->Controls->Add(this->LB_NameDoc6);
 			this->TPage_historial->Controls->Add(this->LB_NameDoc5);
 			this->TPage_historial->Controls->Add(this->LB_Time4);
 			this->TPage_historial->Controls->Add(this->LB_Time3);
-			this->TPage_historial->Controls->Add(this->LB_Pos6);
 			this->TPage_historial->Controls->Add(this->LB_Pos5);
 			this->TPage_historial->Controls->Add(this->LB_Pos4);
 			this->TPage_historial->Controls->Add(this->LB_NameDoc4);
@@ -796,177 +773,23 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->TPage_historial->Text = L"Cola";
 			this->TPage_historial->UseVisualStyleBackColor = true;
 			// 
-			// LB_NameDoc10
-			// 
-			this->LB_NameDoc10->AutoSize = true;
-			this->LB_NameDoc10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_NameDoc10->Location = System::Drawing::Point(182, 439);
-			this->LB_NameDoc10->Name = L"LB_NameDoc10";
-			this->LB_NameDoc10->Size = System::Drawing::Size(0, 29);
-			this->LB_NameDoc10->TabIndex = 51;
-			this->LB_NameDoc10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_NameDoc9
-			// 
-			this->LB_NameDoc9->AutoSize = true;
-			this->LB_NameDoc9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_NameDoc9->Location = System::Drawing::Point(182, 399);
-			this->LB_NameDoc9->Name = L"LB_NameDoc9";
-			this->LB_NameDoc9->Size = System::Drawing::Size(0, 29);
-			this->LB_NameDoc9->TabIndex = 50;
-			this->LB_NameDoc9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Pos10
-			// 
-			this->LB_Pos10->AutoSize = true;
-			this->LB_Pos10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Pos10->Location = System::Drawing::Point(31, 439);
-			this->LB_Pos10->Name = L"LB_Pos10";
-			this->LB_Pos10->Size = System::Drawing::Size(0, 29);
-			this->LB_Pos10->TabIndex = 49;
-			this->LB_Pos10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Pos9
-			// 
-			this->LB_Pos9->AutoSize = true;
-			this->LB_Pos9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Pos9->Location = System::Drawing::Point(31, 399);
-			this->LB_Pos9->Name = L"LB_Pos9";
-			this->LB_Pos9->Size = System::Drawing::Size(0, 29);
-			this->LB_Pos9->TabIndex = 48;
-			this->LB_Pos9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Time10
-			// 
-			this->LB_Time10->AutoSize = true;
-			this->LB_Time10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Time10->Location = System::Drawing::Point(636, 439);
-			this->LB_Time10->Name = L"LB_Time10";
-			this->LB_Time10->Size = System::Drawing::Size(0, 29);
-			this->LB_Time10->TabIndex = 47;
-			this->LB_Time10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Time9
-			// 
-			this->LB_Time9->AutoSize = true;
-			this->LB_Time9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Time9->Location = System::Drawing::Point(636, 399);
-			this->LB_Time9->Name = L"LB_Time9";
-			this->LB_Time9->Size = System::Drawing::Size(0, 29);
-			this->LB_Time9->TabIndex = 46;
-			this->LB_Time9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Time8
-			// 
-			this->LB_Time8->AutoSize = true;
-			this->LB_Time8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Time8->Location = System::Drawing::Point(636, 359);
-			this->LB_Time8->Name = L"LB_Time8";
-			this->LB_Time8->Size = System::Drawing::Size(0, 29);
-			this->LB_Time8->TabIndex = 45;
-			this->LB_Time8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Time7
-			// 
-			this->LB_Time7->AutoSize = true;
-			this->LB_Time7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Time7->Location = System::Drawing::Point(636, 319);
-			this->LB_Time7->Name = L"LB_Time7";
-			this->LB_Time7->Size = System::Drawing::Size(0, 29);
-			this->LB_Time7->TabIndex = 44;
-			this->LB_Time7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Time6
-			// 
-			this->LB_Time6->AutoSize = true;
-			this->LB_Time6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Time6->Location = System::Drawing::Point(636, 279);
-			this->LB_Time6->Name = L"LB_Time6";
-			this->LB_Time6->Size = System::Drawing::Size(0, 29);
-			this->LB_Time6->TabIndex = 41;
-			this->LB_Time6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
 			// LB_Time5
 			// 
 			this->LB_Time5->AutoSize = true;
 			this->LB_Time5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Time5->Location = System::Drawing::Point(636, 239);
+			this->LB_Time5->Location = System::Drawing::Point(654, 324);
 			this->LB_Time5->Name = L"LB_Time5";
 			this->LB_Time5->Size = System::Drawing::Size(0, 29);
 			this->LB_Time5->TabIndex = 40;
 			this->LB_Time5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Pos8
-			// 
-			this->LB_Pos8->AutoSize = true;
-			this->LB_Pos8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Pos8->Location = System::Drawing::Point(31, 359);
-			this->LB_Pos8->Name = L"LB_Pos8";
-			this->LB_Pos8->Size = System::Drawing::Size(0, 29);
-			this->LB_Pos8->TabIndex = 39;
-			this->LB_Pos8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Pos7
-			// 
-			this->LB_Pos7->AutoSize = true;
-			this->LB_Pos7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Pos7->Location = System::Drawing::Point(31, 319);
-			this->LB_Pos7->Name = L"LB_Pos7";
-			this->LB_Pos7->Size = System::Drawing::Size(0, 29);
-			this->LB_Pos7->TabIndex = 38;
-			this->LB_Pos7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_NameDoc8
-			// 
-			this->LB_NameDoc8->AutoSize = true;
-			this->LB_NameDoc8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_NameDoc8->Location = System::Drawing::Point(182, 359);
-			this->LB_NameDoc8->Name = L"LB_NameDoc8";
-			this->LB_NameDoc8->Size = System::Drawing::Size(0, 29);
-			this->LB_NameDoc8->TabIndex = 37;
-			this->LB_NameDoc8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_NameDoc7
-			// 
-			this->LB_NameDoc7->AutoSize = true;
-			this->LB_NameDoc7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_NameDoc7->Location = System::Drawing::Point(182, 319);
-			this->LB_NameDoc7->Name = L"LB_NameDoc7";
-			this->LB_NameDoc7->Size = System::Drawing::Size(0, 29);
-			this->LB_NameDoc7->TabIndex = 36;
-			this->LB_NameDoc7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_NameDoc6
-			// 
-			this->LB_NameDoc6->AutoSize = true;
-			this->LB_NameDoc6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_NameDoc6->Location = System::Drawing::Point(182, 279);
-			this->LB_NameDoc6->Name = L"LB_NameDoc6";
-			this->LB_NameDoc6->Size = System::Drawing::Size(0, 29);
-			this->LB_NameDoc6->TabIndex = 35;
-			this->LB_NameDoc6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_NameDoc5
 			// 
 			this->LB_NameDoc5->AutoSize = true;
 			this->LB_NameDoc5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_NameDoc5->Location = System::Drawing::Point(182, 239);
+			this->LB_NameDoc5->Location = System::Drawing::Point(152, 324);
 			this->LB_NameDoc5->Name = L"LB_NameDoc5";
 			this->LB_NameDoc5->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc5->TabIndex = 34;
@@ -977,7 +800,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Time4->AutoSize = true;
 			this->LB_Time4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Time4->Location = System::Drawing::Point(636, 199);
+			this->LB_Time4->Location = System::Drawing::Point(654, 284);
 			this->LB_Time4->Name = L"LB_Time4";
 			this->LB_Time4->Size = System::Drawing::Size(0, 29);
 			this->LB_Time4->TabIndex = 33;
@@ -988,29 +811,18 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Time3->AutoSize = true;
 			this->LB_Time3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Time3->Location = System::Drawing::Point(636, 159);
+			this->LB_Time3->Location = System::Drawing::Point(654, 244);
 			this->LB_Time3->Name = L"LB_Time3";
 			this->LB_Time3->Size = System::Drawing::Size(0, 29);
 			this->LB_Time3->TabIndex = 32;
 			this->LB_Time3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// LB_Pos6
-			// 
-			this->LB_Pos6->AutoSize = true;
-			this->LB_Pos6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_Pos6->Location = System::Drawing::Point(31, 279);
-			this->LB_Pos6->Name = L"LB_Pos6";
-			this->LB_Pos6->Size = System::Drawing::Size(0, 29);
-			this->LB_Pos6->TabIndex = 31;
-			this->LB_Pos6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// LB_Pos5
 			// 
 			this->LB_Pos5->AutoSize = true;
 			this->LB_Pos5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Pos5->Location = System::Drawing::Point(31, 239);
+			this->LB_Pos5->Location = System::Drawing::Point(23, 324);
 			this->LB_Pos5->Name = L"LB_Pos5";
 			this->LB_Pos5->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos5->TabIndex = 30;
@@ -1021,7 +833,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Pos4->AutoSize = true;
 			this->LB_Pos4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Pos4->Location = System::Drawing::Point(31, 199);
+			this->LB_Pos4->Location = System::Drawing::Point(23, 284);
 			this->LB_Pos4->Name = L"LB_Pos4";
 			this->LB_Pos4->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos4->TabIndex = 29;
@@ -1032,7 +844,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_NameDoc4->AutoSize = true;
 			this->LB_NameDoc4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_NameDoc4->Location = System::Drawing::Point(182, 199);
+			this->LB_NameDoc4->Location = System::Drawing::Point(152, 284);
 			this->LB_NameDoc4->Name = L"LB_NameDoc4";
 			this->LB_NameDoc4->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc4->TabIndex = 28;
@@ -1043,7 +855,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_NameDoc3->AutoSize = true;
 			this->LB_NameDoc3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_NameDoc3->Location = System::Drawing::Point(182, 159);
+			this->LB_NameDoc3->Location = System::Drawing::Point(152, 244);
 			this->LB_NameDoc3->Name = L"LB_NameDoc3";
 			this->LB_NameDoc3->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc3->TabIndex = 27;
@@ -1054,7 +866,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Pos3->AutoSize = true;
 			this->LB_Pos3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Pos3->Location = System::Drawing::Point(31, 159);
+			this->LB_Pos3->Location = System::Drawing::Point(23, 244);
 			this->LB_Pos3->Name = L"LB_Pos3";
 			this->LB_Pos3->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos3->TabIndex = 26;
@@ -1065,7 +877,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Time2->AutoSize = true;
 			this->LB_Time2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Time2->Location = System::Drawing::Point(636, 119);
+			this->LB_Time2->Location = System::Drawing::Point(654, 204);
 			this->LB_Time2->Name = L"LB_Time2";
 			this->LB_Time2->Size = System::Drawing::Size(0, 29);
 			this->LB_Time2->TabIndex = 25;
@@ -1076,7 +888,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_NameDoc2->AutoSize = true;
 			this->LB_NameDoc2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_NameDoc2->Location = System::Drawing::Point(182, 119);
+			this->LB_NameDoc2->Location = System::Drawing::Point(152, 204);
 			this->LB_NameDoc2->Name = L"LB_NameDoc2";
 			this->LB_NameDoc2->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc2->TabIndex = 24;
@@ -1087,7 +899,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Pos2->AutoSize = true;
 			this->LB_Pos2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Pos2->Location = System::Drawing::Point(31, 119);
+			this->LB_Pos2->Location = System::Drawing::Point(23, 204);
 			this->LB_Pos2->Name = L"LB_Pos2";
 			this->LB_Pos2->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos2->TabIndex = 23;
@@ -1098,7 +910,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Time1->AutoSize = true;
 			this->LB_Time1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Time1->Location = System::Drawing::Point(636, 79);
+			this->LB_Time1->Location = System::Drawing::Point(654, 164);
 			this->LB_Time1->Name = L"LB_Time1";
 			this->LB_Time1->Size = System::Drawing::Size(0, 29);
 			this->LB_Time1->TabIndex = 22;
@@ -1109,7 +921,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_NameDoc1->AutoSize = true;
 			this->LB_NameDoc1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_NameDoc1->Location = System::Drawing::Point(182, 79);
+			this->LB_NameDoc1->Location = System::Drawing::Point(152, 164);
 			this->LB_NameDoc1->Name = L"LB_NameDoc1";
 			this->LB_NameDoc1->Size = System::Drawing::Size(0, 29);
 			this->LB_NameDoc1->TabIndex = 21;
@@ -1120,7 +932,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->LB_Pos1->AutoSize = true;
 			this->LB_Pos1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->LB_Pos1->Location = System::Drawing::Point(31, 79);
+			this->LB_Pos1->Location = System::Drawing::Point(23, 164);
 			this->LB_Pos1->Name = L"LB_Pos1";
 			this->LB_Pos1->Size = System::Drawing::Size(0, 29);
 			this->LB_Pos1->TabIndex = 20;
@@ -1131,7 +943,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(633, 34);
+			this->label11->Location = System::Drawing::Point(652, 119);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(255, 29);
 			this->label11->TabIndex = 19;
@@ -1143,7 +955,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(182, 34);
+			this->label9->Location = System::Drawing::Point(152, 119);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(280, 29);
 			this->label9->TabIndex = 18;
@@ -1155,7 +967,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(29, 34);
+			this->label6->Location = System::Drawing::Point(21, 119);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(114, 29);
 			this->label6->TabIndex = 17;
@@ -1307,6 +1119,27 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			this->dgv_tamano->ReadOnly = true;
 			this->dgv_tamano->Width = 65;
 			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(23, 48);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(309, 29);
+			this->label12->TabIndex = 41;
+			this->label12->Text = L"Espacio disponible en cola:";
+			// 
+			// LB_EspacioCola
+			// 
+			this->LB_EspacioCola->AutoSize = true;
+			this->LB_EspacioCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_EspacioCola->Location = System::Drawing::Point(338, 48);
+			this->LB_EspacioCola->Name = L"LB_EspacioCola";
+			this->LB_EspacioCola->Size = System::Drawing::Size(0, 29);
+			this->LB_EspacioCola->TabIndex = 42;
+			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1339,84 +1172,30 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 		int delete_orderId = 0;
 		int tiempo_print = 5;
 
-		int tiempo1 = 0;
-		int tiempo2 = 0;
-		int tiempo3 = 0;
-		int tiempo4 = 0;
-		int tiempo5 = 0;
-		int tiempo6 = 0;
-		int tiempo7 = 0;
-		int tiempo8 = 0;
-		int tiempo9 = 0;
-		int tiempo10 = 0;
+		//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
+		System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
+		System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		delete_orderId = 0;
+		ShowOrderFiles();
+
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
-		Order^ time_3 = Controller::QueryFileByPosition(3);
-		Order^ time_4 = Controller::QueryFileByPosition(4);
-		Order^ time_5 = Controller::QueryFileByPosition(5);
-		Order^ time_6 = Controller::QueryFileByPosition(6);
-		Order^ time_7 = Controller::QueryFileByPosition(7);
-		Order^ time_8 = Controller::QueryFileByPosition(8);
-		Order^ time_9 = Controller::QueryFileByPosition(9);
-		Order^ time_10 = Controller::QueryFileByPosition(10);
 
 		if (time_1 != nullptr) {
 			// Configura el intervalo del temporizador en milisegundos (1 segundo)
-			Timer1->Interval = 1000 * tiempo_print;
+			Timer1->Interval = 2500;
 			// Asocia el evento Tick con el manejador timer1_Tick
 			Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
 			// Inicia el temporizador
 			Timer1->Start();
 		}
 		if (time_2 != nullptr) {
-			Timer2->Interval = 1000 * tiempo_print;
+			Timer2->Interval = 2500;
 			Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
 			Timer2->Start();
 		}
-		if (time_3 != nullptr) {
-			Timer3->Interval = 1000 * tiempo_print;
-			Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
-			Timer3->Start();
-		}
-		if (time_4 != nullptr) {
-			Timer4->Interval = 1000 * tiempo_print;
-			Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
-			Timer4->Start();
-		}
-		if (time_5 != nullptr) {
-			Timer5->Interval = 1000 * tiempo_print;
-			Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
-			Timer5->Start();
-		}
-		if (time_6 != nullptr) {
-			Timer6->Interval = 1000 * tiempo_print;
-			Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
-			Timer6->Start();
-		}
-		if (time_7 != nullptr) {
-			Timer7->Interval = 1000 * tiempo_print;
-			Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
-			Timer7->Start();
-		}
-		if (time_8 != nullptr) {
-			Timer8->Interval = 1000 * tiempo_print;
-			Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
-			Timer8->Start();
-		}
-		if (time_9 != nullptr) {
-			Timer9->Interval = 1000 * tiempo_print;
-			Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
-			Timer9->Start();
-		}
-		if (time_10 != nullptr) {
-			Timer10->Interval = 1000 * tiempo_print;
-			Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
-			Timer10->Start();
-		}
-		delete_orderId = 0;
-		ShowOrderFiles();
 	}
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
@@ -1433,7 +1212,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 					UpOrder();
 					PrintPDF();
-					IniciarReloj();
 					RefreshPage();
 					//email();
 				}
@@ -1463,7 +1241,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 						Controller::UpdateEmployee(emp_user_wallet);
 						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 						PrintPDF();
-						IniciarReloj();
 						RefreshPage();
 						//email();
 					}
@@ -1482,7 +1259,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 						Controller::UpdateCostumer(user_wallet);
 						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 						PrintPDF();
-						IniciarReloj();
 						RefreshPage();
 						//email();
 
@@ -1522,62 +1298,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 				   return true;
 			   }
 		   }
-		   void IniciarReloj() {
-			   if (position == 1) {
-				   // Configura el intervalo del temporizador en milisegundos (1 segundo)
-				   Timer1->Interval = 1000 * tiempo_print;
-				   // Asocia el evento Tick con el manejador timer1_Tick
-				   Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-				   // Inicia el temporizador
-				   Timer1->Start();
-			   }
-			   else if (position == 2) {
-				   Timer2->Interval = 1000 * tiempo_print;
-				   Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
-				   Timer2->Start();
-			   }
-			   else if (position == 3) {
-				   Timer3->Interval = 1000 * tiempo_print;
-				   Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
-				   Timer3->Start();
-			   }
-			   else if (position == 4) {
-				   Timer4->Interval = 1000 * tiempo_print;
-				   Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
-				   Timer4->Start();
-			   }
-			   else if (position == 5) {
-				   Timer5->Interval = 1000 * tiempo_print;
-				   Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
-				   Timer5->Start();
-			   }
-			   else if (position == 6) {
-				   Timer6->Interval = 1000 * tiempo_print;
-				   Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
-				   Timer6->Start();
-			   }
-			   else if (position == 7) {
-				   Timer7->Interval = 1000 * tiempo_print;
-				   Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
-				   Timer7->Start();
-			   }
-			   else if (position == 8) {
-				   Timer8->Interval = 1000 * tiempo_print;
-				   Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
-				   Timer8->Start();
-			   }
-			   else if (position == 9) {
-				   Timer9->Interval = 1000 * tiempo_print;
-				   Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
-				   Timer9->Start();
-			   }
-			   else if (position == 10) {
-				   Timer10->Interval = 1000 * tiempo_print;
-				   Timer10->Tick += gcnew EventHandler(this, &PrintForm::timer10_Tick);
-				   Timer10->Start();
-			   }
-		   }
-
 
 /***************************************************************************************************************************************************/
 		   void UpOrder() {
@@ -1606,7 +1326,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   int dni_wallet = Dni_Ahora;
 
 			   File_order->dni_history = dni_wallet;
-			   File_order->order_id = ordenId;
+			   //File_order->order_id = ordenId;
 			   File_order->sheet_type = cmbTipoHoja->Text;
 			   File_order->sheet_size = cmbTamaHoja->Text;
 			   File_order->color_page = cmbTinta->Text;
@@ -1704,51 +1424,43 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   File_order->num_spooler = position;
 
 			   if (position == 1) {
-				   tiempo1 = tiempo_print * numpage;
-				   File_order->time_print = tiempo1;
+				   File_order->time_print = tiempo_print * numpage;
 			   }
 			   else if (position == 2) {
 				   Order^ time_order = Controller::QueryFileByPosition(1);
-				   tiempo2 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo2;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 3) {
 				   Order^ time_order = Controller::QueryFileByPosition(2);
-				   tiempo3 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo3;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 4) {
 				   Order^ time_order = Controller::QueryFileByPosition(3);
-				   tiempo4 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo4;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 5) {
 				   Order^ time_order = Controller::QueryFileByPosition(4);
-				   tiempo5 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo5;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 6) {
 				   Order^ time_order = Controller::QueryFileByPosition(5);
-				   tiempo6 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo6;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 7) {
 				   Order^ time_order = Controller::QueryFileByPosition(6);
-				   tiempo7 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo7;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 8) {
 				   Order^ time_order = Controller::QueryFileByPosition(7);
-				   tiempo8 = tiempo_print * numpage + time_order->time_print;
-				   File_order->time_print = tiempo8;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 9) {
 				   Order^ time_order = Controller::QueryFileByPosition(8);
-				   tiempo9 = tiempo_print * numpage + time_order->time_print;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 			   else if (position == 10) {
 				   Order^ time_order = Controller::QueryFileByPosition(9);
-				   tiempo10 = tiempo_print * numpage + time_order->time_print;
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
 
 			   AutoPrintController::Controller::AddOrder(File_order);
@@ -1962,532 +1674,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 				   return -1; // Devolver -1 para indicar un error
 			   }
 		   }
-
-		   void SpoolerMinus() {
-			   Order^ time_order11 = Controller::QueryFileByPosition(1);
-			   Order^ order11 = gcnew Order();
-			   order11->num_spooler = -1;
-			   order11->time_print = -1;
-
-			   order11->dni_history = time_order11->dni_history;
-			   order11->order_id = time_order11->order_id;//Identificador
-			   order11->status_order = time_order11->status_order;
-			   order11->sheet_type = time_order11->sheet_type;
-			   order11->sheet_size = time_order11->sheet_size;
-			   order11->color_page = time_order11->color_page;
-			   order11->num_copies = time_order11->num_copies;
-			   order11->Location = time_order11->Location;
-			   order11->price = time_order11->price;
-			   order11->date = time_order11->date;
-			   order11->PDF_NAME = time_order11->PDF_NAME;
-			   order11->PDF_URL = time_order11->PDF_URL;
-			   order11->PDF = time_order11->PDF;
-
-			   Controller::UpdateCola(order11);
-		   }
-
-		   System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer3 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer4 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer5 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer6 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer7 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer8 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer9 = gcnew System::Windows::Forms::Timer();
-		   System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
-
-/*------------------------------------------------------111111111111111111111111111111111----------------------------------------------------------*/
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
-		String^ Documento_name;
-		Order^ time_order = Controller::QueryFileByPosition(1);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time1->Text = (order->time_print).ToString();
-			LB_Pos1->Text = "1";
-			LB_NameDoc1->Text = time_order->PDF_NAME;
-
-			if (order->time_print <= 0) {
-				order->time_print = - 1;
-				LB_Time1->Text = "Listo para recoger";
-				order->num_spooler = -1;
-				//Documento_name = time_order->PDF_NAME;
-				order->status_order = "Listo";
-				//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
-			}
-			Controller::UpdateCola(order);
-		}
-		else {
-			LB_Time1->Text = "";
-			LB_Pos1->Text = "";
-			LB_NameDoc1->Text = "";
-			// Detén el temporizador si está en marcha
-			Timer1->Stop();
-			// Elimina todos los manejadores de eventos Tick
-			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-		}
-	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
-	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(2);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time2->Text = (order->time_print).ToString();
-			LB_Pos2->Text = "2";
-			LB_NameDoc2->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer1->Stop();
-				Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-				
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-				
-				Controller::UpdateCola(order);
-				
-				Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-				Timer1->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time2->Text = "";
-			LB_Pos2->Text = "";
-			LB_NameDoc2->Text = "";
-			Timer2->Stop();
-			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
-		}
-	}/*----------------------------------------------------33333333333333333333333333333333333333333333333333-------------------------------------*/
-	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(3);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time3->Text = (order->time_print).ToString();
-			LB_Pos3->Text = "3";
-			LB_NameDoc3->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer2->Stop();
-				Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
-				Timer2->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time3->Text = "";
-			LB_Pos3->Text = "";
-			LB_NameDoc3->Text = "";
-			Timer3->Stop();
-			Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick);
-		}
-	}/*----------------------------------------------------444444444444444444444444444444444444444444444444444-----------------------------------*/
-	private: System::Void timer4_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(4);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time4->Text = (order->time_print).ToString();
-			LB_Pos4->Text = "4";
-			LB_NameDoc4->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer3->Stop();
-				Timer3->Tick -= gcnew EventHandler(this, &PrintForm::timer3_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer3->Tick += gcnew EventHandler(this, &PrintForm::timer3_Tick);
-				Timer3->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time4->Text = "";
-			LB_Pos4->Text = "";
-			LB_NameDoc4->Text = "";
-			Timer4->Stop();
-			Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick);
-		}
-	}/*----------------------------------------------------55555555555555555555555555555555555555555555555555-----------------------------------*/
-	private: System::Void timer5_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(5);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time5->Text = (order->time_print).ToString();
-			LB_Pos5->Text = "5";
-			LB_NameDoc5->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer4->Stop();
-				Timer4->Tick -= gcnew EventHandler(this, &PrintForm::timer4_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer4->Tick += gcnew EventHandler(this, &PrintForm::timer4_Tick);
-				Timer4->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time5->Text = "";
-			LB_Pos5->Text = "";
-			LB_NameDoc5->Text = "";
-			Timer5->Stop();
-			Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick);
-		}
-	}/*----------------------------------------------------66666666666666666666666666666666666666666666666666-----------------------------------*/
-	private: System::Void timer6_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(6);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time6->Text = (order->time_print).ToString();
-			LB_Pos6->Text = "6";
-			LB_NameDoc6->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer5->Stop();
-				Timer5->Tick -= gcnew EventHandler(this, &PrintForm::timer5_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer5->Tick += gcnew EventHandler(this, &PrintForm::timer5_Tick);
-				Timer5->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time6->Text = "";
-			LB_Pos6->Text = "";
-			LB_NameDoc6->Text = "";
-			Timer6->Stop();
-			Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick);
-		}
-	}/*----------------------------------------------------7777777777777777777777777777777777777777777777777-----------------------------------*/
-	private: System::Void timer7_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(7);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time7->Text = (order->time_print).ToString();
-			LB_Pos7->Text = "7";
-			LB_NameDoc7->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer6->Stop();
-				Timer6->Tick -= gcnew EventHandler(this, &PrintForm::timer6_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer6->Tick += gcnew EventHandler(this, &PrintForm::timer6_Tick);
-				Timer6->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time7->Text = "";
-			LB_Pos7->Text = "";
-			LB_NameDoc7->Text = "";
-			Timer7->Stop();
-			Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick);
-		}
-	}/*----------------------------------------------------8888888888888888888888888888888888888888888888888-----------------------------------*/
-	private: System::Void timer8_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(8);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time8->Text = (order->time_print).ToString();
-			LB_Pos8->Text = "8";
-			LB_NameDoc8->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer7->Stop();
-				Timer7->Tick -= gcnew EventHandler(this, &PrintForm::timer7_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer7->Tick += gcnew EventHandler(this, &PrintForm::timer7_Tick);
-				Timer7->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time8->Text = "";
-			LB_Pos8->Text = "";
-			LB_NameDoc8->Text = "";
-			Timer8->Stop();
-			Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick);
-		}
-	}/*----------------------------------------------------999999999999999999999999999999999999999999999999-----------------------------------*/
-	private: System::Void timer9_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(9);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time9->Text = (order->time_print).ToString();
-			LB_Pos9->Text = "9";
-			LB_NameDoc9->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer8->Stop();
-				Timer8->Tick -= gcnew EventHandler(this, &PrintForm::timer8_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer8->Tick += gcnew EventHandler(this, &PrintForm::timer8_Tick);
-				Timer8->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time9->Text = "";
-			LB_Pos9->Text = "";
-			LB_NameDoc9->Text = "";
-			Timer9->Stop();
-			Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick);
-		}
-	}/*----------------------------------------------------10101010101010101010101010101010101010101010101010-----------------------------------*/
-	private: System::Void timer10_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(10);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			LB_Time10->Text = (order->time_print).ToString();
-			LB_Pos10->Text = "10";
-			LB_NameDoc10->Text = time_order->PDF_NAME;
-
-			if (LB_Time1->Text == "Listo para recoger") {
-				Timer9->Stop();
-				Timer9->Tick -= gcnew EventHandler(this, &PrintForm::timer9_Tick);
-
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer9->Tick += gcnew EventHandler(this, &PrintForm::timer9_Tick);
-				Timer9->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			LB_Time10->Text = "";
-			LB_Pos10->Text = "";
-			LB_NameDoc10->Text = "";
-			Timer10->Stop();
-			Timer10->Tick -= gcnew EventHandler(this, &PrintForm::timer10_Tick);
-		}
-	}
-
 		   // Excelente trabajo Ricardo. Francis
-		  public:
+		   public:
 			  void email() {
 				  int dniP = Dni_Ahora;
 				  String^ dnic = "" + dniP;
@@ -2526,5 +1714,98 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 				  }
 
 			  }
+
+	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_1 = Controller::QueryFileByPosition(1);
+		Order^ time_2 = Controller::QueryFileByPosition(2);
+		Order^ time_3 = Controller::QueryFileByPosition(3);
+		Order^ time_4 = Controller::QueryFileByPosition(4);
+		Order^ time_5 = Controller::QueryFileByPosition(5);
+
+		if (time_1 != nullptr) {
+			LB_Time1->Text = (time_1->time_print).ToString();
+			LB_Pos1->Text = (time_1->num_spooler).ToString();
+			LB_NameDoc1->Text = time_1->PDF_NAME;
+		}
+		if (time_2 != nullptr) {
+			LB_Time2->Text = (time_2->time_print).ToString();
+			LB_Pos2->Text = (time_2->num_spooler).ToString();
+			LB_NameDoc2->Text = time_2->PDF_NAME;
+		}
+		if (time_3 != nullptr) {
+			LB_Time3->Text = (time_3->time_print).ToString();
+			LB_Pos3->Text = (time_3->num_spooler).ToString();
+			LB_NameDoc3->Text = time_3->PDF_NAME;
+		}
+		if (time_4 != nullptr) {
+			LB_Time4->Text = (time_4->time_print).ToString();
+			LB_Pos4->Text = (time_4->num_spooler).ToString();
+			LB_NameDoc4->Text = time_4->PDF_NAME;
+		}
+		if (time_5 != nullptr) {
+			LB_Time5->Text = (time_5->time_print).ToString();
+			LB_Pos5->Text = (time_5->num_spooler).ToString();
+			LB_NameDoc5->Text = time_5->PDF_NAME;
+		}
+		else {
+			/*LB_Time1->Text = "";
+			LB_Pos1->Text = "";
+			LB_NameDoc1->Text = "";*/
+			// Detén el temporizador si está en marcha
+			Timer1->Stop();
+			// Elimina todos los manejadores de eventos Tick
+			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+		}
+	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
+	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Order^ time_order = Controller::QueryFileByPosition(2);
+		if (time_order != nullptr) {
+			Order^ order = gcnew Order();
+			order->num_spooler = time_order->num_spooler;
+			order->time_print = time_order->time_print - tiempo_print;
+
+			order->dni_history = time_order->dni_history;
+			order->order_id = time_order->order_id;//Identificador
+			order->status_order = time_order->status_order;
+			order->sheet_type = time_order->sheet_type;
+			order->sheet_size = time_order->sheet_size;
+			order->color_page = time_order->color_page;
+			order->num_copies = time_order->num_copies;
+			order->Location = time_order->Location;
+			order->price = time_order->price;
+			order->date = time_order->date;
+			order->PDF_NAME = time_order->PDF_NAME;
+			order->PDF_URL = time_order->PDF_URL;
+			order->PDF = time_order->PDF;
+
+			/*LB_Time2->Text = (order->time_print).ToString();
+			LB_Pos2->Text = "2";
+			LB_NameDoc2->Text = time_order->PDF_NAME;*/
+
+			Order^ time_order11 = Controller::QueryFileByPosition(1);
+			if (time_order11->status_order == "Listo") {
+				Timer1->Stop();
+				Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+
+				order->num_spooler = time_order->num_spooler - 1;
+
+				Controller::UpdateCola(order);
+
+				Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				Timer1->Start();
+			}
+			else {
+				Controller::UpdateCola(order);
+			}
+		}
+		else {
+			/*LB_Time2->Text = "";
+			LB_Pos2->Text = "";
+			LB_NameDoc2->Text = "";*/
+			Timer2->Stop();
+			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
+		}
+	}
 };
 }
