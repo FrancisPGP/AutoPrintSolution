@@ -76,8 +76,8 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Card_id;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Card_Titular;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Card_NumCard;
-	private: System::Windows::Forms::Button^ btnSave;
-	private: System::Windows::Forms::Button^ btnDelete;
+
+
 	private: System::Windows::Forms::PictureBox^ pbGuideCard;
 	private: System::Windows::Forms::DateTimePicker^ txtMMAAWallet;
 
@@ -117,8 +117,6 @@ namespace AutoPrintView {
 			this->Card_id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Card_Titular = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Card_NumCard = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->btnSave = (gcnew System::Windows::Forms::Button());
-			this->btnDelete = (gcnew System::Windows::Forms::Button());
 			this->pbGuideCard = (gcnew System::Windows::Forms::PictureBox());
 			this->txtMMAAWallet = (gcnew System::Windows::Forms::DateTimePicker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvWallet))->BeginInit();
@@ -177,7 +175,7 @@ namespace AutoPrintView {
 			// 
 			this->btnRecharge->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnRecharge->Location = System::Drawing::Point(518, 442);
+			this->btnRecharge->Location = System::Drawing::Point(277, 444);
 			this->btnRecharge->Name = L"btnRecharge";
 			this->btnRecharge->Size = System::Drawing::Size(113, 37);
 			this->btnRecharge->TabIndex = 26;
@@ -316,28 +314,6 @@ namespace AutoPrintView {
 			this->Card_NumCard->ReadOnly = true;
 			this->Card_NumCard->Width = 200;
 			// 
-			// btnSave
-			// 
-			this->btnSave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnSave->Location = System::Drawing::Point(81, 442);
-			this->btnSave->Name = L"btnSave";
-			this->btnSave->Size = System::Drawing::Size(113, 37);
-			this->btnSave->TabIndex = 44;
-			this->btnSave->Text = L"Guardar";
-			this->btnSave->UseVisualStyleBackColor = true;
-			// 
-			// btnDelete
-			// 
-			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnDelete->Location = System::Drawing::Point(298, 442);
-			this->btnDelete->Name = L"btnDelete";
-			this->btnDelete->Size = System::Drawing::Size(113, 37);
-			this->btnDelete->TabIndex = 45;
-			this->btnDelete->Text = L"Eliminar";
-			this->btnDelete->UseVisualStyleBackColor = true;
-			// 
 			// pbGuideCard
 			// 
 			this->pbGuideCard->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbGuideCard.Image")));
@@ -373,8 +349,6 @@ namespace AutoPrintView {
 			this->ClientSize = System::Drawing::Size(710, 512);
 			this->Controls->Add(this->txtMMAAWallet);
 			this->Controls->Add(this->pbGuideCard);
-			this->Controls->Add(this->btnDelete);
-			this->Controls->Add(this->btnSave);
 			this->Controls->Add(this->dgvWallet);
 			this->Controls->Add(this->txtOwnerWallet);
 			this->Controls->Add(this->txtCVVWallet);
@@ -419,10 +393,10 @@ namespace AutoPrintView {
 		if (user_wallet == nullptr) {
 			Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
 
-			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+			if ((txtAmountToRechange->Text == "") || (Int32::Parse(txtCVVWallet->Text) < 100) || (txtCardNumberWallet->Text == "") || (txtOwnerWallet->Text == "") ||
 				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
 
-				MessageBox::Show("Debe rellenar todas las casillas");
+				MessageBox::Show("Debe rellenar correctamente las casillas");
 			}
 			else if (txtMMAAWallet->Value <= fechaActual) {
 				MessageBox::Show("Su tarjeta está vencida.");
@@ -439,14 +413,18 @@ namespace AutoPrintView {
 					txtOwnerWallet->Text = "NOMBRE APELLIDO";
 				}
 				else {
-					MessageBox::Show("el monto mínimo a recargar es de S/1.");
+					MessageBox::Show("El monto mínimo a recargar es de S/1.");
 				}
 			}
 		}
 		else {
-			if ((txtAmountToRechange->Text == "") || (txtCardNumberWallet->Text == "") || (txtMMAAWallet->Value <= fechaActual) || (txtCVVWallet->Text == "") || (txtOwnerWallet->Text == "") ||
+			if ((txtAmountToRechange->Text == "") || (Int32::Parse(txtCVVWallet->Text) < 100) || (txtCardNumberWallet->Text == "") || (txtOwnerWallet->Text == "") ||
 				(txtCardNumberWallet->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCVVWallet->Text == "XXX") || (txtOwnerWallet->Text == "NOMBRE APELLIDO")) {
-				MessageBox::Show("Debe rellenar todas las casillas");
+
+				MessageBox::Show("Debe rellenar correctamente las casillas");
+			}
+			else if (txtMMAAWallet->Value <= fechaActual) {
+				MessageBox::Show("Su tarjeta está vencida.");
 			}
 			else {
 				if (1 <= Int32::Parse(txtAmountToRechange->Text)) {
@@ -460,7 +438,7 @@ namespace AutoPrintView {
 					txtOwnerWallet->Text = "NOMBRE APELLIDO";
 				}
 				else {
-					MessageBox::Show("el monto mínimo a recargar es de S/1.");
+					MessageBox::Show("El monto mínimo a recargar es de S/1.");
 				}
 			}
 		}
