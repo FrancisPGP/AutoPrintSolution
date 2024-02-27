@@ -306,6 +306,7 @@ namespace AutoPrintView {
 			this->txtCardExpirationVisa->MinDate = System::DateTime(2024, 2, 26, 0, 0, 0, 0);
 			this->txtCardExpirationVisa->Name = L"txtCardExpirationVisa";
 			this->txtCardExpirationVisa->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->txtCardExpirationVisa->ShowUpDown = true;
 			this->txtCardExpirationVisa->Size = System::Drawing::Size(100, 28);
 			this->txtCardExpirationVisa->TabIndex = 55;
 			this->txtCardExpirationVisa->Value = System::DateTime(2024, 2, 26, 0, 0, 0, 0);
