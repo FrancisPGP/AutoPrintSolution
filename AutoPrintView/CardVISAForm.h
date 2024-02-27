@@ -372,13 +372,13 @@ namespace AutoPrintView {
 		if ((txtCardNumberVisa->Text == "") || (txtCardCVVvisa->Text == "") || (txtCardOwnerVisa->Text == "") ||
 			(txtCardNumberVisa->Text == "XXXX-XXXX-XXXX-XXXX") || (txtCardCVVvisa->Text == "XXX") || (txtCardOwnerVisa->Text == "NOMBRE APELLIDO") ||
 			(Int32::Parse(txtCardCVVvisa->Text) < 100)) {
-			MessageBox::Show("Debe rellenar todas las casillas");
+			MessageBox::Show("Debe rellenar correctamente las casillas");
 		}
 		else if (txtCardExpirationVisa->Value <= fechaActual) {
 			MessageBox::Show("Su tarjeta está vencida.");
 		}
 		else {
-			email_tarjeta();
+			//email_tarjeta();
 			ValidationCardVisa = true;
 			Close();
 			
@@ -467,7 +467,7 @@ namespace AutoPrintView {
 						  client->EnableSsl = true;
 						  client->Send(mail);
 					
-		  }
+			}
 	private: System::Void CardVISAForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		txtCardExpirationVisa->MinDate = DateTime::Now;
 	}

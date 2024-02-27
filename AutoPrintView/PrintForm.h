@@ -540,7 +540,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			// 
 			// WB_PDF_imprimir
 			// 
-			this->WB_PDF_imprimir->Dock = System::Windows::Forms::DockStyle::Right;
+			this->WB_PDF_imprimir->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->WB_PDF_imprimir->Location = System::Drawing::Point(497, 3);
 			this->WB_PDF_imprimir->MinimumSize = System::Drawing::Size(20, 20);
 			this->WB_PDF_imprimir->Name = L"WB_PDF_imprimir";
