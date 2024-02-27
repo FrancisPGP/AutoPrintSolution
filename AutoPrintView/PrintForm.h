@@ -1797,38 +1797,59 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 			   }
 		   }
 		   Void PrintPDF() {
+			   bool imprimirEnColor = true;
 			   try {
-				   // Verifica si la propiedad Url no es nula
+				   // Crear un objeto PrintDocument
+				   System::Drawing::Printing::PrintDocument^ pd = gcnew System::Drawing::Printing::PrintDocument();
+
+				   // Mostrar el cuadro de diálogo de impresión
+				   PrintDialog^ dialog = gcnew PrintDialog();
+				   dialog->Document = pd;
+
+				   // Obtener las opciones de impresión desde los controles del formulario
+				   pd->PrinterSettings->Copies = Int32::Parse(cmbNUMcopias->Text);
+
+				   bool imprimirEnColor = true;
+				   if (cmbTinta->Text == "Blanco y negro") {
+					   imprimirEnColor = false;
+				   }
+
+				   // Configurar el modo de color
+				   pd->DefaultPageSettings->Color = imprimirEnColor;
+
+				   if (cmbTipoHoja->Text == "A4") {
+					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("A4", 827, 1169);
+				   }
+				   else if (cmbTipoHoja->Text == "Carta") {
+					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("Carta", 850, 1100);
+				   }
+
+				   dialog->ShowDialog();
+
+					   // Verificar si la propiedad Url no es nula
 				   if (WB_PDF_imprimir->Url != nullptr) {
-					   // Obtiene la ruta del archivo desde la propiedad AbsolutePath de la Url
+					   // Obtener la ruta del archivo desde la propiedad AbsolutePath de la Url
 					   String^ pdfFilePath = WB_PDF_imprimir->Url->AbsolutePath;
 
-					   /*// Abre la ventana de "Dispositivos e impresoras"
-					   Process::Start("control", "/name Microsoft.DevicesAndPrinters");
-					   // Espera un momento para que la ventana se abra completamente (ajusta según sea necesario)
-					   System::Threading::Thread::Sleep(2000);
-					   // Imprime el archivo PDF utilizando el visor de PDF predeterminado en Windows
-					   Process::Start("print", pdfFilePath);*/
-
-					   PrintDialog^ dialog = gcnew PrintDialog();
-					   dialog->ShowDialog();
-
+					   // Crear un objeto ProcessStartInfo para configurar la impresión
 					   ProcessStartInfo^ printProcessInfo = gcnew ProcessStartInfo();
 					   printProcessInfo->Verb = "print";
 					   printProcessInfo->CreateNoWindow = true;
 					   printProcessInfo->FileName = pdfFilePath;
 					   printProcessInfo->WindowStyle = ProcessWindowStyle::Hidden;
 
+					   // Crear un objeto Process para la impresión
 					   Process^ printProcess = gcnew Process();
 					   printProcess->StartInfo = printProcessInfo;
 					   printProcess->Start();
 					   printProcess->WaitForInputIdle();
-					   Thread::Sleep(3000);
 
+					   // Cerrar la ventana de impresión (si es posible) o terminar el proceso
 					   if (!printProcess->CloseMainWindow()) {
 						   printProcess->Kill();
 					   }
 				   }
+				   
 			   }
 			   catch (Exception^ ex) {
 				   MessageBox::Show("La impresora no está disponible en su sistema operativo");
