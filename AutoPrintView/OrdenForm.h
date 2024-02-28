@@ -583,6 +583,7 @@ namespace AutoPrintView {
 		int collected_orderId = 0;
 		int tiempo_print = 5;
 
+		System::Windows::Forms::Timer^ Timer0 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer3 = gcnew System::Windows::Forms::Timer();
@@ -595,7 +596,6 @@ namespace AutoPrintView {
 		System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void OrdenForm_Load(System::Object^ sender, System::EventArgs^ e) {
-
 		ShowFilesImprimiendo();
 		ShowFilesListo();
 		collected_orderId = 0;
@@ -710,9 +710,9 @@ namespace AutoPrintView {
 
 		   void ShowFilesImprimiendo() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+			   if (orderfiles != nullptr) {
 				   dgvOrdenes_imprimiendo->Rows->Clear();
-				   for (int i = 0; i < orderfiles->Count; i++) {
+				   for (int i = 0; i < 36601; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Imprimiendo") {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
@@ -734,9 +734,9 @@ namespace AutoPrintView {
 		   }
 		   void ShowFilesListo() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+			   if (orderfiles != nullptr) {
 				   dgvOrdenes_listo->Rows->Clear();
-				   for (int i = 0; i < orderfiles->Count; i++) {
+				   for (int i = 0; i < 36601; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Listo") {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
@@ -858,6 +858,9 @@ namespace AutoPrintView {
 			   Controller::UpdateCola(order11);
 		   }
 
+	private: System::Void timer0_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+	}
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		String^ Documento_name;
@@ -953,7 +956,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time2->Text = "";
@@ -1004,7 +1006,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time3->Text = "";
@@ -1055,7 +1056,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time4->Text = "";
@@ -1106,7 +1106,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time5->Text = "";
@@ -1157,7 +1156,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time6->Text = "";
@@ -1208,7 +1206,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time7->Text = "";
@@ -1259,7 +1256,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time8->Text = "";
@@ -1310,7 +1306,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time9->Text = "";
@@ -1361,7 +1356,6 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
-			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time10->Text = "";
