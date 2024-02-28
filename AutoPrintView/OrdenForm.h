@@ -292,6 +292,7 @@ namespace AutoPrintView {
 			this->BT_StarPrint->TabIndex = 46;
 			this->BT_StarPrint->Text = L"Iniciar impresión";
 			this->BT_StarPrint->UseVisualStyleBackColor = true;
+			this->BT_StarPrint->Click += gcnew System::EventHandler(this, &OrdenForm::BT_StarPrint_Click);
 			// 
 			// btnShowList
 			// 
@@ -539,8 +540,11 @@ namespace AutoPrintView {
 		System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void OrdenForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowFilesImprimiendo();
+		ShowFilesListo();
 		collected_orderId = 0;
-
+	}
+	private: System::Void BT_StarPrint_Click(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
 		Order^ time_3 = Controller::QueryFileByPosition(3);
@@ -605,9 +609,8 @@ namespace AutoPrintView {
 			Timer10->Tick += gcnew EventHandler(this, &OrdenForm::timer10_Tick);
 			Timer10->Start();
 		}
-		ShowFilesImprimiendo();
-		ShowFilesListo();
 	}
+
 		   void ShowFilesImprimiendo() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr && orderfiles->Count > 0) {
@@ -728,7 +731,6 @@ namespace AutoPrintView {
 		   }
 
 	private: System::Void btnShowList_Click(System::Object^ sender, System::EventArgs^ e) {
-		
 		ExecuteShowList(1);
 	}
 	private: System::Void OrdenForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
@@ -790,9 +792,11 @@ namespace AutoPrintView {
 				Order^ time_order22 = Controller::QueryFileByPosition(2);
 				if (time_order22 == nullptr) {
 					order->num_spooler = -1;
+					ShowFilesListo();
 				}
 			}
 			Controller::UpdateCola(order);
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time1->Text = "";
@@ -845,6 +849,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time2->Text = "";
@@ -895,6 +900,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time3->Text = "";
@@ -945,6 +951,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time4->Text = "";
@@ -995,6 +1002,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time5->Text = "";
@@ -1045,6 +1053,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time6->Text = "";
@@ -1095,6 +1104,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time7->Text = "";
@@ -1145,6 +1155,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time8->Text = "";
@@ -1195,6 +1206,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time9->Text = "";
@@ -1245,6 +1257,7 @@ namespace AutoPrintView {
 			else {
 				Controller::UpdateCola(order);
 			}
+			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time10->Text = "";

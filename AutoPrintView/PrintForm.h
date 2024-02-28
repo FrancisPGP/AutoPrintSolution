@@ -418,6 +418,8 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->TPage_historial = (gcnew System::Windows::Forms::TabPage());
+			this->LB_EspacioCola = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->LB_Time5 = (gcnew System::Windows::Forms::Label());
 			this->LB_NameDoc5 = (gcnew System::Windows::Forms::Label());
 			this->LB_Time4 = (gcnew System::Windows::Forms::Label());
@@ -450,8 +452,6 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->LB_EspacioCola = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -568,7 +568,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbLocal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbLocal->FormattingEnabled = true;
-			this->cmbLocal->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Ciencias Sociales", L"E.E.G.G.L.L." });
+			this->cmbLocal->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Ciencias Sociales" });
 			this->cmbLocal->Location = System::Drawing::Point(17, 344);
 			this->cmbLocal->Name = L"cmbLocal";
 			this->cmbLocal->Size = System::Drawing::Size(163, 33);
@@ -772,6 +772,27 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->TPage_historial->TabIndex = 1;
 			this->TPage_historial->Text = L"Cola";
 			this->TPage_historial->UseVisualStyleBackColor = true;
+			// 
+			// LB_EspacioCola
+			// 
+			this->LB_EspacioCola->AutoSize = true;
+			this->LB_EspacioCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LB_EspacioCola->Location = System::Drawing::Point(338, 48);
+			this->LB_EspacioCola->Name = L"LB_EspacioCola";
+			this->LB_EspacioCola->Size = System::Drawing::Size(0, 29);
+			this->LB_EspacioCola->TabIndex = 42;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(23, 48);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(309, 29);
+			this->label12->TabIndex = 41;
+			this->label12->Text = L"Espacio disponible en cola:";
 			// 
 			// LB_Time5
 			// 
@@ -1119,27 +1140,6 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->dgv_tamano->ReadOnly = true;
 			this->dgv_tamano->Width = 65;
 			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(23, 48);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(309, 29);
-			this->label12->TabIndex = 41;
-			this->label12->Text = L"Espacio disponible en cola:";
-			// 
-			// LB_EspacioCola
-			// 
-			this->LB_EspacioCola->AutoSize = true;
-			this->LB_EspacioCola->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->LB_EspacioCola->Location = System::Drawing::Point(338, 48);
-			this->LB_EspacioCola->Name = L"LB_EspacioCola";
-			this->LB_EspacioCola->Size = System::Drawing::Size(0, 29);
-			this->LB_EspacioCola->TabIndex = 42;
-			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1178,30 +1178,14 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		delete_orderId = 0;
+		IniciarReloj();
 		ShowOrderFiles();
-
-		Order^ time_1 = Controller::QueryFileByPosition(1);
-		Order^ time_2 = Controller::QueryFileByPosition(2);
-
-		if (time_1 != nullptr) {
-			// Configura el intervalo del temporizador en milisegundos (1 segundo)
-			Timer1->Interval = 2500;
-			// Asocia el evento Tick con el manejador timer1_Tick
-			Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-			// Inicia el temporizador
-			Timer1->Start();
-		}
-		if (time_2 != nullptr) {
-			Timer2->Interval = 2500;
-			Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
-			Timer2->Start();
-		}
 	}
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
 			Order^ time_order = Controller::QueryFileByPosition(10);
 			if (time_order != nullptr) {
-				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
+				MessageBox::Show("Tiene 5 PDFs en cola. Estás en el límite.");
 			}
 			else {
 				//if(el usuario paga)
@@ -1211,6 +1195,8 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				if (ValidationCardVisa) {
 					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 					UpOrder();
+					ReiniciarReloj();
+					IniciarReloj();
 					PrintPDF();
 					RefreshPage();
 					//email();
@@ -1221,9 +1207,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(10);
+			Order^ time_order = Controller::QueryFileByPosition(5);
 			if (time_order != nullptr) {
-				MessageBox::Show("Hay 10 PDFs en cola. Estás en el límite");
+				MessageBox::Show("Tiene 5 PDFs en cola. Estás en el límite.");
 			}
 			else {
 				double monto = Convert::ToDouble(MontoPago->Text);
@@ -1236,6 +1222,8 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 					if (emp_user_wallet->Money_in_wallet >= monto) {
 						UpOrder();
+						ReiniciarReloj();
+						IniciarReloj();
 						ProbErrorBILL();
 						emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
 						Controller::UpdateEmployee(emp_user_wallet);
@@ -1252,8 +1240,10 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				}
 				else {
 					if (user_wallet->Money_in_wallet >= monto) {
+						//if (NotPosition5()) {
 						UpOrder();
-						//if (NotPosition10()) {
+						ReiniciarReloj();
+						IniciarReloj();
 						ProbErrorBILL();
 						user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
 						Controller::UpdateCostumer(user_wallet);
@@ -1341,9 +1331,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 			   if(dia==0){
 				   File_order->date = "Domingo";
-
-			   }
-			   else  if (dia == 1) {
+			   } else  if (dia == 1) {
 				   File_order->date = "Lunes";
 
 			   } else if (dia == 2) {
@@ -1360,7 +1348,6 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 			   } else if (dia == 6) {
 				   File_order->date = "Sabado";
-
 			   }
 
 			   /*if (PB_PDF_imprimir != nullptr && PB_PDF_imprimir->Image != nullptr) {
@@ -1400,24 +1387,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 					   else if (position_order->num_spooler == 4) {
 						   position++;
 					   }
-					   else if (position_order->num_spooler == 5) {
-						   position++;
-					   }
-					   else if (position_order->num_spooler == 6) {
-						   position++;
-					   }
-					   else if (position_order->num_spooler == 7) {
-						   position++;
-					   }
-					   else if (position_order->num_spooler == 8) {
-						   position++;
-					   }
-					   else if (position_order->num_spooler == 9) {
-						   position++;
-					   }
-					   else if (position_order->num_spooler == 10) {
+					   /*else if (position_order->num_spooler == 5) {
 						   return;
-					   }
+					   }*/
 				   }
 			   }
 
@@ -1425,42 +1397,42 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 			   if (position == 1) {
 				   File_order->time_print = tiempo_print * numpage;
+
+				   LB_Time1->Text = (File_order->time_print).ToString();
+				   LB_Pos1->Text = (position).ToString();
+				   LB_NameDoc1->Text = File_order->PDF_NAME;
 			   }
 			   else if (position == 2) {
 				   Order^ time_order = Controller::QueryFileByPosition(1);
 				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+
+				   LB_Time2->Text = (File_order->time_print).ToString();
+				   LB_Pos2->Text = (position).ToString();
+				   LB_NameDoc2->Text = File_order->PDF_NAME;
 			   }
 			   else if (position == 3) {
 				   Order^ time_order = Controller::QueryFileByPosition(2);
 				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+
+				   LB_Time3->Text = (File_order->time_print).ToString();
+				   LB_Pos3->Text = (position).ToString();
+				   LB_NameDoc3->Text = File_order->PDF_NAME;
 			   }
 			   else if (position == 4) {
 				   Order^ time_order = Controller::QueryFileByPosition(3);
 				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+
+				   LB_Time4->Text = (File_order->time_print).ToString();
+				   LB_Pos4->Text = (position).ToString();
+				   LB_NameDoc4->Text = File_order->PDF_NAME;
 			   }
 			   else if (position == 5) {
 				   Order^ time_order = Controller::QueryFileByPosition(4);
 				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-			   }
-			   else if (position == 6) {
-				   Order^ time_order = Controller::QueryFileByPosition(5);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-			   }
-			   else if (position == 7) {
-				   Order^ time_order = Controller::QueryFileByPosition(6);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-			   }
-			   else if (position == 8) {
-				   Order^ time_order = Controller::QueryFileByPosition(7);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-			   }
-			   else if (position == 9) {
-				   Order^ time_order = Controller::QueryFileByPosition(8);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-			   }
-			   else if (position == 10) {
-				   Order^ time_order = Controller::QueryFileByPosition(9);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+
+				   LB_Time5->Text = (File_order->time_print).ToString();
+				   LB_Pos5->Text = (position).ToString();
+				   LB_NameDoc5->Text = File_order->PDF_NAME;
 			   }
 
 			   AutoPrintController::Controller::AddOrder(File_order);
@@ -1490,7 +1462,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				   }
 			   }
 		   }
-		   Void ShowPrice() {
+		   void ShowPrice() {
 			   monto = 0;
 			   if (cmbNUMcopias->Text != "" && numpage != 0) {
 				   if (cmbTinta->Text == "Color") {
@@ -1508,7 +1480,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				   LB_NumPage->Text = "por " + numpage + " páginas";
 			   }
 		   }
-		   Void PrintPDF() {
+		   void PrintPDF() {
 			   bool imprimirEnColor = true;
 			   try {
 				   // Crear un objeto PrintDocument
@@ -1654,9 +1626,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			std::string rutaPDF = msclr::interop::marshal_as<std::string>(dialogoPDF->FileName);
 			numpage = GetNumberOfPages(rutaPDF);
 		}
-		else {
+		/*else {
 			MessageBox::Show("El archivo PDF no existe en la ruta especificada.");
-		}
+		}*/
 	}
 	private: System::Void BT_DeletePDFs_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (delete_orderId !=0) {
@@ -1735,9 +1707,34 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				  }
 
 			  }
+			  void IniciarReloj() {
+				  Order^ data_pos1 = Controller::QueryFileByPosition(1);
+				  Order^ data_pos2 = Controller::QueryFileByPosition(2);
+
+				  if (data_pos1 != nullptr) {
+					  // Configura el intervalo del temporizador en milisegundos (1 segundo)
+					  Timer1->Interval = 2500;
+					  // Asocia el evento Tick con el manejador timer1_Tick
+					  Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
+					  // Inicia el temporizador
+					  Timer1->Start();
+				  }
+				  //if (data_pos2 != nullptr) {
+				  Timer2->Interval = 2500;
+				  Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				  Timer2->Start();
+				  //}
+			  }
+			  void ReiniciarReloj() {
+				  Timer1->Stop();
+				  Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
+				  Timer2->Stop();
+				  Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
+			  }
 
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		LB_Time5->Text = "Funciona";
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
 		Order^ time_3 = Controller::QueryFileByPosition(3);
@@ -1769,64 +1766,10 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			LB_Pos5->Text = (time_5->num_spooler).ToString();
 			LB_NameDoc5->Text = time_5->PDF_NAME;
 		}
-		else {
-			/*LB_Time1->Text = "";
-			LB_Pos1->Text = "";
-			LB_NameDoc1->Text = "";*/
-			// Detén el temporizador si está en marcha
-			Timer1->Stop();
-			// Elimina todos los manejadores de eventos Tick
-			Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-		}
-	}/*---------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
+	}
+	/*-------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_order = Controller::QueryFileByPosition(2);
-		if (time_order != nullptr) {
-			Order^ order = gcnew Order();
-			order->num_spooler = time_order->num_spooler;
-			order->time_print = time_order->time_print - tiempo_print;
-
-			order->dni_history = time_order->dni_history;
-			order->order_id = time_order->order_id;//Identificador
-			order->status_order = time_order->status_order;
-			order->sheet_type = time_order->sheet_type;
-			order->sheet_size = time_order->sheet_size;
-			order->color_page = time_order->color_page;
-			order->num_copies = time_order->num_copies;
-			order->Location = time_order->Location;
-			order->price = time_order->price;
-			order->date = time_order->date;
-			order->PDF_NAME = time_order->PDF_NAME;
-			order->PDF_URL = time_order->PDF_URL;
-			order->PDF = time_order->PDF;
-
-			/*LB_Time2->Text = (order->time_print).ToString();
-			LB_Pos2->Text = "2";
-			LB_NameDoc2->Text = time_order->PDF_NAME;*/
-
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
-				Timer1->Stop();
-				Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
-
-				order->num_spooler = time_order->num_spooler - 1;
-
-				Controller::UpdateCola(order);
-
-				Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
-				Timer1->Start();
-			}
-			else {
-				Controller::UpdateCola(order);
-			}
-		}
-		else {
-			/*LB_Time2->Text = "";
-			LB_Pos2->Text = "";
-			LB_NameDoc2->Text = "";*/
-			Timer2->Stop();
-			Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
-		}
+		LB_EspacioCola->Text = "Proximanete";
 	}
 };
 }
