@@ -221,6 +221,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 private: System::Windows::Forms::Label^ label12;
 private: System::Windows::Forms::Label^ LB_EspacioCola;
+private: System::Windows::Forms::Label^ label13;
+private: System::Windows::Forms::Label^ label14;
+private: System::Windows::Forms::Label^ label15;
 
 
 
@@ -397,6 +400,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PrintForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->LB_NumPage = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_imprimir = (gcnew System::Windows::Forms::WebBrowser());
@@ -476,6 +482,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			// 
 			// TPage_impre
 			// 
+			this->TPage_impre->Controls->Add(this->label15);
+			this->TPage_impre->Controls->Add(this->label14);
+			this->TPage_impre->Controls->Add(this->label13);
 			this->TPage_impre->Controls->Add(this->LB_NumPage);
 			this->TPage_impre->Controls->Add(this->pictureBox1);
 			this->TPage_impre->Controls->Add(this->WB_PDF_imprimir);
@@ -504,6 +513,42 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->TPage_impre->Text = L"Imprimir";
 			this->TPage_impre->UseVisualStyleBackColor = true;
 			this->TPage_impre->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->BackColor = System::Drawing::Color::Gainsboro;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label15->Location = System::Drawing::Point(19, 348);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(168, 25);
+			this->label15->TabIndex = 46;
+			this->label15->Text = L"Ciencias Sociales";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->BackColor = System::Drawing::Color::Gainsboro;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label14->Location = System::Drawing::Point(248, 128);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(37, 25);
+			this->label14->TabIndex = 45;
+			this->label14->Text = L"A4";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->BackColor = System::Drawing::Color::Gainsboro;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(19, 128);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(103, 25);
+			this->label13->TabIndex = 44;
+			this->label13->Text = L"Hoja Bond";
 			// 
 			// LB_NumPage
 			// 
@@ -559,7 +604,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbNUMcopias->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"1", L"2", L"3", L"4", L"5" });
 			this->cmbNUMcopias->Location = System::Drawing::Point(246, 234);
 			this->cmbNUMcopias->Name = L"cmbNUMcopias";
-			this->cmbNUMcopias->Size = System::Drawing::Size(163, 33);
+			this->cmbNUMcopias->Size = System::Drawing::Size(195, 33);
 			this->cmbNUMcopias->TabIndex = 37;
 			// 
 			// cmbLocal
@@ -568,10 +613,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbLocal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbLocal->FormattingEnabled = true;
-			this->cmbLocal->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Ciencias Sociales" });
 			this->cmbLocal->Location = System::Drawing::Point(17, 344);
 			this->cmbLocal->Name = L"cmbLocal";
-			this->cmbLocal->Size = System::Drawing::Size(163, 33);
+			this->cmbLocal->Size = System::Drawing::Size(195, 33);
 			this->cmbLocal->TabIndex = 36;
 			// 
 			// cmbTinta
@@ -583,7 +627,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbTinta->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Color", L"Blanco y negro" });
 			this->cmbTinta->Location = System::Drawing::Point(17, 234);
 			this->cmbTinta->Name = L"cmbTinta";
-			this->cmbTinta->Size = System::Drawing::Size(163, 33);
+			this->cmbTinta->Size = System::Drawing::Size(195, 33);
 			this->cmbTinta->TabIndex = 35;
 			// 
 			// cmbTamaHoja
@@ -592,10 +636,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbTamaHoja->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbTamaHoja->FormattingEnabled = true;
-			this->cmbTamaHoja->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"A4", L"Carta" });
 			this->cmbTamaHoja->Location = System::Drawing::Point(246, 124);
 			this->cmbTamaHoja->Name = L"cmbTamaHoja";
-			this->cmbTamaHoja->Size = System::Drawing::Size(163, 33);
+			this->cmbTamaHoja->Size = System::Drawing::Size(195, 33);
 			this->cmbTamaHoja->TabIndex = 34;
 			// 
 			// cmbTipoHoja
@@ -605,10 +648,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->cmbTipoHoja->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbTipoHoja->FormattingEnabled = true;
-			this->cmbTipoHoja->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Hoja Bond", L"Papel Fotográfico" });
 			this->cmbTipoHoja->Location = System::Drawing::Point(17, 124);
 			this->cmbTipoHoja->Name = L"cmbTipoHoja";
-			this->cmbTipoHoja->Size = System::Drawing::Size(163, 33);
+			this->cmbTipoHoja->Size = System::Drawing::Size(195, 33);
 			this->cmbTipoHoja->TabIndex = 33;
 			// 
 			// label10
@@ -717,9 +759,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(241, 79);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(209, 29);
+			this->label3->Size = System::Drawing::Size(213, 29);
 			this->label3->TabIndex = 17;
-			this->label3->Text = L"Tamaño de hoja:";
+			this->label3->Text = L"Tamaño de Hoja:";
 			// 
 			// label2
 			// 
@@ -780,8 +822,9 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				static_cast<System::Byte>(0)));
 			this->LB_EspacioCola->Location = System::Drawing::Point(338, 48);
 			this->LB_EspacioCola->Name = L"LB_EspacioCola";
-			this->LB_EspacioCola->Size = System::Drawing::Size(0, 29);
+			this->LB_EspacioCola->Size = System::Drawing::Size(152, 29);
 			this->LB_EspacioCola->TabIndex = 42;
+			this->LB_EspacioCola->Text = L"Calculando...";
 			// 
 			// label12
 			// 
@@ -1172,24 +1215,31 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 		int delete_orderId = 0;
 		int tiempo_print = 5;
 
-		//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
 		System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		delete_orderId = 0;
-		//IniciarReloj();
+		IniciarReloj();
 		ShowOrderFiles();
+		LB_EspacioCola->Text = "Calculando...";
 	}
 		   bool NotLimit5() {
+			   int NotLimit5 = 0;
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr) {
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
-					   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
-					   if (File_order->status_order == "Imprimiendo") {
-						   
+					   if (File_order->status_order == "Imprimiendo" && File_order->dni_history == Dni_Ahora) {
+						   NotLimit5++;
 					   }
+				   }
+				   if (NotLimit5 < 5) {
+					   return true;
+				   }
+				   else {
+					   return false;
+					   MessageBox::Show("Tiene 5 PDFs en cola. Llegaste al límite en el límite.");
 				   }
 			   }
 			   return true;
@@ -1198,7 +1248,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 		if (NotEmpty()) {
 			Order^ time_order = Controller::QueryFileByPosition(20);
 			if (time_order != nullptr) {
-				MessageBox::Show("Tiene 5 PDFs en cola. Estás en el límite.");
+				MessageBox::Show("Tiene 5 PDFs en cola. Llegaste el límite.");
 			}
 			else {
 				//if(el usuario paga)
@@ -1220,57 +1270,59 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 	}
 	private: System::Void BT_pagarBILL_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(5);
-			if (time_order != nullptr) {
-				MessageBox::Show("Tiene 5 PDFs en cola. Estás en el límite.");
-			}
-			else {
-				double monto = Convert::ToDouble(MontoPago->Text);
-				Total_a_apagar = monto;
-				int dni_wallet = Dni_Ahora;
-				Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
-
-				if (user_wallet == nullptr) {
-					Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
-
-					if (emp_user_wallet->Money_in_wallet >= monto) {
-						UpOrder();
-						ReiniciarReloj();
-						IniciarReloj();
-						ProbErrorBILL();
-						emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
-						Controller::UpdateEmployee(emp_user_wallet);
-						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-						PrintPDF();
-						RefreshPage();
-						//email();
-					}
-					else {
-						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
-						WalletForm^ walletForm = gcnew WalletForm();
-						walletForm->Show();
-					}
+			if (NotLimit5()) {
+				Order^ time_order = Controller::QueryFileByPosition(10);
+				if (time_order != nullptr) {
+					MessageBox::Show("La cola está llena, espera a que se desocupe.");
 				}
 				else {
-					if (user_wallet->Money_in_wallet >= monto) {
-						//if (NotPosition5()) {
-						UpOrder();
-						ReiniciarReloj();
-						IniciarReloj();
-						ProbErrorBILL();
-						user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
-						Controller::UpdateCostumer(user_wallet);
-						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-						PrintPDF();
-						RefreshPage();
-						//email();
+					double monto = Convert::ToDouble(MontoPago->Text);
+					Total_a_apagar = monto;
+					int dni_wallet = Dni_Ahora;
+					Customer^ user_wallet = AutoPrintController::Controller::QueryCustomerByDNI(dni_wallet);
 
-						//}
+					if (user_wallet == nullptr) {
+						Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(dni_wallet);
+
+						if (emp_user_wallet->Money_in_wallet >= monto) {
+							UpOrder();
+							ReiniciarReloj();
+							IniciarReloj();
+							ProbErrorBILL();
+							emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
+							Controller::UpdateEmployee(emp_user_wallet);
+							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+							PrintPDF();
+							RefreshPage();
+							//email();
+						}
+						else {
+							MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
+							WalletForm^ walletForm = gcnew WalletForm();
+							walletForm->Show();
+						}
 					}
 					else {
-						MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
-						WalletForm^ walletForm = gcnew WalletForm();
-						walletForm->Show();
+						if (user_wallet->Money_in_wallet >= monto) {
+							//if (NotPosition5()) {
+							UpOrder();
+							ReiniciarReloj();
+							IniciarReloj();
+							ProbErrorBILL();
+							user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
+							Controller::UpdateCostumer(user_wallet);
+							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+							PrintPDF();
+							RefreshPage();
+							//email();
+
+							//}
+						}
+						else {
+							MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
+							WalletForm^ walletForm = gcnew WalletForm();
+							walletForm->Show();
+						}
 					}
 				}
 			}
@@ -1309,19 +1361,6 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			   int TimePrint = 0;
 			   //QueryFileById
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   if (orderfiles != nullptr) {
-				   for (int i = 1; i < 36601; i++) {
-					   Order^ order_file_id = Controller::QueryFileById(i);
-					   if (order_file_id == nullptr) {
-						   ordenId = i;
-						   i = 36601;
-					   }
-					   else if (i == 36600) {
-						   MessageBox::Show("La base de datos está llena. Podría eliminar su historial para obtener espacio.");
-						   return;
-					   }
-				   }
-			   }
 
 			   if (cmbTinta->Text == "Color") {
 				   monto = 0.5 * numpage * (Int32::Parse(cmbNUMcopias->Text));
@@ -1339,12 +1378,11 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			   int dni_wallet = Dni_Ahora;
 
 			   File_order->dni_history = dni_wallet;
-			   File_order->order_id = ordenId;
-			   File_order->sheet_type = cmbTipoHoja->Text;
-			   File_order->sheet_size = cmbTamaHoja->Text;
+			   File_order->sheet_type = "Hoja Bond";
+			   File_order->sheet_size = "A4";
 			   File_order->color_page = cmbTinta->Text;
 			   File_order->num_copies = Int32::Parse(cmbNUMcopias->Text);
-			   File_order->Location = cmbLocal->Text;
+			   File_order->Location = "Ciencias Sociales";
 			   File_order->price = monto;
 			   File_order->status_order = "Imprimiendo";
 
@@ -1392,6 +1430,21 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 					   File_order->PDF = System::IO::File::ReadAllBytes(pdfPath);
 				   }
 			   }
+
+			   if (orderfiles != nullptr) {
+				   for (int i = 1; i < 36601; i++) {
+					   Order^ order_file_id = Controller::QueryFileById(i);
+					   if (order_file_id == nullptr) {
+						   ordenId = i;
+						   i = 36601;
+					   }
+					   else if (i == 36600) {
+						   MessageBox::Show("La base de datos está llena. Podría eliminar su historial para obtener espacio.");
+						   return;
+					   }
+				   }
+			   }
+			   File_order->order_id = ordenId;
 
 			   position = 1;
 
@@ -1759,7 +1812,6 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		LB_Time5->Text = "Funciona";
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
 		Order^ time_3 = Controller::QueryFileByPosition(3);
@@ -1767,6 +1819,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 		Order^ time_5 = Controller::QueryFileByPosition(5);
 
 		if (time_1 != nullptr) {
+			//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
 			LB_Time1->Text = (time_1->time_print).ToString();
 			LB_Pos1->Text = (time_1->num_spooler).ToString();
 			LB_NameDoc1->Text = time_1->PDF_NAME;
@@ -1794,7 +1847,18 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 	}
 	/*-------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
-		LB_EspacioCola->Text = "Proximanete";
+		int EnCola = 0;
+		
+		List<Order^>^ orderfiles = Controller::QueryAllFiles();
+		if (orderfiles != nullptr) {
+			for (int i = 0; i < orderfiles->Count; i++) {
+				Order^ File_order = orderfiles[i];
+				if (File_order->status_order == "Imprimiendo") {
+					EnCola++;
+				}
+			}
+			LB_EspacioCola->Text = (20 - EnCola).ToString();
+		}
 	}
 };
 }
