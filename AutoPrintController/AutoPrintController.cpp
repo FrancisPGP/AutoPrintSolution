@@ -169,7 +169,8 @@ void AutoPrintController::Controller::ShowList(int listNum)
         }*/
         //------------Haciendo pruebas para la entrega final---------------//
         String^ lista1 = "";
-        String^ lista2 = "#Hola Facilito Este Codigo";
+        String^ lista2 = "";
+
         if (listNum == 1) {
             for (int i = 1; i <= 10; i++) {
                 Order^ orden_cola = QueryFileByPosition(i);
@@ -181,7 +182,6 @@ void AutoPrintController::Controller::ShowList(int listNum)
                     }
                     else {
                         lista1 = lista1 + cliente->Name + " ";
-                        //Cesar Faridh Francis
                     }
 
                 }
@@ -190,11 +190,33 @@ void AutoPrintController::Controller::ShowList(int listNum)
                 ArduinoPort->Write("%"+lista1);
             }
             else {
-                ArduinoPort->Write("%ListaVacia");
+                ArduinoPort->Write("#ListaVacia ListaVacia ListaVacia");
             }
         }
+
         if (listNum == 2) {
-            ArduinoPort->Write(lista2);
+            List<Order^>^ lista2_impreso = QueryAllFiles();
+			   if (lista2_impreso != nullptr && lista2_impreso->Count > 0) {
+				   for (int i = 0; i < lista2_impreso->Count; i++) {
+					   Order^ orden_impreso = lista2_impreso[i];
+					   if (orden_impreso->status_order == "Listo") {
+						   Customer^ cliente_impreso = QueryCustomerByDNI(orden_impreso->dni_history);
+                           if (cliente_impreso == nullptr) {
+                               Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(orden_impreso->dni_history);
+                               lista2 = lista2 + emp_user_wallet->Name + " ";
+                           }
+                           else {
+                               lista2 = lista2 + cliente_impreso->Name + " ";
+                           }
+					   }
+				   }
+			   }
+               if (lista2 != "") {
+                   ArduinoPort->Write("#" + lista2);
+               }
+               else {
+                   ArduinoPort->Write("#ListaVacia ListaVacia ListaVacia");
+               }
         }
         ClosePort();
     }

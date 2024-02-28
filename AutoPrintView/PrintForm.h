@@ -1524,10 +1524,12 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				   // Configurar el modo de color
 				   pd->DefaultPageSettings->Color = imprimirEnColor;
 
-				   if (cmbTipoHoja->Text == "A4") {
+				   String^ tipoHoja = cmbTamaHoja->Text->ToLower();
+
+				   if (tipoHoja == "a4") {
 					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("A4", 827, 1169);
 				   }
-				   else if (cmbTipoHoja->Text == "Carta") {
+				   else if (tipoHoja == "carta") {
 					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("Carta", 850, 1100);
 				   }
 

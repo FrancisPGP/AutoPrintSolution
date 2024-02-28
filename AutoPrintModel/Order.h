@@ -19,13 +19,13 @@ namespace AutoPrintModel {
         property int num_copies;
         property String^ sheet_type;
         property String^ sheet_size;
-        property String^ status_order;//no se usó
+        property String^ status_order;
         property double price; // precio, pe
         property String^ date;
 
         property String^ Location;
         property String^ PDF_NAME;
-        property String^ PDF_URL;
+        property String^ PDF_URL;//no se usó
         property array<Byte>^ PDF;
 
         property int time_print;// tiempo en cola
