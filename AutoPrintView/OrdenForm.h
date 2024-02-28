@@ -70,7 +70,24 @@ namespace AutoPrintView {
 
 	private: System::Windows::Forms::Button^ BT_PDFrecogido;
 	private: System::Windows::Forms::Button^ btnShowList;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ BT_StarPrint;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numspooler_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_impri;
@@ -78,15 +95,24 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copies_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_status_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numcopies_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_listo;
-	private: System::Windows::Forms::Button^ BT_StarPrint;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_listo;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -230,7 +256,7 @@ namespace AutoPrintView {
 			this->BT_StarPrint = (gcnew System::Windows::Forms::Button());
 			this->btnShowList = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_imprimiendo = (gcnew System::Windows::Forms::DataGridView());
-			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_numspooler_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -238,17 +264,18 @@ namespace AutoPrintView {
 			this->dgv_copies_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->BT_PDFrecogido = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_listo = (gcnew System::Windows::Forms::DataGridView());
-			this->dgv_id_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_dni_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_name_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_dni_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_doc_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_status_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_id_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -312,10 +339,10 @@ namespace AutoPrintView {
 			this->dgvOrdenes_imprimiendo->AllowUserToResizeRows = false;
 			this->dgvOrdenes_imprimiendo->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvOrdenes_imprimiendo->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvOrdenes_imprimiendo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
-				this->dgv_id_impri,
+			this->dgvOrdenes_imprimiendo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+				this->dgv_numspooler_impri,
 					this->dgv_dni_impri, this->dgv_name_impri, this->dgv_doc_impri, this->dgv_status_impri, this->dgv_copies_impri, this->dgv_tinta_impri,
-					this->dgv_price_impri
+					this->dgv_price_impri, this->dgv_id_impri
 			});
 			this->dgvOrdenes_imprimiendo->Location = System::Drawing::Point(3, 78);
 			this->dgvOrdenes_imprimiendo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -328,13 +355,13 @@ namespace AutoPrintView {
 			this->dgvOrdenes_imprimiendo->TabIndex = 44;
 			this->dgvOrdenes_imprimiendo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_imprimiendo_CellClick);
 			// 
-			// dgv_id_impri
+			// dgv_numspooler_impri
 			// 
-			this->dgv_id_impri->HeaderText = L"Código";
-			this->dgv_id_impri->MinimumWidth = 8;
-			this->dgv_id_impri->Name = L"dgv_id_impri";
-			this->dgv_id_impri->ReadOnly = true;
-			this->dgv_id_impri->Width = 50;
+			this->dgv_numspooler_impri->HeaderText = L"Cola";
+			this->dgv_numspooler_impri->MinimumWidth = 8;
+			this->dgv_numspooler_impri->Name = L"dgv_numspooler_impri";
+			this->dgv_numspooler_impri->ReadOnly = true;
+			this->dgv_numspooler_impri->Width = 40;
 			// 
 			// dgv_dni_impri
 			// 
@@ -392,6 +419,14 @@ namespace AutoPrintView {
 			this->dgv_price_impri->ReadOnly = true;
 			this->dgv_price_impri->Width = 50;
 			// 
+			// dgv_id_impri
+			// 
+			this->dgv_id_impri->HeaderText = L"Código";
+			this->dgv_id_impri->MinimumWidth = 8;
+			this->dgv_id_impri->Name = L"dgv_id_impri";
+			this->dgv_id_impri->ReadOnly = true;
+			this->dgv_id_impri->Width = 50;
+			// 
 			// tabPage2
 			// 
 			this->tabPage2->Controls->Add(this->BT_PDFrecogido);
@@ -425,9 +460,9 @@ namespace AutoPrintView {
 			this->dgvOrdenes_listo->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvOrdenes_listo->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvOrdenes_listo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
-				this->dgv_id_listo,
-					this->dgv_dni_listo, this->dgv_name_listo, this->dgv_doc_listo, this->dgv_status_listo, this->dgv_numcopies_listo, this->dgv_tinta_listo,
-					this->dgv_price_listo
+				this->dgv_name_listo,
+					this->dgv_dni_listo, this->dgv_doc_listo, this->dgv_status_listo, this->dgv_numcopies_listo, this->dgv_tinta_listo, this->dgv_price_listo,
+					this->dgv_id_listo
 			});
 			this->dgvOrdenes_listo->Location = System::Drawing::Point(3, 78);
 			this->dgvOrdenes_listo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -441,13 +476,13 @@ namespace AutoPrintView {
 			this->dgvOrdenes_listo->TabIndex = 46;
 			this->dgvOrdenes_listo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_listo_CellClick);
 			// 
-			// dgv_id_listo
+			// dgv_name_listo
 			// 
-			this->dgv_id_listo->HeaderText = L"Código";
-			this->dgv_id_listo->MinimumWidth = 8;
-			this->dgv_id_listo->Name = L"dgv_id_listo";
-			this->dgv_id_listo->ReadOnly = true;
-			this->dgv_id_listo->Width = 50;
+			this->dgv_name_listo->HeaderText = L"Nombre";
+			this->dgv_name_listo->MinimumWidth = 8;
+			this->dgv_name_listo->Name = L"dgv_name_listo";
+			this->dgv_name_listo->ReadOnly = true;
+			this->dgv_name_listo->Width = 200;
 			// 
 			// dgv_dni_listo
 			// 
@@ -456,14 +491,6 @@ namespace AutoPrintView {
 			this->dgv_dni_listo->Name = L"dgv_dni_listo";
 			this->dgv_dni_listo->ReadOnly = true;
 			this->dgv_dni_listo->Width = 90;
-			// 
-			// dgv_name_listo
-			// 
-			this->dgv_name_listo->HeaderText = L"Nombre";
-			this->dgv_name_listo->MinimumWidth = 8;
-			this->dgv_name_listo->Name = L"dgv_name_listo";
-			this->dgv_name_listo->ReadOnly = true;
-			this->dgv_name_listo->Width = 200;
 			// 
 			// dgv_doc_listo
 			// 
@@ -504,6 +531,14 @@ namespace AutoPrintView {
 			this->dgv_price_listo->Name = L"dgv_price_listo";
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
+			// 
+			// dgv_id_listo
+			// 
+			this->dgv_id_listo->HeaderText = L"Código";
+			this->dgv_id_listo->MinimumWidth = 8;
+			this->dgv_id_listo->Name = L"dgv_id_listo";
+			this->dgv_id_listo->ReadOnly = true;
+			this->dgv_id_listo->Width = 50;
 			// 
 			// OrdenForm
 			// 
@@ -621,14 +656,15 @@ namespace AutoPrintView {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
 						   //dgvOrdenes_imprimiendo es el nombre de la tabla de Imprimiendo
 						   dgvOrdenes_imprimiendo->Rows->Add(gcnew array<String^>{
-							   "" + File_order->order_id,
+							   "" + File_order->num_spooler,
 								   "" + File_order->dni_history,
 								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   File_order->PDF_NAME,
 								   File_order->status_order,
 								   "" + File_order->num_copies,
 								   File_order->color_page,//tinta
-								   "" + File_order->num_copies
+								   "" + File_order->num_copies,
+								   "" + File_order->order_id
 						   });
 					   }
 				   }
@@ -644,14 +680,14 @@ namespace AutoPrintView {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
 						   //dgvOrdenes_listo es el nombre de la tabla de Listo
 						   dgvOrdenes_listo->Rows->Add(gcnew array<String^>{
-							   "" + File_order->order_id,
+							   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   "" + File_order->dni_history,
-								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   File_order->PDF_NAME,
 								   File_order->status_order,
 								   "" + File_order->num_copies,
 								   File_order->color_page,//tinta
-								   "" + File_order->num_copies
+								   "" + File_order->num_copies,
+								   "" + File_order->order_id
 						   });
 					   }
 				   }
