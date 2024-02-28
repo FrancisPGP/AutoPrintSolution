@@ -360,7 +360,7 @@ namespace AutoPrintView {
 		int checkFill = 0;		
 
 	private: System::Void btnPrintCardVisa_Click(System::Object^ sender, System::EventArgs^ e) {
-		ProbErrorTARJ(); //Chance de que ocurra un atasco en la impresora
+		//ProbErrorTARJ(); //Chance de que ocurra un atasco en la impresora
 		Card^ newCardWallet = gcnew Card(); //instanciamos la nueva tarjeta a emplear
 
 		newCardWallet->account_number = txtCardNumberVisa->Text;

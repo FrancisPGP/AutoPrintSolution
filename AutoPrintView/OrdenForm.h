@@ -62,6 +62,16 @@ namespace AutoPrintView {
 
 
 
+
+
+
+
+
+
+
+
+
+
 	public:
 
 	public:
@@ -303,16 +313,6 @@ namespace AutoPrintView {
 			this->BT_StarPrint = (gcnew System::Windows::Forms::Button());
 			this->btnShowList = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_imprimiendo = (gcnew System::Windows::Forms::DataGridView());
-			this->dgv_numspooler_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_tiempo_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_status_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_copies_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_tinta_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->btnShowList2 = (gcnew System::Windows::Forms::Button());
 			this->BT_PDFrecogido = (gcnew System::Windows::Forms::Button());
@@ -326,6 +326,16 @@ namespace AutoPrintView {
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_numspooler_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tiempo_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_status_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_copies_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tinta_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -363,7 +373,7 @@ namespace AutoPrintView {
 			// 
 			this->BT_StarPrint->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_StarPrint->Location = System::Drawing::Point(94, 16);
+			this->BT_StarPrint->Location = System::Drawing::Point(133, 17);
 			this->BT_StarPrint->Name = L"BT_StarPrint";
 			this->BT_StarPrint->Size = System::Drawing::Size(200, 44);
 			this->BT_StarPrint->TabIndex = 46;
@@ -373,9 +383,9 @@ namespace AutoPrintView {
 			// 
 			// btnShowList
 			// 
-			this->btnShowList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btnShowList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnShowList->Location = System::Drawing::Point(358, 5);
+			this->btnShowList->Location = System::Drawing::Point(466, 8);
 			this->btnShowList->Name = L"btnShowList";
 			this->btnShowList->Size = System::Drawing::Size(162, 65);
 			this->btnShowList->TabIndex = 45;
@@ -405,86 +415,6 @@ namespace AutoPrintView {
 			this->dgvOrdenes_imprimiendo->TabIndex = 44;
 			this->dgvOrdenes_imprimiendo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_imprimiendo_CellClick);
 			// 
-			// dgv_numspooler_impri
-			// 
-			this->dgv_numspooler_impri->HeaderText = L"Cola";
-			this->dgv_numspooler_impri->MinimumWidth = 8;
-			this->dgv_numspooler_impri->Name = L"dgv_numspooler_impri";
-			this->dgv_numspooler_impri->ReadOnly = true;
-			this->dgv_numspooler_impri->Width = 40;
-			// 
-			// dgv_tiempo_impri
-			// 
-			this->dgv_tiempo_impri->HeaderText = L"Tiempo estimado";
-			this->dgv_tiempo_impri->MinimumWidth = 6;
-			this->dgv_tiempo_impri->Name = L"dgv_tiempo_impri";
-			this->dgv_tiempo_impri->ReadOnly = true;
-			this->dgv_tiempo_impri->Width = 60;
-			// 
-			// dgv_dni_impri
-			// 
-			this->dgv_dni_impri->HeaderText = L"DNI";
-			this->dgv_dni_impri->MinimumWidth = 8;
-			this->dgv_dni_impri->Name = L"dgv_dni_impri";
-			this->dgv_dni_impri->ReadOnly = true;
-			this->dgv_dni_impri->Width = 90;
-			// 
-			// dgv_name_impri
-			// 
-			this->dgv_name_impri->HeaderText = L"Nombre";
-			this->dgv_name_impri->MinimumWidth = 8;
-			this->dgv_name_impri->Name = L"dgv_name_impri";
-			this->dgv_name_impri->ReadOnly = true;
-			this->dgv_name_impri->Width = 200;
-			// 
-			// dgv_doc_impri
-			// 
-			this->dgv_doc_impri->HeaderText = L"Documento";
-			this->dgv_doc_impri->MinimumWidth = 8;
-			this->dgv_doc_impri->Name = L"dgv_doc_impri";
-			this->dgv_doc_impri->ReadOnly = true;
-			this->dgv_doc_impri->Width = 110;
-			// 
-			// dgv_status_impri
-			// 
-			this->dgv_status_impri->HeaderText = L"Estado";
-			this->dgv_status_impri->MinimumWidth = 8;
-			this->dgv_status_impri->Name = L"dgv_status_impri";
-			this->dgv_status_impri->ReadOnly = true;
-			this->dgv_status_impri->Width = 80;
-			// 
-			// dgv_copies_impri
-			// 
-			this->dgv_copies_impri->HeaderText = L"Número de copias";
-			this->dgv_copies_impri->MinimumWidth = 8;
-			this->dgv_copies_impri->Name = L"dgv_copies_impri";
-			this->dgv_copies_impri->ReadOnly = true;
-			this->dgv_copies_impri->Width = 60;
-			// 
-			// dgv_tinta_impri
-			// 
-			this->dgv_tinta_impri->HeaderText = L"Tinta";
-			this->dgv_tinta_impri->MinimumWidth = 8;
-			this->dgv_tinta_impri->Name = L"dgv_tinta_impri";
-			this->dgv_tinta_impri->ReadOnly = true;
-			this->dgv_tinta_impri->Width = 65;
-			// 
-			// dgv_price_impri
-			// 
-			this->dgv_price_impri->HeaderText = L"Precio (S/)";
-			this->dgv_price_impri->MinimumWidth = 8;
-			this->dgv_price_impri->Name = L"dgv_price_impri";
-			this->dgv_price_impri->ReadOnly = true;
-			this->dgv_price_impri->Width = 50;
-			// 
-			// dgv_id_impri
-			// 
-			this->dgv_id_impri->HeaderText = L"Código";
-			this->dgv_id_impri->MinimumWidth = 8;
-			this->dgv_id_impri->Name = L"dgv_id_impri";
-			this->dgv_id_impri->ReadOnly = true;
-			this->dgv_id_impri->Width = 50;
-			// 
 			// tabPage2
 			// 
 			this->tabPage2->Controls->Add(this->btnShowList2);
@@ -501,9 +431,11 @@ namespace AutoPrintView {
 			// 
 			// btnShowList2
 			// 
-			this->btnShowList2->Location = System::Drawing::Point(340, 9);
+			this->btnShowList2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnShowList2->Location = System::Drawing::Point(466, 8);
 			this->btnShowList2->Name = L"btnShowList2";
-			this->btnShowList2->Size = System::Drawing::Size(164, 64);
+			this->btnShowList2->Size = System::Drawing::Size(162, 65);
 			this->btnShowList2->TabIndex = 48;
 			this->btnShowList2->Text = L"Mostrar en \r\npantalla: Lista2\r\n";
 			this->btnShowList2->UseVisualStyleBackColor = true;
@@ -513,7 +445,7 @@ namespace AutoPrintView {
 			// 
 			this->BT_PDFrecogido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_PDFrecogido->Location = System::Drawing::Point(50, 15);
+			this->BT_PDFrecogido->Location = System::Drawing::Point(120, 17);
 			this->BT_PDFrecogido->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->BT_PDFrecogido->Name = L"BT_PDFrecogido";
 			this->BT_PDFrecogido->Size = System::Drawing::Size(235, 44);
@@ -617,6 +549,86 @@ namespace AutoPrintView {
 			this->dgv_price_listo->Name = L"dgv_price_listo";
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
+			// 
+			// dgv_numspooler_impri
+			// 
+			this->dgv_numspooler_impri->HeaderText = L"Cola";
+			this->dgv_numspooler_impri->MinimumWidth = 8;
+			this->dgv_numspooler_impri->Name = L"dgv_numspooler_impri";
+			this->dgv_numspooler_impri->ReadOnly = true;
+			this->dgv_numspooler_impri->Width = 40;
+			// 
+			// dgv_tiempo_impri
+			// 
+			this->dgv_tiempo_impri->HeaderText = L"Tiempo estimado (s)";
+			this->dgv_tiempo_impri->MinimumWidth = 6;
+			this->dgv_tiempo_impri->Name = L"dgv_tiempo_impri";
+			this->dgv_tiempo_impri->ReadOnly = true;
+			this->dgv_tiempo_impri->Width = 60;
+			// 
+			// dgv_dni_impri
+			// 
+			this->dgv_dni_impri->HeaderText = L"DNI";
+			this->dgv_dni_impri->MinimumWidth = 8;
+			this->dgv_dni_impri->Name = L"dgv_dni_impri";
+			this->dgv_dni_impri->ReadOnly = true;
+			this->dgv_dni_impri->Width = 90;
+			// 
+			// dgv_name_impri
+			// 
+			this->dgv_name_impri->HeaderText = L"Nombre";
+			this->dgv_name_impri->MinimumWidth = 8;
+			this->dgv_name_impri->Name = L"dgv_name_impri";
+			this->dgv_name_impri->ReadOnly = true;
+			this->dgv_name_impri->Width = 200;
+			// 
+			// dgv_doc_impri
+			// 
+			this->dgv_doc_impri->HeaderText = L"Documento";
+			this->dgv_doc_impri->MinimumWidth = 8;
+			this->dgv_doc_impri->Name = L"dgv_doc_impri";
+			this->dgv_doc_impri->ReadOnly = true;
+			this->dgv_doc_impri->Width = 110;
+			// 
+			// dgv_status_impri
+			// 
+			this->dgv_status_impri->HeaderText = L"Estado";
+			this->dgv_status_impri->MinimumWidth = 8;
+			this->dgv_status_impri->Name = L"dgv_status_impri";
+			this->dgv_status_impri->ReadOnly = true;
+			this->dgv_status_impri->Width = 80;
+			// 
+			// dgv_copies_impri
+			// 
+			this->dgv_copies_impri->HeaderText = L"Número de copias";
+			this->dgv_copies_impri->MinimumWidth = 8;
+			this->dgv_copies_impri->Name = L"dgv_copies_impri";
+			this->dgv_copies_impri->ReadOnly = true;
+			this->dgv_copies_impri->Width = 60;
+			// 
+			// dgv_tinta_impri
+			// 
+			this->dgv_tinta_impri->HeaderText = L"Tinta";
+			this->dgv_tinta_impri->MinimumWidth = 8;
+			this->dgv_tinta_impri->Name = L"dgv_tinta_impri";
+			this->dgv_tinta_impri->ReadOnly = true;
+			this->dgv_tinta_impri->Width = 65;
+			// 
+			// dgv_price_impri
+			// 
+			this->dgv_price_impri->HeaderText = L"Precio (S/)";
+			this->dgv_price_impri->MinimumWidth = 8;
+			this->dgv_price_impri->Name = L"dgv_price_impri";
+			this->dgv_price_impri->ReadOnly = true;
+			this->dgv_price_impri->Width = 50;
+			// 
+			// dgv_id_impri
+			// 
+			this->dgv_id_impri->HeaderText = L"Código";
+			this->dgv_id_impri->MinimumWidth = 8;
+			this->dgv_id_impri->Name = L"dgv_id_impri";
+			this->dgv_id_impri->ReadOnly = true;
+			this->dgv_id_impri->Width = 50;
 			// 
 			// OrdenForm
 			// 

@@ -210,6 +210,18 @@ private: System::Windows::Forms::PictureBox^ pictureBox1;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
 private: System::Windows::Forms::Label^ LB_NumPage;
 private: System::Windows::Forms::Button^ BT_DeletePDFs;
+
+
+
+
+
+
+
+
+
+private: System::Windows::Forms::Label^ label12;
+private: System::Windows::Forms::Label^ LB_EspacioCola;
+private: System::Windows::Forms::Label^ label13;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_orderId;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_namedoc;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_local;
@@ -219,9 +231,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copias;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
-private: System::Windows::Forms::Label^ label12;
-private: System::Windows::Forms::Label^ LB_EspacioCola;
-private: System::Windows::Forms::Label^ label13;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_fecha;
 
 
 
@@ -457,6 +467,7 @@ private: System::Windows::Forms::Label^ label13;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_fecha = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -1067,10 +1078,10 @@ private: System::Windows::Forms::Label^ label13;
 			this->dgvHistorial_Files->AllowUserToResizeRows = false;
 			this->dgvHistorial_Files->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvHistorial_Files->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvHistorial_Files->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+			this->dgvHistorial_Files->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->dgv_orderId,
 					this->gdv_namedoc, this->dgv_local, this->dgv_precio, this->gdv_status, this->dgv_tinta, this->dgv_copias, this->gdv_hojatipo,
-					this->dgv_tamano
+					this->dgv_tamano, this->dgv_fecha
 			});
 			this->dgvHistorial_Files->Location = System::Drawing::Point(0, 0);
 			this->dgvHistorial_Files->Name = L"dgvHistorial_Files";
@@ -1159,6 +1170,14 @@ private: System::Windows::Forms::Label^ label13;
 			this->dgv_tamano->ReadOnly = true;
 			this->dgv_tamano->Width = 65;
 			// 
+			// dgv_fecha
+			// 
+			this->dgv_fecha->HeaderText = L"Fecha";
+			this->dgv_fecha->MinimumWidth = 6;
+			this->dgv_fecha->Name = L"dgv_fecha";
+			this->dgv_fecha->ReadOnly = true;
+			this->dgv_fecha->Width = 125;
+			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1226,17 +1245,16 @@ private: System::Windows::Forms::Label^ label13;
 					MessageBox::Show("La cola está llena, espera a que se desocupe.");
 				}
 				else {
-					//if(el usuario paga)
 					CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
 					cardVISAForm->ControlBox = true;
 					cardVISAForm->ShowDialog();
-					if (ValidationCardVisa) {
+					if (ValidationCardVisa) {//if(el usuario paga)
 						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 						UpOrder();
 						ReiniciarReloj();
 						IniciarReloj();
 						RefreshPage();
-						//email();
+						email();
 					}
 					ValidationCardVisa = false;
 				}
@@ -1263,12 +1281,12 @@ private: System::Windows::Forms::Label^ label13;
 							UpOrder();
 							ReiniciarReloj();
 							IniciarReloj();
-							ProbErrorBILL();
+							//ProbErrorBILL();
 							emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
 							Controller::UpdateEmployee(emp_user_wallet);
 							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 							RefreshPage();
-							//email();
+							email();
 						}
 						else {
 							MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
@@ -1278,7 +1296,6 @@ private: System::Windows::Forms::Label^ label13;
 					}
 					else {
 						if (user_wallet->Money_in_wallet >= monto) {
-							//if (NotPosition5()) {
 							UpOrder();
 							ReiniciarReloj();
 							IniciarReloj();
@@ -1287,9 +1304,7 @@ private: System::Windows::Forms::Label^ label13;
 							Controller::UpdateCostumer(user_wallet);
 							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
 							RefreshPage();
-							//email();
-
-							//}
+							email();
 						}
 						else {
 							MessageBox::Show("Saldo insuficiente. Se le redirigirá a la pestaña de recarga.");
@@ -1545,7 +1560,8 @@ private: System::Windows::Forms::Label^ label13;
 								   File_order->color_page,
 								   "" + File_order->num_copies,
 								   File_order->sheet_type,
-								   File_order->sheet_size
+								   File_order->sheet_size,
+								   File_order->date
 						   });
 					   }
 				   }
