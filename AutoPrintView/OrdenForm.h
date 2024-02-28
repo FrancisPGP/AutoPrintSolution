@@ -23,6 +23,31 @@ namespace AutoPrintView {
 	public:
 		static String^ alternador = "2";
 	private: System::Windows::Forms::Button^ btnShowList2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_listo2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_status_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numcopies_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_listo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public:
 
 	public:
@@ -104,14 +129,14 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_status_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numcopies_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_listo;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_listo;
+
+
+
+
+
+
+
+
 
 
 
@@ -277,14 +302,15 @@ namespace AutoPrintView {
 			this->btnShowList2 = (gcnew System::Windows::Forms::Button());
 			this->BT_PDFrecogido = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_listo = (gcnew System::Windows::Forms::DataGridView());
+			this->dgv_id_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_name_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_dni_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_doc_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_id_listo2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_status_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dgv_id_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -479,10 +505,10 @@ namespace AutoPrintView {
 			this->dgvOrdenes_listo->AllowUserToResizeRows = false;
 			this->dgvOrdenes_listo->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvOrdenes_listo->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvOrdenes_listo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
-				this->dgv_name_listo,
-					this->dgv_dni_listo, this->dgv_doc_listo, this->dgv_status_listo, this->dgv_numcopies_listo, this->dgv_tinta_listo, this->dgv_price_listo,
-					this->dgv_id_listo
+			this->dgvOrdenes_listo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+				this->dgv_id_listo,
+					this->dgv_name_listo, this->dgv_dni_listo, this->dgv_doc_listo, this->dgv_id_listo2, this->dgv_status_listo, this->dgv_numcopies_listo,
+					this->dgv_tinta_listo, this->dgv_price_listo
 			});
 			this->dgvOrdenes_listo->Location = System::Drawing::Point(3, 78);
 			this->dgvOrdenes_listo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -495,6 +521,15 @@ namespace AutoPrintView {
 			this->dgvOrdenes_listo->Size = System::Drawing::Size(807, 432);
 			this->dgvOrdenes_listo->TabIndex = 46;
 			this->dgvOrdenes_listo->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OrdenForm::dgvOrdenes_listo_CellClick);
+			// 
+			// dgv_id_listo
+			// 
+			this->dgv_id_listo->HeaderText = L"Código";
+			this->dgv_id_listo->MinimumWidth = 8;
+			this->dgv_id_listo->Name = L"dgv_id_listo";
+			this->dgv_id_listo->ReadOnly = true;
+			this->dgv_id_listo->Visible = false;
+			this->dgv_id_listo->Width = 50;
 			// 
 			// dgv_name_listo
 			// 
@@ -519,6 +554,14 @@ namespace AutoPrintView {
 			this->dgv_doc_listo->Name = L"dgv_doc_listo";
 			this->dgv_doc_listo->ReadOnly = true;
 			this->dgv_doc_listo->Width = 110;
+			// 
+			// dgv_id_listo2
+			// 
+			this->dgv_id_listo2->HeaderText = L"Código";
+			this->dgv_id_listo2->MinimumWidth = 6;
+			this->dgv_id_listo2->Name = L"dgv_id_listo2";
+			this->dgv_id_listo2->ReadOnly = true;
+			this->dgv_id_listo2->Width = 125;
 			// 
 			// dgv_status_listo
 			// 
@@ -551,14 +594,6 @@ namespace AutoPrintView {
 			this->dgv_price_listo->Name = L"dgv_price_listo";
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
-			// 
-			// dgv_id_listo
-			// 
-			this->dgv_id_listo->HeaderText = L"Código";
-			this->dgv_id_listo->MinimumWidth = 8;
-			this->dgv_id_listo->Name = L"dgv_id_listo";
-			this->dgv_id_listo->ReadOnly = true;
-			this->dgv_id_listo->Width = 50;
 			// 
 			// OrdenForm
 			// 
@@ -712,7 +747,7 @@ namespace AutoPrintView {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr) {
 				   dgvOrdenes_imprimiendo->Rows->Clear();
-				   for (int i = 0; i < 36601; i++) {
+				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Imprimiendo") {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
@@ -736,20 +771,21 @@ namespace AutoPrintView {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr) {
 				   dgvOrdenes_listo->Rows->Clear();
-				   for (int i = 0; i < 36601; i++) {
+				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Listo") {
 						   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
 						   //dgvOrdenes_listo es el nombre de la tabla de Listo
 						   dgvOrdenes_listo->Rows->Add(gcnew array<String^>{
-							   Customer_order->LastName + ", " + Customer_order->Name,//nombre
+							   "" + File_order->order_id,
+								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   "" + File_order->dni_history,
 								   File_order->PDF_NAME,
+								   "" + File_order->order_id,
 								   File_order->status_order,
 								   "" + File_order->num_copies,
 								   File_order->color_page,//tinta
-								   "" + File_order->num_copies,
-								   "" + File_order->order_id
+								   "" + File_order->num_copies
 						   });
 					   }
 				   }
