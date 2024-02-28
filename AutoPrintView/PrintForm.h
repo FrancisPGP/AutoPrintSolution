@@ -443,6 +443,7 @@ private: System::Windows::Forms::Label^ label13;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->BT_DeletePDFs = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_historial = (gcnew System::Windows::Forms::WebBrowser());
@@ -456,7 +457,6 @@ private: System::Windows::Forms::Label^ label13;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -1016,11 +1016,23 @@ private: System::Windows::Forms::Label^ label13;
 			this->tabPage1->Text = L"Historial";
 			this->tabPage1->UseVisualStyleBackColor = true;
 			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(3, 455);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(209, 36);
+			this->label13->TabIndex = 45;
+			this->label13->Text = L"Solo se eliminarán los\r\ndocumentos que has recogido";
+			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// BT_DeletePDFs
 			// 
 			this->BT_DeletePDFs->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_DeletePDFs->Location = System::Drawing::Point(227, 446);
+			this->BT_DeletePDFs->Location = System::Drawing::Point(247, 449);
 			this->BT_DeletePDFs->Name = L"BT_DeletePDFs";
 			this->BT_DeletePDFs->Size = System::Drawing::Size(234, 44);
 			this->BT_DeletePDFs->TabIndex = 44;
@@ -1146,18 +1158,6 @@ private: System::Windows::Forms::Label^ label13;
 			this->dgv_tamano->Name = L"dgv_tamano";
 			this->dgv_tamano->ReadOnly = true;
 			this->dgv_tamano->Width = 65;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(8, 449);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(209, 36);
-			this->label13->TabIndex = 45;
-			this->label13->Text = L"Solo se eliminarán los\r\ndocumentos que has recogido";
-			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// PrintForm
 			// 
@@ -1483,7 +1483,6 @@ private: System::Windows::Forms::Label^ label13;
 				   }
 			   }
 			   AutoPrintController::Controller::AddOrder(File_order);
-			   ShowCola();
 			   ShowOrderFiles();
 		   }
 /******************************************************************************************************************************************************/
@@ -1743,27 +1742,25 @@ private: System::Windows::Forms::Label^ label13;
 			  }
 			  void IniciarReloj() {
 				  Order^ data_pos1 = Controller::QueryFileByPosition(1);
-				  Order^ data_pos2 = Controller::QueryFileByPosition(2);
 
 				  if (data_pos1 != nullptr) {
 					  // Configura el intervalo del temporizador en milisegundos (1 segundo)
-					  Timer1->Interval = 2500;
+					  Timer1->Interval = 3500;
 					  // Asocia el evento Tick con el manejador timer1_Tick
 					  Timer1->Tick += gcnew EventHandler(this, &PrintForm::timer1_Tick);
 					  // Inicia el temporizador
 					  Timer1->Start();
 				  }
-				  //if (data_pos2 != nullptr) {
-				  Timer2->Interval = 2500;
+				  Timer2->Interval = 3500;
 				  Timer2->Tick += gcnew EventHandler(this, &PrintForm::timer2_Tick);
 				  Timer2->Start();
-				  //}
 			  }
 			  void ReiniciarReloj() {
 				  Timer1->Stop();
 				  Timer1->Tick -= gcnew EventHandler(this, &PrintForm::timer1_Tick);
 				  Timer2->Stop();
 				  Timer2->Tick -= gcnew EventHandler(this, &PrintForm::timer2_Tick);
+				  LB_EspacioCola->Text = "Calculando...";
 			  }
 
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
@@ -1816,7 +1813,6 @@ private: System::Windows::Forms::Label^ label13;
 	/*-------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
 	private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
 		int EnCola = 0;
-		
 		List<Order^>^ orderfiles = Controller::QueryAllFiles();
 		if (orderfiles != nullptr) {
 			for (int i = 0; i < orderfiles->Count; i++) {
@@ -1825,8 +1821,9 @@ private: System::Windows::Forms::Label^ label13;
 					EnCola++;
 				}
 			}
-			LB_EspacioCola->Text = (20 - EnCola).ToString();
+			LB_EspacioCola->Text = (10 - EnCola).ToString();
 		}
+		ShowOrderFiles();
 	}
 };
 }
