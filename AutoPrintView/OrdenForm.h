@@ -782,10 +782,10 @@ namespace AutoPrintView {
 		Order^ File_order = Controller::QueryFileByPosition(1);
 		if (File_order != nullptr) {
 			// Obtener la ruta de la carpeta Descargas del usuario
-			//String^ downloadsPath = System::Environment::GetFolderPath(System::Environment::SpecialFolder::MyDocuments) + "\\Downloads";
+			String^ downloadsPath = System::Environment::GetFolderPath(System::Environment::SpecialFolder::MyDocuments);
 
-			// Combinar la ruta de descargas con el nombre del archivo PDF
-			String^ savePath = System::IO::Path::Combine("C:\\Users\\HP\\Downloads\\", File_order->PDF_NAME + ".pdf");
+			// Combinar la ruta de descargas con el nombre del archivo PDF "C:\\Users\\HP\\Downloads\\"
+			String^ savePath = System::IO::Path::Combine(downloadsPath, File_order->PDF_NAME + ".pdf");
 
 			// Guardar el archivo PDF en la ubicación seleccionada
 			System::IO::File::WriteAllBytes(savePath, File_order->PDF);
