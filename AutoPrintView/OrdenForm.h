@@ -44,7 +44,8 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_impri;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
-	private: System::Windows::Forms::Button^ BT_descarga;
+
+
 
 
 
@@ -325,7 +326,6 @@ namespace AutoPrintView {
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->BT_descarga = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -347,7 +347,6 @@ namespace AutoPrintView {
 			// 
 			// tabPage1
 			// 
-			this->tabPage1->Controls->Add(this->BT_descarga);
 			this->tabPage1->Controls->Add(this->BT_StarPrint);
 			this->tabPage1->Controls->Add(this->btnShowList);
 			this->tabPage1->Controls->Add(this->dgvOrdenes_imprimiendo);
@@ -619,18 +618,6 @@ namespace AutoPrintView {
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
 			// 
-			// BT_descarga
-			// 
-			this->BT_descarga->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->BT_descarga->Location = System::Drawing::Point(572, 16);
-			this->BT_descarga->Name = L"BT_descarga";
-			this->BT_descarga->Size = System::Drawing::Size(200, 44);
-			this->BT_descarga->TabIndex = 47;
-			this->BT_descarga->Text = L"Descargar PDF";
-			this->BT_descarga->UseVisualStyleBackColor = true;
-			this->BT_descarga->Click += gcnew System::EventHandler(this, &OrdenForm::BT_descarga_Click);
-			// 
 			// OrdenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -713,7 +700,24 @@ namespace AutoPrintView {
 			   */
 		   //End Cesar-code
 
-		   /*void PrintPDF() {
+		   String^ savePath = "";
+		   void DESCARGAyURL() {
+			   Order^ File_order = Controller::QueryFileByPosition(1);
+			   if (File_order != nullptr) {
+				   // Obtener la ruta de la carpeta Descargas del usuario
+				   String^ downloadsPath = System::Environment::GetFolderPath(System::Environment::SpecialFolder::MyDocuments);
+
+				   // Combinar la ruta de descargas con el nombre del archivo PDF "C:\\Users\\HP\\Downloads\\"
+				   savePath = System::IO::Path::Combine(downloadsPath, File_order->PDF_NAME + ".pdf");
+
+				   // Guardar el archivo PDF en la ubicación seleccionada
+				   System::IO::File::WriteAllBytes(savePath, File_order->PDF);
+
+				   // Mostrar la ruta de descarga en un MessageBox
+				   MessageBox::Show("Archivo guardado en: " + savePath);
+			   }
+		   }
+		   void PrintPDF() {
 			   bool imprimirEnColor = true;
 			   Order^ colabyposition = Controller::QueryFileByPosition(1);
 			   try {
@@ -746,54 +750,45 @@ namespace AutoPrintView {
 
 				   dialog->ShowDialog();
 
-				   //Descargar y obtener URL
+				   //Descargar y obtener URL para imprimir el documento
+				   DESCARGAyURL();
+				   // Obtener la ruta del archivo descargado
+				   String^ pdfFilePath = savePath;
 
-				   // Verificar si la propiedad Url no es nula
-				   if (WB_PDF_imprimir->Url != nullptr) {
-					   // Obtener la ruta del archivo desde la propiedad AbsolutePath de la Url
-					   String^ pdfFilePath = WB_PDF_imprimir->Url->AbsolutePath;
+				   // Crear un objeto ProcessStartInfo para configurar la impresión
+				   ProcessStartInfo^ printProcessInfo = gcnew ProcessStartInfo();
+				   printProcessInfo->Verb = "print";
+				   printProcessInfo->CreateNoWindow = true;
+				   printProcessInfo->FileName = pdfFilePath;
+				   printProcessInfo->WindowStyle = ProcessWindowStyle::Hidden;
 
-					   // Crear un objeto ProcessStartInfo para configurar la impresión
-					   ProcessStartInfo^ printProcessInfo = gcnew ProcessStartInfo();
-					   printProcessInfo->Verb = "print";
-					   printProcessInfo->CreateNoWindow = true;
-					   printProcessInfo->FileName = pdfFilePath;
-					   printProcessInfo->WindowStyle = ProcessWindowStyle::Hidden;
+				   // Crear un objeto Process para la impresión
+				   Process^ printProcess = gcnew Process();
+				   printProcess->StartInfo = printProcessInfo;
+				   printProcess->Start();
+				   printProcess->WaitForInputIdle();
 
-					   // Crear un objeto Process para la impresión
-					   Process^ printProcess = gcnew Process();
-					   printProcess->StartInfo = printProcessInfo;
-					   printProcess->Start();
-					   printProcess->WaitForInputIdle();
-
-					   // Cerrar la ventana de impresión (si es posible) o terminar el proceso
-					   if (!printProcess->CloseMainWindow()) {
-						   printProcess->Kill();
-					   }
+				   // Cerrar la ventana de impresión (si es posible) o terminar el proceso
+				   if (!printProcess->CloseMainWindow()) {
+					   printProcess->Kill();
 				   }
 
 			   }
 			   catch (Exception^ ex) {
 				   MessageBox::Show("La impresora no está disponible en su sistema operativo");
 			   }
-		   }*/
+		   }
+		   void EliminarDescarga() {
+			   // Eliminar el archivo PDF descargado
+			   System::IO::File::Delete(savePath);
 
-	private: System::Void BT_descarga_Click(System::Object^ sender, System::EventArgs^ e) {
-		Order^ File_order = Controller::QueryFileByPosition(1);
-		if (File_order != nullptr) {
-			// Obtener la ruta de la carpeta Descargas del usuario
-			String^ downloadsPath = System::Environment::GetFolderPath(System::Environment::SpecialFolder::MyDocuments);
+			   // Mostrar un mensaje indicando que el archivo fue eliminado
+			   MessageBox::Show("Archivo eliminado: " + savePath);
 
-			// Combinar la ruta de descargas con el nombre del archivo PDF "C:\\Users\\HP\\Downloads\\"
-			String^ savePath = System::IO::Path::Combine(downloadsPath, File_order->PDF_NAME + ".pdf");
+			   // Restablecer la ruta de descarga a una cadena vacía
+			   savePath = "";
+		   }
 
-			// Guardar el archivo PDF en la ubicación seleccionada
-			System::IO::File::WriteAllBytes(savePath, File_order->PDF);
-
-			// Mostrar la ruta de descarga en un MessageBox
-			MessageBox::Show("Archivo guardado en: " + savePath);
-		}
-	}
 	private: System::Void BT_StarPrint_Click(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
@@ -815,7 +810,7 @@ namespace AutoPrintView {
 			Timer1->Start();
 
 			if (imprimiendo == 0) {
-				//PrintPDF();
+				PrintPDF();
 				imprimiendo = 1;
 			}
 		}
@@ -925,15 +920,6 @@ namespace AutoPrintView {
 			int dni_order = Int32::Parse(dgvOrdenes_imprimiendo->Rows[dgvOrdenes_imprimiendo->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 
 			Order^ Ordenes_PDF = Controller::QueryFileById(dni_order);
-
-			/*if (Ordenes_PDF->PDF_URL != nullptr) {
-				WB_PDF_historial->Navigate(File_order->PDF_URL);
-				//MessageBox::Show(File_order->PDF_URL);
-			}
-			else {
-				WB_PDF_historial->Navigate("");
-				WB_PDF_historial->Invalidate();
-			}*/
 		}
 	}
 	private: System::Void BT_PDFrecogido_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -973,14 +959,6 @@ namespace AutoPrintView {
 			Order^ Ordenes_PDF = Controller::QueryFileById(dni_order);
 
 			collected_orderId = dni_order;
-			/*if (Ordenes_PDF->PDF_URL != nullptr) {
-				WB_PDF_historial->Navigate(File_order->PDF_URL);
-				//MessageBox::Show(File_order->PDF_URL);
-			}
-			else {
-				WB_PDF_historial->Navigate("");
-				WB_PDF_historial->Invalidate();
-			}*/
 		}
 	}
 	
@@ -1027,7 +1005,7 @@ namespace AutoPrintView {
 		String^ Documento_name;
 		Order^ time_order = Controller::QueryFileByPosition(1);
 		if (imprimiendo == 0) {
-			//PrintPDF();
+			PrintPDF();
 			imprimiendo = 1;
 		}
 		
@@ -1061,6 +1039,7 @@ namespace AutoPrintView {
 				if (time_order22 == nullptr) {
 					order->num_spooler = -1;
 				}
+				EliminarDescarga();
 				Controller::UpdateCola(order);
 				ShowFilesListo();
 				imprimiendo = 0;
@@ -1113,7 +1092,7 @@ namespace AutoPrintView {
 				Timer1->Tick -= gcnew EventHandler(this, &OrdenForm::timer1_Tick);
 
 				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 1;
 
 				Controller::UpdateCola(order);
 
@@ -1157,13 +1136,12 @@ namespace AutoPrintView {
 			LB_Pos3->Text = "3";
 			LB_NameDoc3->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(2);
+			if (time_orderNN == nullptr) {
 				Timer2->Stop();
 				Timer2->Tick -= gcnew EventHandler(this, &OrdenForm::timer2_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 2;
 
 				Controller::UpdateCola(order);
 
@@ -1207,13 +1185,12 @@ namespace AutoPrintView {
 			LB_Pos4->Text = "4";
 			LB_NameDoc4->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(3);
+			if (time_orderNN == nullptr) {
 				Timer3->Stop();
 				Timer3->Tick -= gcnew EventHandler(this, &OrdenForm::timer3_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 3;
 
 				Controller::UpdateCola(order);
 
@@ -1257,13 +1234,12 @@ namespace AutoPrintView {
 			LB_Pos5->Text = "5";
 			LB_NameDoc5->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(4);
+			if (time_orderNN == nullptr) {
 				Timer4->Stop();
 				Timer4->Tick -= gcnew EventHandler(this, &OrdenForm::timer4_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 4;
 
 				Controller::UpdateCola(order);
 
@@ -1307,13 +1283,12 @@ namespace AutoPrintView {
 			LB_Pos6->Text = "6";
 			LB_NameDoc6->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(5);
+			if (time_orderNN == nullptr) {
 				Timer5->Stop();
 				Timer5->Tick -= gcnew EventHandler(this, &OrdenForm::timer5_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 5;
 
 				Controller::UpdateCola(order);
 
@@ -1357,13 +1332,12 @@ namespace AutoPrintView {
 			LB_Pos7->Text = "7";
 			LB_NameDoc7->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(6);
+			if (time_orderNN == nullptr) {
 				Timer6->Stop();
 				Timer6->Tick -= gcnew EventHandler(this, &OrdenForm::timer6_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 6;
 
 				Controller::UpdateCola(order);
 
@@ -1407,13 +1381,12 @@ namespace AutoPrintView {
 			LB_Pos8->Text = "8";
 			LB_NameDoc8->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(7);
+			if (time_orderNN == nullptr) {
 				Timer7->Stop();
 				Timer7->Tick -= gcnew EventHandler(this, &OrdenForm::timer7_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 7;
 
 				Controller::UpdateCola(order);
 
@@ -1457,13 +1430,12 @@ namespace AutoPrintView {
 			LB_Pos9->Text = "9";
 			LB_NameDoc9->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(8);
+			if (time_orderNN == nullptr) {
 				Timer8->Stop();
 				Timer8->Tick -= gcnew EventHandler(this, &OrdenForm::timer8_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 8;
 
 				Controller::UpdateCola(order);
 
@@ -1507,13 +1479,12 @@ namespace AutoPrintView {
 			LB_Pos10->Text = "10";
 			LB_NameDoc10->Text = time_order->PDF_NAME;*/
 
-			Order^ time_order11 = Controller::QueryFileByPosition(1);
-			if (time_order11->status_order == "Listo") {
+			Order^ time_orderNN = Controller::QueryFileByPosition(9);
+			if (time_orderNN == nullptr) {
 				Timer9->Stop();
 				Timer9->Tick -= gcnew EventHandler(this, &OrdenForm::timer9_Tick);
 
-				SpoolerMinus();
-				order->num_spooler = time_order->num_spooler - 1;
+				order->num_spooler = 9;
 
 				Controller::UpdateCola(order);
 

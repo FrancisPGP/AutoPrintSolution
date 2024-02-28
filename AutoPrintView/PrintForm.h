@@ -221,6 +221,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 private: System::Windows::Forms::Label^ label12;
 private: System::Windows::Forms::Label^ LB_EspacioCola;
+private: System::Windows::Forms::Label^ label13;
 
 
 
@@ -455,6 +456,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->dgv_copias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->gdv_hojatipo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tamano = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->TPage_impre->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -1001,6 +1003,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->label13);
 			this->tabPage1->Controls->Add(this->BT_DeletePDFs);
 			this->tabPage1->Controls->Add(this->pictureBox2);
 			this->tabPage1->Controls->Add(this->WB_PDF_historial);
@@ -1017,7 +1020,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			// 
 			this->BT_DeletePDFs->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_DeletePDFs->Location = System::Drawing::Point(112, 446);
+			this->BT_DeletePDFs->Location = System::Drawing::Point(227, 446);
 			this->BT_DeletePDFs->Name = L"BT_DeletePDFs";
 			this->BT_DeletePDFs->Size = System::Drawing::Size(234, 44);
 			this->BT_DeletePDFs->TabIndex = 44;
@@ -1144,6 +1147,18 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->dgv_tamano->ReadOnly = true;
 			this->dgv_tamano->Width = 65;
 			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(8, 449);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(209, 36);
+			this->label13->TabIndex = 45;
+			this->label13->Text = L"Solo se eliminarán los\r\ndocumentos que has recogido";
+			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
 			// PrintForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1164,6 +1179,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			this->TPage_historial->ResumeLayout(false);
 			this->TPage_historial->PerformLayout();
 			this->tabPage1->ResumeLayout(false);
+			this->tabPage1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvHistorial_Files))->EndInit();
 			this->ResumeLayout(false);
