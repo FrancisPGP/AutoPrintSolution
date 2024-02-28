@@ -1296,7 +1296,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			   int TimePrint = 0;
 			   //QueryFileById
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+			   if (orderfiles != nullptr) {
 				   ordenId = 1 + orderfiles->Count;
 			   }
 
@@ -1316,7 +1316,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			   int dni_wallet = Dni_Ahora;
 
 			   File_order->dni_history = dni_wallet;
-			   //File_order->order_id = ordenId;
+			   File_order->order_id = ordenId;
 			   File_order->sheet_type = cmbTipoHoja->Text;
 			   File_order->sheet_size = cmbTamaHoja->Text;
 			   File_order->color_page = cmbTinta->Text;

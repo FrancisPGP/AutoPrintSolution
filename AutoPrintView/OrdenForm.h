@@ -792,16 +792,21 @@ namespace AutoPrintView {
 				Order^ time_order22 = Controller::QueryFileByPosition(2);
 				if (time_order22 == nullptr) {
 					order->num_spooler = -1;
-					ShowFilesListo();
 				}
+				Controller::UpdateCola(order);
+				ShowFilesListo();
 			}
-			Controller::UpdateCola(order);
+			else {
+				Controller::UpdateCola(order);
+			}
 			ShowFilesImprimiendo();
 		}
 		else {
 			/*LB_Time1->Text = "";
 			LB_Pos1->Text = "";
 			LB_NameDoc1->Text = "";*/
+			ShowFilesListo();
+			ShowFilesImprimiendo();
 			// Detén el temporizador si está en marcha
 			Timer1->Stop();
 			// Elimina todos los manejadores de eventos Tick
