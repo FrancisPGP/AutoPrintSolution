@@ -221,9 +221,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ gdv_hojatipo;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tamano;
 private: System::Windows::Forms::Label^ label12;
 private: System::Windows::Forms::Label^ LB_EspacioCola;
-private: System::Windows::Forms::Label^ label13;
-private: System::Windows::Forms::Label^ label14;
-private: System::Windows::Forms::Label^ label15;
+
+
+
 
 
 
@@ -400,9 +400,6 @@ private: System::Windows::Forms::Label^ label15;
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PrintForm::typeid));
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->TPage_impre = (gcnew System::Windows::Forms::TabPage());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->LB_NumPage = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->WB_PDF_imprimir = (gcnew System::Windows::Forms::WebBrowser());
@@ -482,9 +479,6 @@ private: System::Windows::Forms::Label^ label15;
 			// 
 			// TPage_impre
 			// 
-			this->TPage_impre->Controls->Add(this->label15);
-			this->TPage_impre->Controls->Add(this->label14);
-			this->TPage_impre->Controls->Add(this->label13);
 			this->TPage_impre->Controls->Add(this->LB_NumPage);
 			this->TPage_impre->Controls->Add(this->pictureBox1);
 			this->TPage_impre->Controls->Add(this->WB_PDF_imprimir);
@@ -513,42 +507,6 @@ private: System::Windows::Forms::Label^ label15;
 			this->TPage_impre->Text = L"Imprimir";
 			this->TPage_impre->UseVisualStyleBackColor = true;
 			this->TPage_impre->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PrintForm::TPage_impre_MouseMove);
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->BackColor = System::Drawing::Color::Gainsboro;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(19, 348);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(168, 25);
-			this->label15->TabIndex = 46;
-			this->label15->Text = L"Ciencias Sociales";
-			// 
-			// label14
-			// 
-			this->label14->AutoSize = true;
-			this->label14->BackColor = System::Drawing::Color::Gainsboro;
-			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(248, 128);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(37, 25);
-			this->label14->TabIndex = 45;
-			this->label14->Text = L"A4";
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->BackColor = System::Drawing::Color::Gainsboro;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(19, 128);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(103, 25);
-			this->label13->TabIndex = 44;
-			this->label13->Text = L"Hoja Bond";
 			// 
 			// LB_NumPage
 			// 
@@ -609,14 +567,15 @@ private: System::Windows::Forms::Label^ label15;
 			// 
 			// cmbLocal
 			// 
-			this->cmbLocal->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbLocal->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbLocal->FormattingEnabled = true;
+			this->cmbLocal->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Ciencias Sociales" });
 			this->cmbLocal->Location = System::Drawing::Point(17, 344);
 			this->cmbLocal->Name = L"cmbLocal";
 			this->cmbLocal->Size = System::Drawing::Size(195, 33);
 			this->cmbLocal->TabIndex = 36;
+			this->cmbLocal->Text = L"Ciencias Sociales";
 			// 
 			// cmbTinta
 			// 
@@ -632,26 +591,28 @@ private: System::Windows::Forms::Label^ label15;
 			// 
 			// cmbTamaHoja
 			// 
-			this->cmbTamaHoja->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbTamaHoja->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbTamaHoja->FormattingEnabled = true;
+			this->cmbTamaHoja->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"A4" });
 			this->cmbTamaHoja->Location = System::Drawing::Point(246, 124);
 			this->cmbTamaHoja->Name = L"cmbTamaHoja";
 			this->cmbTamaHoja->Size = System::Drawing::Size(195, 33);
 			this->cmbTamaHoja->TabIndex = 34;
+			this->cmbTamaHoja->Text = L"A4";
 			// 
 			// cmbTipoHoja
 			// 
 			this->cmbTipoHoja->BackColor = System::Drawing::Color::White;
-			this->cmbTipoHoja->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbTipoHoja->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->cmbTipoHoja->FormattingEnabled = true;
+			this->cmbTipoHoja->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Hoja Bond" });
 			this->cmbTipoHoja->Location = System::Drawing::Point(17, 124);
 			this->cmbTipoHoja->Name = L"cmbTipoHoja";
 			this->cmbTipoHoja->Size = System::Drawing::Size(195, 33);
 			this->cmbTipoHoja->TabIndex = 33;
+			this->cmbTipoHoja->Text = L"Hoja Bond";
 			// 
 			// label10
 			// 
@@ -1258,7 +1219,6 @@ private: System::Windows::Forms::Label^ label15;
 						UpOrder();
 						ReiniciarReloj();
 						IniciarReloj();
-						PrintPDF();
 						RefreshPage();
 						//email();
 					}
@@ -1291,7 +1251,6 @@ private: System::Windows::Forms::Label^ label15;
 							emp_user_wallet->Money_in_wallet = emp_user_wallet->Money_in_wallet - monto;
 							Controller::UpdateEmployee(emp_user_wallet);
 							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-							PrintPDF();
 							RefreshPage();
 							//email();
 						}
@@ -1311,7 +1270,6 @@ private: System::Windows::Forms::Label^ label15;
 							user_wallet->Money_in_wallet = user_wallet->Money_in_wallet - monto;
 							Controller::UpdateCostumer(user_wallet);
 							MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-							PrintPDF();
 							RefreshPage();
 							//email();
 
@@ -1514,38 +1472,38 @@ private: System::Windows::Forms::Label^ label15;
 		   }
 /******************************************************************************************************************************************************/
 		   void ShowCola() {
-			   int pos1234 = 0;
+			   int pos12345 = 0;
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr) {
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
 					   if (File_order->status_order == "Imprimiendo" && File_order->dni_history == Dni_Ahora) {
-						   pos1234++;
-						   if (pos1234 == 1) {
+						   pos12345++;
+						   if (pos12345 == 1) {
 							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 							   LB_Time1->Text = (colabyposition->time_print).ToString();
 							   LB_Pos1->Text = (colabyposition->num_spooler).ToString();
 							   LB_NameDoc1->Text = colabyposition->PDF_NAME;
 						   }
-						   else if (pos1234 == 1) {
+						   else if (pos12345 == 2) {
 							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 							   LB_Time2->Text = (colabyposition->time_print).ToString();
 							   LB_Pos2->Text = (colabyposition->num_spooler).ToString();
 							   LB_NameDoc2->Text = colabyposition->PDF_NAME;
 						   }
-						   else if (pos1234 == 1) {
+						   else if (pos12345 == 3) {
 							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 							   LB_Time3->Text = (colabyposition->time_print).ToString();
 							   LB_Pos3->Text = (colabyposition->num_spooler).ToString();
 							   LB_NameDoc3->Text = colabyposition->PDF_NAME;
 						   }
-						   else if (pos1234 == 1) {
+						   else if (pos12345 == 4) {
 							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 							   LB_Time4->Text = (colabyposition->time_print).ToString();
 							   LB_Pos4->Text = (colabyposition->num_spooler).ToString();
 							   LB_NameDoc4->Text = colabyposition->PDF_NAME;
 						   }
-						   else if (pos1234 == 1) {
+						   else if (pos12345 == 5) {
 							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 							   LB_Time5->Text = (colabyposition->time_print).ToString();
 							   LB_Pos5->Text = (colabyposition->num_spooler).ToString();
@@ -1594,67 +1552,6 @@ private: System::Windows::Forms::Label^ label15;
 			   }
 			   if (cmbTinta->Text != "" && cmbNUMcopias->Text != "" && numpage != 0) {
 				   LB_NumPage->Text = "por " + numpage + " páginas";
-			   }
-		   }
-		   void PrintPDF() {
-			   bool imprimirEnColor = true;
-			   try {
-				   // Crear un objeto PrintDocument
-				   System::Drawing::Printing::PrintDocument^ pd = gcnew System::Drawing::Printing::PrintDocument();
-
-				   // Mostrar el cuadro de diálogo de impresión
-				   PrintDialog^ dialog = gcnew PrintDialog();
-				   dialog->Document = pd;
-
-				   // Obtener las opciones de impresión desde los controles del formulario
-				   pd->PrinterSettings->Copies = Int32::Parse(cmbNUMcopias->Text);
-
-				   bool imprimirEnColor = true;
-				   if (cmbTinta->Text == "Blanco y negro") {
-					   imprimirEnColor = false;
-				   }
-
-				   // Configurar el modo de color
-				   pd->DefaultPageSettings->Color = imprimirEnColor;
-
-				   String^ tipoHoja = cmbTamaHoja->Text->ToLower();
-
-				   if (tipoHoja == "a4") {
-					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("A4", 827, 1169);
-				   }
-				   else if (tipoHoja == "carta") {
-					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("Carta", 850, 1100);
-				   }
-
-				   dialog->ShowDialog();
-
-					   // Verificar si la propiedad Url no es nula
-				   if (WB_PDF_imprimir->Url != nullptr) {
-					   // Obtener la ruta del archivo desde la propiedad AbsolutePath de la Url
-					   String^ pdfFilePath = WB_PDF_imprimir->Url->AbsolutePath;
-
-					   // Crear un objeto ProcessStartInfo para configurar la impresión
-					   ProcessStartInfo^ printProcessInfo = gcnew ProcessStartInfo();
-					   printProcessInfo->Verb = "print";
-					   printProcessInfo->CreateNoWindow = true;
-					   printProcessInfo->FileName = pdfFilePath;
-					   printProcessInfo->WindowStyle = ProcessWindowStyle::Hidden;
-
-					   // Crear un objeto Process para la impresión
-					   Process^ printProcess = gcnew Process();
-					   printProcess->StartInfo = printProcessInfo;
-					   printProcess->Start();
-					   printProcess->WaitForInputIdle();
-
-					   // Cerrar la ventana de impresión (si es posible) o terminar el proceso
-					   if (!printProcess->CloseMainWindow()) {
-						   printProcess->Kill();
-					   }
-				   }
-				   
-			   }
-			   catch (Exception^ ex) {
-				   MessageBox::Show("La impresora no está disponible en su sistema operativo");
 			   }
 		   }
 		   void RefreshPage() {
@@ -1856,14 +1753,14 @@ private: System::Windows::Forms::Label^ label15;
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		//MessageBox::Show("Su documento " + colabyposition->PDF_NAME + " está listo para recoger.");
-		int pos1234 = 0;
+		int pos12345 = 0;
 		List<Order^>^ orderfiles = Controller::QueryAllFiles();
 		if (orderfiles != nullptr) {
 			for (int i = 0; i < orderfiles->Count; i++) {
 				Order^ File_order = orderfiles[i];
 				if (File_order->status_order == "Imprimiendo" && File_order->dni_history == Dni_Ahora) {
-					pos1234++;
-					if (pos1234 == 1) {
+					pos12345++;
+					if (pos12345 == 1) {
 						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 						LB_Time1->Text = (colabyposition->time_print).ToString();
 						LB_Pos1->Text = (colabyposition->num_spooler).ToString();
@@ -1872,25 +1769,25 @@ private: System::Windows::Forms::Label^ label15;
 							MessageBox::Show("Su documento " + colabyposition->PDF_NAME + " está listo para recoger.");
 						}
 					}
-					else if (pos1234 == 1) {
+					else if (pos12345 == 2) {
 						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 						LB_Time2->Text = (colabyposition->time_print).ToString();
 						LB_Pos2->Text = (colabyposition->num_spooler).ToString();
 						LB_NameDoc2->Text = colabyposition->PDF_NAME;
 					}
-					else if (pos1234 == 1) {
+					else if (pos12345 == 3) {
 						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 						LB_Time3->Text = (colabyposition->time_print).ToString();
 						LB_Pos3->Text = (colabyposition->num_spooler).ToString();
 						LB_NameDoc3->Text = colabyposition->PDF_NAME;
 					}
-					else if (pos1234 == 1) {
+					else if (pos12345 == 4) {
 						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 						LB_Time4->Text = (colabyposition->time_print).ToString();
 						LB_Pos4->Text = (colabyposition->num_spooler).ToString();
 						LB_NameDoc4->Text = colabyposition->PDF_NAME;
 					}
-					else if (pos1234 == 1) {
+					else if (pos12345 == 5) {
 						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
 						LB_Time5->Text = (colabyposition->time_print).ToString();
 						LB_Pos5->Text = (colabyposition->num_spooler).ToString();

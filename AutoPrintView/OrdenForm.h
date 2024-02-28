@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Windows.h>
+
 namespace AutoPrintView {
 
 	using namespace System;
@@ -32,6 +34,17 @@ namespace AutoPrintView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numcopies_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_listo;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_listo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numspooler_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tiempo_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_status_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copies_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_impri;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
+	private: System::Windows::Forms::Button^ BT_descarga;
 
 
 
@@ -120,15 +133,15 @@ namespace AutoPrintView {
 
 
 	private: System::Windows::Forms::Button^ BT_StarPrint;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_numspooler_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_dni_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_name_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_doc_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_status_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_copies_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_tinta_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_price_impri;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_id_impri;
+
+
+
+
+
+
+
+
+
 
 
 
@@ -290,6 +303,7 @@ namespace AutoPrintView {
 			this->btnShowList = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_imprimiendo = (gcnew System::Windows::Forms::DataGridView());
 			this->dgv_numspooler_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dgv_tiempo_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_dni_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_name_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_doc_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -311,6 +325,7 @@ namespace AutoPrintView {
 			this->dgv_numcopies_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_tinta_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_price_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->BT_descarga = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrdenes_imprimiendo))->BeginInit();
@@ -332,6 +347,7 @@ namespace AutoPrintView {
 			// 
 			// tabPage1
 			// 
+			this->tabPage1->Controls->Add(this->BT_descarga);
 			this->tabPage1->Controls->Add(this->BT_StarPrint);
 			this->tabPage1->Controls->Add(this->btnShowList);
 			this->tabPage1->Controls->Add(this->dgvOrdenes_imprimiendo);
@@ -374,10 +390,10 @@ namespace AutoPrintView {
 			this->dgvOrdenes_imprimiendo->AllowUserToResizeRows = false;
 			this->dgvOrdenes_imprimiendo->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dgvOrdenes_imprimiendo->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvOrdenes_imprimiendo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+			this->dgvOrdenes_imprimiendo->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->dgv_numspooler_impri,
-					this->dgv_dni_impri, this->dgv_name_impri, this->dgv_doc_impri, this->dgv_status_impri, this->dgv_copies_impri, this->dgv_tinta_impri,
-					this->dgv_price_impri, this->dgv_id_impri
+					this->dgv_tiempo_impri, this->dgv_dni_impri, this->dgv_name_impri, this->dgv_doc_impri, this->dgv_status_impri, this->dgv_copies_impri,
+					this->dgv_tinta_impri, this->dgv_price_impri, this->dgv_id_impri
 			});
 			this->dgvOrdenes_imprimiendo->Location = System::Drawing::Point(3, 78);
 			this->dgvOrdenes_imprimiendo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -397,6 +413,14 @@ namespace AutoPrintView {
 			this->dgv_numspooler_impri->Name = L"dgv_numspooler_impri";
 			this->dgv_numspooler_impri->ReadOnly = true;
 			this->dgv_numspooler_impri->Width = 40;
+			// 
+			// dgv_tiempo_impri
+			// 
+			this->dgv_tiempo_impri->HeaderText = L"Tiempo estimado";
+			this->dgv_tiempo_impri->MinimumWidth = 6;
+			this->dgv_tiempo_impri->Name = L"dgv_tiempo_impri";
+			this->dgv_tiempo_impri->ReadOnly = true;
+			this->dgv_tiempo_impri->Width = 60;
 			// 
 			// dgv_dni_impri
 			// 
@@ -595,6 +619,18 @@ namespace AutoPrintView {
 			this->dgv_price_listo->ReadOnly = true;
 			this->dgv_price_listo->Width = 50;
 			// 
+			// BT_descarga
+			// 
+			this->BT_descarga->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->BT_descarga->Location = System::Drawing::Point(572, 16);
+			this->BT_descarga->Name = L"BT_descarga";
+			this->BT_descarga->Size = System::Drawing::Size(200, 44);
+			this->BT_descarga->TabIndex = 47;
+			this->BT_descarga->Text = L"Descargar PDF";
+			this->BT_descarga->UseVisualStyleBackColor = true;
+			this->BT_descarga->Click += gcnew System::EventHandler(this, &OrdenForm::BT_descarga_Click);
+			// 
 			// OrdenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -676,6 +712,88 @@ namespace AutoPrintView {
 			   }
 			   */
 		   //End Cesar-code
+
+		   /*void PrintPDF() {
+			   bool imprimirEnColor = true;
+			   Order^ colabyposition = Controller::QueryFileByPosition(1);
+			   try {
+				   // Crear un objeto PrintDocument
+				   System::Drawing::Printing::PrintDocument^ pd = gcnew System::Drawing::Printing::PrintDocument();
+
+				   // Mostrar el cuadro de diálogo de impresión
+				   PrintDialog^ dialog = gcnew PrintDialog();
+				   dialog->Document = pd;
+
+				   // Obtener las opciones de impresión desde los controles del formulario
+				   pd->PrinterSettings->Copies = colabyposition->num_copies;
+
+				   bool imprimirEnColor = true;
+				   if (colabyposition->color_page == "Blanco y negro") {
+					   imprimirEnColor = false;
+				   }
+
+				   // Configurar el modo de color
+				   pd->DefaultPageSettings->Color = imprimirEnColor;
+				   
+				   String^ tamanoHoja = colabyposition->sheet_size->ToLower();
+
+				   if (tamanoHoja == "a4") {
+					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("A4", 827, 1169);
+				   }
+				   else if (tamanoHoja == "carta") {
+					   pd->DefaultPageSettings->PaperSize = gcnew System::Drawing::Printing::PaperSize("Carta", 850, 1100);
+				   }
+
+				   dialog->ShowDialog();
+
+				   //Descargar y obtener URL
+
+				   // Verificar si la propiedad Url no es nula
+				   if (WB_PDF_imprimir->Url != nullptr) {
+					   // Obtener la ruta del archivo desde la propiedad AbsolutePath de la Url
+					   String^ pdfFilePath = WB_PDF_imprimir->Url->AbsolutePath;
+
+					   // Crear un objeto ProcessStartInfo para configurar la impresión
+					   ProcessStartInfo^ printProcessInfo = gcnew ProcessStartInfo();
+					   printProcessInfo->Verb = "print";
+					   printProcessInfo->CreateNoWindow = true;
+					   printProcessInfo->FileName = pdfFilePath;
+					   printProcessInfo->WindowStyle = ProcessWindowStyle::Hidden;
+
+					   // Crear un objeto Process para la impresión
+					   Process^ printProcess = gcnew Process();
+					   printProcess->StartInfo = printProcessInfo;
+					   printProcess->Start();
+					   printProcess->WaitForInputIdle();
+
+					   // Cerrar la ventana de impresión (si es posible) o terminar el proceso
+					   if (!printProcess->CloseMainWindow()) {
+						   printProcess->Kill();
+					   }
+				   }
+
+			   }
+			   catch (Exception^ ex) {
+				   MessageBox::Show("La impresora no está disponible en su sistema operativo");
+			   }
+		   }*/
+
+	private: System::Void BT_descarga_Click(System::Object^ sender, System::EventArgs^ e) {
+		Order^ File_order = Controller::QueryFileByPosition(1);
+		if (File_order != nullptr) {
+			// Obtener la ruta de la carpeta Descargas del usuario
+			//String^ downloadsPath = System::Environment::GetFolderPath(System::Environment::SpecialFolder::MyDocuments) + "\\Downloads";
+
+			// Combinar la ruta de descargas con el nombre del archivo PDF
+			String^ savePath = System::IO::Path::Combine("C:\\Users\\HP\\Downloads\\", File_order->PDF_NAME + ".pdf");
+
+			// Guardar el archivo PDF en la ubicación seleccionada
+			System::IO::File::WriteAllBytes(savePath, File_order->PDF);
+
+			// Mostrar la ruta de descarga en un MessageBox
+			MessageBox::Show("Archivo guardado en: " + savePath);
+		}
+	}
 	private: System::Void BT_StarPrint_Click(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
@@ -695,6 +813,11 @@ namespace AutoPrintView {
 			Timer1->Tick += gcnew EventHandler(this, &OrdenForm::timer1_Tick);
 			// Inicia el temporizador
 			Timer1->Start();
+
+			if (imprimiendo == 0) {
+				//PrintPDF();
+				imprimiendo = 1;
+			}
 		}
 		if (time_2 != nullptr) {
 			Timer2->Interval = 1000 * tiempo_print;
@@ -754,6 +877,7 @@ namespace AutoPrintView {
 						   //dgvOrdenes_imprimiendo es el nombre de la tabla de Imprimiendo
 						   dgvOrdenes_imprimiendo->Rows->Add(gcnew array<String^>{
 							   "" + File_order->num_spooler,
+								   "" + File_order->time_print,
 								   "" + File_order->dni_history,
 								   Customer_order->LastName + ", " + Customer_order->Name,//nombre
 								   File_order->PDF_NAME,
@@ -897,10 +1021,16 @@ namespace AutoPrintView {
 	private: System::Void timer0_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 	}
+		   int imprimiendo = 0;
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		String^ Documento_name;
 		Order^ time_order = Controller::QueryFileByPosition(1);
+		if (imprimiendo == 0) {
+			//PrintPDF();
+			imprimiendo = 1;
+		}
+		
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
@@ -933,6 +1063,7 @@ namespace AutoPrintView {
 				}
 				Controller::UpdateCola(order);
 				ShowFilesListo();
+				imprimiendo = 0;
 			}
 			else {
 				Controller::UpdateCola(order);
