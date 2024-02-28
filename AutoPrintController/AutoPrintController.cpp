@@ -144,17 +144,7 @@ void AutoPrintController::Controller::ShowList(int listNum)
 {
     try {
         OpenPort();
-        //ArduinoPort->Write(Convert::ToString(listNum));
-        /*
-        if (listNum == 1) {
-            String^ prueba1 = "Ricardo Luis Francis Faridh Cesar";
-            ArduinoPort->Write(prueba1);
-        }
-        if (listNum == 2) {
-            String^ prueba2 = "Duke Cesar Lisa Lola";
-            ArduinoPort->Write(prueba2);
-        }
-        */
+        /*Este es un código funcional que se presentó en el lab, pero lo comentaremos para hacer una pruebas con el arduino
         String^ ListNames = "";
         for (int i = 1; i <= 10; i++) {
             Order^ orden_cola = QueryFileByPosition(i);
@@ -176,6 +166,35 @@ void AutoPrintController::Controller::ShowList(int listNum)
         }
         else {
             ArduinoPort->Write("ListaVacia");
+        }*/
+        //------------Haciendo pruebas para la entrega final---------------//
+        String^ lista1 = "";
+        String^ lista2 = "#Hola Facilito Este Codigo";
+        if (listNum == 1) {
+            for (int i = 1; i <= 10; i++) {
+                Order^ orden_cola = QueryFileByPosition(i);
+                if (orden_cola != nullptr) {
+                    Customer^ cliente = QueryCustomerByDNI(orden_cola->dni_history);
+                    if (cliente == nullptr) {
+                        Employee^ emp_user_wallet = AutoPrintController::Controller::QueryEmployeeByDNI(orden_cola->dni_history);
+                        lista1 = lista1 + emp_user_wallet->Name + " ";
+                    }
+                    else {
+                        lista1 = lista1 + cliente->Name + " ";
+                        //Cesar Faridh Francis
+                    }
+
+                }
+            }
+            if (lista1 != "") {
+                ArduinoPort->Write("%"+lista1);
+            }
+            else {
+                ArduinoPort->Write("%ListaVacia");
+            }
+        }
+        if (listNum == 2) {
+            ArduinoPort->Write(lista2);
         }
         ClosePort();
     }
@@ -187,7 +206,7 @@ void AutoPrintController::Controller::ShowList(int listNum)
 void AutoPrintController::Controller::OpenPort() {
     try {
         ArduinoPort = gcnew SerialPort();
-        ArduinoPort->PortName = "COM6";
+        ArduinoPort->PortName = "COM3";
         ArduinoPort->BaudRate = 9600;
         ArduinoPort->Open();
     }

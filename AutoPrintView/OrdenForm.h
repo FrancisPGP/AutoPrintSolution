@@ -21,6 +21,14 @@ namespace AutoPrintView {
 	public ref class OrdenForm : public System::Windows::Forms::Form
 	{
 	public:
+		static String^ alternador = "2";
+	private: System::Windows::Forms::Button^ btnShowList2;
+	public:
+
+	public:
+
+	public:
+		Thread^ myThread;
 		OrdenForm(void)
 		{
 			InitializeComponent();
@@ -266,6 +274,7 @@ namespace AutoPrintView {
 			this->dgv_price_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dgv_id_impri = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->btnShowList2 = (gcnew System::Windows::Forms::Button());
 			this->BT_PDFrecogido = (gcnew System::Windows::Forms::Button());
 			this->dgvOrdenes_listo = (gcnew System::Windows::Forms::DataGridView());
 			this->dgv_name_listo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -325,11 +334,11 @@ namespace AutoPrintView {
 			// 
 			this->btnShowList->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnShowList->Location = System::Drawing::Point(531, 14);
+			this->btnShowList->Location = System::Drawing::Point(358, 5);
 			this->btnShowList->Name = L"btnShowList";
-			this->btnShowList->Size = System::Drawing::Size(167, 51);
+			this->btnShowList->Size = System::Drawing::Size(162, 65);
 			this->btnShowList->TabIndex = 45;
-			this->btnShowList->Text = L"Mostrar en pantalla";
+			this->btnShowList->Text = L"Mostrar en \r\npantalla: Lista1";
 			this->btnShowList->UseVisualStyleBackColor = true;
 			this->btnShowList->Click += gcnew System::EventHandler(this, &OrdenForm::btnShowList_Click);
 			// 
@@ -429,6 +438,7 @@ namespace AutoPrintView {
 			// 
 			// tabPage2
 			// 
+			this->tabPage2->Controls->Add(this->btnShowList2);
 			this->tabPage2->Controls->Add(this->BT_PDFrecogido);
 			this->tabPage2->Controls->Add(this->dgvOrdenes_listo);
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
@@ -440,11 +450,21 @@ namespace AutoPrintView {
 			this->tabPage2->Text = L"Listo";
 			this->tabPage2->UseVisualStyleBackColor = true;
 			// 
+			// btnShowList2
+			// 
+			this->btnShowList2->Location = System::Drawing::Point(340, 9);
+			this->btnShowList2->Name = L"btnShowList2";
+			this->btnShowList2->Size = System::Drawing::Size(164, 64);
+			this->btnShowList2->TabIndex = 48;
+			this->btnShowList2->Text = L"Mostrar en \r\npantalla: Lista2\r\n";
+			this->btnShowList2->UseVisualStyleBackColor = true;
+			this->btnShowList2->Click += gcnew System::EventHandler(this, &OrdenForm::btnShowList2_Click_1);
+			// 
 			// BT_PDFrecogido
 			// 
 			this->BT_PDFrecogido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->BT_PDFrecogido->Location = System::Drawing::Point(281, 14);
+			this->BT_PDFrecogido->Location = System::Drawing::Point(50, 15);
 			this->BT_PDFrecogido->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->BT_PDFrecogido->Name = L"BT_PDFrecogido";
 			this->BT_PDFrecogido->Size = System::Drawing::Size(235, 44);
@@ -575,10 +595,52 @@ namespace AutoPrintView {
 		System::Windows::Forms::Timer^ Timer10 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void OrdenForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
 		ShowFilesImprimiendo();
 		ShowFilesListo();
 		collected_orderId = 0;
+		//Start Cesar_code
+		/*
+		myThread = gcnew Thread(gcnew ThreadStart(this, &OrdenForm::MyRun));
+		myThread -> Start();
+		*/
+		//End Cesar-code
 	}
+		   //Start Cesar_code
+		   /*
+		   public:
+			   //static String^ alternador = "2";
+			   delegate void MyDelegate(String^);
+
+			   void MyRun() {
+				   //int alternador=1;
+				   //String^ alternador = "2";
+				   while (true) {
+					   try {
+						   if (alternador == "1") {
+							   alternador == "2";
+						   }
+						   else {
+							   alternador == "1";
+						   }
+						   //Invoke(gcnew MyDelegate(this, &OrdenForm::UpdateArduino), lista1 + DateTime::Now);
+						   Invoke(gcnew MyDelegate(this, &OrdenForm::UpdateArduino), alternador);
+						   myThread->Sleep(10000);
+					   }
+					   catch (Exception^ ex) {
+						   return;
+					   }
+				   }
+			   }
+
+			   void UpdateArduino(String^ var_switch) {
+				   //this->Text = "Ordenes - " + DateTime::Now;
+				   //this->Text = new_cadena;
+				   int variable = Convert::ToInt32(var_switch);
+				   ExecuteShowList(variable);
+			   }
+			   */
+		   //End Cesar-code
 	private: System::Void BT_StarPrint_Click(System::Object^ sender, System::EventArgs^ e) {
 		Order^ time_1 = Controller::QueryFileByPosition(1);
 		Order^ time_2 = Controller::QueryFileByPosition(2);
@@ -768,6 +830,7 @@ namespace AutoPrintView {
 
 	private: System::Void btnShowList_Click(System::Object^ sender, System::EventArgs^ e) {
 		ExecuteShowList(1);
+		//Esto lo he comentado para que el envío de datos se de forma automática
 	}
 	private: System::Void OrdenForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	}
@@ -1363,5 +1426,11 @@ namespace AutoPrintView {
 				   Timer10->Start();
 			   }
 		   }*/
+	private: System::Void btnShowList2_Click(System::Object^ sender, System::EventArgs^ e) {
+		ExecuteShowList(2);
+	}
+	private: System::Void btnShowList2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		ExecuteShowList(2);
+	}
 };
 }
