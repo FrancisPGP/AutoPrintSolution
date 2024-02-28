@@ -1211,18 +1211,15 @@ private: System::Windows::Forms::Label^ label15;
 #pragma endregion
 		double monto = 0;
 		int numpage = 0;
-		int position = 1;
-		int delete_orderId = 0;
 		int tiempo_print = 5;
 
 		System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer2 = gcnew System::Windows::Forms::Timer();
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		delete_orderId = 0;
+		ShowCola();
 		IniciarReloj();
 		ShowOrderFiles();
-		LB_EspacioCola->Text = "Calculando...";
 	}
 		   bool NotLimit5() {
 			   int NotLimit5 = 0;
@@ -1449,9 +1446,9 @@ private: System::Windows::Forms::Label^ label15;
 			   }
 			   File_order->order_id = ordenId;
 
-			   position = 1;
+			   int position = 1;
 
-			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+			   if (orderfiles != nullptr) {
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ position_order = orderfiles[i];
 					   if (position_order->num_spooler == 1) {
@@ -1466,9 +1463,24 @@ private: System::Windows::Forms::Label^ label15;
 					   else if (position_order->num_spooler == 4) {
 						   position++;
 					   }
-					   /*else if (position_order->num_spooler == 5) {
+					   else if (position_order->num_spooler == 5) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 6) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 7) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 8) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 9) {
+						   position++;
+					   }
+					   else if (position_order->num_spooler == 10) {
 						   return;
-					   }*/
+					   }
 				   }
 			   }
 
@@ -1481,46 +1493,71 @@ private: System::Windows::Forms::Label^ label15;
 				   LB_Pos1->Text = (position).ToString();
 				   LB_NameDoc1->Text = File_order->PDF_NAME;
 			   }
-			   else if (position == 2) {
-				   Order^ time_order = Controller::QueryFileByPosition(1);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   else if (orderfiles != nullptr && position > 1) {
+				   int validar = 0;
+				   for (int i = 0; i < orderfiles->Count; i++) {
+					   Order^ position_order = orderfiles[i];
+					   if (position_order->status_order == "Imprimiendo") {
+						   Order^ time_order = Controller::QueryFileByPosition(i + 1);
+						   if (time_order == nullptr && validar == 0) {
+							   Order^ time_order = Controller::QueryFileByPosition(i);
+							   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+							   validar = 1;
+						   }
 
-				   LB_Time2->Text = (File_order->time_print).ToString();
-				   LB_Pos2->Text = (position).ToString();
-				   LB_NameDoc2->Text = File_order->PDF_NAME;
+					   }
+				   }
 			   }
-			   else if (position == 3) {
-				   Order^ time_order = Controller::QueryFileByPosition(2);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-
-				   LB_Time3->Text = (File_order->time_print).ToString();
-				   LB_Pos3->Text = (position).ToString();
-				   LB_NameDoc3->Text = File_order->PDF_NAME;
-			   }
-			   else if (position == 4) {
-				   Order^ time_order = Controller::QueryFileByPosition(3);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-
-				   LB_Time4->Text = (File_order->time_print).ToString();
-				   LB_Pos4->Text = (position).ToString();
-				   LB_NameDoc4->Text = File_order->PDF_NAME;
-			   }
-			   else if (position == 5) {
-				   Order^ time_order = Controller::QueryFileByPosition(4);
-				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-
-				   LB_Time5->Text = (File_order->time_print).ToString();
-				   LB_Pos5->Text = (position).ToString();
-				   LB_NameDoc5->Text = File_order->PDF_NAME;
-			   }
-
 			   AutoPrintController::Controller::AddOrder(File_order);
+			   ShowCola();
 			   ShowOrderFiles();
 		   }
 /******************************************************************************************************************************************************/
+		   void ShowCola() {
+			   int pos1234 = 0;
+			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
+			   if (orderfiles != nullptr) {
+				   for (int i = 0; i < orderfiles->Count; i++) {
+					   Order^ File_order = orderfiles[i];
+					   if (File_order->status_order == "Imprimiendo" && File_order->dni_history == Dni_Ahora) {
+						   pos1234++;
+						   if (pos1234 == 1) {
+							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+							   LB_Time1->Text = (colabyposition->time_print).ToString();
+							   LB_Pos1->Text = (colabyposition->num_spooler).ToString();
+							   LB_NameDoc1->Text = colabyposition->PDF_NAME;
+						   }
+						   else if (pos1234 == 1) {
+							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+							   LB_Time2->Text = (colabyposition->time_print).ToString();
+							   LB_Pos2->Text = (colabyposition->num_spooler).ToString();
+							   LB_NameDoc2->Text = colabyposition->PDF_NAME;
+						   }
+						   else if (pos1234 == 1) {
+							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+							   LB_Time3->Text = (colabyposition->time_print).ToString();
+							   LB_Pos3->Text = (colabyposition->num_spooler).ToString();
+							   LB_NameDoc3->Text = colabyposition->PDF_NAME;
+						   }
+						   else if (pos1234 == 1) {
+							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+							   LB_Time4->Text = (colabyposition->time_print).ToString();
+							   LB_Pos4->Text = (colabyposition->num_spooler).ToString();
+							   LB_NameDoc4->Text = colabyposition->PDF_NAME;
+						   }
+						   else if (pos1234 == 1) {
+							   Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+							   LB_Time5->Text = (colabyposition->time_print).ToString();
+							   LB_Pos5->Text = (colabyposition->num_spooler).ToString();
+							   LB_NameDoc5->Text = colabyposition->PDF_NAME;
+						   }
+					   }
+				   }
+			   }
+		   }
 		   void ShowOrderFiles() {
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
-			   if (orderfiles != nullptr && orderfiles->Count > 0) {
+			   if (orderfiles != nullptr) {
 				   dgvHistorial_Files->Rows->Clear();
 				   for (int i = 0; i < orderfiles->Count; i++) {
 					   Order^ File_order = orderfiles[i];
@@ -1643,8 +1680,6 @@ private: System::Windows::Forms::Label^ label15;
 			// Solo ejecutar si hay una celda seleccionada y el valor no es nulo o vacío
 			int orderId = Int32::Parse(dgvHistorial_Files->Rows[dgvHistorial_Files->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
 			Order^ File_order = Controller::QueryFileById(orderId);
-
-			delete_orderId = orderId;
 			// Cargar el contenido del PDF en el control WebBrowser
 			LoadPdfContent(File_order);
 		}
@@ -1712,11 +1747,16 @@ private: System::Windows::Forms::Label^ label15;
 		}*/
 	}
 	private: System::Void BT_DeletePDFs_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (delete_orderId !=0) {
-			Controller::DeleteOrder(delete_orderId);
-			ShowOrderFiles();
-			delete_orderId = 0;
+		List<Order^>^ orderfiles = Controller::QueryAllFiles();
+		if (orderfiles != nullptr) {
+			for (int i = 0; i < orderfiles->Count; i++) {
+				Order^ File_order = orderfiles[i];
+				if (File_order->status_order == "Recogido" && File_order->dni_history == Dni_Ahora) {
+					Controller::DeleteOrder(File_order->order_id);
+				}
+			}
 		}
+		ShowOrderFiles();
 	}
 
 		   int GetNumberOfPages(const std::string& rutaPDF) {
@@ -1815,37 +1855,49 @@ private: System::Windows::Forms::Label^ label15;
 
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Order^ time_1 = Controller::QueryFileByPosition(1);
-		Order^ time_2 = Controller::QueryFileByPosition(2);
-		Order^ time_3 = Controller::QueryFileByPosition(3);
-		Order^ time_4 = Controller::QueryFileByPosition(4);
-		Order^ time_5 = Controller::QueryFileByPosition(5);
-
-		if (time_1 != nullptr) {
-			//MessageBox::Show("Su documento " + time_order->PDF_NAME + " está listo para recoger.");
-			LB_Time1->Text = (time_1->time_print).ToString();
-			LB_Pos1->Text = (time_1->num_spooler).ToString();
-			LB_NameDoc1->Text = time_1->PDF_NAME;
-		}
-		if (time_2 != nullptr) {
-			LB_Time2->Text = (time_2->time_print).ToString();
-			LB_Pos2->Text = (time_2->num_spooler).ToString();
-			LB_NameDoc2->Text = time_2->PDF_NAME;
-		}
-		if (time_3 != nullptr) {
-			LB_Time3->Text = (time_3->time_print).ToString();
-			LB_Pos3->Text = (time_3->num_spooler).ToString();
-			LB_NameDoc3->Text = time_3->PDF_NAME;
-		}
-		if (time_4 != nullptr) {
-			LB_Time4->Text = (time_4->time_print).ToString();
-			LB_Pos4->Text = (time_4->num_spooler).ToString();
-			LB_NameDoc4->Text = time_4->PDF_NAME;
-		}
-		if (time_5 != nullptr) {
-			LB_Time5->Text = (time_5->time_print).ToString();
-			LB_Pos5->Text = (time_5->num_spooler).ToString();
-			LB_NameDoc5->Text = time_5->PDF_NAME;
+		//MessageBox::Show("Su documento " + colabyposition->PDF_NAME + " está listo para recoger.");
+		int pos1234 = 0;
+		List<Order^>^ orderfiles = Controller::QueryAllFiles();
+		if (orderfiles != nullptr) {
+			for (int i = 0; i < orderfiles->Count; i++) {
+				Order^ File_order = orderfiles[i];
+				if (File_order->status_order == "Imprimiendo" && File_order->dni_history == Dni_Ahora) {
+					pos1234++;
+					if (pos1234 == 1) {
+						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+						LB_Time1->Text = (colabyposition->time_print).ToString();
+						LB_Pos1->Text = (colabyposition->num_spooler).ToString();
+						LB_NameDoc1->Text = colabyposition->PDF_NAME;
+						if (colabyposition->status_order == "Listo") {
+							MessageBox::Show("Su documento " + colabyposition->PDF_NAME + " está listo para recoger.");
+						}
+					}
+					else if (pos1234 == 1) {
+						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+						LB_Time2->Text = (colabyposition->time_print).ToString();
+						LB_Pos2->Text = (colabyposition->num_spooler).ToString();
+						LB_NameDoc2->Text = colabyposition->PDF_NAME;
+					}
+					else if (pos1234 == 1) {
+						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+						LB_Time3->Text = (colabyposition->time_print).ToString();
+						LB_Pos3->Text = (colabyposition->num_spooler).ToString();
+						LB_NameDoc3->Text = colabyposition->PDF_NAME;
+					}
+					else if (pos1234 == 1) {
+						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+						LB_Time4->Text = (colabyposition->time_print).ToString();
+						LB_Pos4->Text = (colabyposition->num_spooler).ToString();
+						LB_NameDoc4->Text = colabyposition->PDF_NAME;
+					}
+					else if (pos1234 == 1) {
+						Order^ colabyposition = Controller::QueryFileByPosition(File_order->num_spooler);
+						LB_Time5->Text = (colabyposition->time_print).ToString();
+						LB_Pos5->Text = (colabyposition->num_spooler).ToString();
+						LB_NameDoc5->Text = colabyposition->PDF_NAME;
+					}
+				}
+			}
 		}
 	}
 	/*-------------------------------------------------222222222222222222222222222222222222222222222-------------------------------------------*/
