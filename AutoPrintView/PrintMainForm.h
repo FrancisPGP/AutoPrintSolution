@@ -290,13 +290,17 @@ namespace AutoPrintView {
 			this->actualizarDatosToolStripMenuItem->Visible = true;
 			this->clientesToolStripMenuItem->Visible = true;
 			this->empleadosToolStripMenuItem->Visible = false;
-
+			this->billeteraToolStripMenuItem->Visible = false;
+			this->impresiónToolStripMenuItem->Visible = false;
 
 		}
 		void EnableBossPermission() {
 			this->usuariosToolStripMenuItem->Visible = true;
 			this->estadisticasToolStripMenuItem->Visible = true;
 			this->actualizarDatosToolStripMenuItem->Visible = true;
+			this->billeteraToolStripMenuItem->Visible = false;
+			this->impresiónToolStripMenuItem->Visible = false;
+
 		}
 		void EnableCustomerPermission() {
 			this->usuariosToolStripMenuItem->Visible = false;
