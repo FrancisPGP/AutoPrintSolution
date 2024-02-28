@@ -1246,25 +1246,27 @@ private: System::Windows::Forms::Label^ label15;
 		   }
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(20);
-			if (time_order != nullptr) {
-				MessageBox::Show("Tiene 5 PDFs en cola. Llegaste el límite.");
-			}
-			else {
-				//if(el usuario paga)
-				CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
-				cardVISAForm->ControlBox = true;
-				cardVISAForm->ShowDialog();
-				if (ValidationCardVisa) {
-					MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
-					UpOrder();
-					ReiniciarReloj();
-					IniciarReloj();
-					PrintPDF();
-					RefreshPage();
-					//email();
+			if (NotLimit5()) {
+				Order^ time_order = Controller::QueryFileByPosition(10);
+				if (time_order != nullptr) {
+					MessageBox::Show("La cola está llena, espera a que se desocupe.");
 				}
-				ValidationCardVisa = false;
+				else {
+					//if(el usuario paga)
+					CardVISAForm^ cardVISAForm = gcnew CardVISAForm();
+					cardVISAForm->ControlBox = true;
+					cardVISAForm->ShowDialog();
+					if (ValidationCardVisa) {
+						MessageBox::Show("Operación exitosa. El documento se encuentra en cola.");
+						UpOrder();
+						ReiniciarReloj();
+						IniciarReloj();
+						PrintPDF();
+						RefreshPage();
+						//email();
+					}
+					ValidationCardVisa = false;
+				}
 			}
 		}
 	}
@@ -1345,7 +1347,8 @@ private: System::Windows::Forms::Label^ label15;
 				   MessageBox::Show("Suba su PDF");
 				   return false;
 			   }
-			   if ((cmbTipoHoja->Text == "") || (cmbTamaHoja->Text == "") || (cmbTinta->Text == "") || (cmbNUMcopias->Text == "") || (cmbLocal->Text == "")) {
+			   //(cmbTipoHoja->Text == "") || (cmbTamaHoja->Text == "") || (cmbLocal->Text == "")
+			   if ((cmbTinta->Text == "") || (cmbNUMcopias->Text == "")) {
 				   MessageBox::Show("Debe llenar todas las casillas.");
 				   return false;
 			   }
