@@ -1016,11 +1016,6 @@ namespace AutoPrintView {
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		String^ Documento_name;
 		Order^ time_order = Controller::QueryFileByPosition(1);
-		if (imprimiendo == 0) {
-			PrintPDF();
-			imprimiendo = 1;
-		}
-		
 		if (time_order != nullptr) {
 			Order^ order = gcnew Order();
 			order->num_spooler = time_order->num_spooler;
