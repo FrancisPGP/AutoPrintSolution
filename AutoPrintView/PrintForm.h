@@ -1178,12 +1178,25 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 
 	private: System::Void PrintForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		delete_orderId = 0;
-		IniciarReloj();
+		//IniciarReloj();
 		ShowOrderFiles();
 	}
+		   bool NotLimit5() {
+			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
+			   if (orderfiles != nullptr) {
+				   for (int i = 0; i < orderfiles->Count; i++) {
+					   Order^ File_order = orderfiles[i];
+					   Customer^ Customer_order = Controller::QueryCustomerByDNI(File_order->dni_history);
+					   if (File_order->status_order == "Imprimiendo") {
+						   
+					   }
+				   }
+			   }
+			   return true;
+		   }
 	private: System::Void BT_pagarTARJ_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NotEmpty()) {
-			Order^ time_order = Controller::QueryFileByPosition(10);
+			Order^ time_order = Controller::QueryFileByPosition(20);
 			if (time_order != nullptr) {
 				MessageBox::Show("Tiene 5 PDFs en cola. Estás en el límite.");
 			}
@@ -1281,7 +1294,7 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 				   return false;
 			   }
 			   if ((cmbTipoHoja->Text == "") || (cmbTamaHoja->Text == "") || (cmbTinta->Text == "") || (cmbNUMcopias->Text == "") || (cmbLocal->Text == "")) {
-				   MessageBox::Show("Debe llenar todas las casillas");
+				   MessageBox::Show("Debe llenar todas las casillas.");
 				   return false;
 			   }
 			   else {
@@ -1297,7 +1310,17 @@ private: System::Windows::Forms::Label^ LB_EspacioCola;
 			   //QueryFileById
 			   List<Order^>^ orderfiles = Controller::QueryAllFiles();
 			   if (orderfiles != nullptr) {
-				   ordenId = 1 + orderfiles->Count;
+				   for (int i = 1; i < 36601; i++) {
+					   Order^ order_file_id = Controller::QueryFileById(i);
+					   if (order_file_id == nullptr) {
+						   ordenId = i;
+						   i = 36601;
+					   }
+					   else if (i == 36600) {
+						   MessageBox::Show("La base de datos está llena. Podría eliminar su historial para obtener espacio.");
+						   return;
+					   }
+				   }
 			   }
 
 			   if (cmbTinta->Text == "Color") {
