@@ -919,6 +919,7 @@ int Persistance::AddFile(Order^ file) {
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
 
+        cmd->Parameters->Add("@ORDER_ID", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@COLOR_PAGE", System::Data::SqlDbType::VarChar, 200);
         cmd->Parameters->Add("@NUM_SPOOLER", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@NUM_COPIES", System::Data::SqlDbType::Int);
@@ -935,11 +936,12 @@ int Persistance::AddFile(Order^ file) {
         cmd->Parameters->Add("@TIME_PRINT", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@DNI_HISTORY", System::Data::SqlDbType::Int);
 
-        SqlParameter^ outputIdParam = gcnew SqlParameter("@ORDER_ID", System::Data::SqlDbType::Int);
+        /*SqlParameter^ outputIdParam = gcnew SqlParameter("@ORDER_ID", System::Data::SqlDbType::Int);
         outputIdParam->Direction = System::Data::ParameterDirection::Output;
-        cmd->Parameters->Add(outputIdParam);
+        cmd->Parameters->Add(outputIdParam);*/
         cmd->Prepare();
 
+        cmd->Parameters["@ORDER_ID"]->Value = file->order_id;
         cmd->Parameters["@COLOR_PAGE"]->Value = file->color_page;
         cmd->Parameters["@NUM_SPOOLER"]->Value = file->num_spooler;
         cmd->Parameters["@NUM_COPIES"]->Value = file->num_copies;
@@ -962,7 +964,7 @@ int Persistance::AddFile(Order^ file) {
         cmd->ExecuteNonQuery();
 
         //Paso 4: Se procesan los resultados.
-        orderId = Convert::ToInt32(cmd->Parameters["@ORDER_ID"]->Value);
+        //orderId = Convert::ToInt32(cmd->Parameters["@ORDER_ID"]->Value);
     }
     catch (Exception^ ex) {
         throw ex;
