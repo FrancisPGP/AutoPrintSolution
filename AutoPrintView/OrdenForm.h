@@ -726,7 +726,7 @@ namespace AutoPrintView {
 				   System::IO::File::WriteAllBytes(savePath, File_order->PDF);
 
 				   // Mostrar la ruta de descarga en un MessageBox
-				   MessageBox::Show("Archivo guardado en: " + savePath);
+				  // MessageBox::Show("Archivo guardado en: " + savePath);
 			   }
 		   }
 		   void PrintPDF() {
@@ -795,10 +795,10 @@ namespace AutoPrintView {
 			   System::IO::File::Delete(savePath);
 
 			   // Mostrar un mensaje indicando que el archivo fue eliminado
-			   MessageBox::Show("Archivo eliminado: " + savePath);
+			   //MessageBox::Show("Archivo eliminado: " + savePath);
 
 			   // Restablecer la ruta de descarga a una cadena vacía
-			   savePath = "";
+			   //savePath = "";
 		   }
 
 	private: System::Void BT_StarPrint_Click(System::Object^ sender, System::EventArgs^ e) {
