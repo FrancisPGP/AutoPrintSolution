@@ -1477,26 +1477,44 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgv_fecha;
 
 			   if (position == 1) {
 				   File_order->time_print = tiempo_print * numpage;
-
-				   LB_Time1->Text = (File_order->time_print).ToString();
-				   LB_Pos1->Text = (position).ToString();
-				   LB_NameDoc1->Text = File_order->PDF_NAME;
 			   }
-			   else if (orderfiles != nullptr && position > 1) {
-				   int validar = 0;
-				   for (int i = 0; i < orderfiles->Count; i++) {
-					   Order^ position_order = orderfiles[i];
-					   if (position_order->status_order == "Imprimiendo") {
-						   Order^ time_order = Controller::QueryFileByPosition(i + 1);
-						   if (time_order == nullptr && validar == 0) {
-							   Order^ time_order = Controller::QueryFileByPosition(i);
-							   File_order->time_print = tiempo_print * numpage + time_order->time_print;
-							   validar = 1;
-						   }
-
-					   }
-				   }
+			   else if (position == 2) {
+				   Order^ time_order = Controller::QueryFileByPosition(1);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
 			   }
+			   else if (position == 3) {
+				   Order^ time_order = Controller::QueryFileByPosition(2);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 4) {
+				   Order^ time_order = Controller::QueryFileByPosition(3);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 5) {
+				   Order^ time_order = Controller::QueryFileByPosition(4);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 6) {
+				   Order^ time_order = Controller::QueryFileByPosition(5);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 7) {
+				   Order^ time_order = Controller::QueryFileByPosition(6);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 8) {
+				   Order^ time_order = Controller::QueryFileByPosition(7);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 9) {
+				   Order^ time_order = Controller::QueryFileByPosition(8);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+			   else if (position == 10) {
+				   Order^ time_order = Controller::QueryFileByPosition(9);
+				   File_order->time_print = tiempo_print * numpage + time_order->time_print;
+			   }
+
 			   AutoPrintController::Controller::AddOrder(File_order);
 			   ShowOrderFiles();
 		   }
