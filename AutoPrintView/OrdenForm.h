@@ -652,6 +652,7 @@ namespace AutoPrintView {
 #pragma endregion
 		int collected_orderId = 0;
 		int tiempo_print = 5;
+		int imprimiendo = 0;
 
 		System::Windows::Forms::Timer^ Timer0 = gcnew System::Windows::Forms::Timer();
 		System::Windows::Forms::Timer^ Timer1 = gcnew System::Windows::Forms::Timer();
@@ -1011,7 +1012,7 @@ namespace AutoPrintView {
 	private: System::Void timer0_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 	}
-		   int imprimiendo = 0;
+		  
 	/*----------------------------------------------------111111111111111111111111111111111--------------------------------------------------------*/
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		String^ Documento_name;
